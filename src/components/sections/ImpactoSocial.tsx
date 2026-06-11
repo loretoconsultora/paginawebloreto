@@ -28,9 +28,25 @@ export default function ImpactoSocial() {
               >
                 El impacto va más allá del negocio
               </h2>
-              <p className="text-grafito/70 leading-relaxed mb-6">
-                Colaboramos activamente con fundaciones y grupos vulnerables en Ciudad de México y más países. Porque creemos que el conocimiento y las estrategias de marca también son herramientas de transformación social.
+              <p className="text-grafito/70 leading-relaxed mb-4">
+                Creemos que el conocimiento es la herramienta de transformación más poderosa. Por eso llevamos estrategia, marca personal e inteligencia artificial directamente a quienes más lo necesitan.
               </p>
+
+              <div className="flex flex-col gap-4 mb-6">
+                <div className="rounded-2xl p-5" style={{ background: "rgba(58,63,75,0.04)", border: "1px solid rgba(58,63,75,0.08)" }}>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#c0005a" }}>Oct 2025 · Valle del Cauca, Colombia</p>
+                  <p className="text-grafito/70 text-sm leading-relaxed">
+                    Llevamos conferencias y clases de inteligencia artificial, ventas y marca personal a jóvenes adolescentes de la región cafetera, impulsando su desarrollo profesional desde temprana edad.
+                  </p>
+                </div>
+                <div className="rounded-2xl p-5" style={{ background: "rgba(58,63,75,0.04)", border: "1px solid rgba(58,63,75,0.08)" }}>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#c0005a" }}>Sep 2025 · Presente · México</p>
+                  <p className="text-grafito/70 text-sm leading-relaxed">
+                    Colaboramos activamente con <span className="font-semibold text-grafito">Fundación Home ADC, A.C.</span> — formaciones para jóvenes preuniversitarios y universitarios: preparación al ingreso a la universidad y talleres de inteligencia artificial responsiva.
+                  </p>
+                </div>
+              </div>
+
               <p className="text-grafito/45 text-sm mb-8">
                 Convocatoria siempre abierta para fundaciones que quieran fortalecer su comunicación y posicionamiento.
               </p>
@@ -45,10 +61,10 @@ export default function ImpactoSocial() {
 
             <div className="grid grid-cols-2 gap-4 min-w-64">
               {[
-                { num: "1+", label: "Fundación activa" },
-                { num: "5", label: "Países" },
+                { num: "2", label: "Países con impacto" },
+                { num: "1+", label: "Fundación aliada" },
+                { num: "3", label: "Temáticas impartidas" },
                 { num: "∞", label: "Convocatoria abierta" },
-                { num: "2026", label: "Expandiendo impacto" },
               ].map((s) => (
                 <div key={s.label} className="rounded-2xl p-5 text-center" style={{ background: "rgba(58,63,75,0.04)", border: "1px solid rgba(58,63,75,0.08)" }}>
                   <div className="font-playfair text-2xl font-bold mb-1" style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.num}</div>
