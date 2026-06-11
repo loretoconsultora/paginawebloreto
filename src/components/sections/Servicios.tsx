@@ -76,7 +76,7 @@ export default function Servicios() {
           </div>
 
           {/* ── Columna derecha — foto + marquee ── */}
-          <div className="relative order-1 lg:order-2 flex flex-col items-end justify-center" style={{ minHeight: "88vh" }}>
+          <div className="relative order-1 lg:order-2 flex flex-col items-stretch" style={{ minHeight: "88vh", justifyContent: "flex-start", paddingTop: "6vh" }}>
 
             {/* Glow */}
             <div
@@ -96,7 +96,7 @@ export default function Servicios() {
               className="relative z-10 w-full flex justify-end"
               style={{
                 overflow: "hidden",
-                height: "70vh",   /* contenedor = 70vh, imagen = 88vh → muestra el 80% superior, corta rodillas */
+                height: "70vh",
                 flexShrink: 0,
               }}
             >
