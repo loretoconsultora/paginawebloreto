@@ -47,7 +47,7 @@ export default function NuestrasMarcas() {
             El salón de la fama
           </h2>
           <p className="text-grafito/55 font-medium text-base">
-            conoce nuestras marcas
+            Conoce las marcas que ya confían en nosotros
           </p>
         </motion.div>
 
