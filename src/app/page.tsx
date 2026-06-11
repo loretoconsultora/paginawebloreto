@@ -8,7 +8,6 @@ import Servicios from "@/components/sections/Servicios";
 import LogrosDestacados from "@/components/sections/LogrosDestacados";
 import NuestrasMarcas from "@/components/sections/NuestrasMarcas";
 import ImpactoSocial from "@/components/sections/ImpactoSocial";
-import KitEmpresarial from "@/components/sections/KitEmpresarial";
 import Blog from "@/components/sections/Blog";
 import CTAFinal from "@/components/sections/CTAFinal";
 
@@ -25,7 +24,6 @@ export default function Home() {
         <LogrosDestacados />
         <NuestrasMarcas />
         <ImpactoSocial />
-        <KitEmpresarial />
         <Blog />
         <CTAFinal />
       </main>

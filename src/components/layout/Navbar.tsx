@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Eventos", href: "/eventos" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Blog", href: "/blog" },
-  { label: "Kit Empresarial", href: "/kit-empresarial" },
+  { label: "Kit de Herramientas", href: "/kit-empresarial" },
   { label: "Acción Social", href: "/accion-social" },
   { label: "Portal", href: "/portal" },
 ];
