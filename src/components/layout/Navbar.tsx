@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center" aria-label="Loreto Consultora — inicio">
-          <img src="/logo.svg" alt="Loreto Consultora" height={44} style={{ height: "44px", width: "auto" }} />
+          <img src="/logo.svg" alt="Loreto Consultora" height={58} style={{ height: "58px", width: "auto" }} />
         </Link>
 
         {/* Desktop nav */}
