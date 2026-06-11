@@ -113,7 +113,7 @@ export default function Hero() {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src="/images/blob.png"
+            src="/blob.png"
             alt="Loreto Consultora"
             fill
             style={{
