@@ -6,14 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const WORDS = ["MARCA", "NEGOCIO", "IDENTIDAD", "HISTORIA", "COMUNIDAD", "PROPÓSITO"];
 
-// Scale font size down for longer words so they never push the blob right
-function wordFontSize(word: string): string {
-  const len = word.replace(/[ÁÉÍÓÚ]/g, "X").length; // accent chars count same
-  if (len <= 5)  return "clamp(4rem,   11vw, 10rem)";
-  if (len <= 7)  return "clamp(2.8rem, 7.2vw,  6.5rem)";
-  if (len <= 8)  return "clamp(2.4rem, 6.4vw,  5.8rem)";
-  return               "clamp(2.2rem, 5.8vw,  5.2rem)";
-}
+const WORD_FONT_SIZE = "clamp(2.6rem, 6.8vw, 6.2rem)";
 
 const TAGLINE = "This is the Bloom Era";
 
@@ -182,7 +175,7 @@ export default function Hero() {
               style={{
                 fontFamily: "var(--font-playfair)",
                 fontWeight: 900,
-                fontSize: wordFontSize(WORDS[wordIndex]),
+                fontSize: WORD_FONT_SIZE,
                 lineHeight: 0.85,
                 letterSpacing: "-0.04em",
                 marginBottom: "0.18em",
