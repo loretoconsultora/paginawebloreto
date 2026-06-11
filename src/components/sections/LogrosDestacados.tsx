@@ -21,7 +21,7 @@ const logros = [
     logo: "/logros/logo-3.png",
     empresa: "Bryan Álvarez",
     industria: "Proyectos civiles e industriales",
-    hito: "Producción de contenidos intensiva en la entrega de un proyecto en Coahuila — más de 8 horas de grabación resultando en más de 17 contenidos estratégicos para redes sociales y publicidad.",
+    hito: "Producción de contenidos intensiva resulta en más de 17 contenidos estratégicos para redes sociales y publicidad.",
     foto: "/logros/foto-3.jpg",
   },
 ];
