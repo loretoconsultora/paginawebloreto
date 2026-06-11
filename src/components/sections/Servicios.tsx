@@ -96,7 +96,7 @@ export default function Servicios() {
               className="relative z-10 w-full flex justify-end"
               style={{
                 overflow: "hidden",
-                height: "66vh",
+                height: "70vh",
                 flexShrink: 0,
               }}
             >
