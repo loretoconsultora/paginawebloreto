@@ -291,8 +291,10 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── COLUMNA DERECHA — Blob sangra fuera del viewport ── */}
+          {/* ── COLUMNA DERECHA — Blobs ── */}
           <div className="order-1 lg:order-2 relative" style={{ height: "100vh", minHeight: 600 }}>
+
+            {/* Blob principal — arriba, sangra por derecha */}
             <motion.img
               src="/blob.png"
               alt=""
@@ -311,6 +313,34 @@ export default function Hero() {
                 height: "auto",
                 zIndex: 1,
                 filter: "drop-shadow(0 24px 60px rgba(200,100,255,0.2)) drop-shadow(0 6px 24px rgba(255,106,146,0.15))",
+              }}
+            />
+
+            {/* Blob secundario — esquina inferior derecha, rotación + float desfasado */}
+            <motion.img
+              src="/blob2.png"
+              alt=""
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{
+                opacity: [0, 0.92],
+                scale: [0.7, 1],
+                y: [0, 14, 0],
+                rotate: [0, 8, -4, 0],
+              }}
+              transition={{
+                opacity: { duration: 1.4, delay: 0.6 },
+                scale: { duration: 1.4, delay: 0.6, ease: "easeOut" },
+                y: { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.8 },
+                rotate: { duration: 11, repeat: Infinity, ease: "easeInOut", delay: 0.8 },
+              }}
+              style={{
+                position: "absolute",
+                bottom: "2%",
+                right: "-18%",
+                width: "58%",
+                height: "auto",
+                zIndex: 2,
+                filter: "drop-shadow(0 12px 32px rgba(232,148,255,0.22)) drop-shadow(0 4px 14px rgba(255,106,146,0.12))",
               }}
             />
           </div>
