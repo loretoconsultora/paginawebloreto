@@ -5,23 +5,23 @@ import { Trophy } from "lucide-react";
 const logros = [
   {
     logo: "/logros/logo-1.png",
-    empresa: "Empresa 1",
-    industria: "Industria",
-    hito: "Aquí va el hito del mes de esta empresa — el logro que quieres celebrar este mes.",
+    empresa: "Electronic Point",
+    industria: "Tecnología",
+    hito: "Más de 500 conversaciones generadas con leads calificados atendidos por Agentes de IA y automatizaciones.",
     foto: "/logros/foto-1.jpg",
   },
   {
     logo: "/logros/logo-2.png",
-    empresa: "Empresa 2",
-    industria: "Industria",
-    hito: "Aquí va el hito del mes de esta empresa — el logro que quieres celebrar este mes.",
+    empresa: "B&M Fit",
+    industria: "Fitness",
+    hito: "Más de 10 reels virales en el último mes superiores a 10,000 vistas con la nueva estrategia de contenidos.",
     foto: "/logros/foto-2.jpg",
   },
   {
     logo: "/logros/logo-3.png",
-    empresa: "Empresa 3",
-    industria: "Industria",
-    hito: "Aquí va el hito del mes de esta empresa — el logro que quieres celebrar este mes.",
+    empresa: "Bryan Álvarez",
+    industria: "Proyectos civiles e industriales",
+    hito: "Producción de contenidos intensiva en la entrega de un proyecto en Coahuila — más de 8 horas de grabación resultando en más de 17 contenidos estratégicos para redes sociales y publicidad.",
     foto: "/logros/foto-3.jpg",
   },
 ];
