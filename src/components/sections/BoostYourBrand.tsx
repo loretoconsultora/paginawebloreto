@@ -11,14 +11,16 @@ const INCLUDES = [
 ];
 
 const HREF = "https://boost-your-brand.vercel.app";
+const CARD_GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)";
 
 export default function BoostYourBrand() {
   return (
     <section className="py-20 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="relative rounded-3xl overflow-hidden">
-          {/* Fondo */}
-          <div className="absolute inset-0 gradient-hero" />
+          {/* Fondo — mismo degradado que el hero cycling words */}
+          <div className="absolute inset-0" style={{ background: CARD_GRADIENT }} />
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
 
@@ -47,31 +49,34 @@ export default function BoostYourBrand() {
                 En 6 sesiones en vivo construyes tu identidad, tu oferta digital y sales con tu primer lanzamiento listo para escalar.
               </p>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href={HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass text-grafito font-semibold px-8 py-4 rounded-full text-base hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                >
-                  Quiero mi lugar <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href={HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-dark text-white font-semibold px-8 py-4 rounded-full text-base border border-white/30 hover:bg-white/20 transition-all duration-300 text-center"
-                >
-                  Ver cómo funciona ↓
-                </Link>
-              </div>
+              {/* CTA — fondo blanco, tipografía con degradado del card */}
+              <Link
+                href={HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white font-bold px-8 py-4 rounded-full text-base hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  background: "#ffffff",
+                  backgroundClip: "unset",
+                  WebkitBackgroundClip: "unset",
+                }}
+              >
+                <span style={{
+                  background: CARD_GRADIENT,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                  Asegurar mi lugar
+                </span>
+                <ArrowRight size={16} style={{ color: "#c0005a", flexShrink: 0 }} />
+              </Link>
             </div>
 
-            {/* Columna derecha — card de precios */}
+            {/* Columna derecha — cards de precios */}
             <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-4 lg:min-w-72">
 
-              {/* Plan Boost */}
+              {/* Plan Boost $444 */}
               <div className="glass-dark rounded-3xl p-6 text-white flex-1 lg:flex-none border border-white/20">
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/50 mb-1">Programa completo</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Boost Your Brand</p>
@@ -88,15 +93,18 @@ export default function BoostYourBrand() {
                   href={HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center bg-white/15 hover:bg-white/25 transition-colors text-white text-sm font-semibold py-3 rounded-full"
+                  className="block text-center text-white text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
+                  style={{ background: CARD_GRADIENT }}
                 >
                   Activar acceso →
                 </Link>
               </div>
 
-              {/* Plan VIP */}
-              <div className="rounded-3xl p-6 text-white flex-1 lg:flex-none border-2 border-white/40 bg-white/10 backdrop-blur-sm relative overflow-hidden">
-                <div className="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">Solo 10 lugares</div>
+              {/* Plan VIP $1,110 */}
+              <div className="rounded-3xl p-6 text-white flex-1 lg:flex-none bg-white/10 backdrop-blur-sm relative overflow-hidden" style={{ border: "2px solid rgba(255,255,255,0.35)" }}>
+                <div className="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full" style={{ background: GOLD_GRADIENT, color: "#1a0a2e" }}>
+                  Solo 10 lugares
+                </div>
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/50 mb-1">Acceso VIP</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
                 <p className="font-playfair text-3xl font-black mb-4">$1,110 <span className="text-base font-normal text-white/60">USD</span></p>
@@ -105,7 +113,8 @@ export default function BoostYourBrand() {
                   href={HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center bg-white text-grafito text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
+                  className="block text-center text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
+                  style={{ background: GOLD_GRADIENT, color: "#1a0a2e" }}
                 >
                   Acceso VIP →
                 </Link>
