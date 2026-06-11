@@ -80,13 +80,8 @@ export default function Novedades() {
           className="text-center mb-16"
         >
           <h2
-            className="font-playfair text-4xl font-bold"
-            style={{
-              background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+            className="font-playfair font-bold text-white"
+            style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)" }}
           >
             Novedades
           </h2>
