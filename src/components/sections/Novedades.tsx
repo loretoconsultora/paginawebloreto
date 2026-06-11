@@ -3,93 +3,6 @@
 import Link from "next/link";
 import { Calendar, Mic, Zap } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
-
-/* ── Red animada en canvas ── */
-function NetworkCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animId: number;
-    const NODES = 38;
-    const MAX_DIST = 160;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    // Nodos
-    const nodes = Array.from({ length: NODES }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 2.5 + 1.5,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Mover nodos
-      for (const n of nodes) {
-        n.x += n.vx;
-        n.y += n.vy;
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-      }
-
-      // Líneas de conexión
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.38;
-            ctx.strokeStyle = `rgba(255, 106, 146, ${alpha})`;
-            ctx.lineWidth = 1.2;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Puntos
-      for (const n of nodes) {
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 106, 146, 0.45)";
-        ctx.fill();
-      }
-
-      animId = requestAnimationFrame(draw);
-    };
-
-    draw();
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ pointerEvents: "none" }}
-    />
-  );
-}
 
 /* ── Datos ── */
 const novedades = [
@@ -155,9 +68,7 @@ const novedades = [
 
 export default function Novedades() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Red animada */}
-      <NetworkCanvas />
+    <section className="py-24 relative overflow-hidden" style={{ background: "#0d0818" }}>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
