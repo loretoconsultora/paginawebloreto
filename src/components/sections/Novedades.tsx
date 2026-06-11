@@ -68,7 +68,7 @@ const novedades = [
 
 export default function Novedades() {
   return (
-    <section className="py-24 relative overflow-hidden" style={{ background: "#0d0818" }}>
+    <section className="py-24 relative overflow-hidden" style={{ background: "#3A3F4B" }}>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
@@ -104,14 +104,15 @@ export default function Novedades() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: i * 0.13, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ rotate: 0, y: -10, scale: 1.02, transition: { duration: 0.3 } }}
-                style={{ transformOrigin: "bottom center" }}
+                style={{ transformOrigin: "bottom center", filter: "drop-shadow(0 0px 0px transparent)" }}
               >
                 {/* Wrapper para borde degradado */}
                 <div
                   className="rounded-3xl p-[3px]"
+                  className="transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.18),0_0_80px_rgba(232,148,255,0.12)]"
                   style={{
                     background: n.borderGradient,
-                    boxShadow: "0 12px 40px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.06)",
+                    boxShadow: "0 8px 32px rgba(255,255,255,0.08), 0 2px 12px rgba(255,255,255,0.05)",
                   }}
                 >
                   <Link
