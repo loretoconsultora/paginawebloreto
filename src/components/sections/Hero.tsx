@@ -142,8 +142,8 @@ export default function Hero() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-28 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-0 items-center min-h-[calc(88vh-7rem)]">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-24 pb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-0 items-center min-h-[calc(88vh-6rem)]">
 
           {/* ── COLUMNA IZQUIERDA ── */}
           <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8" style={{ minWidth: 0 }}>
@@ -178,7 +178,7 @@ export default function Hero() {
                 fontSize: WORD_FONT_SIZE,
                 lineHeight: 0.85,
                 letterSpacing: "-0.04em",
-                marginBottom: "0.18em",
+                marginBottom: "0.08em",
                 position: "relative",
                 minHeight: "1em",
                 overflow: "visible",
@@ -218,7 +218,7 @@ export default function Hero() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginBottom: "1.2rem",
+                marginBottom: "0.9rem",
               }}
             >
               <TypewriterText text={TAGLINE} />
@@ -260,7 +260,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.78 }}
               style={{
-                marginTop: "1.4rem",
+                marginTop: "1rem",
                 borderTop: "1px solid rgba(58,63,75,0.08)",
                 paddingTop: "1.5rem",
               }}
