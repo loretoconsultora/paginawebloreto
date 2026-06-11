@@ -22,10 +22,10 @@ export default function Servicios() {
   return (
     <section className="relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ minHeight: "88vh" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
 
           {/* ── Columna izquierda — centrada verticalmente ── */}
-          <div className="flex flex-col justify-center py-20 lg:py-0 lg:pr-16 order-2 lg:order-1">
+          <div className="flex flex-col justify-center py-12 lg:py-20 lg:pr-16 order-2 lg:order-1">
 
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
@@ -76,7 +76,7 @@ export default function Servicios() {
           </div>
 
           {/* ── Columna derecha — foto + marquee ── */}
-          <div className="relative order-1 lg:order-2 flex flex-col items-stretch" style={{ minHeight: "88vh", justifyContent: "flex-start", paddingTop: "0" }}>
+          <div className="relative order-1 lg:order-2 flex flex-col items-stretch" style={{ justifyContent: "flex-start", paddingTop: "0" }}>
 
             {/* Glow */}
             <div
@@ -93,10 +93,10 @@ export default function Servicios() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="relative z-10 w-full flex justify-end"
+              className="relative z-10 w-full flex justify-end lg:justify-end justify-center"
               style={{
                 overflow: "hidden",
-                height: "68vh",
+                height: "clamp(320px, 68vh, 68vh)",
                 flexShrink: 0,
               }}
             >
@@ -105,8 +105,8 @@ export default function Servicios() {
                 alt="Loreto — Directora de Loreto Consultora"
                 style={{
                   width: "auto",
-                  height: "88vh",
-                  maxWidth: "520px",
+                  height: "clamp(420px, 88vh, 88vh)",
+                  maxWidth: "100%",
                   objectFit: "cover",
                   objectPosition: "top center",
                   display: "block",

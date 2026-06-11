@@ -109,7 +109,7 @@ export default function BoostYourBrand() {
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
 
-          <div className="relative z-10 px-8 sm:px-16 py-16 flex flex-col lg:flex-row items-start justify-between gap-12">
+          <div className="relative z-10 px-5 sm:px-10 lg:px-16 py-12 flex flex-col lg:flex-row items-start justify-between gap-10">
 
             {/* Columna izquierda */}
             <div className="text-white max-w-xl">
@@ -119,7 +119,7 @@ export default function BoostYourBrand() {
                 ⚡ Próxima generación — Solo 45 lugares
               </div>
 
-              <h3 className="font-playfair text-4xl sm:text-5xl font-bold mb-3 leading-tight">
+              <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-3 leading-tight">
                 Boost Your Brand
               </h3>
 
@@ -172,7 +172,7 @@ export default function BoostYourBrand() {
             </div>
 
             {/* Columna derecha — cards de precios */}
-            <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-4 lg:min-w-72">
+            <div className="w-full lg:w-auto flex flex-col gap-4 lg:min-w-72">
 
               {/* Acceso General $444 */}
               <div
