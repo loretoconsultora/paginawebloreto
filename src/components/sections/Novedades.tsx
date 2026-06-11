@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Calendar, Mic, Zap } from "lucide-react";
+import { Calendar, Mic, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -127,8 +127,8 @@ const novedades = [
     external: true,
     rotate: 2,
     borderGradient: "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)",
-    badgeBg: "rgba(58,12,163,0.10)",
-    badgeColor: "#3a0ca3",
+    badgeBg: "rgba(192,0,90,0.12)",
+    badgeColor: "#c0005a",
     ctaGradient: "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)",
   },
   {
@@ -147,8 +147,8 @@ const novedades = [
     external: true,
     rotate: -3,
     borderGradient: "linear-gradient(135deg, #1a0a2e, #6a00c8, #E894FF)",
-    badgeBg: "rgba(106,0,200,0.10)",
-    badgeColor: "#6a00c8",
+    badgeBg: "rgba(192,0,90,0.12)",
+    badgeColor: "#c0005a",
     ctaGradient: "linear-gradient(135deg, #1aa34a, #1DB954, #21d45e)",
   },
 ];
@@ -166,22 +166,19 @@ export default function Novedades() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="flex items-end justify-between mb-16"
+          className="text-center mb-16"
         >
-          <div>
-            <p className="text-xs font-semibold tracking-widest uppercase text-coral mb-2">
-              Lo que está pasando
-            </p>
-            <h2 className="font-playfair text-4xl font-bold text-grafito">
-              Novedades
-            </h2>
-          </div>
-          <Link
-            href="/eventos"
-            className="hidden sm:flex items-center gap-2 text-sm font-semibold text-indigo-DEFAULT hover:text-coral transition-colors"
+          <h2
+            className="font-playfair text-4xl font-bold"
+            style={{
+              background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
           >
-            Ver todo <ArrowRight size={16} />
-          </Link>
+            Novedades
+          </h2>
         </motion.div>
 
         {/* Cards */}
