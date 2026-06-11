@@ -39,7 +39,7 @@ export default function CTAFinal() {
           ¿Lista para transformar tu marca?
         </h2>
         <p className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-          Comienza con un diagnóstico gratuito. En 15 minutos sabrás exactamente dónde está tu marca y cuáles son los pasos para llevarla al siguiente nivel.
+          En 15 minutos sabrás exactamente dónde está tu marca y cuáles son los pasos para llevarla al siguiente nivel.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <GradientBorderButton href="https://brand-compass-pwa.vercel.app" target="_blank">
