@@ -14,7 +14,8 @@ const servicios = [
     id: "victoranza",
     badge: "Tecnología",
     titulo: "Victoranza App",
-    descripcion: "Centralizamos la gestión de tus clientes, automatizamos tus procesos de venta y potenciamos tus canales de comunicación con la tecnología más avanzada.",
+    resumen: "Nuestra plataforma propia de automatización e inteligencia de negocios que centraliza tus clientes y escala tus ventas.",
+    descripcion: "Victoranza es nuestra plataforma propia de automatización e inteligencia de negocios. Centraliza la gestión de tus clientes, automatiza tus procesos de venta y potencia tus canales de comunicación con la tecnología más avanzada. Incluye módulos de CRM, automatizaciones, agentes de IA, integración con WhatsApp y landing pages optimizadas para conversión.",
     items: [
       "Implementación y set up inicial",
       "Gestión, soporte y mantenimiento mensual",
@@ -23,24 +24,23 @@ const servicios = [
       "Modo Pro: desarrollamos tu propia plataforma",
     ],
     rotate: -4,
-    borderGradient: "linear-gradient(135deg, #0d2b6b, #1a4aab, #4d7fff)",
-    cardBg: "#0d2b6b",
-    textColor: "white",
-    badgeColor: "#7eb3ff",
-    badgeBorder: "rgba(126,179,255,0.4)",
-    badgeBg: "rgba(126,179,255,0.15)",
-    bulletColor: "#7eb3ff",
-    ctaHref: "#victoranza", // reemplazar con link real
-    ctaExternal: false,
+    borderGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)",
+    cardBorderColor: "#67c6c8",
+    detailBg: "#67c6c8",
+    detailText: "#0d2b2b",
+    badgeColor: "#0d6b6d",
+    badgeBorder: "rgba(13,107,109,0.35)",
+    badgeBg: "rgba(13,107,109,0.08)",
+    bulletColor: "#0d6b6d",
+    ctaHref: "#victoranza",
     foto: null,
-    detailBg: "#0d2b6b",
-    detailText: "white",
   },
   {
     id: "estrategia-digital",
     badge: "Conversión",
     titulo: "Estrategia Digital",
-    descripcion: "Diseñamos y ejecutamos la infraestructura digital que convierte tu presencia online en resultados medibles de ventas y posicionamiento.",
+    resumen: "Infraestructura digital que convierte tu presencia online en resultados medibles de ventas y posicionamiento.",
+    descripcion: "Diseñamos y ejecutamos la infraestructura digital que convierte tu presencia online en resultados medibles de ventas y posicionamiento. Desde la arquitectura de embudos de venta hasta la gestión de pauta, nos encargamos de que cada pieza trabaje con un objetivo claro: atraer, convertir y escalar.",
     items: [
       "Campañas de Meta Ads",
       "Campañas de Google Ads",
@@ -50,23 +50,22 @@ const servicios = [
     ],
     rotate: 3,
     borderGradient: "linear-gradient(135deg, #b8860b, #f5c842, #ffe066)",
-    cardBg: "#f5c200",
-    textColor: "#1a0a2e",
-    badgeColor: "#7a5800",
-    badgeBorder: "rgba(122,88,0,0.35)",
-    badgeBg: "rgba(122,88,0,0.12)",
-    bulletColor: "#7a5800",
-    ctaHref: "#estrategia-digital",
-    ctaExternal: false,
-    foto: null,
+    cardBorderColor: "#f5c200",
     detailBg: "#f5c200",
     detailText: "#1a0a2e",
+    badgeColor: "#7a5800",
+    badgeBorder: "rgba(122,88,0,0.35)",
+    badgeBg: "rgba(122,88,0,0.08)",
+    bulletColor: "#7a5800",
+    ctaHref: "#estrategia-digital",
+    foto: null,
   },
   {
     id: "redes-sociales",
     badge: "Posicionamiento",
     titulo: "Redes Sociales",
-    descripcion: "Gestionamos tu presencia en redes de forma integral para que tu marca comunique con consistencia y se mantenga relevante mes a mes.",
+    resumen: "Gestión integral de tu presencia digital para que tu marca sea consistente, relevante y genere conexión real.",
+    descripcion: "Gestionamos tu presencia en redes sociales de forma integral. Nos encargamos del día a día de tus canales para que tu marca comunique con consistencia, genere conexión real con su audiencia y se mantenga relevante mes a mes.",
     items: [
       "Social Media / Community Management",
       "Creación de contenido gráfico mensual",
@@ -74,23 +73,22 @@ const servicios = [
     ],
     rotate: -3,
     borderGradient: "linear-gradient(135deg, #d4005a, #FF6A92, #ffaec4)",
-    cardBg: "#FF6A92",
-    textColor: "white",
-    badgeColor: "#fff",
-    badgeBorder: "rgba(255,255,255,0.5)",
-    badgeBg: "rgba(255,255,255,0.2)",
-    bulletColor: "#fff",
-    ctaHref: "#redes-sociales",
-    ctaExternal: false,
-    foto: null,
+    cardBorderColor: "#FF6A92",
     detailBg: "#FF6A92",
     detailText: "white",
+    badgeColor: "#c0005a",
+    badgeBorder: "rgba(192,0,90,0.3)",
+    badgeBg: "rgba(192,0,90,0.08)",
+    bulletColor: "#c0005a",
+    ctaHref: "#redes-sociales",
+    foto: null,
   },
   {
     id: "direccion-creativa",
     badge: "Proyectos One Shot",
     titulo: "Dirección Creativa",
-    descripcion: "Proyectos creativos con potencial infinito. Traducimos tu identidad de marca en piezas que comunican, conectan y convierten.",
+    resumen: "Proyectos creativos con potencial infinito que traducen tu identidad en piezas que comunican y convierten.",
+    descripcion: "Proyectos creativos con potencial infinito. Traducimos tu identidad de marca en piezas que comunican, conectan y convierten. Desde branding hasta producción audiovisual, cubrimos todo el espectro creativo de tu marca.",
     items: [
       "Branding e identidad visual",
       "Plantillas de contenido gráfico para RRSS",
@@ -100,17 +98,15 @@ const servicios = [
     ],
     rotate: 2,
     borderGradient: "linear-gradient(135deg, #7a0035, #c0005a, #e8006e)",
-    cardBg: "#c0005a",
-    textColor: "white",
-    badgeColor: "#fff",
-    badgeBorder: "rgba(255,255,255,0.5)",
-    badgeBg: "rgba(255,255,255,0.2)",
-    bulletColor: "#fff",
-    ctaHref: "#direccion-creativa",
-    ctaExternal: false,
-    foto: null,
+    cardBorderColor: "#c0005a",
     detailBg: "#c0005a",
     detailText: "white",
+    badgeColor: "#c0005a",
+    badgeBorder: "rgba(192,0,90,0.3)",
+    badgeBg: "rgba(192,0,90,0.08)",
+    bulletColor: "#c0005a",
+    ctaHref: "#direccion-creativa",
+    foto: null,
   },
 ];
 
@@ -125,61 +121,46 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
       style={{ transformOrigin: "bottom center" }}
     >
       <div
-        className="rounded-3xl p-[3px] h-full transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.18)]"
+        className="rounded-3xl p-[3px] h-full transition-shadow duration-300"
         style={{ background: s.borderGradient }}
       >
-        <div
-          className="flex flex-col rounded-[22px] overflow-hidden h-full"
-          style={{ background: s.cardBg }}
-        >
+        <div className="flex flex-col rounded-[22px] bg-white overflow-hidden h-full">
+
           {/* Foto placeholder */}
           <div
             className="w-full flex items-center justify-center flex-shrink-0"
-            style={{
-              height: 180,
-              background: `rgba(255,255,255,0.08)`,
-            }}
+            style={{ height: 160, background: `rgba(0,0,0,0.03)` }}
           >
             {s.foto ? (
               <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" />
             ) : (
-              <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.2)" }}>
-                foto próximamente
-              </span>
+              <span className="text-xs font-mono text-grafito/20">foto próximamente</span>
             )}
           </div>
 
           {/* Contenido */}
-          <div className="flex flex-col flex-1 p-7">
+          <div className="flex flex-col flex-1 p-6">
             <div
-              className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-4 self-start border"
+              className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 self-start border"
               style={{ color: s.badgeColor, borderColor: s.badgeBorder, background: s.badgeBg }}
             >
               {s.badge}
             </div>
 
-            <h3 className="font-playfair text-xl font-bold leading-snug mb-3" style={{ color: s.textColor }}>
+            <h3 className="font-playfair text-lg font-bold text-grafito leading-snug mb-3">
               {s.titulo}
             </h3>
-            <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: s.textColor, opacity: 0.8 }}>
-              {s.descripcion}
-            </p>
 
-            <ul className="space-y-2 mb-8">
-              {s.items.slice(0, 3).map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm" style={{ color: s.textColor, opacity: 0.85 }}>
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: s.bulletColor }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <p className="text-sm text-grafito/60 leading-relaxed flex-1 mb-6">
+              {s.resumen}
+            </p>
 
             <a
               href={`#${s.id}`}
-              className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full self-start hover:opacity-80 transition-opacity"
-              style={{ background: "rgba(255,255,255,0.18)", color: s.textColor, border: `1px solid rgba(255,255,255,0.3)` }}
+              className="inline-flex items-center gap-2 text-xs font-bold px-5 py-2.5 rounded-full self-start hover:opacity-80 transition-opacity text-white"
+              style={{ background: s.borderGradient }}
             >
-              Ver más <ChevronDown size={14} />
+              Ver más <ChevronDown size={13} />
             </a>
           </div>
         </div>
@@ -189,6 +170,7 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
 }
 
 function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) {
+  const isLight = s.detailText !== "white";
   return (
     <section
       id={s.id}
@@ -198,20 +180,24 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
       <div className="max-w-6xl mx-auto px-6 sm:px-10">
         <div className={`flex flex-col lg:flex-row items-center gap-14 ${index % 2 === 0 ? "" : "lg:flex-row-reverse"}`}>
 
-          {/* Foto */}
+          {/* Video placeholder */}
           <div className="w-full lg:w-1/2 flex-shrink-0">
             <div className="rounded-3xl p-[3px]" style={{ background: s.borderGradient }}>
               <div
-                className="rounded-[22px] overflow-hidden flex items-center justify-center"
-                style={{ height: 340, background: "rgba(255,255,255,0.08)" }}
+                className="rounded-[22px] overflow-hidden flex flex-col items-center justify-center gap-3"
+                style={{ height: 340, background: "rgba(0,0,0,0.12)", aspectRatio: "16/9" }}
               >
-                {s.foto ? (
-                  <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" />
-                ) : (
-                  <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.25)" }}>
-                    foto próximamente
-                  </span>
-                )}
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center"
+                  style={{ background: "rgba(255,255,255,0.15)", border: "2px solid rgba(255,255,255,0.3)" }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+                <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.4)" }}>
+                  video próximamente
+                </span>
               </div>
             </div>
           </div>
@@ -220,26 +206,26 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
           <div className="w-full lg:w-1/2">
             <div
               className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 border"
-              style={{ color: s.badgeColor, borderColor: s.badgeBorder, background: s.badgeBg }}
+              style={{ color: s.badgeColor, borderColor: s.badgeBorder, background: isLight ? s.badgeBg : "rgba(255,255,255,0.18)" }}
             >
               {s.badge}
             </div>
 
             <h2
               className="font-playfair text-3xl sm:text-4xl font-bold mb-4"
-              style={{ color: s.textColor }}
+              style={{ color: s.detailText }}
             >
               {s.titulo}
             </h2>
 
-            <p className="leading-relaxed mb-6" style={{ color: s.textColor, opacity: 0.8 }}>
+            <p className="leading-relaxed mb-6" style={{ color: s.detailText, opacity: 0.82 }}>
               {s.descripcion}
             </p>
 
             <ul className="space-y-3 mb-8">
               {s.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm" style={{ color: s.textColor, opacity: 0.9 }}>
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: s.bulletColor }} />
+                <li key={item} className="flex items-start gap-3 text-sm" style={{ color: s.detailText, opacity: 0.9 }}>
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: isLight ? s.bulletColor : "rgba(255,255,255,0.7)" }} />
                   {item}
                 </li>
               ))}
@@ -248,7 +234,12 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
             <Link
               href="/contacto"
               className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{ background: "rgba(255,255,255,0.18)", color: s.textColor, border: "1px solid rgba(255,255,255,0.35)", backdropFilter: "blur(8px)" }}
+              style={{
+                background: "rgba(255,255,255,0.18)",
+                color: s.detailText,
+                border: "1px solid rgba(255,255,255,0.35)",
+                backdropFilter: "blur(8px)",
+              }}
             >
               Solicitar cotización <ArrowRight size={16} />
             </Link>
@@ -303,7 +294,7 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        {/* Cards en grid con tilt */}
+        {/* Cards con tilt */}
         <section className="pb-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
