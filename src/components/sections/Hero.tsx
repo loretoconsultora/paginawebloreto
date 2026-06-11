@@ -283,7 +283,7 @@ export default function Hero() {
                   Presencia en
                 </span>
                 {FLAGS.map((f) => (
-                  <span key={f.name} title={f.name} style={{ fontSize: "1.8rem", lineHeight: 1, cursor: "default" }}>
+                  <span key={f.name} title={f.name} style={{ fontSize: "2.4rem", lineHeight: 1, cursor: "default" }}>
                     {f.emoji}
                 </span>
                 ))}
