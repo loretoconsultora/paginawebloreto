@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const articulos = [
   {
@@ -43,12 +44,104 @@ const articulos = [
   },
 ];
 
+function BlogCard({ a }: { a: typeof articulos[0] }) {
+  return (
+    <div
+      className="rounded-3xl p-[3px]"
+      style={{
+        background: a.borderGradient,
+        boxShadow: "0 8px 32px rgba(255,255,255,0.08), 0 2px 12px rgba(255,255,255,0.05)",
+      }}
+    >
+      <Link href={a.href} className="flex flex-col rounded-[22px] bg-white overflow-hidden">
+        <div className="w-full overflow-hidden" style={{ height: 180 }}>
+          <img
+            src={a.foto}
+            alt={a.titulo}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const el = e.currentTarget as HTMLImageElement;
+              el.style.display = "none";
+              const ph = el.nextElementSibling as HTMLElement;
+              if (ph) ph.style.display = "flex";
+            }}
+          />
+          <div className="w-full h-full items-center justify-center"
+            style={{ display: "none", height: 180, background: "linear-gradient(135deg, rgba(192,0,90,0.08), rgba(232,148,255,0.12))" }}>
+            <span className="text-xs text-grafito/30 font-mono">foto del artículo</span>
+          </div>
+        </div>
+        <div className="flex flex-col flex-1 p-7">
+          <div
+            className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-4 self-start border"
+            style={{ color: a.badgeColor, borderColor: a.badgeColor, background: a.badgeBg }}
+          >
+            {a.categoria}
+          </div>
+          <h3 className="font-playfair text-lg font-bold text-grafito leading-snug mb-3">{a.titulo}</h3>
+          <p className="text-sm text-grafito/65 leading-relaxed mb-6 flex-1">{a.extracto}</p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-xs text-grafito/40">
+              <Clock size={12} />
+              {a.tiempo} de lectura
+            </div>
+            <ArrowRight size={14} style={{ color: a.badgeColor }} />
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
+function MobileBlogCarousel() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setIndex((i) => (i + 1) % articulos.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative w-full overflow-hidden">
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={index}
+          custom={direction}
+          initial={{ opacity: 0, x: direction * 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: direction * -60 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <BlogCard a={articulos[index]} />
+        </motion.div>
+      </AnimatePresence>
+      <div className="flex justify-center gap-2 mt-5">
+        {articulos.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: i === index ? 20 : 6,
+              height: 6,
+              background: i === index ? "#E894FF" : "rgba(255,255,255,0.3)",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Blog() {
   return (
     <section className="py-24 relative overflow-hidden" style={{ background: "#3A3F4B" }}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* Header centrado */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,16 +152,18 @@ export default function Blog() {
           <p className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: "#FF6A92" }}>
             Conocimiento que transforma
           </p>
-          <h2
-            className="font-playfair font-bold text-white"
-            style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)" }}
-          >
+          <h2 className="font-playfair font-bold text-white" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)" }}>
             Blog
           </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {/* Mobile: carrusel */}
+        <div className="md:hidden">
+          <MobileBlogCarousel />
+        </div>
+
+        {/* Desktop: grid con tilt */}
+        <div className="hidden md:grid grid-cols-3 gap-8 items-start">
           {articulos.map((a, i) => (
             <motion.div
               key={a.titulo}
@@ -79,82 +174,11 @@ export default function Blog() {
               whileHover={{ rotate: 0, y: -10, scale: 1.02, transition: { duration: 0.3 } }}
               style={{ transformOrigin: "bottom center" }}
             >
-              <div
-                className="rounded-3xl p-[3px] transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.18),0_0_80px_rgba(232,148,255,0.12)]"
-                style={{
-                  background: a.borderGradient,
-                  boxShadow: "0 8px 32px rgba(255,255,255,0.08), 0 2px 12px rgba(255,255,255,0.05)",
-                }}
-              >
-                <Link
-                  href={a.href}
-                  className="flex flex-col rounded-[22px] bg-white overflow-hidden"
-                >
-                  {/* Foto del artículo */}
-                  <div
-                    className="w-full overflow-hidden"
-                    style={{ height: 180 }}
-                  >
-                    <img
-                      src={a.foto}
-                      alt={a.titulo}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const el = e.currentTarget as HTMLImageElement;
-                        el.style.display = "none";
-                        const ph = el.nextElementSibling as HTMLElement;
-                        if (ph) ph.style.display = "flex";
-                      }}
-                    />
-                    {/* Placeholder foto */}
-                    <div
-                      className="w-full h-full items-center justify-center"
-                      style={{
-                        display: "none",
-                        height: 180,
-                        background: `linear-gradient(135deg, rgba(192,0,90,0.08), rgba(232,148,255,0.12))`,
-                      }}
-                    >
-                      <span className="text-xs text-grafito/30 font-mono">foto del artículo</span>
-                    </div>
-                  </div>
-
-                  {/* Contenido */}
-                  <div className="flex flex-col flex-1 p-7">
-                    {/* Badge categoría */}
-                    <div
-                      className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-4 self-start border"
-                      style={{
-                        color: a.badgeColor,
-                        borderColor: a.badgeColor,
-                        background: a.badgeBg,
-                      }}
-                    >
-                      {a.categoria}
-                    </div>
-
-                    <h3 className="font-playfair text-lg font-bold text-grafito leading-snug mb-3">
-                      {a.titulo}
-                    </h3>
-                    <p className="text-sm text-grafito/65 leading-relaxed mb-6 flex-1">
-                      {a.extracto}
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-xs text-grafito/40">
-                        <Clock size={12} />
-                        {a.tiempo} de lectura
-                      </div>
-                      <ArrowRight size={14} style={{ color: a.badgeColor }} />
-                    </div>
-                  </div>
-                </Link>
-              </div>
+              <BlogCard a={a} />
             </motion.div>
           ))}
         </div>
 
-        {/* Ver todos */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}

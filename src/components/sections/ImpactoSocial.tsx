@@ -29,10 +29,12 @@ export default function ImpactoSocial() {
           </div>
         </div>
 
-        {/* Título */}
+        {/* Título — wrap en mobile, nowrap en desktop */}
         <h2
-          className="font-playfair text-4xl font-bold text-center mb-12 whitespace-nowrap"
+          className="font-playfair font-bold text-center mb-12"
           style={{
+            fontSize: "clamp(1.8rem, 5vw, 2.5rem)",
+            lineHeight: 1.2,
             background: GRADIENT_MAIN,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -42,8 +44,8 @@ export default function ImpactoSocial() {
           Un propósito que trasciende
         </h2>
 
-        {/* Fotos inclinadas */}
-        <div className="flex justify-center items-end gap-4 mb-14">
+        {/* Fotos inclinadas — tamaño adaptable en mobile */}
+        <div className="flex justify-center items-end gap-2 sm:gap-4 mb-14 overflow-visible">
           {fotos.map((f, i) => (
             <motion.div
               key={f.src}
@@ -52,7 +54,7 @@ export default function ImpactoSocial() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ rotate: 0, scale: 1.04, transition: { duration: 0.3 } }}
-              style={{ transformOrigin: "bottom center" }}
+              style={{ transformOrigin: "bottom center", flexShrink: 0 }}
             >
               <div
                 className="rounded-2xl p-[3px] shadow-lg"
@@ -60,7 +62,10 @@ export default function ImpactoSocial() {
               >
                 <div
                   className="rounded-[14px] overflow-hidden bg-white"
-                  style={{ width: 200, height: 250 }}
+                  style={{
+                    width: "clamp(90px, 25vw, 200px)",
+                    height: "clamp(115px, 32vw, 250px)",
+                  }}
                 >
                   <img
                     src={f.src}
@@ -73,10 +78,8 @@ export default function ImpactoSocial() {
           ))}
         </div>
 
-        {/* Dos iniciativas lado a lado */}
+        {/* Dos iniciativas */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-
-          {/* Sep 2025 — izquierda */}
           <div className="rounded-3xl p-[3px]" style={{ background: GRADIENT_A }}>
             <div className="rounded-[22px] bg-white p-6 h-full">
               <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{
@@ -103,7 +106,6 @@ export default function ImpactoSocial() {
             </div>
           </div>
 
-          {/* Oct 2025 — derecha */}
           <div className="rounded-3xl p-[3px]" style={{ background: GRADIENT_B }}>
             <div className="rounded-[22px] bg-white p-6 h-full">
               <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{
@@ -119,10 +121,9 @@ export default function ImpactoSocial() {
               </p>
             </div>
           </div>
-
         </div>
 
-        {/* Convocatoria abierta */}
+        {/* Convocatoria */}
         <p className="text-center text-grafito/50 text-sm">
           Convocatoria siempre abierta para fundaciones y proyectos sociales.{" "}
           <span className="text-grafito/40">Contacto directo:</span>{" "}

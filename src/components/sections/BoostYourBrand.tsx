@@ -112,7 +112,7 @@ export default function BoostYourBrand() {
           <div className="relative z-10 px-5 sm:px-10 lg:px-16 py-12 flex flex-col lg:flex-row items-start justify-between gap-10">
 
             {/* Columna izquierda */}
-            <div className="text-white max-w-xl">
+            <div className="text-white max-w-xl w-full">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
                 <Zap size={12} fill="currentColor" />
@@ -134,7 +134,6 @@ export default function BoostYourBrand() {
                 En 6 sesiones en vivo construyes tu identidad, tu oferta digital y sales con tu primer lanzamiento listo para escalar.
               </p>
 
-              {/* CTA principal */}
               <Link
                 href={HREF}
                 target="_blank"
@@ -151,9 +150,9 @@ export default function BoostYourBrand() {
                 </span>
               </Link>
 
-              {/* Cuenta regresiva */}
+              {/* Cuenta regresiva — oculta en mobile, visible en desktop */}
               <div
-                className="rounded-2xl px-6 py-4 backdrop-blur-sm"
+                className="hidden lg:block rounded-2xl px-6 py-4 backdrop-blur-sm"
                 style={{ background: "rgba(0,0,0,0.18)", border: "1px solid rgba(255,255,255,0.15)" }}
               >
                 <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-3">
@@ -174,9 +173,9 @@ export default function BoostYourBrand() {
             {/* Columna derecha — cards de precios */}
             <div className="w-full lg:w-auto flex flex-col gap-4 lg:min-w-72">
 
-              {/* Acceso General $444 */}
+              {/* Acceso General */}
               <div
-                className="rounded-3xl p-6 text-white flex-1 lg:flex-none backdrop-blur-md"
+                className="rounded-3xl p-6 text-white backdrop-blur-md"
                 style={{ background: CARD_BG, border: "1px solid rgba(255,255,255,0.3)" }}
               >
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso general</p>
@@ -195,9 +194,9 @@ export default function BoostYourBrand() {
                 </GradientBorderButton>
               </div>
 
-              {/* Acceso VIP $1,110 */}
+              {/* Acceso VIP */}
               <div
-                className="rounded-3xl p-6 text-white flex-1 lg:flex-none backdrop-blur-md relative overflow-hidden"
+                className="rounded-3xl p-6 text-white backdrop-blur-md relative overflow-hidden"
                 style={{ background: CARD_BG, border: "1px solid rgba(255,255,255,0.3)" }}
               >
                 <div
@@ -213,6 +212,25 @@ export default function BoostYourBrand() {
                 <GradientBorderButton href={HREF} gradient={GOLD_GRADIENT}>
                   Activar acceso VIP →
                 </GradientBorderButton>
+              </div>
+
+              {/* Countdown mobile — solo visible en mobile, debajo de VIP */}
+              <div
+                className="lg:hidden rounded-2xl px-6 py-4 backdrop-blur-sm"
+                style={{ background: "rgba(0,0,0,0.18)", border: "1px solid rgba(255,255,255,0.15)" }}
+              >
+                <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-3 text-center">
+                  Cierre de inscripciones en
+                </p>
+                <div className="flex items-center justify-center gap-4">
+                  <CountdownUnit value={days} label="días" />
+                  <span className="text-white/30 font-bold text-xl mb-3">:</span>
+                  <CountdownUnit value={hours} label="horas" />
+                  <span className="text-white/30 font-bold text-xl mb-3">:</span>
+                  <CountdownUnit value={minutes} label="min" />
+                  <span className="text-white/30 font-bold text-xl mb-3">:</span>
+                  <CountdownUnit value={seconds} label="seg" />
+                </div>
               </div>
 
             </div>

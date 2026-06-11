@@ -62,10 +62,10 @@ function useCounter(target: number, duration = 2000, start = false) {
 function MetricItem({ target, suffix, label, started }: { target: number; suffix: string; label: string; started: boolean }) {
   const count = useCounter(target, 1800, started);
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center min-w-0">
       <span style={{
         fontFamily: "var(--font-playfair)",
-        fontSize: "clamp(2rem, 4vw, 2.8rem)",
+        fontSize: "clamp(1.6rem, 4vw, 2.8rem)",
         fontWeight: 900,
         lineHeight: 1,
         color: "#c0005a",
@@ -73,8 +73,8 @@ function MetricItem({ target, suffix, label, started }: { target: number; suffix
         {count}{suffix}
       </span>
       <span style={{
-        fontSize: "0.6rem",
-        letterSpacing: "0.14em",
+        fontSize: "clamp(0.5rem, 1.2vw, 0.6rem)",
+        letterSpacing: "0.1em",
         textTransform: "uppercase",
         color: "#3A3F4B",
         fontWeight: 700,
@@ -113,7 +113,7 @@ export default function Hero() {
       className="relative flex items-center justify-center overflow-hidden"
       style={{ background: "#ffffff", minHeight: "88vh" }}
     >
-      {/* Grain sutil */}
+      {/* Grain */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
@@ -121,17 +121,14 @@ export default function Hero() {
         }}
       />
 
-      {/* Glow de fondo centrado */}
+      {/* Glow de fondo */}
       <motion.div
         className="absolute pointer-events-none"
         style={{
-          left: "50%",
-          top: "50%",
+          left: "50%", top: "50%",
           transform: "translate(-50%, -50%)",
-          width: "70vw",
-          height: "70vw",
-          maxWidth: 800,
-          maxHeight: 800,
+          width: "70vw", height: "70vw",
+          maxWidth: 800, maxHeight: 800,
           borderRadius: "50%",
           background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.22) 0%, rgba(255,106,146,0.12) 40%, transparent 70%)",
           filter: "blur(48px)",
@@ -140,9 +137,8 @@ export default function Hero() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-10 pt-28 pb-10 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-28 pb-10 flex flex-col items-center text-center">
 
-        {/* Trasciende el VALOR de tu */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -150,8 +146,8 @@ export default function Hero() {
           style={{
             fontFamily: "var(--font-playfair)",
             fontWeight: 700,
-            fontSize: "clamp(1.6rem, 4vw, 3.6rem)",
-            lineHeight: 1.05,
+            fontSize: "clamp(1.4rem, 4vw, 3.6rem)",
+            lineHeight: 1.1,
             letterSpacing: "-0.02em",
             color: "#3A3F4B",
             marginBottom: "0.05em",
@@ -160,7 +156,6 @@ export default function Hero() {
           Trasciende el VALOR de tu
         </motion.div>
 
-        {/* Palabra ciclada */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -195,14 +190,13 @@ export default function Hero() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Tagline */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{
             fontFamily: "var(--font-dancing)",
-            fontSize: "clamp(1.6rem, 3.2vw, 2.8rem)",
+            fontSize: "clamp(1.4rem, 3.2vw, 2.8rem)",
             lineHeight: 1.3,
             background: "linear-gradient(135deg, #c0005a, #9b30c8)",
             WebkitBackgroundClip: "text",
@@ -219,25 +213,27 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}
+          className="flex flex-col sm:flex-row gap-3 items-center justify-center w-full"
         >
           <Link href="https://brand-compass-pwa.vercel.app" target="_blank" rel="noopener noreferrer" style={{
             background: "linear-gradient(135deg, #FF6A92, #E894FF)",
             color: "#fff", fontWeight: 700,
-            padding: "14px 34px", borderRadius: "999px",
+            padding: "14px 28px", borderRadius: "999px",
             fontSize: "0.88rem", textDecoration: "none",
             boxShadow: "0 8px 28px rgba(255,106,146,0.35)",
             letterSpacing: "0.01em",
+            whiteSpace: "nowrap",
           }}>
             Inicia ahora tu diagnóstico
           </Link>
           <Link href="/servicios" style={{
             color: "#3A3F4B", fontWeight: 600,
-            padding: "14px 34px", borderRadius: "999px",
+            padding: "14px 28px", borderRadius: "999px",
             fontSize: "0.88rem", textDecoration: "none",
             border: "2px solid rgba(58,63,75,0.22)",
             background: "rgba(255,255,255,0.8)",
             letterSpacing: "0.01em",
+            whiteSpace: "nowrap",
           }}>
             Ver servicios →
           </Link>
@@ -250,31 +246,29 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.82 }}
           style={{
-            marginTop: "2.5rem",
+            marginTop: "2rem",
             borderTop: "1px solid rgba(58,63,75,0.08)",
-            paddingTop: "1.8rem",
+            paddingTop: "1.5rem",
             width: "100%",
           }}
         >
-          {/* Números */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "0" }}>
+          <div className="flex justify-center items-start w-full">
             {METRICS.map((m, i) => (
-              <div key={m.label} style={{ display: "flex", alignItems: "stretch" }}>
+              <div key={m.label} className="flex items-stretch flex-1 justify-center min-w-0">
                 <MetricItem target={m.target} suffix={m.suffix} label={m.label} started={started} />
                 {i < METRICS.length - 1 && (
-                  <div style={{ width: "1px", background: "rgba(58,63,75,0.1)", margin: "0 2rem", alignSelf: "stretch" }} />
+                  <div style={{ width: "1px", background: "rgba(58,63,75,0.1)", margin: "0 clamp(0.5rem, 2vw, 1.5rem)", alignSelf: "stretch", flexShrink: 0 }} />
                 )}
               </div>
             ))}
           </div>
 
-          {/* Banderas */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "1.2rem", flexWrap: "wrap" }}>
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
             <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3A3F4B" }}>
               Presencia en
             </span>
             {FLAGS.map((f) => (
-              <span key={f.name} title={f.name} style={{ fontSize: "2.4rem", lineHeight: 1, cursor: "default" }}>
+              <span key={f.name} title={f.name} style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", lineHeight: 1 }}>
                 {f.emoji}
               </span>
             ))}
