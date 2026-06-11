@@ -14,7 +14,7 @@ const HREF = "https://boost-your-brand.vercel.app";
 
 export default function BoostYourBrand() {
   return (
-    <section className="py-20 overflow-hidden">
+    <section className="py-20 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="relative rounded-3xl overflow-hidden">
           {/* Fondo */}
