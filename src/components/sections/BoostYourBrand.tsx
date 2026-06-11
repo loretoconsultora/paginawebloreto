@@ -14,6 +14,8 @@ const INCLUDES = [
 ];
 
 const HREF = "https://boost-your-brand.vercel.app";
+const HREF_GENERAL = "https://links.victoranza.com/payment-link/6a2a54c703b17c94f5715b8f";
+const HREF_VIP = "https://links.victoranza.com/payment-link/6a2a573c71a0aa761e4642d0";
 const CARD_GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)";
 const CARD_BG = "rgba(255,255,255,0.18)";
@@ -189,7 +191,7 @@ export default function BoostYourBrand() {
                     </li>
                   ))}
                 </ul>
-                <GradientBorderButton href={HREF} gradient={CARD_GRADIENT}>
+                <GradientBorderButton href={HREF_GENERAL} gradient={CARD_GRADIENT}>
                   Activar acceso general →
                 </GradientBorderButton>
               </div>
@@ -209,7 +211,7 @@ export default function BoostYourBrand() {
                 <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
                 <p className="font-playfair text-3xl font-black mb-4">$1,110 <span className="text-base font-normal text-white/60">USD</span></p>
                 <p className="text-sm text-white/75 mb-5">Todo lo del plan Boost + mentoría 1:1, piezas publicitarias y CRM incluido.</p>
-                <GradientBorderButton href={HREF} gradient={GOLD_GRADIENT}>
+                <GradientBorderButton href={HREF_VIP} gradient={GOLD_GRADIENT}>
                   Activar acceso VIP →
                 </GradientBorderButton>
               </div>
