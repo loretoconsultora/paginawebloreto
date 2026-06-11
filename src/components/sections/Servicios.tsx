@@ -76,7 +76,7 @@ export default function Servicios() {
           </div>
 
           {/* ── Columna derecha — foto + marquee ── */}
-          <div className="relative order-1 lg:order-2 flex flex-col items-end justify-end" style={{ minHeight: "88vh" }}>
+          <div className="relative order-1 lg:order-2 flex flex-col items-end justify-center" style={{ minHeight: "88vh" }}>
 
             {/* Glow */}
             <div
@@ -129,16 +129,16 @@ export default function Servicios() {
               <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
                 style={{ background: "linear-gradient(to left, rgba(120,0,70,0.9), transparent)" }} />
 
-              <div className="flex items-center py-4 px-5" style={{ minHeight: "64px" }}>
+              <div className="flex items-center py-5 px-6" style={{ minHeight: "76px" }}>
                 {/* Texto fijo */}
                 <span
                   className="text-xs font-bold tracking-widest uppercase flex-shrink-0 pr-5 text-white leading-tight"
-                  style={{ opacity: 0.9, borderRight: "1px solid rgba(255,255,255,0.3)", minWidth: "90px" }}
+                  style={{ opacity: 0.9, borderRight: "1px solid rgba(255,255,255,0.3)", minWidth: "86px" }}
                 >
                   Hemos<br />ayudado a:
                 </span>
 
-                {/* Nichos deslizantes — más rápido */}
+                {/* Nichos deslizantes */}
                 <div className="overflow-hidden flex-1 ml-5">
                   <div
                     className="flex whitespace-nowrap"
@@ -147,8 +147,8 @@ export default function Servicios() {
                     {items.map((n, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-3 text-sm font-semibold flex-shrink-0 px-5 text-white"
-                        style={{ opacity: 0.92 }}
+                        className="inline-flex items-center gap-3 font-semibold flex-shrink-0 px-4 text-white"
+                        style={{ opacity: 0.92, fontSize: "0.82rem" }}
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />
                         {n}
