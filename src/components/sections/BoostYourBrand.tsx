@@ -31,13 +31,17 @@ export default function BoostYourBrand() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/boost-your-brand"
+                  href="https://boost-your-brand.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="glass text-grafito font-semibold px-8 py-4 rounded-full text-base hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2"
                 >
                   Quiero unirme <ArrowRight size={16} />
                 </Link>
                 <Link
-                  href="/boost-your-brand#programa"
+                  href="https://boost-your-brand.vercel.app#programa"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="glass-dark text-white font-semibold px-8 py-4 rounded-full text-base border border-white/30 hover:bg-white/20 transition-all duration-300 text-center"
                 >
                   Ver el programa
