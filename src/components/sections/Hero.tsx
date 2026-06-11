@@ -143,7 +143,7 @@ export default function Hero() {
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-28 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-0 items-center min-h-[calc(100vh-7rem)]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_52vw] gap-0 items-center min-h-[calc(100vh-7rem)]">
 
           {/* ── COLUMNA IZQUIERDA ── */}
           <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8" style={{ minWidth: 0 }}>
@@ -291,31 +291,29 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── COLUMNA DERECHA — Blob ── */}
-          <motion.div
-            className="order-1 lg:order-2 flex items-center justify-center relative"
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.1, ease: "easeOut" }}
-            style={{
-              width: "clamp(300px, 44vw, 580px)",
-              minHeight: "clamp(300px, 44vw, 580px)",
-            }}
-          >
+          {/* ── COLUMNA DERECHA — Blob sangra fuera del viewport ── */}
+          <div className="order-1 lg:order-2 relative" style={{ height: "100vh", minHeight: 600 }}>
             <motion.img
               src="/blob.png"
               alt=""
-              style={{
-                width: "100%",
-                height: "auto",
-                position: "relative",
-                zIndex: 1,
-                filter: "drop-shadow(0 24px 56px rgba(200,100,255,0.18)) drop-shadow(0 6px 20px rgba(255,106,146,0.14))",
+              initial={{ opacity: 0, scale: 0.88 }}
+              animate={{ opacity: 1, scale: 1, y: [0, -22, 0] }}
+              transition={{
+                opacity: { duration: 1.2, delay: 0.1 },
+                scale: { duration: 1.2, delay: 0.1, ease: "easeOut" },
+                y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
               }}
-              animate={{ y: [0, -18, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              style={{
+                position: "absolute",
+                top: "-8%",
+                right: "-12%",
+                width: "115%",
+                height: "auto",
+                zIndex: 1,
+                filter: "drop-shadow(0 24px 60px rgba(200,100,255,0.2)) drop-shadow(0 6px 24px rgba(255,106,146,0.15))",
+              }}
             />
-          </motion.div>
+          </div>
 
         </div>
       </div>
