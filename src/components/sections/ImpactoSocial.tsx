@@ -42,7 +42,9 @@ export default function ImpactoSocial() {
                 <div className="rounded-2xl p-5" style={{ background: "rgba(58,63,75,0.04)", border: "1px solid rgba(58,63,75,0.08)" }}>
                   <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#c0005a" }}>Sep 2025 · Presente · México</p>
                   <p className="text-grafito/70 text-sm leading-relaxed">
-                    Colaboramos activamente con <span className="font-semibold text-grafito">Fundación Home ADC, A.C.</span> — formaciones para jóvenes preuniversitarios y universitarios: preparación al ingreso a la universidad y talleres de inteligencia artificial responsiva.
+                    Colaboramos activamente con{" "}
+                    <a href="https://jom-ac.org/quienes-somos/" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity" style={{ color: "#c0005a" }}>Fundación JOM, A.C.</a>
+                    {" "}— formaciones para jóvenes preuniversitarios y universitarios: preparación al ingreso a la universidad y talleres de inteligencia artificial responsiva.
                   </p>
                 </div>
               </div>
