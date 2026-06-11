@@ -307,9 +307,9 @@ export default function Hero() {
               }}
               style={{
                 position: "absolute",
-                top: "-22%",
-                right: "-12%",
-                width: "115%",
+                top: "-18%",
+                right: "2%",
+                width: "96%",
                 height: "auto",
                 zIndex: 1,
                 filter: "drop-shadow(0 24px 60px rgba(200,100,255,0.2)) drop-shadow(0 6px 24px rgba(255,106,146,0.15))",
@@ -329,12 +329,13 @@ export default function Hero() {
               }}
               style={{
                 position: "absolute",
-                bottom: "-28%",
-                right: "-20%",
-                width: "105%",
+                bottom: "8%",
+                right: "-32%",
+                width: "62%",
                 height: "auto",
                 zIndex: 2,
-                filter: "drop-shadow(0 20px 50px rgba(200,100,255,0.18)) drop-shadow(0 6px 20px rgba(255,106,146,0.13))",
+                opacity: 0.85,
+                filter: "drop-shadow(0 16px 36px rgba(200,100,255,0.15)) drop-shadow(0 4px 14px rgba(255,106,146,0.1))",
               }}
             />
           </div>
