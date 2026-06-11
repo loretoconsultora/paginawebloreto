@@ -5,9 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WORDS = ["MARCA", "NEGOCIO", "IDENTIDAD", "HISTORIA", "COMUNIDAD", "PROPÓSITO"];
-
-const WORD_FONT_SIZE = "clamp(2.6rem, 6.8vw, 6.2rem)";
-
+const WORD_FONT_SIZE = "clamp(3.2rem, 8vw, 7.5rem)";
 const TAGLINE = "This is the Bloom Era";
 
 function TypewriterText({ text }: { text: string }) {
@@ -64,7 +62,7 @@ function useCounter(target: number, duration = 2000, start = false) {
 function MetricItem({ target, suffix, label, started }: { target: number; suffix: string; label: string; started: boolean }) {
   const count = useCounter(target, 1800, started);
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-center">
       <span style={{
         fontFamily: "var(--font-playfair)",
         fontSize: "clamp(2rem, 4vw, 2.8rem)",
@@ -112,7 +110,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex items-center overflow-hidden"
+      className="relative flex items-center justify-center overflow-hidden"
       style={{ background: "#ffffff", minHeight: "88vh" }}
     >
       {/* Grain sutil */}
@@ -123,199 +121,165 @@ export default function Hero() {
         }}
       />
 
-      {/* Glow intencional — aureola coral/lila */}
+      {/* Glow de fondo centrado */}
       <motion.div
         className="absolute pointer-events-none"
         style={{
-          right: "-5%",
+          left: "50%",
           top: "50%",
-          transform: "translateY(-50%)",
-          width: "55vw",
-          height: "55vw",
-          maxWidth: 700,
-          maxHeight: 700,
+          transform: "translate(-50%, -50%)",
+          width: "70vw",
+          height: "70vw",
+          maxWidth: 800,
+          maxHeight: 800,
           borderRadius: "50%",
-          background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.28) 0%, rgba(255,106,146,0.18) 38%, rgba(255,200,220,0.08) 65%, transparent 75%)",
-          filter: "blur(32px)",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.22) 0%, rgba(255,106,146,0.12) 40%, transparent 70%)",
+          filter: "blur(48px)",
         }}
         animate={{ scale: [1, 1.06, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-24 pb-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-0 items-center min-h-[calc(88vh-6rem)]">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-10 pt-28 pb-10 flex flex-col items-center text-center">
 
-          {/* ── COLUMNA IZQUIERDA ── */}
-          <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8" style={{ minWidth: 0 }}>
+        {/* Trasciende el VALOR de tu */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontWeight: 700,
+            fontSize: "clamp(1.6rem, 4vw, 3.6rem)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.02em",
+            color: "#3A3F4B",
+            marginBottom: "0.05em",
+          }}
+        >
+          Trasciende el VALOR de tu
+        </motion.div>
 
-            {/* Trasciende el VALOR de tu */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
+        {/* Palabra ciclada */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontWeight: 900,
+            fontSize: WORD_FONT_SIZE,
+            lineHeight: 0.9,
+            letterSpacing: "-0.04em",
+            marginBottom: "0.2em",
+            minHeight: "1em",
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={WORDS[wordIndex]}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               style={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 700,
-                fontSize: "clamp(1.6rem, 3.8vw, 3.4rem)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.02em",
-                color: "#3A3F4B",
-                marginBottom: "0.05em",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Trasciende el VALOR de tu
-            </motion.div>
-
-            {/* MARCA — protagonista con word cycling */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.38 }}
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 900,
-                fontSize: WORD_FONT_SIZE,
-                lineHeight: 0.85,
-                letterSpacing: "-0.04em",
-                marginBottom: "0.08em",
-                position: "relative",
-                minHeight: "1em",
-                overflow: "visible",
-                transition: "font-size 0.3s ease",
-              }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={WORDS[wordIndex]}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -40 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  style={{
-                    display: "block",
-                    background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  {WORDS[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.div>
-
-            {/* Tagline con typewriter */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              style={{
-                fontFamily: "var(--font-dancing)",
-                fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
-                lineHeight: 1.3,
-                background: "linear-gradient(135deg, #c0005a, #9b30c8)",
+                display: "block",
+                background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginBottom: "0.9rem",
               }}
             >
-              <TypewriterText text={TAGLINE} />
-            </motion.div>
+              {WORDS[wordIndex]}
+            </motion.span>
+          </AnimatePresence>
+        </motion.div>
 
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.62 }}
-              style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}
-            >
-              <Link href="https://brand-compass-pwa.vercel.app" target="_blank" rel="noopener noreferrer" style={{
-                background: "linear-gradient(135deg, #FF6A92, #E894FF)",
-                color: "#fff", fontWeight: 700,
-                padding: "14px 34px", borderRadius: "999px",
-                fontSize: "0.88rem", textDecoration: "none",
-                boxShadow: "0 8px 28px rgba(255,106,146,0.35)",
-                letterSpacing: "0.01em",
-              }}>
-                Inicia ahora tu diagnóstico
-              </Link>
-              <Link href="/servicios" style={{
-                color: "#3A3F4B", fontWeight: 600,
-                padding: "14px 34px", borderRadius: "999px",
-                fontSize: "0.88rem", textDecoration: "none",
-                border: "2px solid rgba(58,63,75,0.22)",
-                background: "rgba(255,255,255,0.8)",
-                letterSpacing: "0.01em",
-              }}>
-                Ver servicios →
-              </Link>
-            </motion.div>
+        {/* Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          style={{
+            fontFamily: "var(--font-dancing)",
+            fontSize: "clamp(1.6rem, 3.2vw, 2.8rem)",
+            lineHeight: 1.3,
+            background: "linear-gradient(135deg, #c0005a, #9b30c8)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            marginBottom: "2rem",
+          }}
+        >
+          <TypewriterText text={TAGLINE} />
+        </motion.div>
 
-            {/* Métricas + presencia */}
-            <motion.div
-              ref={ref}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.78 }}
-              style={{
-                marginTop: "1rem",
-                borderTop: "1px solid rgba(58,63,75,0.08)",
-                paddingTop: "1.5rem",
-              }}
-            >
-              {/* Números */}
-              <div style={{ display: "flex", gap: "0" }}>
-                {METRICS.map((m, i) => (
-                  <div key={m.label} style={{ display: "flex", alignItems: "stretch", flex: 1 }}>
-                    <MetricItem target={m.target} suffix={m.suffix} label={m.label} started={started} />
-                    {i < METRICS.length - 1 && (
-                      <div style={{ width: "1px", background: "rgba(58,63,75,0.1)", margin: "0 1.4rem", alignSelf: "stretch" }} />
-                    )}
-                  </div>
-                ))}
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
+          style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}
+        >
+          <Link href="https://brand-compass-pwa.vercel.app" target="_blank" rel="noopener noreferrer" style={{
+            background: "linear-gradient(135deg, #FF6A92, #E894FF)",
+            color: "#fff", fontWeight: 700,
+            padding: "14px 34px", borderRadius: "999px",
+            fontSize: "0.88rem", textDecoration: "none",
+            boxShadow: "0 8px 28px rgba(255,106,146,0.35)",
+            letterSpacing: "0.01em",
+          }}>
+            Inicia ahora tu diagnóstico
+          </Link>
+          <Link href="/servicios" style={{
+            color: "#3A3F4B", fontWeight: 600,
+            padding: "14px 34px", borderRadius: "999px",
+            fontSize: "0.88rem", textDecoration: "none",
+            border: "2px solid rgba(58,63,75,0.22)",
+            background: "rgba(255,255,255,0.8)",
+            letterSpacing: "0.01em",
+          }}>
+            Ver servicios →
+          </Link>
+        </motion.div>
+
+        {/* Métricas + presencia */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.82 }}
+          style={{
+            marginTop: "2.5rem",
+            borderTop: "1px solid rgba(58,63,75,0.08)",
+            paddingTop: "1.8rem",
+            width: "100%",
+          }}
+        >
+          {/* Números */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "0" }}>
+            {METRICS.map((m, i) => (
+              <div key={m.label} style={{ display: "flex", alignItems: "stretch" }}>
+                <MetricItem target={m.target} suffix={m.suffix} label={m.label} started={started} />
+                {i < METRICS.length - 1 && (
+                  <div style={{ width: "1px", background: "rgba(58,63,75,0.1)", margin: "0 2rem", alignSelf: "stretch" }} />
+                )}
               </div>
-
-              {/* Presencia en banderas */}
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "1.2rem", flexWrap: "wrap" }}>
-                <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3A3F4B" }}>
-                  Presencia en
-                </span>
-                {FLAGS.map((f) => (
-                  <span key={f.name} title={f.name} style={{ fontSize: "2.4rem", lineHeight: 1, cursor: "default" }}>
-                    {f.emoji}
-                </span>
-                ))}
-              </div>
-            </motion.div>
+            ))}
           </div>
 
-          {/* ── COLUMNA DERECHA — Blob ── */}
-          <div className="order-1 lg:order-2 relative" style={{ height: "88vh", minHeight: 500 }}>
-            <motion.img
-              src="/blob.png"
-              alt=""
-              initial={{ opacity: 0, scale: 0.88 }}
-              animate={{ opacity: 1, scale: 1, y: [0, -22, 0] }}
-              transition={{
-                opacity: { duration: 1.2, delay: 0.1 },
-                scale: { duration: 1.2, delay: 0.1, ease: "easeOut" },
-                y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
-              }}
-              style={{
-                position: "absolute",
-                top: "-22%",
-                right: "-12%",
-                width: "115%",
-                height: "auto",
-                zIndex: 1,
-                filter: "drop-shadow(0 24px 60px rgba(200,100,255,0.2)) drop-shadow(0 6px 24px rgba(255,106,146,0.15))",
-              }}
-            />
+          {/* Banderas */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "1.2rem", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3A3F4B" }}>
+              Presencia en
+            </span>
+            {FLAGS.map((f) => (
+              <span key={f.name} title={f.name} style={{ fontSize: "2.4rem", lineHeight: 1, cursor: "default" }}>
+                {f.emoji}
+              </span>
+            ))}
           </div>
-
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
