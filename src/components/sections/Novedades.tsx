@@ -53,9 +53,9 @@ function NetworkCanvas() {
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.22;
+            const alpha = (1 - dist / MAX_DIST) * 0.38;
             ctx.strokeStyle = `rgba(255, 106, 146, ${alpha})`;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 1.2;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -68,7 +68,7 @@ function NetworkCanvas() {
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 106, 146, 0.28)";
+        ctx.fillStyle = "rgba(255, 106, 146, 0.45)";
         ctx.fill();
       }
 
@@ -108,8 +108,9 @@ const novedades = [
     external: false,
     rotate: -5,
     borderGradient: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)",
-    badgeColor: "text-coral",
-    ctaColor: "#c0005a",
+    badgeBg: "rgba(192,0,90,0.12)",
+    badgeColor: "#c0005a",
+    ctaGradient: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)",
   },
   {
     tipo: "Programa Estrella",
@@ -126,8 +127,9 @@ const novedades = [
     external: true,
     rotate: 2,
     borderGradient: "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)",
-    badgeColor: "text-indigo-DEFAULT",
-    ctaColor: "#3a0ca3",
+    badgeBg: "rgba(58,12,163,0.10)",
+    badgeColor: "#3a0ca3",
+    ctaGradient: "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)",
   },
   {
     tipo: "Podcast",
@@ -145,8 +147,9 @@ const novedades = [
     external: true,
     rotate: -3,
     borderGradient: "linear-gradient(135deg, #1a0a2e, #6a00c8, #E894FF)",
-    badgeColor: "text-lila-DEFAULT",
-    ctaColor: "#6a00c8",
+    badgeBg: "rgba(106,0,200,0.10)",
+    badgeColor: "#6a00c8",
+    ctaGradient: "linear-gradient(135deg, #1aa34a, #1DB954, #21d45e)",
   },
 ];
 
@@ -212,8 +215,14 @@ export default function Novedades() {
                   >
                     <div className="flex flex-col flex-1 p-7">
                       {/* Badge */}
-                      <div className={`inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 self-start border ${n.badgeColor}`}
-                        style={{ borderColor: "currentColor", background: "rgba(0,0,0,0.03)" }}>
+                      <div
+                        className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 self-start border"
+                        style={{
+                          color: n.badgeColor,
+                          borderColor: n.badgeColor,
+                          background: n.badgeBg,
+                        }}
+                      >
                         <Icon size={13} strokeWidth={2.5} />
                         {n.tipo}
                       </div>
@@ -243,7 +252,7 @@ export default function Novedades() {
                       {/* CTA */}
                       <div
                         className="inline-flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-full self-start"
-                        style={{ background: n.borderGradient }}
+                        style={{ background: n.ctaGradient }}
                       >
                         {n.cta}
                       </div>
