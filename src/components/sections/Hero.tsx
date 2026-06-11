@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -108,20 +107,21 @@ export default function Hero() {
 
         {/* Blob image con float animation */}
         <motion.div
-          style={{ width: "100%", height: "100%", position: "relative" }}
+          style={{ width: "100%", height: "100%" }}
           animate={{ y: [0, -22, 0], rotate: [0, 2, -2, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/blob.png"
-            alt="Loreto Consultora"
-            fill
+            alt=""
             style={{
+              width: "100%",
+              height: "100%",
               objectFit: "contain",
-              mixBlendMode: "multiply",   // blanco del fondo desaparece
-              filter: "drop-shadow(0 30px 60px rgba(180,100,255,0.2)) drop-shadow(0 10px 30px rgba(255,106,146,0.15))",
+              mixBlendMode: "multiply",
+              filter: "drop-shadow(0 30px 60px rgba(180,100,255,0.25)) drop-shadow(0 10px 30px rgba(255,106,146,0.18))",
             }}
-            priority
           />
         </motion.div>
       </motion.div>
