@@ -112,6 +112,7 @@ const servicios = [
     btnGradient: "linear-gradient(135deg, #7a0035, #c0005a, #e8006e)",
     ctaHref: "#direccion-creativa",
     foto: "/servicios/direccion-creativa.jpg",
+    fotoPosition: "left center",
   },
 ];
 
@@ -134,7 +135,7 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
           {/* Foto placeholder */}
           <div className="w-full flex-shrink-0 overflow-hidden" style={{ height: 160, background: `rgba(0,0,0,0.05)` }}>
             {s.foto && (
-              <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" />
+              <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" style={{ objectPosition: (s as any).fotoPosition ?? "center center" }} />
             )}
           </div>
 
