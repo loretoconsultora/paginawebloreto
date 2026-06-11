@@ -94,11 +94,11 @@ export default function Servicios() {
               className="relative z-10"
               style={{
                 height: "82vh",
-                width: "auto",
-                maxWidth: "100%",
+                width: "82vh",
+                maxWidth: "520px",
                 objectFit: "cover",
                 objectPosition: "top center",
-                filter: "drop-shadow(-12px 0 40px rgba(0,0,0,0.5))",
+                filter: "drop-shadow(-8px 0 32px rgba(0,0,0,0.4))",
               }}
               onError={(e) => {
                 const el = e.currentTarget as HTMLImageElement;
