@@ -1,83 +1,127 @@
-import Link from "next/link";
-import { PlayCircle, ArrowRight, Play } from "lucide-react";
+"use client";
 
-const marcas = [
-  { nombre: "Electronic Point", industria: "Tecnología", pais: "🇲🇽" },
-  { nombre: "Tatoox", industria: "E-commerce", pais: "🇦🇷" },
-  { nombre: "Studio Alma", industria: "Diseño", pais: "🇨🇴" },
-  { nombre: "Roots Wellness", industria: "Bienestar", pais: "🇪🇸" },
-  { nombre: "Susana R.", industria: "Coaching", pais: "🇺🇸" },
-  { nombre: "Marcela V.", industria: "Consultoría", pais: "🇲🇽" },
-];
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
-const videos = [
-  { titulo: "Cómo Electronic Point triplicó sus ventas", duracion: "4:32", thumb: "bg-coral/20" },
-  { titulo: "El método Loreto: posicionamiento real", duracion: "6:15", thumb: "bg-lila-DEFAULT/20" },
-  { titulo: "De 0 a viral: la historia de Tatoox", duracion: "5:48", thumb: "bg-indigo-DEFAULT/20" },
-  { titulo: "Marca personal que vende: caso Studio Alma", duracion: "3:55", thumb: "bg-coral/20" },
+const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+
+// Agrega aquí los YouTube Shorts IDs cuando los tengas
+const videos: { id: string; titulo: string }[] = [
+  // { id: "YOUTUBE_SHORT_ID", titulo: "Título del video" },
 ];
 
 export default function NuestrasMarcas() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: dir === "right" ? 320 : -320, behavior: "smooth" });
+  };
+
   return (
-    <section className="py-20 bg-white/40">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="text-xs font-semibold tracking-widest uppercase text-coral mb-2">
-              Resultados reales
-            </p>
-            <h2 className="font-playfair text-4xl font-bold text-grafito">
-              Nuestras Marcas
-            </h2>
-          </div>
-          <Link
-            href="https://youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 text-sm font-semibold text-indigo-DEFAULT hover:text-coral transition-colors"
+
+        {/* Header centrado */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <h2
+            className="font-playfair font-bold mb-3"
+            style={{
+              fontSize: "clamp(2.2rem, 4vw, 3.4rem)",
+              background: GRADIENT,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
           >
-            <PlayCircle size={16} />
-            Ver playlist completa <ArrowRight size={14} />
-          </Link>
-        </div>
+            El salón de la fama
+          </h2>
+          <p className="text-grafito/55 font-medium text-base">
+            conoce nuestras marcas
+          </p>
+        </motion.div>
 
-        {/* Marcas grid */}
-        <div className="flex flex-wrap gap-3 mb-12">
-          {marcas.map((m) => (
-            <div
-              key={m.nombre}
-              className="glass rounded-2xl px-5 py-3 flex items-center gap-3"
+        {/* Carrusel de YouTube Shorts */}
+        {videos.length > 0 ? (
+          <div className="relative">
+            {/* Botón izquierdo */}
+            <button
+              onClick={() => scroll("left")}
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              style={{ border: "1px solid rgba(58,63,75,0.12)" }}
             >
-              <span className="text-lg">{m.pais}</span>
-              <div>
-                <div className="text-sm font-semibold text-grafito">{m.nombre}</div>
-                <div className="text-xs text-grafito/50">{m.industria}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+              <ChevronLeft size={18} className="text-grafito" />
+            </button>
 
-        {/* Videos carrusel */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {videos.map((v) => (
+            {/* Track */}
             <div
-              key={v.titulo}
-              className={`glass rounded-3xl overflow-hidden hover:shadow-glass-hover transition-all duration-300 hover:-translate-y-1 cursor-pointer group`}
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto pb-4 scroll-smooth"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              <div className={`${v.thumb} h-40 flex items-center justify-center relative`}>
-                <div className="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                  <Play size={18} className="text-grafito ml-0.5" fill="currentColor" />
-                </div>
-                <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs px-2 py-0.5 rounded">
-                  {v.duracion}
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-sm font-semibold text-grafito leading-snug">{v.titulo}</p>
-              </div>
+              {videos.map((v, i) => (
+                <motion.div
+                  key={v.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="flex-shrink-0 rounded-2xl overflow-hidden"
+                  style={{
+                    width: 300,
+                    height: 533,
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
+                  }}
+                >
+                  <iframe
+                    src={`https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`}
+                    title={v.titulo}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  />
+                </motion.div>
+              ))}
             </div>
-          ))}
-        </div>
+
+            {/* Botón derecho */}
+            <button
+              onClick={() => scroll("right")}
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              style={{ border: "1px solid rgba(58,63,75,0.12)" }}
+            >
+              <ChevronRight size={18} className="text-grafito" />
+            </button>
+          </div>
+        ) : (
+          /* Placeholder mientras llegan los links */
+          <div className="flex gap-4 justify-center">
+            {[1, 2, 3].map((n) => (
+              <div
+                key={n}
+                className="rounded-2xl flex items-center justify-center flex-shrink-0"
+                style={{
+                  width: 280,
+                  height: 498,
+                  background: "rgba(58,63,75,0.04)",
+                  border: "2px dashed rgba(58,63,75,0.12)",
+                }}
+              >
+                <p className="text-grafito/30 text-xs font-mono text-center px-6">
+                  YouTube Short {n}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   );
