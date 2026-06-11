@@ -2,7 +2,31 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const WORDS = ["MARCA", "NEGOCIO", "IDENTIDAD", "HISTORIA", "COMUNIDAD", "PROPÓSITO"];
+
+const TAGLINE = "This is the Bloom Era";
+
+function TypewriterText({ text }: { text: string }) {
+  const [displayed, setDisplayed] = useState("");
+  useEffect(() => {
+    setDisplayed("");
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 52);
+    return () => clearInterval(interval);
+  }, [text]);
+  return (
+    <>
+      {displayed}
+      <span style={{ opacity: displayed.length < text.length ? 1 : 0, transition: "opacity 0.2s" }}>|</span>
+    </>
+  );
+}
 
 const METRICS = [
   { target: 6, suffix: "+", label: "Años de experiencia" },
@@ -52,8 +76,8 @@ function MetricItem({ target, suffix, label, started }: { target: number; suffix
         fontSize: "0.6rem",
         letterSpacing: "0.14em",
         textTransform: "uppercase",
-        color: "rgba(58,63,75,0.45)",
-        fontWeight: 600,
+        color: "#3A3F4B",
+        fontWeight: 700,
         marginTop: "4px",
         whiteSpace: "nowrap",
       }}>
@@ -65,7 +89,15 @@ function MetricItem({ target, suffix, label, started }: { target: number; suffix
 
 export default function Hero() {
   const [started, setStarted] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((i) => (i + 1) % WORDS.length);
+    }, 2200);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -132,7 +164,7 @@ export default function Hero() {
               Expande el PODER de tu
             </motion.div>
 
-            {/* MARCA — protagonista */}
+            {/* MARCA — protagonista con word cycling */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -140,20 +172,36 @@ export default function Hero() {
               style={{
                 fontFamily: "var(--font-playfair)",
                 fontWeight: 900,
-                fontSize: "clamp(5rem, 13vw, 11.5rem)",
+                fontSize: "clamp(4rem, 11vw, 10rem)",
                 lineHeight: 0.85,
                 letterSpacing: "-0.04em",
-                background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
                 marginBottom: "0.18em",
+                position: "relative",
+                minHeight: "1em",
+                overflow: "hidden",
               }}
             >
-              MARCA
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={WORDS[wordIndex]}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -40 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  style={{
+                    display: "block",
+                    background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {WORDS[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
             </motion.div>
 
-            {/* Cursiva */}
+            {/* Tagline con typewriter */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -169,7 +217,7 @@ export default function Hero() {
                 marginBottom: "2.2rem",
               }}
             >
-              this is the bloom era
+              <TypewriterText text={TAGLINE} />
             </motion.div>
 
             {/* CTAs */}
