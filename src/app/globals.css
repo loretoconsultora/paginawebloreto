@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --coral: #FF6A92;
+  --coral-light: #F393AE;
+  --coral-pale: #fbc7d9;
+  --indigo: #6A8AFF;
+  --indigo-pale: #f0f4ff;
+  --indigo-soft: #f5f3ff;
+  --lila: #E894FF;
+  --grafito: #3A3F4B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f0f4ff;
+  color: #3A3F4B;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(106, 138, 255, 0.10);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.gradient-brand {
+  background: linear-gradient(135deg, #FF6A92, #F393AE, #fbc7d9);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #FF6A92 0%, #E894FF 50%, #6A8AFF 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #FF6A92, #E894FF, #6A8AFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.font-dancing { font-family: var(--font-dancing), cursive; }
+.font-playfair { font-family: var(--font-playfair), serif; }
+.font-montserrat { font-family: var(--font-montserrat), sans-serif; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-delayed 8s ease-in-out infinite 2s; }
+.animate-marquee { animation: marquee 30s linear infinite; }
