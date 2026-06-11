@@ -112,8 +112,8 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "#ffffff" }}
+      className="relative flex items-center overflow-hidden"
+      style={{ background: "#ffffff", minHeight: "88vh" }}
     >
       {/* Grain sutil */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"
@@ -143,7 +143,7 @@ export default function Hero() {
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-28 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-0 items-center min-h-[calc(100vh-7rem)]">
+        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-0 items-center min-h-[calc(88vh-7rem)]">
 
           {/* ── COLUMNA IZQUIERDA ── */}
           <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8" style={{ minWidth: 0 }}>
@@ -292,7 +292,7 @@ export default function Hero() {
           </div>
 
           {/* ── COLUMNA DERECHA — Blobs ── */}
-          <div className="order-1 lg:order-2 relative" style={{ height: "100vh", minHeight: 600 }}>
+          <div className="order-1 lg:order-2 relative" style={{ height: "88vh", minHeight: 500 }}>
 
             {/* Blob principal — arriba, sangra por derecha */}
             <motion.img
@@ -316,31 +316,25 @@ export default function Hero() {
               }}
             />
 
-            {/* Blob secundario — esquina inferior derecha, rotación + float desfasado */}
+            {/* Blob secundario — esquina inferior derecha, casi mismo tamaño, cortado */}
             <motion.img
               src="/blob2.png"
               alt=""
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{
-                opacity: [0, 0.92],
-                scale: [0.7, 1],
-                y: [0, 14, 0],
-                rotate: [0, 8, -4, 0],
-              }}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1, y: [0, -16, 0] }}
               transition={{
-                opacity: { duration: 1.4, delay: 0.6 },
-                scale: { duration: 1.4, delay: 0.6, ease: "easeOut" },
-                y: { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.8 },
-                rotate: { duration: 11, repeat: Infinity, ease: "easeInOut", delay: 0.8 },
+                opacity: { duration: 1.2, delay: 0.5 },
+                scale: { duration: 1.2, delay: 0.5, ease: "easeOut" },
+                y: { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
               }}
               style={{
                 position: "absolute",
-                bottom: "2%",
-                right: "-18%",
-                width: "58%",
+                bottom: "-28%",
+                right: "-20%",
+                width: "105%",
                 height: "auto",
                 zIndex: 2,
-                filter: "drop-shadow(0 12px 32px rgba(232,148,255,0.22)) drop-shadow(0 4px 14px rgba(255,106,146,0.12))",
+                filter: "drop-shadow(0 20px 50px rgba(200,100,255,0.18)) drop-shadow(0 6px 20px rgba(255,106,146,0.13))",
               }}
             />
           </div>
