@@ -84,18 +84,16 @@ export default function Hero() {
       }} />
 
       {/* ── BLOB IMAGE — centrada, flotando ── */}
-      <motion.div
-        className="absolute"
+      <div
+        className="absolute pointer-events-none"
         style={{
           top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
+          marginTop: "calc(min(90vw, 720px) / -2)",
+          marginLeft: "calc(min(90vw, 720px) / -2)",
           width: "min(90vw, 720px)",
           height: "min(90vw, 720px)",
           zIndex: 1,
         }}
-        initial={{ opacity: 0, scale: 0.75 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
       >
         {/* Halo blur exterior — capa 1 (grande, muy difusa) */}
         <motion.div style={{
@@ -122,8 +120,14 @@ export default function Hero() {
         {/* Blob image con float animation */}
         <motion.div
           style={{ width: "100%", height: "100%", position: "relative", zIndex: 2 }}
-          animate={{ y: [0, -22, 0], rotate: [0, 2, -2, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -22, 0], rotate: [0, 2, -2, 0] }}
+          transition={{
+            opacity: { duration: 1.2 },
+            scale: { duration: 1.2 },
+            y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
+            rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
+          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -138,7 +142,7 @@ export default function Hero() {
             }}
           />
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* ── CONTENIDO sobre el blob ── */}
       <div
