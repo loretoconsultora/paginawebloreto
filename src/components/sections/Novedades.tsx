@@ -108,8 +108,7 @@ export default function Novedades() {
               >
                 {/* Wrapper para borde degradado */}
                 <div
-                  className="rounded-3xl p-[3px]"
-                  className="transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.18),0_0_80px_rgba(232,148,255,0.12)]"
+                  className="rounded-3xl p-[3px] transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.18),0_0_80px_rgba(232,148,255,0.12)]"
                   style={{
                     background: n.borderGradient,
                     boxShadow: "0 8px 32px rgba(255,255,255,0.08), 0 2px 12px rgba(255,255,255,0.05)",
