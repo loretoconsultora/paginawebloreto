@@ -61,7 +61,8 @@ export default function Navbar() {
           </Link>
           <Link
             href="/contacto"
-            className="text-sm font-semibold text-white px-5 py-2 rounded-full gradient-brand hover:opacity-90 transition-all duration-200 shadow-coral"
+            className="text-sm font-semibold text-white px-5 py-2 rounded-full hover:opacity-90 transition-all duration-200"
+            style={{ background: "linear-gradient(135deg, #FF6A92, #E894FF)", boxShadow: "0 8px 28px rgba(255,106,146,0.35)" }}
           >
             Hablemos
           </Link>
@@ -94,7 +95,8 @@ export default function Navbar() {
             <Link
               href="/contacto"
               onClick={() => setIsOpen(false)}
-              className="text-sm font-semibold text-white text-center px-5 py-3 rounded-full gradient-brand mt-2"
+              className="text-sm font-semibold text-white text-center px-5 py-3 rounded-full mt-2"
+              style={{ background: "linear-gradient(135deg, #FF6A92, #E894FF)" }}
             >
               Hablemos
             </Link>

@@ -62,7 +62,8 @@ export default function KitEmpresarial() {
         <div className="text-center">
           <Link
             href="/kit-empresarial"
-            className="inline-flex items-center gap-2 gradient-brand text-white font-semibold px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-coral"
+            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
+            style={{ background: "linear-gradient(135deg, #FF6A92, #E894FF)", boxShadow: "0 8px 28px rgba(255,106,146,0.35)" }}
           >
             Ver todos los recursos <ArrowRight size={16} />
           </Link>
