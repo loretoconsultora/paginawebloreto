@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 
 const INCLUDES = [
   "Estrategia de marca completa",
@@ -13,13 +13,37 @@ const INCLUDES = [
 const HREF = "https://boost-your-brand.vercel.app";
 const CARD_GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)";
+const CARD_BG = "rgba(255,255,255,0.18)";
+
+function GradientBorderButton({ href, gradient, children }: { href: string; gradient: string; children: React.ReactNode }) {
+  return (
+    <div style={{ background: gradient, padding: "2px", borderRadius: "999px" }}>
+      <Link
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block text-center text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
+        style={{ background: "#ffffff", borderRadius: "999px" }}
+      >
+        <span style={{
+          background: gradient,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}>
+          {children}
+        </span>
+      </Link>
+    </div>
+  );
+}
 
 export default function BoostYourBrand() {
   return (
     <section className="py-20 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="relative rounded-3xl overflow-hidden">
-          {/* Fondo — mismo degradado que el hero cycling words */}
+          {/* Fondo */}
           <div className="absolute inset-0" style={{ background: CARD_GRADIENT }} />
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
@@ -49,17 +73,12 @@ export default function BoostYourBrand() {
                 En 6 sesiones en vivo construyes tu identidad, tu oferta digital y sales con tu primer lanzamiento listo para escalar.
               </p>
 
-              {/* CTA — fondo blanco, tipografía con degradado del card */}
+              {/* CTA principal */}
               <Link
                 href={HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white font-bold px-8 py-4 rounded-full text-base hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-                style={{
-                  background: "#ffffff",
-                  backgroundClip: "unset",
-                  WebkitBackgroundClip: "unset",
-                }}
               >
                 <span style={{
                   background: CARD_GRADIENT,
@@ -67,57 +86,61 @@ export default function BoostYourBrand() {
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}>
-                  Asegurar mi lugar
+                  Asegurar mi lugar →
                 </span>
-                <ArrowRight size={16} style={{ color: "#c0005a", flexShrink: 0 }} />
               </Link>
             </div>
 
             {/* Columna derecha — cards de precios */}
             <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-4 lg:min-w-72">
 
-              {/* Plan Boost $444 */}
-              <div className="glass-dark rounded-3xl p-6 text-white flex-1 lg:flex-none border border-white/20">
-                <p className="text-xs font-semibold tracking-widest uppercase text-white/50 mb-1">Programa completo</p>
+              {/* Título de la columna */}
+              <h3
+                className="font-playfair font-bold text-white sm:col-span-2 lg:col-span-1"
+                style={{ fontSize: "clamp(1.4rem, 2.2vw, 1.8rem)", lineHeight: 1.2, marginBottom: "4px" }}
+              >
+                El programa que lo cambia todo
+              </h3>
+
+              {/* Acceso General $444 */}
+              <div
+                className="rounded-3xl p-6 text-white flex-1 lg:flex-none backdrop-blur-md"
+                style={{ background: CARD_BG, border: "1px solid rgba(255,255,255,0.3)" }}
+              >
+                <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso general</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Boost Your Brand</p>
                 <p className="font-playfair text-3xl font-black mb-4">$444 <span className="text-base font-normal text-white/60">USD</span></p>
                 <ul className="space-y-2 mb-5">
                   {INCLUDES.slice(0, 4).map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-white/80">
-                      <span className="text-coral-light mt-0.5 flex-shrink-0">✓</span>
+                    <li key={item} className="flex items-start gap-2 text-sm text-white/85">
+                      <span className="mt-0.5 flex-shrink-0">✓</span>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-center text-white text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
-                  style={{ background: CARD_GRADIENT }}
-                >
+                <GradientBorderButton href={HREF} gradient={CARD_GRADIENT}>
                   Activar acceso →
-                </Link>
+                </GradientBorderButton>
               </div>
 
-              {/* Plan VIP $1,110 */}
-              <div className="rounded-3xl p-6 text-white flex-1 lg:flex-none bg-white/10 backdrop-blur-sm relative overflow-hidden" style={{ border: "2px solid rgba(255,255,255,0.35)" }}>
-                <div className="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full" style={{ background: GOLD_GRADIENT, color: "#1a0a2e" }}>
-                  Solo 10 lugares
-                </div>
-                <p className="text-xs font-semibold tracking-widest uppercase text-white/50 mb-1">Acceso VIP</p>
-                <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
-                <p className="font-playfair text-3xl font-black mb-4">$1,110 <span className="text-base font-normal text-white/60">USD</span></p>
-                <p className="text-sm text-white/70 mb-5">Todo lo del plan Boost + mentoría 1:1, piezas publicitarias y CRM incluido.</p>
-                <Link
-                  href={HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-center text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
+              {/* Acceso VIP $1,110 */}
+              <div
+                className="rounded-3xl p-6 text-white flex-1 lg:flex-none backdrop-blur-md relative overflow-hidden"
+                style={{ background: CARD_BG, border: "1px solid rgba(255,255,255,0.3)" }}
+              >
+                <div
+                  className="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full"
                   style={{ background: GOLD_GRADIENT, color: "#1a0a2e" }}
                 >
+                  Solo 10 lugares
+                </div>
+                <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso VIP</p>
+                <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
+                <p className="font-playfair text-3xl font-black mb-4">$1,110 <span className="text-base font-normal text-white/60">USD</span></p>
+                <p className="text-sm text-white/75 mb-5">Todo lo del plan Boost + mentoría 1:1, piezas publicitarias y CRM incluido.</p>
+                <GradientBorderButton href={HREF} gradient={GOLD_GRADIENT}>
                   Acceso VIP →
-                </Link>
+                </GradientBorderButton>
               </div>
 
             </div>
