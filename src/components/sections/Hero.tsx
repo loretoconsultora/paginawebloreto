@@ -6,9 +6,16 @@ import { motion } from "framer-motion";
 
 const METRICS = [
   { target: 6, suffix: "+", label: "Años de experiencia" },
-  { target: 500, suffix: "+", label: "Clientes atendidos" },
-  { target: 500, suffix: "+", label: "Alumnos formados" },
-  { target: 5, suffix: "", label: "Países" },
+  { target: 500, suffix: "+", label: "Clientes" },
+  { target: 500, suffix: "+", label: "Alumnos" },
+];
+
+const FLAGS = [
+  { emoji: "🇲🇽", name: "México" },
+  { emoji: "🇨🇴", name: "Colombia" },
+  { emoji: "🇦🇷", name: "Argentina" },
+  { emoji: "🇺🇸", name: "EE. UU." },
+  { emoji: "🇪🇸", name: "España" },
 ];
 
 function useCounter(target: number, duration = 2000, start = false) {
@@ -31,16 +38,13 @@ function useCounter(target: number, duration = 2000, start = false) {
 function MetricItem({ target, suffix, label, started }: { target: number; suffix: string; label: string; started: boolean }) {
   const count = useCounter(target, 1800, started);
   return (
-    <div className="flex flex-col items-center sm:items-start">
+    <div className="flex flex-col items-start">
       <span style={{
         fontFamily: "var(--font-playfair)",
         fontSize: "clamp(2rem, 4vw, 2.8rem)",
         fontWeight: 900,
         lineHeight: 1,
-        background: "linear-gradient(135deg, #3A3F4B 0%, #FF6A92 100%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundClip: "text",
+        color: "#c0005a",
       }}>
         {count}{suffix}
       </span>
@@ -85,7 +89,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Glow intencional — aureola coral/lila definida */}
+      {/* Glow intencional — aureola coral/lila */}
       <motion.div
         className="absolute pointer-events-none"
         style={{
@@ -107,95 +111,75 @@ export default function Hero() {
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-28 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-0 items-center min-h-[calc(100vh-7rem)]">
 
-          {/* ── COLUMNA IZQUIERDA — Contenido ── */}
+          {/* ── COLUMNA IZQUIERDA ── */}
           <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8">
 
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mb-8"
-            >
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em",
-                textTransform: "uppercase", color: "#FF6A92",
-                border: "1px solid rgba(255,106,146,0.3)",
-                padding: "7px 18px", borderRadius: "999px",
-              }}>
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#FF6A92", boxShadow: "0 0 6px #FF6A92", flexShrink: 0 }} />
-                Consultoría de Marketing · 6 Años · 5 Países
-              </span>
-            </motion.div>
-
-            {/* DE MARCA — ghost outline, más pequeño, acento */}
+            {/* Expande el PODER de tu */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
               style={{
                 fontFamily: "var(--font-playfair)",
-                fontWeight: 900,
-                fontSize: "clamp(1.8rem, 4vw, 3.8rem)",
-                lineHeight: 1,
+                fontWeight: 700,
+                fontSize: "clamp(1.6rem, 3.8vw, 3.4rem)",
+                lineHeight: 1.05,
                 letterSpacing: "-0.02em",
-                color: "transparent",
-                WebkitTextStroke: "1px rgba(58,63,75,0.18)",
+                color: "#3A3F4B",
                 marginBottom: "0.05em",
               }}
             >
-              DE MARCA
+              Expande el PODER de tu
             </motion.div>
 
-            {/* INVISIBLE — protagonista, llena el espacio */}
+            {/* MARCA — protagonista */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.44 }}
+              transition={{ duration: 0.8, delay: 0.38 }}
               style={{
                 fontFamily: "var(--font-playfair)",
                 fontWeight: 900,
-                fontSize: "clamp(4.5rem, 11vw, 10rem)",
+                fontSize: "clamp(5rem, 13vw, 11.5rem)",
                 lineHeight: 0.85,
                 letterSpacing: "-0.04em",
                 background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginBottom: "0.2em",
+                marginBottom: "0.18em",
               }}
             >
-              INVISIBLE
+              MARCA
             </motion.div>
 
-            {/* Cursiva — puente emocional */}
+            {/* Cursiva */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.56 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
               style={{
                 fontFamily: "var(--font-dancing)",
-                fontSize: "clamp(1.4rem, 3vw, 2.4rem)",
+                fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
                 lineHeight: 1.3,
                 background: "linear-gradient(135deg, #c0005a, #9b30c8)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginBottom: "2rem",
+                marginBottom: "2.2rem",
               }}
             >
-              a referente en tu industria
+              this is the bloom era
             </motion.div>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.68 }}
+              transition={{ duration: 0.6, delay: 0.62 }}
               style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}
             >
-              <Link href="/contacto" style={{
+              <Link href="https://brand-compass-pwa.vercel.app" target="_blank" rel="noopener noreferrer" style={{
                 background: "linear-gradient(135deg, #FF6A92, #E894FF)",
                 color: "#fff", fontWeight: 700,
                 padding: "14px 34px", borderRadius: "999px",
@@ -203,7 +187,7 @@ export default function Hero() {
                 boxShadow: "0 8px 28px rgba(255,106,146,0.35)",
                 letterSpacing: "0.01em",
               }}>
-                Solicita tu Brand Compass
+                Inicia ahora tu diagnóstico
               </Link>
               <Link href="/servicios" style={{
                 color: "#3A3F4B", fontWeight: 600,
@@ -217,37 +201,41 @@ export default function Hero() {
               </Link>
             </motion.div>
 
-            {/* Métricas — strip premium */}
+            {/* Métricas + presencia */}
             <motion.div
               ref={ref}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
+              transition={{ duration: 0.6, delay: 0.78 }}
               style={{
-                display: "flex",
-                gap: "0",
-                marginTop: "3rem",
+                marginTop: "2.8rem",
                 borderTop: "1px solid rgba(58,63,75,0.08)",
                 paddingTop: "1.5rem",
               }}
             >
-              {METRICS.map((m, i) => (
-                <div key={m.label} style={{
-                  display: "flex",
-                  alignItems: "stretch",
-                  flex: 1,
-                }}>
-                  <MetricItem target={m.target} suffix={m.suffix} label={m.label} started={started} />
-                  {i < METRICS.length - 1 && (
-                    <div style={{
-                      width: "1px",
-                      background: "rgba(58,63,75,0.1)",
-                      margin: "0 1.5rem",
-                      alignSelf: "stretch",
-                    }} />
-                  )}
-                </div>
-              ))}
+              {/* Números */}
+              <div style={{ display: "flex", gap: "0" }}>
+                {METRICS.map((m, i) => (
+                  <div key={m.label} style={{ display: "flex", alignItems: "stretch", flex: 1 }}>
+                    <MetricItem target={m.target} suffix={m.suffix} label={m.label} started={started} />
+                    {i < METRICS.length - 1 && (
+                      <div style={{ width: "1px", background: "rgba(58,63,75,0.1)", margin: "0 1.4rem", alignSelf: "stretch" }} />
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Presencia en banderas */}
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "1.2rem", flexWrap: "wrap" }}>
+                <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(58,63,75,0.35)" }}>
+                  Presencia en
+                </span>
+                {FLAGS.map((f) => (
+                  <span key={f.name} title={f.name} style={{ fontSize: "1.35rem", lineHeight: 1, cursor: "default" }}>
+                    {f.emoji}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           </div>
 
@@ -258,11 +246,10 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.1, ease: "easeOut" }}
             style={{
-              width: "clamp(320px, 44vw, 580px)",
-              minHeight: "clamp(320px, 44vw, 580px)",
+              width: "clamp(300px, 44vw, 580px)",
+              minHeight: "clamp(300px, 44vw, 580px)",
             }}
           >
-            {/* Blob flotando */}
             <motion.img
               src="/blob.png"
               alt=""
