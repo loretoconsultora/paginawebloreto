@@ -7,8 +7,8 @@ const novedades = [
     icono: Calendar,
     color: "bg-coral/10 text-coral",
     titulo: "The Art of Brand — Querétaro & CDMX",
-    descripcion: "Una serie de experiencias creativas donde el branding deja de ser teoría y se convierte en algo que se siente, se piensa y se crea con las manos. Cupos muy limitados.",
-    fecha: "Próximamente · 2 ediciones",
+    descripcion: "Querétaro: 25 & 26 jun · Alva Coffee & Health Bar\nCDMX: 27 & 28 jun · Tierra Garat Masaryk\nBranding experiencial, íntimo y artístico. Cupos muy limitados.",
+    fecha: "25 – 28 junio 2026 · 5:00 pm",
     href: "/eventos/the-art-of-brand",
   },
   {
@@ -68,7 +68,7 @@ export default function Novedades() {
                 <h3 className="font-playfair text-lg font-bold text-grafito mb-2 group-hover:text-coral transition-colors">
                   {n.titulo}
                 </h3>
-                <p className="text-sm text-grafito/60 leading-relaxed mb-4">
+                <p className="text-sm text-grafito/60 leading-relaxed mb-4 whitespace-pre-line">
                   {n.descripcion}
                 </p>
                 <p className="text-xs font-semibold text-coral">{n.fecha}</p>
