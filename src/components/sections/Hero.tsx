@@ -95,26 +95,25 @@ export default function Hero() {
           zIndex: 1,
         }}
       >
-        {/* Halo blur exterior — capa 1 (grande, muy difusa) */}
-        <motion.div style={{
-          position: "absolute", inset: "-30%",
-          background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.55) 0%, rgba(255,106,146,0.35) 30%, rgba(106,138,255,0.2) 55%, transparent 72%)",
-          filter: "blur(55px)",
+        {/* Halo legibilidad — blanco suave que difumina el fondo */}
+        <div style={{
+          position: "absolute", inset: "-20%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.92) 0%, rgba(255,240,248,0.75) 35%, rgba(255,220,240,0.4) 55%, transparent 72%)",
+          filter: "blur(32px)",
           borderRadius: "50%",
+          zIndex: 0,
+        }} />
+
+        {/* Halo color exterior — rosa/lila decorativo */}
+        <motion.div style={{
+          position: "absolute", inset: "-35%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.3) 0%, rgba(255,106,146,0.2) 35%, rgba(106,138,255,0.1) 55%, transparent 70%)",
+          filter: "blur(50px)",
+          borderRadius: "50%",
+          zIndex: 0,
         }}
           animate={{ scale: [1, 1.08, 1], rotate: [0, 360] }}
           transition={{ scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 20, repeat: Infinity, ease: "linear" } }}
-        />
-
-        {/* Halo blur — capa 2 (media, más rosa) */}
-        <motion.div style={{
-          position: "absolute", inset: "-10%",
-          background: "radial-gradient(ellipse at 45% 45%, rgba(255,106,146,0.4) 0%, rgba(232,148,255,0.3) 40%, transparent 65%)",
-          filter: "blur(35px)",
-          borderRadius: "50%",
-        }}
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
 
         {/* Blob image con float animation */}
