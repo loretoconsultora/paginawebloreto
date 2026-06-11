@@ -14,17 +14,17 @@ export default function Podcast() {
                 Disponible en Spotify
               </div>
               <h2 className="font-playfair text-4xl font-bold text-grafito mb-4">
-                El Podcast de Loreto
+                Lo que nos decimos últimamente
               </h2>
               <p className="font-dancing text-xl text-coral mb-6">
-                Conversaciones que transforman marcas
+                El podcast de Loreto Consultora
               </p>
               <p className="text-grafito/60 leading-relaxed mb-8">
-                Entrevistas con emprendedores, directivos y líderes de marca que comparten su camino, sus estrategias y las decisiones que los llevaron a donde están hoy.
+                Conversaciones honestas sobre lo que callamos los empresarios: síndrome del impostor, comparación, pedir ayuda, claridad vs. hiperactividad y gestión de riesgos. Un episodio para los que construyen en serio.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="https://spotify.com"
+                  href="https://open.spotify.com/show/6JkKJgmFDJFbdQSA4nh53m?si=663fa615dd684826"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-[#1DB954] text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#1aa34a] transition-colors"
@@ -46,8 +46,8 @@ export default function Podcast() {
                 <div className="w-24 h-24 rounded-full glass-dark flex items-center justify-center mx-auto mb-6">
                   <Mic size={40} className="text-white" />
                 </div>
-                <p className="font-playfair text-2xl font-bold mb-2">Episodio 1</p>
-                <p className="text-white/70 text-sm">Ya disponible en Spotify</p>
+                <p className="font-playfair text-2xl font-bold mb-2">Nuevo episodio</p>
+                <p className="text-white/70 text-sm">Disponible ahora en Spotify</p>
                 <div className="mt-6 flex items-center justify-center gap-1">
                   {[4, 6, 8, 5, 7, 4, 9, 6, 5, 8, 4, 7].map((h, i) => (
                     <div
