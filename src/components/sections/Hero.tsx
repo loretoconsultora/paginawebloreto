@@ -279,7 +279,7 @@ export default function Hero() {
 
               {/* Presencia en banderas */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "1.2rem", flexWrap: "wrap" }}>
-                <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(58,63,75,0.35)" }}>
+                <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3A3F4B" }}>
                   Presencia en
                 </span>
                 {FLAGS.map((f) => (
