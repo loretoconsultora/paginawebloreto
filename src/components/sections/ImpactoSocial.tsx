@@ -30,7 +30,7 @@ export default function ImpactoSocial() {
             backgroundClip: "text",
           }}
         >
-          Un impacto que trasciende
+          Un propósito que trasciende
         </h2>
 
         {/* Dos iniciativas lado a lado */}
