@@ -6,6 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const WORDS = ["MARCA", "NEGOCIO", "IDENTIDAD", "HISTORIA", "COMUNIDAD", "PROPÓSITO"];
 
+// Scale font size down for longer words so they never push the blob right
+function wordFontSize(word: string): string {
+  const len = word.replace(/[ÁÉÍÓÚ]/g, "X").length; // accent chars count same
+  if (len <= 5)  return "clamp(4rem,   11vw, 10rem)";
+  if (len <= 7)  return "clamp(3.2rem,  9vw,  8rem)";
+  if (len <= 8)  return "clamp(2.8rem,  8vw,  7rem)";
+  return               "clamp(2.4rem, 6.8vw,  6rem)";
+}
+
 const TAGLINE = "This is the Bloom Era";
 
 function TypewriterText({ text }: { text: string }) {
@@ -144,7 +153,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-0 items-center min-h-[calc(100vh-7rem)]">
 
           {/* ── COLUMNA IZQUIERDA ── */}
-          <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8">
+          <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8" style={{ minWidth: 0 }}>
 
             {/* Expande el PODER de tu */}
             <motion.div
@@ -159,6 +168,7 @@ export default function Hero() {
                 letterSpacing: "-0.02em",
                 color: "#3A3F4B",
                 marginBottom: "0.05em",
+                whiteSpace: "nowrap",
               }}
             >
               Expande el PODER de tu
@@ -172,13 +182,14 @@ export default function Hero() {
               style={{
                 fontFamily: "var(--font-playfair)",
                 fontWeight: 900,
-                fontSize: "clamp(4rem, 11vw, 10rem)",
+                fontSize: wordFontSize(WORDS[wordIndex]),
                 lineHeight: 0.85,
                 letterSpacing: "-0.04em",
                 marginBottom: "0.18em",
                 position: "relative",
                 minHeight: "1em",
                 overflow: "hidden",
+                transition: "font-size 0.3s ease",
               }}
             >
               <AnimatePresence mode="wait">
