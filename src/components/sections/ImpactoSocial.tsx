@@ -1,8 +1,17 @@
+"use client";
+
 import { Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 const GRADIENT_MAIN = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 const GRADIENT_A = "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)";
 const GRADIENT_B = "linear-gradient(135deg, #1a0a2e, #6a00c8, #E894FF)";
+
+const fotos = [
+  { src: "/accion-social/foto-1.jpg", rotate: -5 },
+  { src: "/accion-social/foto-2.jpg", rotate: 2 },
+  { src: "/accion-social/foto-3.jpg", rotate: -3 },
+];
 
 export default function ImpactoSocial() {
   return (
@@ -22,7 +31,7 @@ export default function ImpactoSocial() {
 
         {/* Título */}
         <h2
-          className="font-playfair text-4xl font-bold text-center mb-10 whitespace-nowrap"
+          className="font-playfair text-4xl font-bold text-center mb-12 whitespace-nowrap"
           style={{
             background: GRADIENT_MAIN,
             WebkitBackgroundClip: "text",
@@ -32,6 +41,37 @@ export default function ImpactoSocial() {
         >
           Un propósito que trasciende
         </h2>
+
+        {/* Fotos inclinadas */}
+        <div className="flex justify-center items-end gap-4 mb-14">
+          {fotos.map((f, i) => (
+            <motion.div
+              key={f.src}
+              initial={{ opacity: 0, y: 40, rotate: f.rotate * 2 }}
+              whileInView={{ opacity: 1, y: 0, rotate: f.rotate }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ rotate: 0, scale: 1.04, transition: { duration: 0.3 } }}
+              style={{ transformOrigin: "bottom center" }}
+            >
+              <div
+                className="rounded-2xl p-[3px] shadow-lg"
+                style={{ background: GRADIENT_MAIN }}
+              >
+                <div
+                  className="rounded-[14px] overflow-hidden bg-white"
+                  style={{ width: 200, height: 250 }}
+                >
+                  <img
+                    src={f.src}
+                    alt={`Acción social ${i + 1}`}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Dos iniciativas lado a lado */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
