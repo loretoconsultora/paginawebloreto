@@ -10,9 +10,9 @@ const WORDS = ["MARCA", "NEGOCIO", "IDENTIDAD", "HISTORIA", "COMUNIDAD", "PROPÓ
 function wordFontSize(word: string): string {
   const len = word.replace(/[ÁÉÍÓÚ]/g, "X").length; // accent chars count same
   if (len <= 5)  return "clamp(4rem,   11vw, 10rem)";
-  if (len <= 7)  return "clamp(3.2rem,  9vw,  8rem)";
-  if (len <= 8)  return "clamp(2.8rem,  8vw,  7rem)";
-  return               "clamp(2.4rem, 6.8vw,  6rem)";
+  if (len <= 7)  return "clamp(2.8rem, 7.2vw,  6.5rem)";
+  if (len <= 8)  return "clamp(2.4rem, 6.4vw,  5.8rem)";
+  return               "clamp(2.2rem, 5.8vw,  5.2rem)";
 }
 
 const TAGLINE = "This is the Bloom Era";
