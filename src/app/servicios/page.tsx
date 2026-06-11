@@ -175,7 +175,6 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
 }
 
 function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) {
-  const isLight = s.detailText !== "white";
   return (
     <section
       id={s.id}
@@ -186,11 +185,11 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
         <div className={`flex flex-col lg:flex-row items-center gap-14 ${index % 2 === 0 ? "" : "lg:flex-row-reverse"}`}>
 
           {/* Video placeholder */}
-          <div className="w-full lg:w-1/2 flex-shrink-0">
+          <div className="w-full lg:w-1/2 flex-shrink-0 min-w-0">
             <div className="rounded-3xl p-[3px]" style={{ background: s.borderGradient }}>
               <div
-                className="rounded-[22px] overflow-hidden flex flex-col items-center justify-center gap-3"
-                style={{ height: 340, background: "rgba(0,0,0,0.12)", aspectRatio: "16/9" }}
+                className="rounded-[22px] overflow-hidden flex flex-col items-center justify-center gap-3 w-full"
+                style={{ aspectRatio: "16/9", background: "rgba(0,0,0,0.12)" }}
               >
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center"
@@ -208,29 +207,29 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
           </div>
 
           {/* Texto */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 min-w-0">
             <div
               className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 border"
-              style={{ color: s.badgeColor, borderColor: s.badgeBorder, background: isLight ? s.badgeBg : "rgba(255,255,255,0.18)" }}
+              style={{ color: "white", borderColor: "rgba(255,255,255,0.5)", background: "rgba(255,255,255,0.18)" }}
             >
               {s.badge}
             </div>
 
             <h2
               className="font-playfair text-3xl sm:text-4xl font-bold mb-4"
-              style={{ color: s.detailText }}
+              style={{ color: "white" }}
             >
               {s.titulo}
             </h2>
 
-            <p className="leading-relaxed mb-6" style={{ color: s.detailText, opacity: 0.82 }}>
+            <p className="leading-relaxed mb-6" style={{ color: "white", opacity: 0.82 }}>
               {s.descripcion}
             </p>
 
             <ul className="space-y-3 mb-8">
               {s.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm" style={{ color: s.detailText, opacity: 0.9 }}>
-                  <span style={{ background: s.bulletGradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", flexShrink: 0, fontSize: "1rem", lineHeight: 1.4 }}>★</span>
+                <li key={item} className="flex items-start gap-3 text-sm" style={{ color: "white", opacity: 0.9 }}>
+                  <span style={{ color: "white", flexShrink: 0, fontSize: "1rem", lineHeight: 1.4 }}>★</span>
                   {item}
                 </li>
               ))}
@@ -242,11 +241,9 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
-                style={{ background: "#ffffff", borderRadius: "999px" }}
+                style={{ background: "#ffffff", borderRadius: "999px", color: "#1a0a2e" }}
               >
-                <span style={{ background: s.btnGradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Recibir propuesta personalizada →
-                </span>
+                Recibir propuesta personalizada →
               </Link>
             </div>
           </div>
