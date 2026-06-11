@@ -5,30 +5,46 @@ const novedades = [
   {
     tipo: "Evento",
     icono: Calendar,
-    color: "bg-coral/10 text-coral",
-    titulo: "The Art of Brand — Querétaro & CDMX",
-    descripcion: "Querétaro: 25 & 26 jun · Alva Coffee & Health Bar\nCDMX: 27 & 28 jun · Tierra Garat Masaryk\nBranding experiencial, íntimo y artístico. Cupos muy limitados.",
-    fecha: "25 – 28 junio 2026 · 5:00 pm",
+    gradient: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 50%, #E894FF 100%)",
+    titulo: "The Art of Brand",
+    subtitulo: "Querétaro & Ciudad de México",
+    descripcion: "Branding que se siente, se piensa y se crea con las manos. Una experiencia íntima, estética y profundamente intencionada.",
+    bullets: [
+      "📍 Querétaro · 25 & 26 jun · 5:00 pm · Alva Coffee & Health Bar",
+      "📍 CDMX · 27 & 28 jun · 5:00 pm · Tierra Garat Masaryk",
+    ],
+    cta: "Ver experiencias →",
     href: "/eventos/the-art-of-brand",
     external: false,
   },
   {
-    tipo: "Lanzamiento",
+    tipo: "Programa Estrella",
     icono: Zap,
-    color: "bg-indigo-DEFAULT/10 text-indigo-DEFAULT",
-    titulo: "Boost Your Brand — Primera Generación",
-    descripcion: "El programa de formación grupal más esperado: posicionamiento, comunicación de marca, sistema de ventas y mentoría en vivo.",
-    fecha: "1 julio 2026",
+    gradient: "linear-gradient(135deg, #3a0ca3 0%, #c0005a 55%, #ff6a92 100%)",
+    titulo: "Boost Your Brand",
+    subtitulo: "Primera Generación · ¡Últimos lugares!",
+    descripcion: "Nuestro programa estrella de marca personal. Crea un negocio rentable que te posicione con tu valor único y haga crecer tus ventas.",
+    bullets: [
+      "⚡ Mentorías en vivo durante un mes completo",
+      "🚀 Inicio: miércoles 1 de julio · Solo 45 lugares",
+    ],
+    cta: "Quiero mi lugar →",
     href: "https://boost-your-brand.vercel.app",
     external: true,
   },
   {
     tipo: "Podcast",
     icono: Mic,
-    color: "bg-lila-DEFAULT/10 text-lila-DEFAULT",
+    gradient: "linear-gradient(135deg, #1a0a2e 0%, #6a00c8 50%, #E894FF 100%)",
     titulo: "\"Lo que nos decimos últimamente\"",
-    descripcion: "Un episodio para hablar sobre lo que callamos los empresarios: síndrome del impostor, comparación, pedir ayuda, claridad vs hiperactividad y gestión de riesgos.",
-    fecha: "Escuchar en Spotify →",
+    subtitulo: "Nuevo episodio disponible",
+    descripcion: "Un episodio para hablar sobre lo que callamos los empresarios.",
+    bullets: [
+      "🎙 Síndrome del impostor · Comparación",
+      "🎙 Pedir ayuda · Claridad vs hiperactividad",
+      "🎙 Gestión de riesgos y mucho más",
+    ],
+    cta: "Escuchar en Spotify →",
     href: "https://open.spotify.com/show/6JkKJgmFDJFbdQSA4nh53m?si=663fa615dd684826",
     external: true,
   },
@@ -36,7 +52,7 @@ const novedades = [
 
 export default function Novedades() {
   return (
-    <section className="py-20 bg-gradient-indigo">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-end justify-between mb-12">
           <div>
@@ -64,19 +80,43 @@ export default function Novedades() {
                 href={n.href}
                 target={n.external ? "_blank" : undefined}
                 rel={n.external ? "noopener noreferrer" : undefined}
-                className="glass rounded-3xl p-6 hover:shadow-glass-hover transition-all duration-300 hover:-translate-y-1 group"
+                className="group flex flex-col rounded-3xl overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl"
+                style={{ background: n.gradient }}
               >
-                <div className={`inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full ${n.color} mb-4`}>
-                  <Icon size={12} />
-                  {n.tipo}
+                <div className="flex flex-col flex-1 p-7">
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 self-start backdrop-blur-sm">
+                    <Icon size={14} strokeWidth={2.5} />
+                    {n.tipo}
+                  </div>
+
+                  {/* Título */}
+                  <h3 className="font-playfair text-xl font-bold text-white leading-snug mb-1">
+                    {n.titulo}
+                  </h3>
+                  <p className="text-sm font-semibold text-white/70 mb-4 tracking-wide">
+                    {n.subtitulo}
+                  </p>
+
+                  {/* Descripción */}
+                  <p className="text-sm text-white/80 leading-relaxed mb-5">
+                    {n.descripcion}
+                  </p>
+
+                  {/* Bullets */}
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {n.bullets.map((b, i) => (
+                      <li key={i} className="text-sm text-white/90 leading-snug">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <div className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 transition-colors text-white text-sm font-bold px-5 py-3 rounded-full self-start mt-auto backdrop-blur-sm border border-white/20">
+                    {n.cta}
+                  </div>
                 </div>
-                <h3 className="font-playfair text-lg font-bold text-grafito mb-2 group-hover:text-coral transition-colors">
-                  {n.titulo}
-                </h3>
-                <p className="text-sm text-grafito/60 leading-relaxed mb-4 whitespace-pre-line">
-                  {n.descripcion}
-                </p>
-                <p className="text-xs font-semibold text-coral">{n.fecha}</p>
               </Link>
             );
           })}
