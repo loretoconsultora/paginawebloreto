@@ -89,25 +89,39 @@ export default function Hero() {
         style={{
           top: "50%", left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "min(85vw, 680px)",
-          height: "min(85vw, 680px)",
+          width: "min(90vw, 720px)",
+          height: "min(90vw, 720px)",
           zIndex: 1,
         }}
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
-        {/* Glow detrás del blob */}
-        <div style={{
-          position: "absolute", inset: "10%",
-          background: "radial-gradient(ellipse, rgba(232,148,255,0.25) 0%, rgba(255,106,146,0.15) 40%, transparent 70%)",
-          filter: "blur(40px)",
+        {/* Halo blur exterior — capa 1 (grande, muy difusa) */}
+        <motion.div style={{
+          position: "absolute", inset: "-30%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.55) 0%, rgba(255,106,146,0.35) 30%, rgba(106,138,255,0.2) 55%, transparent 72%)",
+          filter: "blur(55px)",
           borderRadius: "50%",
-        }} />
+        }}
+          animate={{ scale: [1, 1.08, 1], rotate: [0, 360] }}
+          transition={{ scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 20, repeat: Infinity, ease: "linear" } }}
+        />
+
+        {/* Halo blur — capa 2 (media, más rosa) */}
+        <motion.div style={{
+          position: "absolute", inset: "-10%",
+          background: "radial-gradient(ellipse at 45% 45%, rgba(255,106,146,0.4) 0%, rgba(232,148,255,0.3) 40%, transparent 65%)",
+          filter: "blur(35px)",
+          borderRadius: "50%",
+        }}
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
 
         {/* Blob image con float animation */}
         <motion.div
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", position: "relative", zIndex: 2 }}
           animate={{ y: [0, -22, 0], rotate: [0, 2, -2, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -120,7 +134,7 @@ export default function Hero() {
               height: "100%",
               objectFit: "contain",
               mixBlendMode: "multiply",
-              filter: "drop-shadow(0 30px 60px rgba(180,100,255,0.25)) drop-shadow(0 10px 30px rgba(255,106,146,0.18))",
+              filter: "drop-shadow(0 0 40px rgba(232,148,255,0.5)) drop-shadow(0 0 80px rgba(255,106,146,0.3))",
             }}
           />
         </motion.div>
@@ -164,9 +178,10 @@ export default function Hero() {
             fontSize: "clamp(3.5rem, 11vw, 9.5rem)",
             lineHeight: 0.9,
             color: "transparent",
-            WebkitTextStroke: "1.5px rgba(58,63,75,0.15)",
+            WebkitTextStroke: "2px rgba(58,63,75,0.35)",
             letterSpacing: "-0.02em",
             userSelect: "none",
+            textShadow: "0 0 60px rgba(232,148,255,0.3)",
           }}
         >
           DE MARCA
@@ -182,12 +197,13 @@ export default function Hero() {
             fontWeight: 900,
             fontSize: "clamp(3.5rem, 11vw, 9.5rem)",
             lineHeight: 0.9,
-            background: "linear-gradient(135deg, #3A3F4B 0%, #FF6A92 50%, #E894FF 100%)",
+            background: "linear-gradient(135deg, #2a1a3e 0%, #FF6A92 45%, #E894FF 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
             letterSpacing: "-0.02em",
             marginBottom: "0.15em",
+            filter: "drop-shadow(0 4px 20px rgba(255,106,146,0.25))",
           }}
         >
           INVISIBLE
@@ -202,11 +218,12 @@ export default function Hero() {
             fontFamily: "var(--font-dancing)",
             fontSize: "clamp(2rem, 6.5vw, 5.5rem)",
             lineHeight: 1.1,
-            background: "linear-gradient(135deg, #FF6A92, #E894FF, #6A8AFF)",
+            background: "linear-gradient(135deg, #d4006a, #9b30c8, #4a3aff)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
             marginBottom: "1.5rem",
+            filter: "drop-shadow(0 2px 12px rgba(180,0,100,0.2))",
           }}
         >
           a referente en tu industria
