@@ -1,11 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Calendar, Mic, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 const novedades = [
   {
     tipo: "Evento",
     icono: Calendar,
-    gradient: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 50%, #E894FF 100%)",
+    gradient: "linear-gradient(145deg, #1a0a2e 0%, #c0005a 55%, #E894FF 100%)",
+    rotate: -5,
     titulo: "The Art of Brand",
     subtitulo: "Querétaro & Ciudad de México",
     descripcion: "Branding que se siente, se piensa y se crea con las manos. Una experiencia íntima, estética y profundamente intencionada.",
@@ -20,7 +24,8 @@ const novedades = [
   {
     tipo: "Programa Estrella",
     icono: Zap,
-    gradient: "linear-gradient(135deg, #3a0ca3 0%, #c0005a 55%, #ff6a92 100%)",
+    gradient: "linear-gradient(145deg, #3a0ca3 0%, #c0005a 50%, #ff6a92 100%)",
+    rotate: 2,
     titulo: "Boost Your Brand",
     subtitulo: "Primera Generación · ¡Últimos lugares!",
     descripcion: "Nuestro programa estrella de marca personal. Crea un negocio rentable que te posicione con tu valor único y haga crecer tus ventas.",
@@ -35,7 +40,8 @@ const novedades = [
   {
     tipo: "Podcast",
     icono: Mic,
-    gradient: "linear-gradient(135deg, #1a0a2e 0%, #6a00c8 50%, #E894FF 100%)",
+    gradient: "linear-gradient(145deg, #1a0a2e 0%, #6a00c8 50%, #E894FF 100%)",
+    rotate: -3,
     titulo: "\"Lo que nos decimos últimamente\"",
     subtitulo: "Nuevo episodio disponible",
     descripcion: "Un episodio para hablar sobre lo que callamos los empresarios.",
@@ -52,9 +58,16 @@ const novedades = [
 
 export default function Novedades() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-end justify-between mb-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-end justify-between mb-16"
+        >
           <div>
             <p className="text-xs font-semibold tracking-widest uppercase text-coral mb-2">
               Lo que está pasando
@@ -69,55 +82,74 @@ export default function Novedades() {
           >
             Ver todo <ArrowRight size={16} />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {novedades.map((n) => {
+        {/* Cards con inclinación y animación de entrada */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          {novedades.map((n, i) => {
             const Icon = n.icono;
             return (
-              <Link
+              <motion.div
                 key={n.titulo}
-                href={n.href}
-                target={n.external ? "_blank" : undefined}
-                rel={n.external ? "noopener noreferrer" : undefined}
-                className="group flex flex-col rounded-3xl overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl"
-                style={{ background: n.gradient }}
+                initial={{ opacity: 0, y: 80, rotate: n.rotate * 2.5 }}
+                whileInView={{ opacity: 1, y: 0, rotate: n.rotate }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.7,
+                  delay: i * 0.13,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  rotate: 0,
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 },
+                }}
+                style={{ transformOrigin: "bottom center" }}
               >
-                <div className="flex flex-col flex-1 p-7">
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 self-start backdrop-blur-sm">
-                    <Icon size={14} strokeWidth={2.5} />
-                    {n.tipo}
+                <Link
+                  href={n.href}
+                  target={n.external ? "_blank" : undefined}
+                  rel={n.external ? "noopener noreferrer" : undefined}
+                  className="flex flex-col rounded-3xl overflow-hidden shadow-xl"
+                  style={{ background: n.gradient, minHeight: 380 }}
+                >
+                  <div className="flex flex-col flex-1 p-7">
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6 self-start backdrop-blur-sm border border-white/20">
+                      <Icon size={14} strokeWidth={2.5} />
+                      {n.tipo}
+                    </div>
+
+                    {/* Título */}
+                    <h3 className="font-playfair text-xl font-bold text-white leading-snug mb-1">
+                      {n.titulo}
+                    </h3>
+                    <p className="text-sm font-semibold text-white/65 mb-4 tracking-wide">
+                      {n.subtitulo}
+                    </p>
+
+                    {/* Descripción */}
+                    <p className="text-sm text-white/80 leading-relaxed mb-5">
+                      {n.descripcion}
+                    </p>
+
+                    {/* Bullets */}
+                    <ul className="space-y-2.5 mb-8 flex-1">
+                      {n.bullets.map((b, bi) => (
+                        <li key={bi} className="text-sm text-white/90 leading-snug">
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA */}
+                    <div className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 transition-colors text-white text-sm font-bold px-5 py-3 rounded-full self-start border border-white/25 backdrop-blur-sm">
+                      {n.cta}
+                    </div>
                   </div>
-
-                  {/* Título */}
-                  <h3 className="font-playfair text-xl font-bold text-white leading-snug mb-1">
-                    {n.titulo}
-                  </h3>
-                  <p className="text-sm font-semibold text-white/70 mb-4 tracking-wide">
-                    {n.subtitulo}
-                  </p>
-
-                  {/* Descripción */}
-                  <p className="text-sm text-white/80 leading-relaxed mb-5">
-                    {n.descripcion}
-                  </p>
-
-                  {/* Bullets */}
-                  <ul className="space-y-2 mb-6 flex-1">
-                    {n.bullets.map((b, i) => (
-                      <li key={i} className="text-sm text-white/90 leading-snug">
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <div className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 transition-colors text-white text-sm font-bold px-5 py-3 rounded-full self-start mt-auto backdrop-blur-sm border border-white/20">
-                    {n.cta}
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             );
           })}
         </div>
