@@ -148,7 +148,7 @@ export default function Hero() {
           {/* ── COLUMNA IZQUIERDA ── */}
           <div className="flex flex-col justify-center order-2 lg:order-1 py-8 lg:py-0 lg:pr-8" style={{ minWidth: 0 }}>
 
-            {/* Expande el PODER de tu */}
+            {/* Trasciende el VALOR de tu */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -164,7 +164,7 @@ export default function Hero() {
                 whiteSpace: "nowrap",
               }}
             >
-              Expande el PODER de tu
+              Trasciende el VALOR de tu
             </motion.div>
 
             {/* MARCA — protagonista con word cycling */}

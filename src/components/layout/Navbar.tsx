@@ -5,14 +5,14 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
+  { label: "Reto", href: "/reto" },
   { label: "Eventos", href: "/eventos" },
+  { label: "Formaciones", href: "/formaciones" },
+  { label: "Vinculación", href: "/vinculacion" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Blog", href: "/blog" },
-  { label: "Kit de Herramientas", href: "/kit-empresarial" },
-  { label: "Acción Social", href: "/accion-social" },
-  { label: "Portal", href: "/portal" },
+  { label: "Herramientas", href: "/herramientas" },
 ];
 
 
@@ -40,7 +40,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.slice(0, 6).map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
