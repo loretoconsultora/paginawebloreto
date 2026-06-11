@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react"; // ArrowRight used in CTA final
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -28,11 +28,12 @@ const servicios = [
     borderGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)",
     cardBorderColor: "#67c6c8",
     detailBg: "#67c6c8",
-    detailText: "#0d2b2b",
+    detailText: "white",
     badgeColor: "#0d6b6d",
     badgeBorder: "rgba(13,107,109,0.35)",
     badgeBg: "rgba(13,107,109,0.08)",
-    bulletColor: "#0d6b6d",
+    bulletGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8)",
+    btnGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)",
     ctaHref: "#victoranza",
     foto: null,
   },
@@ -53,11 +54,12 @@ const servicios = [
     borderGradient: "linear-gradient(135deg, #b8860b, #f5c842, #ffe066)",
     cardBorderColor: "#f5c200",
     detailBg: "#f5c200",
-    detailText: "#1a0a2e",
+    detailText: "white",
     badgeColor: "#7a5800",
     badgeBorder: "rgba(122,88,0,0.35)",
     badgeBg: "rgba(122,88,0,0.08)",
-    bulletColor: "#7a5800",
+    bulletGradient: "linear-gradient(135deg, #b8860b, #f5c842)",
+    btnGradient: "linear-gradient(135deg, #b8860b, #f5c842, #ffe066)",
     ctaHref: "#estrategia-digital",
     foto: null,
   },
@@ -80,7 +82,8 @@ const servicios = [
     badgeColor: "#c0005a",
     badgeBorder: "rgba(192,0,90,0.3)",
     badgeBg: "rgba(192,0,90,0.08)",
-    bulletColor: "#c0005a",
+    bulletGradient: "linear-gradient(135deg, #d4005a, #FF6A92)",
+    btnGradient: "linear-gradient(135deg, #d4005a, #FF6A92, #ffaec4)",
     ctaHref: "#redes-sociales",
     foto: null,
   },
@@ -105,7 +108,8 @@ const servicios = [
     badgeColor: "#c0005a",
     badgeBorder: "rgba(192,0,90,0.3)",
     badgeBg: "rgba(192,0,90,0.08)",
-    bulletColor: "#c0005a",
+    bulletGradient: "linear-gradient(135deg, #7a0035, #c0005a)",
+    btnGradient: "linear-gradient(135deg, #7a0035, #c0005a, #e8006e)",
     ctaHref: "#direccion-creativa",
     foto: null,
   },
@@ -226,26 +230,25 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
             <ul className="space-y-3 mb-8">
               {s.items.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm" style={{ color: s.detailText, opacity: 0.9 }}>
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: isLight ? s.bulletColor : "rgba(255,255,255,0.7)" }} />
+                  <span style={{ background: s.bulletGradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", flexShrink: 0, fontSize: "1rem", lineHeight: 1.4 }}>★</span>
                   {item}
                 </li>
               ))}
             </ul>
 
-            <Link
-              href={CALENDARIO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{
-                background: "rgba(255,255,255,0.18)",
-                color: s.detailText,
-                border: "1px solid rgba(255,255,255,0.35)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              Recibir propuesta personalizada <ArrowRight size={16} />
-            </Link>
+            <div style={{ background: s.btnGradient, padding: "2px", borderRadius: "999px", display: "inline-flex" }}>
+              <Link
+                href={CALENDARIO}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
+                style={{ background: "#ffffff", borderRadius: "999px" }}
+              >
+                <span style={{ background: s.btnGradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  Recibir propuesta personalizada →
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
