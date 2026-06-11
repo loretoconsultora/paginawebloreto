@@ -8,7 +8,10 @@ const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)
 
 // Agrega aquí los YouTube Shorts IDs cuando los tengas
 const videos: { id: string; titulo: string }[] = [
-  // { id: "YOUTUBE_SHORT_ID", titulo: "Título del video" },
+  { id: "_MrMejtExu0", titulo: "Short 1" },
+  { id: "8b4IBY81fQ8", titulo: "Short 2" },
+  { id: "MQDX9iByOYQ", titulo: "Short 3" },
+  { id: "-Wz16y3WUnA", titulo: "Short 4" },
 ];
 
 export default function NuestrasMarcas() {
