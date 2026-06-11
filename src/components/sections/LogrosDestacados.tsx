@@ -2,73 +2,155 @@ import { Trophy } from "lucide-react";
 
 const logros = [
   {
-    cliente: "Susana R.",
-    industria: "Coaching",
-    logro: "Grabó su primer contenido de marca y lo publicó en todas sus plataformas",
-    emoji: "🎬",
+    logo: "/logros/logo-1.png",
+    empresa: "Empresa 1",
+    industria: "Industria",
+    hito: "Aquí va el hito del mes de esta empresa — el logro que quieres celebrar este mes.",
+    foto: "/logros/foto-1.jpg",
   },
   {
-    cliente: "Electronic Point",
-    industria: "Tecnología",
-    logro: "Logró su primer contenido viral con más de 50K reproducciones",
-    emoji: "🚀",
+    logo: "/logros/logo-2.png",
+    empresa: "Empresa 2",
+    industria: "Industria",
+    hito: "Aquí va el hito del mes de esta empresa — el logro que quieres celebrar este mes.",
+    foto: "/logros/foto-2.jpg",
   },
   {
-    cliente: "Tatoox",
-    industria: "E-commerce",
-    logro: "Rompió récord en ventas mensuales gracias a su nueva estrategia digital",
-    emoji: "📈",
-  },
-  {
-    cliente: "Marcela V.",
-    industria: "Consultoría",
-    logro: "Lanzó su primera oferta premium y cerró 3 clientes en la primera semana",
-    emoji: "✨",
-  },
-  {
-    cliente: "Studio Alma",
-    industria: "Diseño",
-    logro: "Redefinió su posicionamiento y aumentó su ticket promedio en un 60%",
-    emoji: "🎨",
-  },
-  {
-    cliente: "Roots Wellness",
-    industria: "Bienestar",
-    logro: "Abrió su segunda sucursal tras 4 meses de trabajo estratégico",
-    emoji: "🌿",
+    logo: "/logros/logo-3.png",
+    empresa: "Empresa 3",
+    industria: "Industria",
+    hito: "Aquí va el hito del mes de esta empresa — el logro que quieres celebrar este mes.",
+    foto: "/logros/foto-3.jpg",
   },
 ];
 
+function LogoCircle({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div
+      className="relative mx-auto flex items-center justify-center"
+      style={{
+        width: 96,
+        height: 96,
+        borderRadius: "50%",
+        background: "rgba(255,255,255,0.12)",
+        border: "2px solid rgba(255,255,255,0.25)",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).style.display = "none";
+          const fb = (e.currentTarget as HTMLImageElement).nextElementSibling as HTMLElement;
+          if (fb) fb.style.display = "flex";
+        }}
+      />
+      {/* Fallback placeholder */}
+      <div
+        className="absolute inset-0 items-center justify-center text-white/30 text-xs font-semibold text-center px-2"
+        style={{ display: "none" }}
+      >
+        Logo
+      </div>
+    </div>
+  );
+}
+
+function EvidenciaPhoto({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div
+      className="w-full rounded-2xl overflow-hidden"
+      style={{
+        height: 180,
+        background: "rgba(255,255,255,0.07)",
+        border: "1px dashed rgba(255,255,255,0.2)",
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).style.display = "none";
+          const fb = (e.currentTarget as HTMLImageElement).nextElementSibling as HTMLElement;
+          if (fb) fb.style.display = "flex";
+        }}
+      />
+      {/* Fallback placeholder */}
+      <div
+        className="w-full h-full items-center justify-center text-white/25 text-xs font-semibold"
+        style={{ display: "none" }}
+      >
+        Foto de evidencia
+      </div>
+    </div>
+  );
+}
+
 export default function LogrosDestacados() {
   return (
-    <section className="py-20 bg-gradient-indigo">
+    <section className="py-20" style={{ background: "#3A3F4B" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
+        {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-dorado/20 text-dorado-oscuro text-xs font-semibold px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full mb-4"
+            style={{ background: "rgba(192,0,90,0.18)", color: "#FF6A92", border: "1px solid rgba(255,106,146,0.25)" }}>
             <Trophy size={12} />
             Este mes
           </div>
-          <h2 className="font-playfair text-4xl font-bold text-grafito mb-3">
+          <h2 className="font-playfair text-4xl font-bold text-white mb-3">
             Logros Destacados
           </h2>
-          <p className="text-grafito/60 max-w-lg mx-auto">
+          <p className="text-white/55 font-medium whitespace-nowrap">
             Cada hito de nuestros clientes es una prueba de que la estrategia correcta transforma negocios.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {logros.map((l) => (
+        {/* 3 columnas */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+          {logros.map((l, i) => (
             <div
-              key={l.cliente}
-              className="glass rounded-3xl p-6 hover:shadow-glass-hover transition-all duration-300 hover:-translate-y-1"
+              key={i}
+              className="flex flex-col rounded-3xl p-6 gap-5"
+              style={{
+                background: "rgba(255,255,255,0.07)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                backdropFilter: "blur(8px)",
+              }}
             >
-              <div className="text-3xl mb-4">{l.emoji}</div>
-              <p className="text-sm text-grafito/60 mb-1 font-medium">{l.industria}</p>
-              <h3 className="font-playfair text-lg font-bold text-grafito mb-2">{l.cliente}</h3>
-              <p className="text-sm text-grafito/70 leading-relaxed">{l.logro}</p>
+              {/* Logo circular */}
+              <LogoCircle src={l.logo} alt={l.empresa} />
+
+              {/* Texto */}
+              <div className="text-center">
+                <p className="text-white/45 text-xs font-semibold tracking-widest uppercase mb-1">
+                  {l.industria}
+                </p>
+                <h3 className="font-playfair text-lg font-bold text-white mb-2">
+                  {l.empresa}
+                </h3>
+                <p className="text-white/65 text-sm leading-relaxed">
+                  {l.hito}
+                </p>
+              </div>
+
+              {/* Foto de evidencia */}
+              <EvidenciaPhoto src={l.foto} alt={`Evidencia ${l.empresa}`} />
             </div>
           ))}
         </div>
+
+        {/* Celebración */}
+        <p
+          className="text-center font-dancing text-white"
+          style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}
+        >
+          Muchas felicidades ¡celebramos sus resultados!
+        </p>
+
       </div>
     </section>
   );
