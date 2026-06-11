@@ -16,48 +16,15 @@ const nichos = [
   "Terapeutas",
 ];
 
-const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
-
-function GradientWord({ children }: { children: React.ReactNode }) {
-  return (
-    <span style={{
-      background: GRADIENT,
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      backgroundClip: "text",
-      fontSize: "clamp(2rem, 3.8vw, 3.2rem)",
-      fontWeight: 900,
-      lineHeight: 1.1,
-      display: "inline",
-    }}>
-      {children}
-    </span>
-  );
-}
-
-function SmallWord({ children }: { children: React.ReactNode }) {
-  return (
-    <span style={{
-      color: "#3A3F4B",
-      fontSize: "clamp(1rem, 1.8vw, 1.25rem)",
-      fontWeight: 600,
-      lineHeight: 1.5,
-      display: "inline",
-    }}>
-      {children}
-    </span>
-  );
-}
-
 export default function Servicios() {
   const items = [...nichos, ...nichos, ...nichos];
 
   return (
     <section className="relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-end" style={{ minHeight: "88vh" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ minHeight: "88vh" }}>
 
-          {/* ── Columna izquierda ── */}
+          {/* ── Columna izquierda — centrada verticalmente ── */}
           <div className="flex flex-col justify-center py-20 lg:py-0 lg:pr-16 order-2 lg:order-1">
 
             <motion.h2
@@ -65,14 +32,17 @@ export default function Servicios() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-playfair mb-6 leading-snug"
+              className="font-playfair font-bold mb-7"
+              style={{
+                fontSize: "clamp(1.75rem, 3vw, 2.6rem)",
+                lineHeight: 1.25,
+                background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
-              <SmallWord>Si quieres que el </SmallWord>
-              <GradientWord>2026</GradientWord>
-              <SmallWord> sea el año en que </SmallWord>
-              <GradientWord>tu marca habla por ti,</GradientWord>
-              <SmallWord> atrae a los clientes correctos y construye un </SmallWord>
-              <GradientWord>negocio que crece con propósito</GradientWord>
+              Si quieres que el 2026 sea el año en que tu marca habla por ti, atrae a los clientes correctos y construye un negocio que crece con propósito
             </motion.h2>
 
             <motion.p
@@ -81,7 +51,7 @@ export default function Servicios() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
               className="leading-relaxed mb-10 max-w-md font-medium"
-              style={{ color: "#3A3F4B", fontSize: "clamp(1.05rem, 1.6vw, 1.2rem)" }}
+              style={{ color: "#3A3F4B", fontSize: "clamp(1.05rem, 1.5vw, 1.15rem)" }}
             >
               estás en el único lugar para lograrlo con visión, estrategia y sistemas reales.
             </motion.p>
@@ -117,63 +87,69 @@ export default function Servicios() {
               }}
             />
 
-            {/* Foto */}
-            <motion.img
-              src="/loreto-directora.jpg"
-              alt="Loreto — Directora de Loreto Consultora"
+            {/* Foto recortada — el contenedor corta el espacio vacío inferior */}
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="relative z-10"
+              className="relative z-10 w-full flex justify-end"
               style={{
-                height: "78vh",
-                width: "78vh",
-                maxWidth: "500px",
-                objectFit: "cover",
-                objectPosition: "top center",
-                filter: "drop-shadow(-8px 0 32px rgba(192,0,90,0.1))",
+                overflow: "hidden",
+                /* Ajusta este valor para subir/bajar el corte (% de la imagen que se muestra) */
+                maxHeight: "76vh",
               }}
-              onError={(e) => {
-                const el = e.currentTarget as HTMLImageElement;
-                el.style.display = "none";
-              }}
-            />
+            >
+              <img
+                src="/loreto-directora.jpg"
+                alt="Loreto — Directora de Loreto Consultora"
+                style={{
+                  width: "auto",
+                  height: "84vh",
+                  maxWidth: "520px",
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                  display: "block",
+                  filter: "drop-shadow(-8px 0 32px rgba(192,0,90,0.1))",
+                }}
+              />
+            </motion.div>
 
-            {/* Marquee — justo debajo de la foto, mismo ancho que la columna */}
+            {/* Marquee — pegado al corte de la foto */}
             <div
               className="relative z-10 w-full overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 55%, #E894FF 100%)",
-                borderRadius: "16px 16px 0 0",
+                borderRadius: "0",
+                flexShrink: 0,
               }}
             >
               {/* Fade derecha */}
-              <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to left, #7b0040, transparent)" }} />
+              <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+                style={{ background: "linear-gradient(to left, rgba(120,0,70,0.9), transparent)" }} />
 
-              <div className="flex items-center py-3 px-5">
+              <div className="flex items-center py-4 px-5" style={{ minHeight: "64px" }}>
                 {/* Texto fijo */}
                 <span
-                  className="text-xs font-bold tracking-widest uppercase flex-shrink-0 pr-4 text-white"
-                  style={{ opacity: 0.85, borderRight: "1px solid rgba(255,255,255,0.25)" }}
+                  className="text-xs font-bold tracking-widest uppercase flex-shrink-0 pr-5 text-white leading-tight"
+                  style={{ opacity: 0.9, borderRight: "1px solid rgba(255,255,255,0.3)", minWidth: "90px" }}
                 >
                   Hemos<br />ayudado a:
                 </span>
 
-                {/* Nichos deslizantes */}
-                <div className="overflow-hidden flex-1 ml-4">
+                {/* Nichos deslizantes — más rápido */}
+                <div className="overflow-hidden flex-1 ml-5">
                   <div
                     className="flex whitespace-nowrap"
-                    style={{ animation: "marquee-nichos 24s linear infinite" }}
+                    style={{ animation: "marquee-nichos 16s linear infinite" }}
                   >
                     {items.map((n, i) => (
                       <span
                         key={i}
                         className="inline-flex items-center gap-3 text-sm font-semibold flex-shrink-0 px-5 text-white"
-                        style={{ opacity: 0.9 }}
+                        style={{ opacity: 0.92 }}
                       >
-                        <span className="w-1 h-1 rounded-full bg-white/60 flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />
                         {n}
                       </span>
                     ))}
