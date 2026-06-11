@@ -10,6 +10,7 @@ const novedades = [
     descripcion: "Querétaro: 25 & 26 jun · Alva Coffee & Health Bar\nCDMX: 27 & 28 jun · Tierra Garat Masaryk\nBranding experiencial, íntimo y artístico. Cupos muy limitados.",
     fecha: "25 – 28 junio 2026 · 5:00 pm",
     href: "/eventos/the-art-of-brand",
+    external: false,
   },
   {
     tipo: "Lanzamiento",
@@ -19,6 +20,7 @@ const novedades = [
     descripcion: "El programa de formación grupal más esperado: posicionamiento, comunicación de marca, sistema de ventas y mentoría en vivo.",
     fecha: "1 julio 2026",
     href: "https://boost-your-brand.vercel.app",
+    external: true,
   },
   {
     tipo: "Podcast",
@@ -26,8 +28,9 @@ const novedades = [
     color: "bg-lila-DEFAULT/10 text-lila-DEFAULT",
     titulo: "\"Lo que nos decimos últimamente\"",
     descripcion: "Un episodio para hablar sobre lo que callamos los empresarios: síndrome del impostor, comparación, pedir ayuda, claridad vs hiperactividad y gestión de riesgos.",
-    fecha: "Disponible ahora en Spotify",
-    href: "/podcast",
+    fecha: "Escuchar en Spotify →",
+    href: "https://open.spotify.com/show/6JkKJgmFDJFbdQSA4nh53m?si=663fa615dd684826",
+    external: true,
   },
 ];
 
@@ -59,6 +62,8 @@ export default function Novedades() {
               <Link
                 key={n.titulo}
                 href={n.href}
+                target={n.external ? "_blank" : undefined}
+                rel={n.external ? "noopener noreferrer" : undefined}
                 className="glass rounded-3xl p-6 hover:shadow-glass-hover transition-all duration-300 hover:-translate-y-1 group"
               >
                 <div className={`inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full ${n.color} mb-4`}>
