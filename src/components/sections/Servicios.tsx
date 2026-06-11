@@ -87,7 +87,7 @@ export default function Servicios() {
               }}
             />
 
-            {/* Foto recortada — el contenedor corta el espacio vacío inferior */}
+            {/* Foto recortada — contenedor con overflow:hidden corta el espacio vacío de rodillas para abajo */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -96,8 +96,8 @@ export default function Servicios() {
               className="relative z-10 w-full flex justify-end"
               style={{
                 overflow: "hidden",
-                /* Ajusta este valor para subir/bajar el corte (% de la imagen que se muestra) */
-                maxHeight: "76vh",
+                height: "70vh",   /* contenedor = 70vh, imagen = 88vh → muestra el 80% superior, corta rodillas */
+                flexShrink: 0,
               }}
             >
               <img
@@ -105,11 +105,12 @@ export default function Servicios() {
                 alt="Loreto — Directora de Loreto Consultora"
                 style={{
                   width: "auto",
-                  height: "84vh",
+                  height: "88vh",
                   maxWidth: "520px",
                   objectFit: "cover",
                   objectPosition: "top center",
                   display: "block",
+                  flexShrink: 0,
                   filter: "drop-shadow(-8px 0 32px rgba(192,0,90,0.1))",
                 }}
               />
