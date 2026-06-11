@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Reto", href: "https://boost-your-brand.vercel.app", external: true },
   { label: "Eventos", href: "/eventos", external: false },
   { label: "Formaciones", href: "/formaciones", external: false },
-  { label: "Vinculación", href: "/vinculacion", external: false },
+  // { label: "Vinculación", href: "/vinculacion", external: false }, // próximamente
   { label: "Nosotros", href: "/nosotros", external: false },
   { label: "Blog", href: "/blog", external: false },
   { label: "Herramientas", href: "/herramientas", external: false },
