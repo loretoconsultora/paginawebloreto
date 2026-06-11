@@ -10,12 +10,6 @@ const INCLUDES = [
   "Al menos 1 servicio digital monetizable",
 ];
 
-const STATS = [
-  { value: "+500", label: "Marcas construidas" },
-  { value: "+500", label: "Alumnos formados" },
-  { value: "LATAM", label: "USA & España" },
-];
-
 const HREF = "https://boost-your-brand.vercel.app";
 
 export default function BoostYourBrand() {
@@ -52,16 +46,6 @@ export default function BoostYourBrand() {
               <p className="text-white/75 leading-relaxed mb-8">
                 En 6 sesiones en vivo construyes tu identidad, tu oferta digital y sales con tu primer lanzamiento listo para escalar.
               </p>
-
-              {/* Stats */}
-              <div className="flex gap-8 mb-8">
-                {STATS.map((s) => (
-                  <div key={s.label}>
-                    <div className="font-playfair text-2xl font-bold text-white">{s.value}</div>
-                    <div className="text-xs text-white/60 uppercase tracking-widest mt-0.5">{s.label}</div>
-                  </div>
-                ))}
-              </div>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
