@@ -121,7 +121,7 @@ export default function Servicios() {
               className="relative z-10 w-full overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 55%, #E894FF 100%)",
-                borderRadius: "0",
+                borderRadius: "999px",
                 flexShrink: 0,
               }}
             >
