@@ -35,7 +35,7 @@ const servicios = [
     bulletGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8)",
     btnGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)",
     ctaHref: "#victoranza",
-    foto: null,
+    foto: "/servicios/victoranza.jpg",
   },
   {
     id: "estrategia-digital",
@@ -61,7 +61,7 @@ const servicios = [
     bulletGradient: "linear-gradient(135deg, #b8860b, #f5c842)",
     btnGradient: "linear-gradient(135deg, #b8860b, #f5c842, #ffe066)",
     ctaHref: "#estrategia-digital",
-    foto: null,
+    foto: "/servicios/estrategia-digital.jpg",
   },
   {
     id: "redes-sociales",
@@ -85,7 +85,7 @@ const servicios = [
     bulletGradient: "linear-gradient(135deg, #d4005a, #FF6A92)",
     btnGradient: "linear-gradient(135deg, #d4005a, #FF6A92, #ffaec4)",
     ctaHref: "#redes-sociales",
-    foto: null,
+    foto: "/servicios/redes-sociales.jpg",
   },
   {
     id: "direccion-creativa",
@@ -111,7 +111,7 @@ const servicios = [
     bulletGradient: "linear-gradient(135deg, #7a0035, #c0005a)",
     btnGradient: "linear-gradient(135deg, #7a0035, #c0005a, #e8006e)",
     ctaHref: "#direccion-creativa",
-    foto: null,
+    foto: "/servicios/direccion-creativa.jpg",
   },
 ];
 
@@ -132,14 +132,9 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
         <div className="flex flex-col rounded-[22px] bg-white overflow-hidden h-full">
 
           {/* Foto placeholder */}
-          <div
-            className="w-full flex items-center justify-center flex-shrink-0"
-            style={{ height: 160, background: `rgba(0,0,0,0.03)` }}
-          >
-            {s.foto ? (
+          <div className="w-full flex-shrink-0 overflow-hidden" style={{ height: 160, background: `rgba(0,0,0,0.05)` }}>
+            {s.foto && (
               <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" />
-            ) : (
-              <span className="text-xs font-mono text-grafito/20">foto próximamente</span>
             )}
           </div>
 
