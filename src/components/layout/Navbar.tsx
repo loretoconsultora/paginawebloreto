@@ -15,51 +15,6 @@ const navLinks = [
   { label: "Portal", href: "/portal" },
 ];
 
-function LogoFull() {
-  return (
-    <svg width="210" height="52" viewBox="0 0 210 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* ── Icono 4 bloques ── */}
-      {/* Teal pequeño — arriba izquierda */}
-      <rect x="0" y="2" width="15" height="15" rx="3" fill="#2DD4BF" />
-      {/* Rosa grande — arriba derecha */}
-      <rect x="18" y="0" width="20" height="20" rx="4" fill="#F393AE" />
-      {/* Amarillo L — abajo izquierda */}
-      <rect x="0" y="20" width="25" height="9" rx="0" fill="#FCCD0D" />
-      <rect x="0" y="20" width="15" height="22" rx="3" fill="#FCCD0D" />
-      {/* Teal pequeño — abajo derecha */}
-      <rect x="18" y="30" width="20" height="13" rx="3" fill="#2DD4BF" />
-
-      {/* ── "Loreto" wordmark ── */}
-      <text
-        x="48"
-        y="38"
-        fontFamily="Georgia, 'Palatino Linotype', serif"
-        fontSize="34"
-        fontWeight="bold"
-        fill="#3A3F4B"
-        letterSpacing="-0.8"
-      >
-        Loreto
-      </text>
-
-      {/* ── "CONSULTORA" curveado sobre la O de Loreto ── */}
-      <defs>
-        <path id="arcCurve" d="M 165 40 m -17 0 a 17 17 0 0 1 34 0" />
-      </defs>
-      <text
-        fontFamily="'Arial Narrow', Arial, sans-serif"
-        fontSize="6"
-        fontWeight="700"
-        fill="#3A3F4B"
-        letterSpacing="1.2"
-      >
-        <textPath href="#arcCurve" startOffset="50%" textAnchor="middle">
-          CONSULTORA
-        </textPath>
-      </text>
-    </svg>
-  );
-}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +35,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center" aria-label="Loreto Consultora — inicio">
-          <LogoFull />
+          <img src="/logo.svg" alt="Loreto Consultora" height={44} style={{ height: "44px", width: "auto" }} />
         </Link>
 
         {/* Desktop nav */}
