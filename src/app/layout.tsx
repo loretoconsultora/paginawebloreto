@@ -21,6 +21,10 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.jpg",
+    apple: "/favicon.jpg",
+  },
   title: "Loreto Consultora | Estrategia de Marketing y Posicionamiento de Marca",
   description:
     "Consultora especializada en marketing estratégico, posicionamiento de marca personal y crecimiento empresarial. Presencia en México, Argentina, Colombia, EE.UU. y España.",
