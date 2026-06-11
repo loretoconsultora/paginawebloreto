@@ -5,14 +5,14 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Servicios", href: "/servicios" },
-  { label: "Reto", href: "/reto" },
-  { label: "Eventos", href: "/eventos" },
-  { label: "Formaciones", href: "/formaciones" },
-  { label: "Vinculación", href: "/vinculacion" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Blog", href: "/blog" },
-  { label: "Herramientas", href: "/herramientas" },
+  { label: "Servicios", href: "/servicios", external: false },
+  { label: "Reto", href: "https://boost-your-brand.vercel.app", external: true },
+  { label: "Eventos", href: "/eventos", external: false },
+  { label: "Formaciones", href: "/formaciones", external: false },
+  { label: "Vinculación", href: "/vinculacion", external: false },
+  { label: "Nosotros", href: "/nosotros", external: false },
+  { label: "Blog", href: "/blog", external: false },
+  { label: "Herramientas", href: "/herramientas", external: false },
 ];
 
 
@@ -44,6 +44,8 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               className="text-sm font-medium text-grafito hover:text-coral transition-colors duration-200"
             >
               {link.label}
