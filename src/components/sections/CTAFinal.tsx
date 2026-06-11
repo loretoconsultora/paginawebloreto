@@ -36,7 +36,7 @@ export default function CTAFinal() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <h2 className="font-playfair text-5xl font-bold text-white mb-6 leading-tight">
-          ¿Lista para transformar tu marca?
+          El único riesgo real es no empezar.
         </h2>
         <p className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
           En 15 minutos sabrás exactamente dónde está tu marca y cuáles son los pasos para llevarla al siguiente nivel.
