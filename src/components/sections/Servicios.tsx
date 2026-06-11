@@ -96,7 +96,7 @@ export default function Servicios() {
               className="relative z-10 w-full flex justify-end"
               style={{
                 overflow: "hidden",
-                height: "62vh",
+                height: "66vh",
                 flexShrink: 0,
               }}
             >
@@ -129,7 +129,7 @@ export default function Servicios() {
               <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
                 style={{ background: "linear-gradient(to left, rgba(120,0,70,0.9), transparent)" }} />
 
-              <div className="flex items-center py-5 px-6" style={{ minHeight: "76px" }}>
+              <div className="flex items-center py-3 px-6" style={{ minHeight: "52px" }}>
                 {/* Texto fijo */}
                 <span
                   className="text-xs font-bold tracking-widest uppercase flex-shrink-0 pr-5 text-white leading-tight"
@@ -142,7 +142,7 @@ export default function Servicios() {
                 <div className="overflow-hidden flex-1 ml-5">
                   <div
                     className="flex whitespace-nowrap"
-                    style={{ animation: "marquee-nichos 16s linear infinite" }}
+                    style={{ animation: "marquee-nichos 10s linear infinite" }}
                   >
                     {items.map((n, i) => (
                       <span
