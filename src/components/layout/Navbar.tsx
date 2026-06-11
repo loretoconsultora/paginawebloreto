@@ -35,13 +35,18 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            {/* Logo icon simplified */}
-            <div className="w-8 h-8 relative">
-              <div className="absolute top-0 left-0 w-3.5 h-3.5 bg-[#2dd4bf] rounded-sm" />
-              <div className="absolute top-0 right-0 w-3.5 h-3.5 bg-[#F393AE] rounded-sm" />
-              <div className="absolute bottom-0 left-0 w-3.5 h-3.5 bg-[#FCCD0D] rounded-sm" />
-              <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#2dd4bf] rounded-sm" />
-            </div>
+            {/* Logo icon fiel al original */}
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Arriba izquierda — teal pequeño */}
+              <rect x="4" y="4" width="38" height="38" rx="9" fill="#2DD4BF" />
+              {/* Arriba derecha — rosa grande */}
+              <rect x="50" y="4" width="46" height="46" rx="11" fill="#F393AE" />
+              {/* Abajo izquierda — amarillo en L */}
+              <path d="M4 50 H46 V96 Q46 96 38 96 H12 Q4 96 4 88 V50Z" fill="#FCCD0D" />
+              <rect x="4" y="50" width="58" height="12" rx="0" fill="#FCCD0D" />
+              {/* Abajo derecha — teal rectangular */}
+              <rect x="62" y="62" width="34" height="34" rx="9" fill="#2DD4BF" />
+            </svg>
             <span className="font-playfair text-xl font-bold text-grafito">
               Loreto <span className="text-sm font-montserrat font-semibold tracking-widest text-coral">CONSULTORA</span>
             </span>
