@@ -244,6 +244,66 @@ function CinematicHero() {
   );
 }
 
+// ─── Datos de consultorías ────────────────────────────────────────────
+const AUDITORIAS = [
+  "Activos digitales",
+  "Optimización de oferta",
+  "Marca",
+  "Mercado",
+];
+
+const CONSULTORIAS = [
+  {
+    titulo: "Estrategia de Comunicación y Posicionamiento",
+    icon: "📡",
+    borderGradient: "linear-gradient(135deg, #c0005a, #FF6A92)",
+    badgeColor: "#c0005a",
+    badgeBg: "rgba(192,0,90,0.08)",
+  },
+  {
+    titulo: "Estrategia de Marca y Dirección Creativa",
+    icon: "🎨",
+    borderGradient: "linear-gradient(135deg, #FF6A92, #E894FF)",
+    badgeColor: "#d4005a",
+    badgeBg: "rgba(212,0,90,0.08)",
+  },
+  {
+    titulo: "Estrategia Comercial / Customer Journey",
+    icon: "🛤️",
+    borderGradient: "linear-gradient(135deg, #b8860b, #f5c842, #ffe066)",
+    badgeColor: "#7a5800",
+    badgeBg: "rgba(122,88,0,0.08)",
+  },
+  {
+    titulo: "Estrategia Digital",
+    icon: "💻",
+    borderGradient: "linear-gradient(135deg, #6a00c8, #E894FF)",
+    badgeColor: "#6a00c8",
+    badgeBg: "rgba(106,0,200,0.08)",
+  },
+  {
+    titulo: "Construcción y Lanzamiento de Oferta",
+    icon: "🚀",
+    borderGradient: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)",
+    badgeColor: "#0d6b6d",
+    badgeBg: "rgba(13,107,109,0.08)",
+  },
+  {
+    titulo: "Estrategia RRSS",
+    icon: "📱",
+    borderGradient: "linear-gradient(135deg, #c0005a, #FF6A92, #ffaec4)",
+    badgeColor: "#c0005a",
+    badgeBg: "rgba(192,0,90,0.08)",
+  },
+  {
+    titulo: "Estrategias de Relaciones Públicas",
+    icon: "🤝",
+    borderGradient: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)",
+    badgeColor: "#1a0a2e",
+    badgeBg: "rgba(26,10,46,0.07)",
+  },
+];
+
 // ─── Página completa ──────────────────────────────────────────────────
 export default function ConsultoriaPage() {
   return (
@@ -252,30 +312,102 @@ export default function ConsultoriaPage() {
       <main>
         <CinematicHero />
 
-        {/* Sección de consultorías — próximamente */}
-        <section className="py-24 bg-white text-center">
-          <div className="max-w-2xl mx-auto px-6">
-            <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#c0005a" }}>
-              Nuestras consultorías
-            </p>
-            <h2 className="font-playfair text-4xl sm:text-5xl font-bold mb-5" style={{
-              background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 50%, #E894FF 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}>
-              Tu camino, tu ritmo
-            </h2>
-            <p className="text-grafito/65 text-lg leading-relaxed mb-8">
-              Trabajamos contigo para identificar exactamente en qué punto está tu marca y cuál es el siguiente paso real.
-            </p>
-            <Link
-              href={CALENDAR}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{ background: "linear-gradient(135deg, #c0005a, #FF6A92, #E894FF)", boxShadow: "0 8px 28px rgba(192,0,90,0.35)" }}
-            >
-              Agendar consultoría gratuita <ArrowRight size={16} />
-            </Link>
+        {/* Sección de consultorías */}
+        <section className="py-24 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+            {/* Header */}
+            <div className="text-center mb-14">
+              <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#c0005a" }}>
+                Nuestras consultorías
+              </p>
+              <h2 className="font-playfair text-4xl sm:text-5xl font-bold mb-4" style={{
+                background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 50%, #E894FF 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+              }}>
+                Tu camino, tu ritmo
+              </h2>
+              <p className="text-grafito/60 text-lg leading-relaxed max-w-xl mx-auto">
+                Sesiones estratégicas diseñadas para el momento exacto de tu negocio.
+              </p>
+            </div>
+
+            {/* Card de Auditorías — ocupa ancho completo */}
+            <div className="rounded-3xl p-[3px] mb-6" style={{ background: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)" }}>
+              <div className="rounded-[22px] bg-white px-8 py-7">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                  <div className="flex-1">
+                    <div
+                      className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 border"
+                      style={{ color: "#0d6b6d", borderColor: "rgba(13,107,109,0.3)", background: "rgba(13,107,109,0.07)" }}
+                    >
+                      🔍 Auditorías
+                    </div>
+                    <p className="text-grafito/60 text-sm mb-4">Diagnósticos profundos para conocer el estado real de tu marca.</p>
+                    <div className="flex flex-wrap gap-2">
+                      {AUDITORIAS.map((a) => (
+                        <span
+                          key={a}
+                          className="text-sm font-medium px-4 py-1.5 rounded-full"
+                          style={{ background: "rgba(103,198,200,0.12)", color: "#0d6b6d", border: "1px solid rgba(103,198,200,0.4)" }}
+                        >
+                          {a}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <Link
+                    href={CALENDAR}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity flex-shrink-0"
+                    style={{ background: "linear-gradient(135deg, #3ab8ba, #67c6c8)", boxShadow: "0 6px 20px rgba(103,198,200,0.4)" }}
+                  >
+                    Agendar <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Grid de consultorías individuales */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {CONSULTORIAS.map((c) => (
+                <div key={c.titulo} className="rounded-3xl p-[3px]" style={{ background: c.borderGradient }}>
+                  <div className="rounded-[22px] bg-white px-6 py-6 h-full flex flex-col justify-between gap-4">
+                    <div>
+                      <span className="text-2xl mb-3 block">{c.icon}</span>
+                      <h3 className="font-playfair text-base font-bold text-grafito leading-snug">
+                        {c.titulo}
+                      </h3>
+                    </div>
+                    <Link
+                      href={CALENDAR}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full self-start hover:opacity-80 transition-opacity text-white"
+                      style={{ background: c.borderGradient }}
+                    >
+                      Agendar <ArrowRight size={11} />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA final */}
+            <div className="text-center mt-14">
+              <p className="text-grafito/55 text-sm mb-5">¿No sabes cuál es la indicada para ti?</p>
+              <Link
+                href={CALENDAR}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition-opacity"
+                style={{ background: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)", boxShadow: "0 8px 28px rgba(192,0,90,0.35)" }}
+              >
+                Hablemos y lo encontramos juntos <ArrowRight size={16} />
+              </Link>
+            </div>
+
           </div>
         </section>
       </main>
