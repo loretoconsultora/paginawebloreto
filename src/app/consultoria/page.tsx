@@ -18,112 +18,47 @@ const PLANET_STATES = [
   { x: 160,  y: 40,   scale: 0.85, size: 280 },
 ];
 
-// Venus y Marte — más pequeños, distintos rosas
+// Venus y Marte — imágenes reales, más pequeños que la Tierra
 const SECONDARY = [
   {
     name: "Venus",
-    size: 70,
-    orbit: 210,
+    size: 75,
+    orbit: 220,
     speed: 12,
     start: 60,
-    bg: "radial-gradient(circle at 38% 35%, #ffd6e0, #ffb3c6, #FF6A92)",
-    shadow: "0 0 22px rgba(255,179,198,0.7), 0 0 44px rgba(255,106,146,0.35)",
+    img: "/planet/venus.png",
+    opacity: 0.85,
+    shadow: "0 0 20px rgba(255,179,198,0.6), 0 0 40px rgba(255,106,146,0.3)",
   },
   {
     name: "Marte",
-    size: 48,
-    orbit: 310,
+    size: 52,
+    orbit: 320,
     speed: 20,
     start: 200,
-    bg: "radial-gradient(circle at 38% 35%, #ffaec4, #c0005a, #7a0035)",
-    shadow: "0 0 18px rgba(192,0,90,0.6), 0 0 36px rgba(192,0,90,0.25)",
+    img: "/planet/marte.png",
+    opacity: 0.8,
+    shadow: "0 0 16px rgba(192,0,90,0.55), 0 0 32px rgba(192,0,90,0.25)",
   },
 ];
 
-// ─── Tierra con continentes en SVG ────────────────────────────────────
+// ─── Tierra con imagen real ───────────────────────────────────────────
 function EarthGlobe({ size }: { size: number }) {
-  const r = size / 2;
-  const id = "eg";
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display: "block", overflow: "visible" }}>
-      <defs>
-        {/* Gradiente esférico base */}
-        <radialGradient id={`${id}base`} cx="38%" cy="35%" r="70%">
-          <stop offset="0%"   stopColor="#FF6A92" stopOpacity="0.25" />
-          <stop offset="55%"  stopColor="#c0005a" stopOpacity="0.18" />
-          <stop offset="100%" stopColor="#7a0035" stopOpacity="0.35" />
-        </radialGradient>
-        {/* Gradiente para continentes */}
-        <radialGradient id={`${id}land`} cx="40%" cy="35%" r="65%">
-          <stop offset="0%"   stopColor="#ffb3c6" stopOpacity="1" />
-          <stop offset="100%" stopColor="#FF6A92" stopOpacity="0.7" />
-        </radialGradient>
-        {/* Brillo atmosférico */}
-        <radialGradient id={`${id}atmo`} cx="50%" cy="50%" r="50%">
-          <stop offset="75%"  stopColor="transparent" />
-          <stop offset="100%" stopColor="#FF6A92" stopOpacity="0.5" />
-        </radialGradient>
-        <clipPath id={`${id}clip`}>
-          <circle cx={r} cy={r} r={r - 1} />
-        </clipPath>
-      </defs>
-
-      {/* Base esférica */}
-      <circle cx={r} cy={r} r={r - 1} fill={`url(#${id}base)`} />
-
-      {/* Continentes simplificados — escala relativa al radio */}
-      <g clipPath={`url(#${id}clip)`} fill={`url(#${id}land)`} fillOpacity="0.55">
-        {/* América del Norte */}
-        <path d={`
-          M ${r*0.18} ${r*0.22}
-          C ${r*0.22} ${r*0.14}, ${r*0.38} ${r*0.16}, ${r*0.42} ${r*0.28}
-          C ${r*0.46} ${r*0.38}, ${r*0.44} ${r*0.52}, ${r*0.36} ${r*0.56}
-          C ${r*0.28} ${r*0.60}, ${r*0.16} ${r*0.52}, ${r*0.14} ${r*0.42}
-          C ${r*0.12} ${r*0.32}, ${r*0.14} ${r*0.28}, ${r*0.18} ${r*0.22} Z
-        `} />
-        {/* América del Sur */}
-        <path d={`
-          M ${r*0.30} ${r*0.62}
-          C ${r*0.38} ${r*0.60}, ${r*0.44} ${r*0.68}, ${r*0.42} ${r*0.82}
-          C ${r*0.40} ${r*0.94}, ${r*0.30} ${r*1.02}, ${r*0.24} ${r*0.96}
-          C ${r*0.18} ${r*0.88}, ${r*0.20} ${r*0.74}, ${r*0.24} ${r*0.66}
-          C ${r*0.26} ${r*0.62}, ${r*0.28} ${r*0.62}, ${r*0.30} ${r*0.62} Z
-        `} />
-        {/* Europa */}
-        <path d={`
-          M ${r*0.56} ${r*0.24}
-          C ${r*0.62} ${r*0.20}, ${r*0.70} ${r*0.22}, ${r*0.72} ${r*0.30}
-          C ${r*0.74} ${r*0.38}, ${r*0.68} ${r*0.44}, ${r*0.62} ${r*0.44}
-          C ${r*0.56} ${r*0.44}, ${r*0.52} ${r*0.38}, ${r*0.52} ${r*0.32}
-          C ${r*0.52} ${r*0.26}, ${r*0.54} ${r*0.26}, ${r*0.56} ${r*0.24} Z
-        `} />
-        {/* África */}
-        <path d={`
-          M ${r*0.56} ${r*0.48}
-          C ${r*0.64} ${r*0.46}, ${r*0.72} ${r*0.52}, ${r*0.72} ${r*0.64}
-          C ${r*0.72} ${r*0.80}, ${r*0.64} ${r*0.92}, ${r*0.56} ${r*0.94}
-          C ${r*0.48} ${r*0.94}, ${r*0.44} ${r*0.84}, ${r*0.46} ${r*0.70}
-          C ${r*0.48} ${r*0.56}, ${r*0.52} ${r*0.50}, ${r*0.56} ${r*0.48} Z
-        `} />
-        {/* Asia */}
-        <path d={`
-          M ${r*0.74} ${r*0.20}
-          C ${r*0.86} ${r*0.16}, ${r*1.02} ${r*0.18}, ${r*1.06} ${r*0.30}
-          C ${r*1.10} ${r*0.42}, ${r*1.04} ${r*0.54}, ${r*0.94} ${r*0.58}
-          C ${r*0.84} ${r*0.62}, ${r*0.74} ${r*0.56}, ${r*0.72} ${r*0.46}
-          C ${r*0.70} ${r*0.36}, ${r*0.70} ${r*0.26}, ${r*0.74} ${r*0.20} Z
-        `} />
-        {/* Australia */}
-        <ellipse cx={r*0.92} cy={r*0.76} rx={r*0.10} ry={r*0.07} transform={`rotate(-8 ${r*0.92} ${r*0.76})`} />
-      </g>
-
-      {/* Brillo atmosférico exterior */}
-      <circle cx={r} cy={r} r={r - 1} fill={`url(#${id}atmo)`} />
-      {/* Borde de atmósfera */}
-      <circle cx={r} cy={r} r={r - 1} fill="none" stroke="#FF6A92" strokeWidth="2.5" strokeOpacity="0.4" />
-      <circle cx={r} cy={r} r={r + 6} fill="none" stroke="#c0005a" strokeWidth="1.5" strokeOpacity="0.15" />
-      <circle cx={r} cy={r} r={r + 14} fill="none" stroke="#FF6A92" strokeWidth="1" strokeOpacity="0.08" />
-    </svg>
+    <div style={{ position: "relative", width: size, height: size }}>
+      <img
+        src="/planet/tierra.png"
+        alt="Tierra"
+        style={{ width: "100%", height: "100%", objectFit: "contain", opacity: 0.82 }}
+      />
+      {/* Halo atmosférico */}
+      <div style={{
+        position: "absolute", inset: -12,
+        borderRadius: "50%",
+        boxShadow: "0 0 50px rgba(255,106,146,0.55), 0 0 100px rgba(192,0,90,0.3)",
+        pointerEvents: "none",
+      }} />
+    </div>
   );
 }
 
@@ -215,11 +150,15 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
           marginLeft: -p.size / 2,
           marginTop: -p.size / 2,
           width: p.size, height: p.size,
-          borderRadius: "50%",
-          background: p.bg,
-          boxShadow: p.shadow,
+          filter: `drop-shadow(0 0 8px rgba(255,106,146,0.5))`,
         }}
-      />
+      >
+        <img
+          src={p.img}
+          alt={p.name}
+          style={{ width: "100%", height: "100%", objectFit: "contain", opacity: p.opacity }}
+        />
+      </div>
     </motion.div>
   );
 }
@@ -240,7 +179,7 @@ function CinematicHero() {
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ height: "100vh", background: "#2d0018" }}
+      style={{ height: "100vh", background: "#5c0030" }}
     >
       {/* Nebulosas de fondo — halos suaves en colores marca */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
