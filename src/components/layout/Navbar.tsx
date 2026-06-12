@@ -112,6 +112,13 @@ export default function Navbar() {
               );
             })}
             <Link
+              href="/portal"
+              onClick={() => setIsOpen(false)}
+              className="text-sm font-semibold text-indigo-DEFAULT border border-indigo-DEFAULT/30 px-4 py-2 rounded-full text-center hover:bg-indigo-pale transition-all duration-200"
+            >
+              Portal
+            </Link>
+            <Link
               href="https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2"
             target="_blank"
             rel="noopener noreferrer"
