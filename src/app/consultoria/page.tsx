@@ -13,7 +13,7 @@ const CALENDAR = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7
 const PLANET_STATES = [
   { x: 0,    y: 60,   scale: 1,    size: 280 },
   { x: 190,  y: 0,    scale: 1.35, size: 280 },
-  { x: 0,    y: 0,    scale: 4.2,  size: 280 },
+  { x: 0,    y: 0,    scale: 7.5,  size: 280 },
   { x: 0,    y: 30,   scale: 1,    size: 280 },
   { x: 160,  y: 40,   scale: 0.85, size: 280 },
 ];
