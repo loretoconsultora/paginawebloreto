@@ -116,7 +116,7 @@ export default function PortalPage() {
           {/* Countdown */}
           <div className="mb-12">
             <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-6">
-              Lanzamiento en
+              Disponible en
             </p>
             <div className="flex items-start justify-center gap-3 sm:gap-5">
               <Unit value={days} label="días" />
