@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ArrowLeft } from "lucide-react";
 
-const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)";
 // 15 de junio 2026, 9:00 AM hora México (CDT = UTC-5)
 const TARGET = new Date("2026-06-15T09:00:00-05:00").getTime();
 
@@ -63,11 +63,14 @@ export default function PortalPage() {
       <Navbar />
       <main
         className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-32 relative overflow-hidden"
-        style={{ background: GRADIENT }}
       >
-        {/* Decorative blobs */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-white/10 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-white/10 blur-3xl pointer-events-none" />
+        {/* Foto de fondo */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/portal/bg.jpg')" }}
+        />
+        {/* Overlay degradado magenta-rosa con alta opacidad para que predomine el color */}
+        <div className="absolute inset-0" style={{ background: GRADIENT, opacity: 0.88 }} />
 
         <div className="relative z-10 max-w-2xl mx-auto">
           {/* Badge */}
