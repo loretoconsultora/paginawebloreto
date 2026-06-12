@@ -112,56 +112,67 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
   );
 }
 
-// ─── Planeta secundario orbitando face-on con profundidad real ────────
+// ─── Planeta secundario orbitando face-on — DOM mutation para 60fps ───
 function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean }) {
-  const [pos, setPos] = useState({ x: 0, y: 0, scale: 1, zIndex: 1, opacity: 0 });
+  const imgRef = useRef<HTMLImageElement>(null);
   const angleRef = useRef((p.start / 360) * Math.PI * 2);
   const rafRef = useRef<number>(0);
+  const visibleRef = useRef(visible);
+
+  useEffect(() => { visibleRef.current = visible; }, [visible]);
 
   useEffect(() => {
-    if (!visible) {
-      setPos((prev) => ({ ...prev, opacity: 0 }));
-      return;
-    }
-    // Fade in
-    setPos((prev) => ({ ...prev, opacity: p.opacity }));
+    // delta por frame a 60fps: una vuelta completa en p.speed segundos
+    const delta = (2 * Math.PI) / (p.speed * 60);
 
-    const fps = 60;
-    const deltaAngle = (2 * Math.PI) / (p.speed * fps);
-
-    const animate = () => {
-      angleRef.current += deltaAngle;
+    const tick = () => {
+      angleRef.current += delta;
       const θ = angleRef.current;
-      // Face-on circle: x maps to cos, y maps to sin (squished for perspective feel)
-      const x = Math.cos(θ) * p.orbit;
-      const y = Math.sin(θ) * p.orbit * 0.35; // vertical ellipse for slight tilt feel
-      // depth: sin(θ) > 0 → coming toward viewer
-      const depth = Math.sin(θ); // -1 back, +1 front
-      const scale = 0.55 + 0.75 * (depth + 1) / 2; // 0.55 (back) → 1.3 (front)
-      const zIndex = depth > 0 ? 10 : 1; // front=above Earth(5), back=below Earth
-      setPos({ x, y, scale, zIndex, opacity: p.opacity });
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [visible, p.orbit, p.speed, p.opacity]);
 
-  const size = p.size * pos.scale;
+      // Órbita de frente: círculo en X, aplastado en Y para dar perspectiva
+      const ox = Math.cos(θ) * p.orbit;
+      const oy = Math.sin(θ) * p.orbit * 0.32;
+
+      // depth: +1 = viene hacia el espectador, -1 = se aleja
+      const depth = Math.sin(θ);
+      // escala: 0.5 cuando está detrás → 1.4 cuando está delante
+      const scale = 0.5 + 0.9 * (depth + 1) / 2;
+      const size = p.size * scale;
+
+      const el = imgRef.current;
+      if (el) {
+        el.style.width  = `${size}px`;
+        el.style.height = `${size}px`;
+        // centrar en el punto de origen y desplazar por la órbita
+        el.style.transform = `translate(calc(-50% + ${ox}px), calc(-50% + ${oy}px))`;
+        el.style.zIndex = depth > 0 ? "10" : "1";
+        el.style.opacity = visibleRef.current ? String(p.opacity) : "0";
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [p.orbit, p.speed, p.size, p.opacity]);
+
   return (
     <img
+      ref={imgRef}
       src={p.img}
       alt={p.name}
       style={{
         position: "absolute",
-        left: "50%", top: "50%",
-        width: size, height: size,
-        marginLeft: -size / 2 + pos.x,
-        marginTop: -size / 2 + pos.y,
+        left: "50%",
+        top: "50%",
+        width: p.size,
+        height: p.size,
         objectFit: "contain",
-        opacity: pos.opacity,
-        zIndex: pos.zIndex,
-        transition: "opacity 0.8s ease",
+        opacity: 0,
+        transition: "opacity 0.6s ease",
         pointerEvents: "none",
+        willChange: "transform, width, height, opacity",
       }}
     />
   );
@@ -228,27 +239,37 @@ function CinematicHero() {
         ))}
       </div>
 
-      {/* Venus y Marte orbitando face-on con oclusión real */}
-      <div className="absolute inset-0 pointer-events-none" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {/* Sistema solar completo — todo en el mismo stacking context para oclusión real */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
+        {/* Contenedor pivot centrado — sirve de origen para planetas y Tierra */}
         <div style={{ position: "relative", width: 0, height: 0 }}>
+
+          {/* Planetas traseros (zIndex 1 cuando van detrás) */}
           {SECONDARY.map((p, i) => (
             <OrbitPlanet key={i} p={p} visible={showOrbit} />
           ))}
-        </div>
-      </div>
 
-      {/* Tierra — zIndex 5 para ocluir planetas en el fondo */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 5 }}>
-        <motion.div
-          animate={{ x: ps.x, y: ps.y, scale: ps.scale }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            width: ps.size, height: ps.size,
-            flexShrink: 0,
-          }}
-        >
-          <EarthGlobe size={ps.size} />
-        </motion.div>
+          {/* Tierra — zIndex 5, entre fondo (1) y primer plano (10) */}
+          <motion.div
+            animate={{ x: ps.x, y: ps.y, scale: ps.scale }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: "absolute",
+              left: "50%", top: "50%",
+              marginLeft: -ps.size / 2,
+              marginTop: -ps.size / 2,
+              width: ps.size, height: ps.size,
+              zIndex: 5,
+              flexShrink: 0,
+            }}
+          >
+            <EarthGlobe size={ps.size} />
+          </motion.div>
+
+        </div>
       </div>
 
       {/* Texto de la escena */}
