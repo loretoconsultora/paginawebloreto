@@ -13,7 +13,7 @@ const CALENDAR = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7
 const PLANET_STATES = [
   { x: 0,    y: 60,   scale: 1,    size: 280 },
   { x: 190,  y: 0,    scale: 1.35, size: 280 },
-  { x: 0,    y: 0,    scale: 7.5,  size: 280 },
+  { x: 0,    y: 0,    scale: 4.5,  size: 280 },
   { x: 0,    y: 30,   scale: 1,    size: 280 },
   { x: 160,  y: 40,   scale: 0.85, size: 280 },
 ];
@@ -125,9 +125,12 @@ function OrbitPlanet({ p }: { p: typeof SECONDARY[0] }) {
       const ox = Math.cos(θ) * p.orbit;
       const oy = Math.sin(θ) * p.orbit * 0.4;
       const depth = Math.sin(θ);
-      const scale = 0.5 + 1.0 * (depth + 1) / 2; // 0.5 → 1.5
+      const scale = 0.5 + 1.0 * (depth + 1) / 2;
       const size = p.size * scale;
-      const op = p.opacity * (0.4 + 0.6 * (depth + 1) / 2);
+      // Cuando el planeta está detrás de la Tierra (depth < 0), se oculta completamente
+      // Zona de transición suave: de 0 (totalmente oculto) a 1 (totalmente visible)
+      const visibility = depth < 0 ? 0 : Math.min(1, depth * 4); // fade rápido al salir
+      const op = p.opacity * visibility;
 
       const el = imgRef.current;
       if (el) {
