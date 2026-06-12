@@ -112,7 +112,7 @@ const servicios = [
     btnGradient: "linear-gradient(135deg, #7a0035, #c0005a, #e8006e)",
     ctaHref: "#direccion-creativa",
     foto: "/servicios/direccion-creativa.jpg",
-    fotoPosition: "left center",
+    fotoPosition: "left top",
   },
 ];
 
