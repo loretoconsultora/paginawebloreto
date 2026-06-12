@@ -11,11 +11,10 @@ const CALENDAR = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7
 
 // ─── Planeta principal ───────────────────────────────────────────────
 const PLANET_STATES = [
-  { x: 0,    y: 60,   scale: 1,    size: 280 },
-  { x: 190,  y: 0,    scale: 1.35, size: 280 },
-  { x: 0,    y: 0,    scale: 4.5,  size: 280 },
-  { x: 0,    y: 30,   scale: 1,    size: 280 },
-  { x: 160,  y: 40,   scale: 0.85, size: 280 },
+  { x: 0,    y: 60,   scale: 1,    size: 280 },  // posibilidades
+  { x: 190,  y: 0,    scale: 1.35, size: 280 },  // oportunidades
+  { x: 0,    y: 30,   scale: 1,    size: 280 },  // tu sistema solar
+  { x: 160,  y: 40,   scale: 0.85, size: 280 },  // encuentra la tuya
 ];
 
 // Venus y Marte — Venus en órbita interior izquierda, Marte en exterior derecha
@@ -53,11 +52,10 @@ function EarthGlobe({ size }: { size: number }) {
 
 // ─── Contenido de texto por escena ───────────────────────────────────
 const SCENES = [
-  { pre: "Un universo de",   bold: "posibilidades",         sub: null,                                                                       layout: "center"       },
-  { pre: "Infinitas",        bold: "oportunidades",         sub: "Cada marca es un mundo único con su propio potencial de crecimiento.",      layout: "left"         },
-  { pre: "Y múltiples",      bold: "caminos",               sub: "No existe una sola ruta al éxito. Exploramos la tuya.",                    layout: "bottom-left"  },
-  { pre: "Tu marca,",        bold: "tu sistema solar",      sub: "Cada pieza orbita con un propósito: hacer crecer tu negocio.",              layout: "center-bottom"},
-  { pre: "Encuentra el tuyo","bold": "con nuestra consultoría", sub: "Sesiones estratégicas diseñadas para tu momento de negocio.",          layout: "left-cta"     },
+  { pre: "Un universo de",   bold: "posibilidades",            boldSmall: null,         sub: null,                                                         layout: "center",       preCursive: true  },
+  { pre: null,               bold: "Infinitas",                 boldSmall: "oportunidades", sub: "Y múltiples caminos, versiones de ti.",                    layout: "left",         preCursive: false },
+  { pre: "Tu marca,",        bold: "tu sistema solar",         boldSmall: null,         sub: "Cada pieza orbita con un propósito: hacer crecer tu negocio.", layout: "center-bottom",preCursive: false },
+  { pre: "Encuentra la tuya","bold": "con nuestras consultorías", boldSmall: null,      sub: "Sesiones estratégicas diseñadas para tu momento de negocio.", layout: "left-cta",     preCursive: false },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -80,15 +78,41 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className={`absolute select-none ${posClass[scene.layout]}`}
       >
-        <p className="text-white/50 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2">
-          {scene.pre}
-        </p>
-        <h2
-          className="font-playfair font-bold leading-tight mb-3 text-white"
-          style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
-        >
-          {scene.bold}
-        </h2>
+        {/* Pre-título: cursiva grande (escena 1), normal uppercase, o nada */}
+        {scene.pre && (scene.preCursive ? (
+          <p className="font-dancing text-white/80 mb-1" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
+            {scene.pre}
+          </p>
+        ) : (
+          <p className="text-white/50 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2">
+            {scene.pre}
+          </p>
+        ))}
+
+        {/* Título: si boldSmall existe → bold grande + boldSmall pequeño */}
+        {scene.boldSmall ? (
+          <>
+            <h2
+              className="font-playfair font-bold leading-none text-white"
+              style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
+            >
+              {scene.bold}
+            </h2>
+            <h2
+              className="font-playfair font-bold leading-tight mb-3 text-white/70"
+              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+            >
+              {scene.boldSmall}
+            </h2>
+          </>
+        ) : (
+          <h2
+            className="font-playfair font-bold leading-tight mb-3 text-white"
+            style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
+          >
+            {scene.bold}
+          </h2>
+        )}
         {scene.sub && (
           <p className="text-white/65 text-sm sm:text-base leading-relaxed max-w-sm mb-5">
             {scene.sub}
