@@ -45,20 +45,17 @@ const SECONDARY = [
 // ─── Tierra con imagen real ───────────────────────────────────────────
 function EarthGlobe({ size }: { size: number }) {
   return (
-    <div style={{ position: "relative", width: size, height: size }}>
-      <img
-        src="/planet/tierra.png"
-        alt="Tierra"
-        style={{ width: "100%", height: "100%", objectFit: "contain", opacity: 0.82 }}
-      />
-      {/* Halo atmosférico */}
-      <div style={{
-        position: "absolute", inset: -12,
-        borderRadius: "50%",
-        boxShadow: "0 0 50px rgba(255,106,146,0.55), 0 0 100px rgba(192,0,90,0.3)",
-        pointerEvents: "none",
-      }} />
-    </div>
+    <img
+      src="/planet/tierra.png"
+      alt="Tierra"
+      style={{
+        width: size,
+        height: size,
+        objectFit: "contain",
+        opacity: 0.9,
+        filter: "drop-shadow(0 0 28px rgba(255,180,210,0.75)) drop-shadow(0 0 60px rgba(255,120,170,0.4))",
+      }}
+    />
   );
 }
 
@@ -240,7 +237,6 @@ function CinematicHero() {
           style={{
             width: ps.size, height: ps.size,
             flexShrink: 0,
-            filter: "drop-shadow(0 0 40px rgba(192,0,90,0.5)) drop-shadow(0 0 80px rgba(192,0,90,0.2))",
           }}
         >
           <EarthGlobe size={ps.size} />
