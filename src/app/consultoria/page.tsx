@@ -18,23 +18,23 @@ const PLANET_STATES = [
   { x: 160,  y: 40,   scale: 0.85, size: 280 },
 ];
 
-// Venus y Marte — imágenes reales
+// Venus y Marte — Venus en órbita interior izquierda, Marte en exterior derecha
 const SECONDARY = [
   {
     name: "Venus",
-    size: 100,   // tamaño base (se escala con profundidad)
-    orbit: 200,  // radio de órbita en px
-    speed: 14,   // segundos por vuelta
-    start: 45,   // ángulo inicial en grados
+    size: 100,
+    orbit: 210,  // órbita interior (más cerca de la Tierra)
+    speed: 14,
+    start: 180,  // 180° → cos=-1 → lado izquierdo al arrancar
     img: "/planet/venus.png",
     opacity: 0.92,
   },
   {
     name: "Marte",
     size: 72,
-    orbit: 300,
+    orbit: 320,  // órbita exterior (más lejos)
     speed: 22,
-    start: 220,
+    start: 0,    // 0° → cos=+1 → lado derecho al arrancar
     img: "/planet/marte.png",
     opacity: 0.88,
   },
@@ -223,7 +223,7 @@ function CinematicHero() {
 
       {/* Anillos de órbita — elipse inclinada que coincide con el movimiento de los planetas */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {[{ r: 200, alpha: 0.22 }, { r: 300, alpha: 0.15 }].map(({ r, alpha }, i) => (
+        {[{ r: 210, alpha: 0.22 }, { r: 320, alpha: 0.15 }].map(({ r, alpha }, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
