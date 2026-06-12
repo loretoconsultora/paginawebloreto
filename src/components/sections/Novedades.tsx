@@ -106,9 +106,9 @@ function MobileCarousel() {
               className="flex flex-col rounded-[22px] bg-white overflow-hidden"
               style={{ minHeight: 340 }}
             >
-              <div className="flex flex-col flex-1 p-7">
+              <div className="flex flex-col flex-1 p-7 items-center text-center">
                 <div
-                  className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 self-start border"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 border"
                   style={{ color: n.badgeColor, borderColor: n.badgeColor, background: n.badgeBg }}
                 >
                   <Icon size={13} strokeWidth={2.5} />
@@ -123,7 +123,7 @@ function MobileCarousel() {
                   ))}
                 </ul>
                 <div
-                  className="inline-flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-full self-start"
+                  className="inline-flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-full"
                   style={{ background: n.ctaGradient }}
                 >
                   {n.cta}

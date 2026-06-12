@@ -114,7 +114,7 @@ export default function BoostYourBrand() {
           <div className="relative z-10 px-5 sm:px-10 lg:px-16 py-12 flex flex-col lg:flex-row items-start justify-between gap-10">
 
             {/* Columna izquierda */}
-            <div className="text-white max-w-xl w-full">
+            <div className="text-white max-w-xl w-full text-center lg:text-left">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
                 <Zap size={12} fill="currentColor" />

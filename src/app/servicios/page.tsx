@@ -132,15 +132,15 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
       >
         <div className="flex flex-col rounded-[22px] bg-white overflow-hidden h-full">
 
-          {/* Foto placeholder */}
-          <div className="w-full flex-shrink-0 overflow-hidden" style={{ height: 160, background: `rgba(0,0,0,0.05)` }}>
+          {/* Foto */}
+          <div className="w-full flex-shrink-0 overflow-hidden" style={{ height: "clamp(90px, 20vw, 160px)", background: `rgba(0,0,0,0.05)` }}>
             {s.foto && (
               <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" style={{ objectPosition: (s as any).fotoPosition ?? "center center" }} />
             )}
           </div>
 
           {/* Contenido */}
-          <div className="flex flex-col flex-1 p-6">
+          <div className="flex flex-col flex-1 p-3 sm:p-6">
             <div
               className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 self-start border"
               style={{ color: s.badgeColor, borderColor: s.badgeBorder, background: s.badgeBg }}
@@ -148,20 +148,20 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
               {s.badge}
             </div>
 
-            <h3 className="font-playfair text-lg font-bold text-grafito leading-snug mb-3">
+            <h3 className="font-playfair text-sm sm:text-lg font-bold text-grafito leading-snug mb-2 sm:mb-3">
               {s.titulo}
             </h3>
 
-            <p className="text-sm text-grafito/60 leading-relaxed flex-1 mb-6">
+            <p className="text-xs sm:text-sm text-grafito/60 leading-relaxed flex-1 mb-4 sm:mb-6 hidden sm:block">
               {s.resumen}
             </p>
 
             <a
               href={`#${s.id}`}
-              className="inline-flex items-center gap-2 text-xs font-bold px-5 py-2.5 rounded-full self-start hover:opacity-80 transition-opacity text-white"
+              className="inline-flex items-center gap-1 text-xs font-bold px-3 sm:px-5 py-2 sm:py-2.5 rounded-full self-start hover:opacity-80 transition-opacity text-white"
               style={{ background: s.borderGradient }}
             >
-              Ver más <ChevronDown size={13} />
+              Ver más <ChevronDown size={11} />
             </a>
           </div>
         </div>
@@ -296,7 +296,7 @@ export default function ServiciosPage() {
         {/* Cards con tilt */}
         <section className="pb-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 items-start">
               {servicios.map((s, i) => (
                 <ServiceCard key={s.id} s={s} index={i} />
               ))}
