@@ -59,14 +59,14 @@ function Unit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center gap-1">
       <div
-        className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center"
+        className="w-14 h-14 sm:w-24 sm:h-24 rounded-xl sm:rounded-2xl flex items-center justify-center"
         style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", backdropFilter: "blur(8px)" }}
       >
-        <span className="font-playfair font-bold text-white text-3xl sm:text-4xl leading-none">
+        <span className="font-playfair font-bold text-white text-2xl sm:text-4xl leading-none">
           {String(value).padStart(2, "0")}
         </span>
       </div>
-      <span className="text-white/50 text-xs font-semibold tracking-widest uppercase">{label}</span>
+      <span className="text-white/50 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">{label}</span>
     </div>
   );
 }
@@ -120,11 +120,11 @@ export default function PortalPage() {
             </p>
             <div className="flex items-start justify-center gap-3 sm:gap-5">
               <Unit value={days} label="días" />
-              <span className="text-white/30 font-bold text-3xl mt-5">:</span>
+              <span className="text-white/30 font-bold text-xl sm:text-3xl mt-4 sm:mt-5">:</span>
               <Unit value={hours} label="horas" />
-              <span className="text-white/30 font-bold text-3xl mt-5">:</span>
+              <span className="text-white/30 font-bold text-xl sm:text-3xl mt-4 sm:mt-5">:</span>
               <Unit value={minutes} label="min" />
-              <span className="text-white/30 font-bold text-3xl mt-5">:</span>
+              <span className="text-white/30 font-bold text-xl sm:text-3xl mt-4 sm:mt-5">:</span>
               <Unit value={seconds} label="seg" />
             </div>
             <p className="text-white/40 text-xs mt-4">15 de junio · 9:00 AM hora México</p>
