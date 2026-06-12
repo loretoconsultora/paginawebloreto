@@ -2,7 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+
+const MAGENTA = "#c0005a";
 
 const navLinks = [
   { label: "Reto", href: "https://boost-your-brand.vercel.app", external: true },
@@ -20,6 +23,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -41,17 +45,23 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-              className="text-sm font-medium text-grafito hover:text-coral transition-colors duration-200"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = !link.external && pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="text-sm font-medium transition-colors duration-200"
+                style={{ color: isActive ? MAGENTA : undefined }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = MAGENTA)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? MAGENTA : "")}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* CTA */}
@@ -87,16 +97,20 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden glass mt-2 mx-4 rounded-2xl p-6">
           <nav className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-medium text-grafito hover:text-coral transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = !link.external && pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm font-medium transition-colors"
+                  style={{ color: isActive ? MAGENTA : undefined }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link
               href="https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2"
             target="_blank"
