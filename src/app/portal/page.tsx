@@ -114,7 +114,7 @@ export default function PortalPage() {
           </p>
 
           {/* Countdown */}
-          <div className="mb-12">
+          <div className="mb-6">
             <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-6">
               Disponible en
             </p>
@@ -130,16 +130,12 @@ export default function PortalPage() {
             <p className="text-white/40 text-xs mt-4">15 de junio · 9:00 AM hora México</p>
           </div>
 
-          {/* Features — fila completa sin scroll */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {/* Features — sin cards, directo sobre el fondo */}
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-4">
             {FEATURES.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex flex-col items-center gap-2 px-3 py-4 rounded-2xl"
-                style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)" }}
-              >
-                <Icon size={18} className="text-white" />
-                <span className="text-white text-xs font-medium leading-snug text-center">{label}</span>
+              <div key={label} className="flex items-center gap-2">
+                <Icon size={14} className="text-white/70 flex-shrink-0" />
+                <span className="text-white/85 text-sm font-medium">{label}</span>
               </div>
             ))}
           </div>
