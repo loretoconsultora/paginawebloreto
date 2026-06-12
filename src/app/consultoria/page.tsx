@@ -51,9 +51,9 @@ function EarthGlobe({ size }: { size: number }) {
 
 // ─── Contenido de texto por escena ───────────────────────────────────
 const SCENES = [
-  { pre: "Un universo de",   bold: "posibilidades",               boldSmall: null,            sub: null,                                              layout: "center",   preCursive: true,  boldCursive: false },
-  { pre: null,               bold: "Infinitas",                   boldSmall: "oportunidades", sub: "Y múltiples caminos, versiones de ti.",            layout: "left",     preCursive: false, boldCursive: true  },
-  { pre: "Encuentra la tuya","bold": "con nuestras consultorías", boldSmall: null,            sub: "Sesiones estratégicas diseñadas para tu momento.", layout: "left-cta", preCursive: false, boldCursive: false },
+  { pre: "Un universo de",   bold: "posibilidades",         boldSmall: null,                           boldThird: null,               sub: null, layout: "center", preCursive: true,  boldCursive: false },
+  { pre: null,               bold: "Infinitas",             boldSmall: "oportunidades",                boldThird: "caminos, y versiones de ti.", sub: null, layout: "left",   preCursive: false, boldCursive: true  },
+  { pre: "Encuentra la tuya con nuestras", bold: "consultorías", boldSmall: null,                     boldThird: null,               sub: null, layout: "left",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -87,8 +87,16 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
           </p>
         ))}
 
-        {/* Título: si boldSmall existe → bold grande + boldSmall pequeño */}
-        {scene.boldSmall ? (
+        {/* Título principal */}
+        {(scene as any).boldAtSmallSize ? (
+          // Escena 3: bold a tamaño pequeño (mismo que oportunidades)
+          <h2
+            className="font-playfair font-bold leading-tight mb-3 text-white"
+            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+          >
+            {scene.bold}
+          </h2>
+        ) : scene.boldSmall ? (
           <>
             <h2
               className={`${scene.boldCursive ? "font-dancing" : "font-playfair font-bold"} leading-none text-white`}
@@ -97,11 +105,19 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
               {scene.bold}
             </h2>
             <h2
-              className="font-playfair font-bold leading-tight mb-3 text-white/70"
+              className="font-playfair font-bold leading-tight text-white/70"
               style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
             >
               {scene.boldSmall}
             </h2>
+            {(scene as any).boldThird && (
+              <h2
+                className="font-playfair font-bold leading-tight mb-3 text-white/70"
+                style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+              >
+                {(scene as any).boldThird}
+              </h2>
+            )}
           </>
         ) : (
           <h2
@@ -110,11 +126,6 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
           >
             {scene.bold}
           </h2>
-        )}
-        {scene.sub && (
-          <p className="text-white/65 text-sm sm:text-base leading-relaxed max-w-sm mb-5">
-            {scene.sub}
-          </p>
         )}
         {scene.layout === "left-cta" && (
           <Link
