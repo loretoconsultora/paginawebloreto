@@ -13,7 +13,6 @@ const CALENDAR = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7
 const PLANET_STATES = [
   { x: 0,    y: 60,   scale: 1,    size: 280 },  // posibilidades
   { x: 190,  y: 0,    scale: 1.35, size: 280 },  // oportunidades
-  { x: 0,    y: 30,   scale: 1,    size: 280 },  // tu sistema solar
   { x: 160,  y: 40,   scale: 0.85, size: 280 },  // encuentra la tuya
 ];
 
@@ -52,10 +51,9 @@ function EarthGlobe({ size }: { size: number }) {
 
 // ─── Contenido de texto por escena ───────────────────────────────────
 const SCENES = [
-  { pre: "Un universo de",   bold: "posibilidades",            boldSmall: null,         sub: null,                                                         layout: "center",       preCursive: true  },
-  { pre: null,               bold: "Infinitas",                 boldSmall: "oportunidades", sub: "Y múltiples caminos, versiones de ti.",                    layout: "left",         preCursive: false },
-  { pre: "Tu marca,",        bold: "tu sistema solar",         boldSmall: null,         sub: "Cada pieza orbita con un propósito: hacer crecer tu negocio.", layout: "center-bottom",preCursive: false },
-  { pre: "Encuentra la tuya","bold": "con nuestras consultorías", boldSmall: null,      sub: "Sesiones estratégicas diseñadas para tu momento de negocio.", layout: "left-cta",     preCursive: false },
+  { pre: "Un universo de",   bold: "posibilidades",               boldSmall: null,            sub: null,                                              layout: "center",   preCursive: true,  boldCursive: false },
+  { pre: null,               bold: "Infinitas",                   boldSmall: "oportunidades", sub: "Y múltiples caminos, versiones de ti.",            layout: "left",     preCursive: false, boldCursive: true  },
+  { pre: "Encuentra la tuya","bold": "con nuestras consultorías", boldSmall: null,            sub: "Sesiones estratégicas diseñadas para tu momento.", layout: "left-cta", preCursive: false, boldCursive: false },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -93,7 +91,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         {scene.boldSmall ? (
           <>
             <h2
-              className="font-playfair font-bold leading-none text-white"
+              className={`${scene.boldCursive ? "font-dancing" : "font-playfair font-bold"} leading-none text-white`}
               style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
             >
               {scene.bold}
