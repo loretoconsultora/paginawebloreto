@@ -48,7 +48,7 @@ function EarthGlobe({ size }: { size: number }) {
     <img
       src="/planet/tierra.png"
       alt="Tierra"
-      style={{ width: size, height: size, objectFit: "contain", opacity: 0.6, flexShrink: 0 }}
+      style={{ width: size, height: size, objectFit: "contain", opacity: 0.4, flexShrink: 0 }}
     />
   );
 }
@@ -128,24 +128,19 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
         animationDelay: `-${(p.start / 360) * p.speed}s`,
       }}
     >
-      <div
+      <img
+        src={p.img}
+        alt={p.name}
         style={{
           position: "absolute",
           top: 0, left: "50%",
           marginLeft: -p.size / 2,
           marginTop: -p.size / 2,
           width: p.size, height: p.size,
-          borderRadius: "50%",
-          overflow: "hidden",
-          boxShadow: "0 0 16px rgba(255,150,190,0.6), 0 0 32px rgba(255,106,146,0.3)",
+          objectFit: "contain",
+          opacity: p.opacity,
         }}
-      >
-        <img
-          src={p.img}
-          alt={p.name}
-          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: p.opacity }}
-        />
-      </div>
+      />
     </motion.div>
   );
 }
