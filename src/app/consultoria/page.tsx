@@ -45,17 +45,19 @@ const SECONDARY = [
 // ─── Tierra con imagen real ───────────────────────────────────────────
 function EarthGlobe({ size }: { size: number }) {
   return (
-    <img
-      src="/planet/tierra.png"
-      alt="Tierra"
-      style={{
-        width: size,
-        height: size,
-        objectFit: "contain",
-        opacity: 0.9,
-        filter: "drop-shadow(0 0 28px rgba(255,180,210,0.75)) drop-shadow(0 0 60px rgba(255,120,170,0.4))",
-      }}
-    />
+    <div style={{
+      width: size, height: size,
+      borderRadius: "50%",
+      overflow: "hidden",
+      flexShrink: 0,
+      boxShadow: "0 0 40px rgba(255,180,210,0.7), 0 0 80px rgba(255,120,170,0.35)",
+    }}>
+      <img
+        src="/planet/tierra.png"
+        alt="Tierra"
+        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.92 }}
+      />
+    </div>
   );
 }
 
@@ -92,14 +94,8 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
           {scene.pre}
         </p>
         <h2
-          className="font-playfair font-bold leading-tight mb-3"
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.8rem)",
-            background: "linear-gradient(135deg, #ffffff 0%, #FF6A92 55%, #E894FF 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
+          className="font-playfair font-bold leading-tight mb-3 text-white"
+          style={{ fontSize: "clamp(2rem, 5vw, 3.8rem)" }}
         >
           {scene.bold}
         </h2>
@@ -147,13 +143,15 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
           marginLeft: -p.size / 2,
           marginTop: -p.size / 2,
           width: p.size, height: p.size,
-          filter: `drop-shadow(0 0 8px rgba(255,106,146,0.5))`,
+          borderRadius: "50%",
+          overflow: "hidden",
+          boxShadow: "0 0 16px rgba(255,150,190,0.6), 0 0 32px rgba(255,106,146,0.3)",
         }}
       >
         <img
           src={p.img}
           alt={p.name}
-          style={{ width: "100%", height: "100%", objectFit: "contain", opacity: p.opacity }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: p.opacity }}
         />
       </div>
     </motion.div>
