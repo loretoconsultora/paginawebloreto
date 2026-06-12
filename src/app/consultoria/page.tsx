@@ -190,7 +190,7 @@ function CinematicHero() {
   }, [TOTAL]);
 
   const ps = PLANET_STATES[scene];
-  const showOrbit = scene >= 3;
+  const showOrbit = true;
 
   return (
     <div
