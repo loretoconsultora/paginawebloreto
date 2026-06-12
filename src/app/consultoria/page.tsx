@@ -18,27 +18,25 @@ const PLANET_STATES = [
   { x: 160,  y: 40,   scale: 0.85, size: 280 },
 ];
 
-// Venus y Marte — imágenes reales, más pequeños que la Tierra
+// Venus y Marte — imágenes reales
 const SECONDARY = [
   {
     name: "Venus",
-    size: 75,
-    orbit: 220,
-    speed: 12,
-    start: 60,
-    tilt: 68,   // inclinación del plano orbital en grados X
+    size: 100,   // tamaño base (se escala con profundidad)
+    orbit: 200,  // radio de órbita en px
+    speed: 14,   // segundos por vuelta
+    start: 45,   // ángulo inicial en grados
     img: "/planet/venus.png",
-    opacity: 0.85,
+    opacity: 0.92,
   },
   {
     name: "Marte",
-    size: 52,
-    orbit: 320,
-    speed: 20,
-    start: 200,
-    tilt: 72,   // plano un poco más inclinado
+    size: 72,
+    orbit: 300,
+    speed: 22,
+    start: 220,
     img: "/planet/marte.png",
-    opacity: 0.8,
+    opacity: 0.88,
   },
 ];
 
@@ -112,7 +110,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
   );
 }
 
-// ─── Planeta secundario orbitando face-on — DOM mutation para 60fps ───
+// ─── Planeta orbitando con perspectiva real — mutación directa del DOM ─
 function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean }) {
   const imgRef = useRef<HTMLImageElement>(null);
   const angleRef = useRef((p.start / 360) * Math.PI * 2);
@@ -122,31 +120,37 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
   useEffect(() => { visibleRef.current = visible; }, [visible]);
 
   useEffect(() => {
-    // delta por frame a 60fps: una vuelta completa en p.speed segundos
     const delta = (2 * Math.PI) / (p.speed * 60);
 
     const tick = () => {
       angleRef.current += delta;
       const θ = angleRef.current;
 
-      // Órbita de frente: círculo en X, aplastado en Y para dar perspectiva
-      const ox = Math.cos(θ) * p.orbit;
-      const oy = Math.sin(θ) * p.orbit * 0.32;
+      // Órbita elíptica inclinada: ancho completo, alto aplastado 40%
+      // Da la ilusión de ver el plano orbital desde un ángulo de ~65°
+      const rx = p.orbit;        // radio horizontal completo
+      const ry = p.orbit * 0.4;  // radio vertical (perspectiva)
+      const ox = Math.cos(θ) * rx;
+      const oy = Math.sin(θ) * ry;
 
-      // depth: +1 = viene hacia el espectador, -1 = se aleja
-      const depth = Math.sin(θ);
-      // escala: 0.5 cuando está detrás → 1.4 cuando está delante
-      const scale = 0.5 + 0.9 * (depth + 1) / 2;
+      // Profundidad: sin(θ) positivo = frente, negativo = fondo
+      const depth = Math.sin(θ); // -1 … +1
+      // Escala dramática: 0.45 (detrás) → 1.55 (delante)
+      const scale = 0.45 + 1.1 * (depth + 1) / 2;
       const size = p.size * scale;
+      // Opacidad también varía: más transparente atrás, más opaco adelante
+      const op = visibleRef.current
+        ? p.opacity * (0.35 + 0.65 * (depth + 1) / 2)
+        : 0;
 
       const el = imgRef.current;
       if (el) {
-        el.style.width  = `${size}px`;
-        el.style.height = `${size}px`;
-        // centrar en el punto de origen y desplazar por la órbita
-        el.style.transform = `translate(calc(-50% + ${ox}px), calc(-50% + ${oy}px))`;
-        el.style.zIndex = depth > 0 ? "10" : "1";
-        el.style.opacity = visibleRef.current ? String(p.opacity) : "0";
+        el.style.width   = `${size}px`;
+        el.style.height  = `${size}px`;
+        el.style.left    = `calc(50% + ${ox - size / 2}px)`;
+        el.style.top     = `calc(50% + ${oy - size / 2}px)`;
+        el.style.zIndex  = depth > 0 ? "10" : "1";
+        el.style.opacity = String(op);
       }
 
       rafRef.current = requestAnimationFrame(tick);
@@ -164,15 +168,12 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
       alt={p.name}
       style={{
         position: "absolute",
-        left: "50%",
-        top: "50%",
         width: p.size,
         height: p.size,
         objectFit: "contain",
         opacity: 0,
-        transition: "opacity 0.6s ease",
         pointerEvents: "none",
-        willChange: "transform, width, height, opacity",
+        willChange: "left, top, width, height, opacity",
       }}
     />
   );
@@ -220,18 +221,18 @@ function CinematicHero() {
         ))}
       </div>
 
-      {/* Anillos de órbita face-on (elipse para sensación de perspectiva) */}
+      {/* Anillos de órbita — elipse inclinada que coincide con el movimiento de los planetas */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {[{ r: 220, alpha: 0.18 }, { r: 320, alpha: 0.13 }].map(({ r, alpha }, i) => (
+        {[{ r: 200, alpha: 0.22 }, { r: 300, alpha: 0.15 }].map(({ r, alpha }, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
             animate={{ opacity: showOrbit ? 1 : 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2, delay: i * 0.15 }}
             style={{
               position: "absolute",
               width: r * 2,
-              height: r * 2 * 0.35,
+              height: r * 2 * 0.4,   // mismo factor 0.4 que el OrbitPlanet
               borderRadius: "50%",
               border: `1px solid rgba(255,106,146,${alpha})`,
             }}
