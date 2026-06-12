@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -112,46 +112,58 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
   );
 }
 
-// ─── Planeta secundario orbitando en 3D ───────────────────────────────
+// ─── Planeta secundario orbitando face-on con profundidad real ────────
 function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean }) {
+  const [pos, setPos] = useState({ x: 0, y: 0, scale: 1, zIndex: 1, opacity: 0 });
+  const angleRef = useRef((p.start / 360) * Math.PI * 2);
+  const rafRef = useRef<number>(0);
+
+  useEffect(() => {
+    if (!visible) {
+      setPos((prev) => ({ ...prev, opacity: 0 }));
+      return;
+    }
+    // Fade in
+    setPos((prev) => ({ ...prev, opacity: p.opacity }));
+
+    const fps = 60;
+    const deltaAngle = (2 * Math.PI) / (p.speed * fps);
+
+    const animate = () => {
+      angleRef.current += deltaAngle;
+      const θ = angleRef.current;
+      // Face-on circle: x maps to cos, y maps to sin (squished for perspective feel)
+      const x = Math.cos(θ) * p.orbit;
+      const y = Math.sin(θ) * p.orbit * 0.35; // vertical ellipse for slight tilt feel
+      // depth: sin(θ) > 0 → coming toward viewer
+      const depth = Math.sin(θ); // -1 back, +1 front
+      const scale = 0.55 + 0.75 * (depth + 1) / 2; // 0.55 (back) → 1.3 (front)
+      const zIndex = depth > 0 ? 10 : 1; // front=above Earth(5), back=below Earth
+      setPos({ x, y, scale, zIndex, opacity: p.opacity });
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [visible, p.orbit, p.speed, p.opacity]);
+
+  const size = p.size * pos.scale;
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    <img
+      src={p.img}
+      alt={p.name}
       style={{
         position: "absolute",
         left: "50%", top: "50%",
-        marginLeft: -p.orbit / 2, marginTop: -p.orbit / 2,
-        width: p.orbit, height: p.orbit,
-        // Inclina el plano orbital en 3D
-        transform: `rotateX(${p.tilt}deg)`,
-        transformStyle: "preserve-3d",
+        width: size, height: size,
+        marginLeft: -size / 2 + pos.x,
+        marginTop: -size / 2 + pos.y,
+        objectFit: "contain",
+        opacity: pos.opacity,
+        zIndex: pos.zIndex,
+        transition: "opacity 0.8s ease",
+        pointerEvents: "none",
       }}
-    >
-      {/* Este div gira en el plano ya inclinado */}
-      <div
-        style={{
-          width: "100%", height: "100%",
-          animation: visible ? `orbit ${p.speed}s linear infinite` : "none",
-          animationDelay: `-${(p.start / 360) * p.speed}s`,
-        }}
-      >
-        <img
-          src={p.img}
-          alt={p.name}
-          style={{
-            position: "absolute",
-            top: 0, left: "50%",
-            marginLeft: -p.size / 2,
-            marginTop: -p.size / 2,
-            width: p.size, height: p.size,
-            objectFit: "contain",
-            opacity: p.opacity,
-          }}
-        />
-      </div>
-    </motion.div>
+    />
   );
 }
 
@@ -197,9 +209,9 @@ function CinematicHero() {
         ))}
       </div>
 
-      {/* Anillos de órbita inclinados en 3D */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ perspective: "900px" }}>
-        {[{ r: 220, tilt: 68 }, { r: 320, tilt: 72 }].map(({ r, tilt }, i) => (
+      {/* Anillos de órbita face-on (elipse para sensación de perspectiva) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {[{ r: 220, alpha: 0.18 }, { r: 320, alpha: 0.13 }].map(({ r, alpha }, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
@@ -207,26 +219,26 @@ function CinematicHero() {
             transition={{ duration: 0.8 }}
             style={{
               position: "absolute",
-              width: r * 2, height: r * 2,
+              width: r * 2,
+              height: r * 2 * 0.35,
               borderRadius: "50%",
-              border: `1px solid rgba(255,106,146,${i === 0 ? 0.2 : 0.14})`,
-              transform: `rotateX(${tilt}deg)`,
+              border: `1px solid rgba(255,106,146,${alpha})`,
             }}
           />
         ))}
       </div>
 
-      {/* Venus y Marte orbitando en 3D */}
-      <div className="absolute inset-0 pointer-events-none" style={{ display: "flex", alignItems: "center", justifyContent: "center", perspective: "900px" }}>
-        <div style={{ position: "relative", width: 0, height: 0, transformStyle: "preserve-3d" }}>
+      {/* Venus y Marte orbitando face-on con oclusión real */}
+      <div className="absolute inset-0 pointer-events-none" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ position: "relative", width: 0, height: 0 }}>
           {SECONDARY.map((p, i) => (
             <OrbitPlanet key={i} p={p} visible={showOrbit} />
           ))}
         </div>
       </div>
 
-      {/* Tierra — SVG con continentes */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      {/* Tierra — zIndex 5 para ocluir planetas en el fondo */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 5 }}>
         <motion.div
           animate={{ x: ps.x, y: ps.y, scale: ps.scale }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
@@ -258,13 +270,6 @@ function CinematicHero() {
         ))}
       </div>
 
-      {/* CSS: rotación de órbita */}
-      <style>{`
-        @keyframes orbit {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 }
