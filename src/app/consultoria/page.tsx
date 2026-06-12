@@ -45,19 +45,11 @@ const SECONDARY = [
 // ─── Tierra con imagen real ───────────────────────────────────────────
 function EarthGlobe({ size }: { size: number }) {
   return (
-    <div style={{
-      width: size, height: size,
-      borderRadius: "50%",
-      overflow: "hidden",
-      flexShrink: 0,
-      boxShadow: "0 0 40px rgba(255,180,210,0.7), 0 0 80px rgba(255,120,170,0.35)",
-    }}>
-      <img
-        src="/planet/tierra.png"
-        alt="Tierra"
-        style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.92 }}
-      />
-    </div>
+    <img
+      src="/planet/tierra.png"
+      alt="Tierra"
+      style={{ width: size, height: size, objectFit: "contain", opacity: 0.6, flexShrink: 0 }}
+    />
   );
 }
 
