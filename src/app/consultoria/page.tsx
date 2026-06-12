@@ -10,66 +10,140 @@ import Footer from "@/components/layout/Footer";
 const CALENDAR = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2";
 
 // ─── Planeta principal ───────────────────────────────────────────────
-// Posición y escala para cada escena
 const PLANET_STATES = [
-  { x: 0,    y: 60,   scale: 1,    size: 260 }, // 0 – centro, tamaño medio
-  { x: 190,  y: 0,    scale: 1.35, size: 260 }, // 1 – derecha, más grande
-  { x: 0,    y: 0,    scale: 4.2,  size: 260 }, // 2 – enorme, cubre pantalla
-  { x: 0,    y: 30,   scale: 1,    size: 200 }, // 3 – centro con órbitas
-  { x: 160,  y: 40,   scale: 0.85, size: 260 }, // 4 – derecha pequeño + CTA
+  { x: 0,    y: 60,   scale: 1,    size: 280 },
+  { x: 190,  y: 0,    scale: 1.35, size: 280 },
+  { x: 0,    y: 0,    scale: 4.2,  size: 280 },
+  { x: 0,    y: 30,   scale: 1,    size: 280 },
+  { x: 160,  y: 40,   scale: 0.85, size: 280 },
 ];
 
-// ─── Planetas secundarios (sólo escenas 3 y 4) ───────────────────────
+// Venus y Marte — más pequeños, distintos rosas
 const SECONDARY = [
-  { size: 72,  orbit: 190, speed: 10, start: 0,   bg: "radial-gradient(circle at 35% 35%, #9de8ea, #3ab8ba)",    shadow: "0 0 24px rgba(103,198,200,0.6)" },
-  { size: 52,  orbit: 260, speed: 16, start: 120, bg: "radial-gradient(circle at 35% 35%, #ffe066, #b8860b)",    shadow: "0 0 20px rgba(245,200,66,0.6)"  },
-  { size: 44,  orbit: 320, speed: 22, start: 240, bg: "radial-gradient(circle at 35% 35%, #E894FF, #6a00c8)",    shadow: "0 0 18px rgba(232,148,255,0.6)" },
+  {
+    name: "Venus",
+    size: 70,
+    orbit: 210,
+    speed: 12,
+    start: 60,
+    bg: "radial-gradient(circle at 38% 35%, #ffd6e0, #ffb3c6, #FF6A92)",
+    shadow: "0 0 22px rgba(255,179,198,0.7), 0 0 44px rgba(255,106,146,0.35)",
+  },
+  {
+    name: "Marte",
+    size: 48,
+    orbit: 310,
+    speed: 20,
+    start: 200,
+    bg: "radial-gradient(circle at 38% 35%, #ffaec4, #c0005a, #7a0035)",
+    shadow: "0 0 18px rgba(192,0,90,0.6), 0 0 36px rgba(192,0,90,0.25)",
+  },
 ];
+
+// ─── Tierra con continentes en SVG ────────────────────────────────────
+function EarthGlobe({ size }: { size: number }) {
+  const r = size / 2;
+  const id = "eg";
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display: "block", overflow: "visible" }}>
+      <defs>
+        {/* Gradiente esférico base */}
+        <radialGradient id={`${id}base`} cx="38%" cy="35%" r="70%">
+          <stop offset="0%"   stopColor="#FF6A92" stopOpacity="0.25" />
+          <stop offset="55%"  stopColor="#c0005a" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#7a0035" stopOpacity="0.35" />
+        </radialGradient>
+        {/* Gradiente para continentes */}
+        <radialGradient id={`${id}land`} cx="40%" cy="35%" r="65%">
+          <stop offset="0%"   stopColor="#ffb3c6" stopOpacity="1" />
+          <stop offset="100%" stopColor="#FF6A92" stopOpacity="0.7" />
+        </radialGradient>
+        {/* Brillo atmosférico */}
+        <radialGradient id={`${id}atmo`} cx="50%" cy="50%" r="50%">
+          <stop offset="75%"  stopColor="transparent" />
+          <stop offset="100%" stopColor="#FF6A92" stopOpacity="0.5" />
+        </radialGradient>
+        <clipPath id={`${id}clip`}>
+          <circle cx={r} cy={r} r={r - 1} />
+        </clipPath>
+      </defs>
+
+      {/* Base esférica */}
+      <circle cx={r} cy={r} r={r - 1} fill={`url(#${id}base)`} />
+
+      {/* Continentes simplificados — escala relativa al radio */}
+      <g clipPath={`url(#${id}clip)`} fill={`url(#${id}land)`} fillOpacity="0.55">
+        {/* América del Norte */}
+        <path d={`
+          M ${r*0.18} ${r*0.22}
+          C ${r*0.22} ${r*0.14}, ${r*0.38} ${r*0.16}, ${r*0.42} ${r*0.28}
+          C ${r*0.46} ${r*0.38}, ${r*0.44} ${r*0.52}, ${r*0.36} ${r*0.56}
+          C ${r*0.28} ${r*0.60}, ${r*0.16} ${r*0.52}, ${r*0.14} ${r*0.42}
+          C ${r*0.12} ${r*0.32}, ${r*0.14} ${r*0.28}, ${r*0.18} ${r*0.22} Z
+        `} />
+        {/* América del Sur */}
+        <path d={`
+          M ${r*0.30} ${r*0.62}
+          C ${r*0.38} ${r*0.60}, ${r*0.44} ${r*0.68}, ${r*0.42} ${r*0.82}
+          C ${r*0.40} ${r*0.94}, ${r*0.30} ${r*1.02}, ${r*0.24} ${r*0.96}
+          C ${r*0.18} ${r*0.88}, ${r*0.20} ${r*0.74}, ${r*0.24} ${r*0.66}
+          C ${r*0.26} ${r*0.62}, ${r*0.28} ${r*0.62}, ${r*0.30} ${r*0.62} Z
+        `} />
+        {/* Europa */}
+        <path d={`
+          M ${r*0.56} ${r*0.24}
+          C ${r*0.62} ${r*0.20}, ${r*0.70} ${r*0.22}, ${r*0.72} ${r*0.30}
+          C ${r*0.74} ${r*0.38}, ${r*0.68} ${r*0.44}, ${r*0.62} ${r*0.44}
+          C ${r*0.56} ${r*0.44}, ${r*0.52} ${r*0.38}, ${r*0.52} ${r*0.32}
+          C ${r*0.52} ${r*0.26}, ${r*0.54} ${r*0.26}, ${r*0.56} ${r*0.24} Z
+        `} />
+        {/* África */}
+        <path d={`
+          M ${r*0.56} ${r*0.48}
+          C ${r*0.64} ${r*0.46}, ${r*0.72} ${r*0.52}, ${r*0.72} ${r*0.64}
+          C ${r*0.72} ${r*0.80}, ${r*0.64} ${r*0.92}, ${r*0.56} ${r*0.94}
+          C ${r*0.48} ${r*0.94}, ${r*0.44} ${r*0.84}, ${r*0.46} ${r*0.70}
+          C ${r*0.48} ${r*0.56}, ${r*0.52} ${r*0.50}, ${r*0.56} ${r*0.48} Z
+        `} />
+        {/* Asia */}
+        <path d={`
+          M ${r*0.74} ${r*0.20}
+          C ${r*0.86} ${r*0.16}, ${r*1.02} ${r*0.18}, ${r*1.06} ${r*0.30}
+          C ${r*1.10} ${r*0.42}, ${r*1.04} ${r*0.54}, ${r*0.94} ${r*0.58}
+          C ${r*0.84} ${r*0.62}, ${r*0.74} ${r*0.56}, ${r*0.72} ${r*0.46}
+          C ${r*0.70} ${r*0.36}, ${r*0.70} ${r*0.26}, ${r*0.74} ${r*0.20} Z
+        `} />
+        {/* Australia */}
+        <ellipse cx={r*0.92} cy={r*0.76} rx={r*0.10} ry={r*0.07} transform={`rotate(-8 ${r*0.92} ${r*0.76})`} />
+      </g>
+
+      {/* Brillo atmosférico exterior */}
+      <circle cx={r} cy={r} r={r - 1} fill={`url(#${id}atmo)`} />
+      {/* Borde de atmósfera */}
+      <circle cx={r} cy={r} r={r - 1} fill="none" stroke="#FF6A92" strokeWidth="2.5" strokeOpacity="0.4" />
+      <circle cx={r} cy={r} r={r + 6} fill="none" stroke="#c0005a" strokeWidth="1.5" strokeOpacity="0.15" />
+      <circle cx={r} cy={r} r={r + 14} fill="none" stroke="#FF6A92" strokeWidth="1" strokeOpacity="0.08" />
+    </svg>
+  );
+}
 
 // ─── Contenido de texto por escena ───────────────────────────────────
 const SCENES = [
-  {
-    pre:  "Un universo de",
-    bold: "posibilidades",
-    sub:  null,
-    layout: "center",
-  },
-  {
-    pre:  "Infinitas",
-    bold: "oportunidades",
-    sub:  "Cada marca es un mundo único con su propio potencial de crecimiento.",
-    layout: "left",
-  },
-  {
-    pre:  "Y múltiples",
-    bold: "caminos",
-    sub:  "No existe una sola ruta al éxito. Exploramos la tuya.",
-    layout: "bottom-left",
-  },
-  {
-    pre:  "Tu marca,",
-    bold: "tu sistema solar",
-    sub:  "Cada pieza orbita con un propósito: hacer crecer tu negocio.",
-    layout: "center-bottom",
-  },
-  {
-    pre:  "Encuentra el tuyo",
-    bold: "con nuestra consultoría",
-    sub:  "Sesiones estratégicas diseñadas para tu momento de negocio.",
-    layout: "left-cta",
-  },
+  { pre: "Un universo de",   bold: "posibilidades",         sub: null,                                                                       layout: "center"       },
+  { pre: "Infinitas",        bold: "oportunidades",         sub: "Cada marca es un mundo único con su propio potencial de crecimiento.",      layout: "left"         },
+  { pre: "Y múltiples",      bold: "caminos",               sub: "No existe una sola ruta al éxito. Exploramos la tuya.",                    layout: "bottom-left"  },
+  { pre: "Tu marca,",        bold: "tu sistema solar",      sub: "Cada pieza orbita con un propósito: hacer crecer tu negocio.",              layout: "center-bottom"},
+  { pre: "Encuentra el tuyo","bold": "con nuestra consultoría", sub: "Sesiones estratégicas diseñadas para tu momento de negocio.",          layout: "left-cta"     },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
 function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number }) {
-  const base = "pointer-events-none select-none";
-
   const posClass: Record<string, string> = {
-    "center":       "inset-0 flex flex-col items-center justify-center text-center px-6",
-    "left":         "inset-0 flex flex-col justify-center text-left px-8 sm:px-16 max-w-lg",
-    "bottom-left":  "bottom-10 left-8 sm:left-14 text-left max-w-xs sm:max-w-sm",
-    "center-bottom":"bottom-10 left-0 right-0 text-center px-6",
-    "left-cta":     "inset-0 flex flex-col justify-center text-left px-8 sm:px-16 max-w-md pointer-events-auto",
+    "center":        "inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none",
+    "left":          "inset-0 flex flex-col justify-center text-left px-8 sm:px-16 max-w-lg pointer-events-none",
+    "bottom-left":   "bottom-12 left-8 sm:left-14 text-left max-w-xs sm:max-w-sm pointer-events-none",
+    "center-bottom": "bottom-12 left-0 right-0 text-center px-6 pointer-events-none",
+    "left-cta":      "inset-0 flex flex-col justify-center text-left px-8 sm:px-16 max-w-md pointer-events-auto",
   };
 
   return (
@@ -80,16 +154,16 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className={`absolute ${posClass[scene.layout]} ${base}`}
+        className={`absolute select-none ${posClass[scene.layout]}`}
       >
-        <p className="text-grafito/55 text-sm sm:text-base font-semibold tracking-widest uppercase mb-1">
+        <p className="text-white/50 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2">
           {scene.pre}
         </p>
         <h2
           className="font-playfair font-bold leading-tight mb-3"
           style={{
             fontSize: "clamp(2rem, 5vw, 3.8rem)",
-            background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 50%, #E894FF 100%)",
+            background: "linear-gradient(135deg, #ffffff 0%, #FF6A92 55%, #E894FF 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -98,7 +172,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
           {scene.bold}
         </h2>
         {scene.sub && (
-          <p className="text-grafito/65 text-sm sm:text-base leading-relaxed max-w-sm mb-5">
+          <p className="text-white/65 text-sm sm:text-base leading-relaxed max-w-sm mb-5">
             {scene.sub}
           </p>
         )}
@@ -108,7 +182,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
-            style={{ background: "linear-gradient(135deg, #c0005a, #FF6A92, #E894FF)", boxShadow: "0 8px 28px rgba(192,0,90,0.35)" }}
+            style={{ background: "linear-gradient(135deg, #c0005a, #FF6A92, #E894FF)", boxShadow: "0 8px 28px rgba(192,0,90,0.45)" }}
           >
             Agendar mi consultoría <ArrowRight size={15} />
           </Link>
@@ -124,14 +198,14 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       style={{
         position: "absolute",
         left: "50%", top: "50%",
         marginLeft: -p.orbit / 2, marginTop: -p.orbit / 2,
         width: p.orbit, height: p.orbit,
         animation: visible ? `orbit ${p.speed}s linear infinite` : "none",
-        animationDelay: `-${p.start / 360 * p.speed}s`,
+        animationDelay: `-${(p.start / 360) * p.speed}s`,
       }}
     >
       <div
@@ -154,10 +228,9 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
 function CinematicHero() {
   const [scene, setScene] = useState(0);
   const TOTAL = SCENES.length;
-  const DURATION = 3800;
 
   useEffect(() => {
-    const id = setInterval(() => setScene((s) => (s + 1) % TOTAL), DURATION);
+    const id = setInterval(() => setScene((s) => (s + 1) % TOTAL), 3800);
     return () => clearInterval(id);
   }, [TOTAL]);
 
@@ -167,30 +240,51 @@ function CinematicHero() {
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ height: "100vh", background: "#fdf0f5" }}
+      style={{ height: "100vh", background: "#0d0518" }}
     >
-      {/* Partículas de fondo suaves */}
+      {/* Nebulosas de fondo — halos suaves en colores marca */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
-          { w: 320, h: 320, top: "10%", left: "5%",  bg: "rgba(192,0,90,0.07)",    blur: 80 },
-          { w: 260, h: 260, top: "60%", left: "70%", bg: "rgba(103,198,200,0.08)", blur: 70 },
-          { w: 200, h: 200, top: "30%", left: "80%", bg: "rgba(232,148,255,0.07)", blur: 60 },
-          { w: 180, h: 180, top: "75%", left: "15%", bg: "rgba(245,200,66,0.06)",  blur: 60 },
+          { w: 500, h: 500, top: "-10%", left: "-5%",  bg: "rgba(192,0,90,0.12)",   blur: 120 },
+          { w: 400, h: 400, top: "50%",  left: "65%",  bg: "rgba(255,106,146,0.09)",blur: 100 },
+          { w: 300, h: 300, top: "20%",  left: "75%",  bg: "rgba(232,148,255,0.08)",blur: 90  },
+          { w: 250, h: 250, top: "70%",  left: "10%",  bg: "rgba(192,0,90,0.07)",   blur: 80  },
         ].map((b, i) => (
           <div key={i} style={{ position: "absolute", width: b.w, height: b.h, top: b.top, left: b.left, background: b.bg, borderRadius: "50%", filter: `blur(${b.blur}px)` }} />
         ))}
-        {/* Puntitos estilo estrellas en colores marca */}
+
+        {/* Estrellas — puntos blancos/rosas pequeños */}
         {[
-          { top: "15%", left: "20%", c: "#c0005a" }, { top: "25%", left: "75%", c: "#67c6c8" },
-          { top: "55%", left: "10%", c: "#f5c842" }, { top: "70%", left: "85%", c: "#E894FF" },
-          { top: "40%", left: "60%", c: "#FF6A92" }, { top: "85%", left: "45%", c: "#3ab8ba" },
-          { top: "10%", left: "90%", c: "#c0005a" }, { top: "80%", left: "30%", c: "#E894FF" },
+          { top: "8%",  left: "12%", s: 2.5, o: 0.6 }, { top: "14%", left: "68%", s: 2,   o: 0.5 },
+          { top: "22%", left: "88%", s: 1.5, o: 0.7 }, { top: "35%", left: "5%",  s: 2,   o: 0.4 },
+          { top: "48%", left: "92%", s: 2.5, o: 0.6 }, { top: "58%", left: "22%", s: 1.5, o: 0.5 },
+          { top: "72%", left: "78%", s: 2,   o: 0.6 }, { top: "82%", left: "42%", s: 1.5, o: 0.4 },
+          { top: "90%", left: "15%", s: 2.5, o: 0.5 }, { top: "5%",  left: "45%", s: 2,   o: 0.6 },
+          { top: "65%", left: "55%", s: 1.5, o: 0.45 },{ top: "30%", left: "35%", s: 2,   o: 0.35 },
         ].map((d, i) => (
-          <div key={i} style={{ position: "absolute", top: d.top, left: d.left, width: 5, height: 5, borderRadius: "50%", background: d.c, opacity: 0.35 }} />
+          <div key={i} style={{ position: "absolute", top: d.top, left: d.left, width: d.s, height: d.s, borderRadius: "50%", background: i % 3 === 0 ? "#FF6A92" : "white", opacity: d.o }} />
         ))}
       </div>
 
-      {/* Planetas secundarios orbitando */}
+      {/* Anillos de órbita (visibles sólo en escenas 3 y 4) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {[210, 310].map((r, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showOrbit ? 1 : 0 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              position: "absolute",
+              width: r * 2, height: r * 2,
+              borderRadius: "50%",
+              border: `1px solid rgba(255,106,146,${i === 0 ? 0.15 : 0.10})`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Venus y Marte orbitando */}
       <div className="absolute inset-0 pointer-events-none" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div style={{ position: "relative", width: 0, height: 0 }}>
           {SECONDARY.map((p, i) => (
@@ -199,19 +293,19 @@ function CinematicHero() {
         </div>
       </div>
 
-      {/* Planeta principal */}
+      {/* Tierra — SVG con continentes */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
           animate={{ x: ps.x, y: ps.y, scale: ps.scale }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           style={{
             width: ps.size, height: ps.size,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 32% 32%, #FF6A92 0%, #c0005a 45%, #7a0035 100%)",
-            boxShadow: "0 0 60px rgba(192,0,90,0.5), 0 0 120px rgba(192,0,90,0.25), inset -20px -20px 40px rgba(0,0,0,0.2)",
             flexShrink: 0,
+            filter: "drop-shadow(0 0 40px rgba(192,0,90,0.5)) drop-shadow(0 0 80px rgba(192,0,90,0.2))",
           }}
-        />
+        >
+          <EarthGlobe size={ps.size} />
+        </motion.div>
       </div>
 
       {/* Texto de la escena */}
@@ -227,13 +321,13 @@ function CinematicHero() {
             style={{
               width: i === scene ? 24 : 7,
               height: 7,
-              background: i === scene ? "#c0005a" : "rgba(192,0,90,0.25)",
+              background: i === scene ? "#FF6A92" : "rgba(255,106,146,0.25)",
             }}
           />
         ))}
       </div>
 
-      {/* CSS keyframes para la órbita */}
+      {/* CSS: rotación de órbita */}
       <style>{`
         @keyframes orbit {
           from { transform: rotate(0deg); }
