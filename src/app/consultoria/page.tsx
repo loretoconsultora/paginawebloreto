@@ -52,8 +52,8 @@ function EarthGlobe({ size }: { size: number }) {
 // ─── Contenido de texto por escena ───────────────────────────────────
 const SCENES = [
   { pre: "Un universo de",   bold: "posibilidades",         boldSmall: null,                           boldThird: null,               sub: null, layout: "center", preCursive: true,  boldCursive: false },
-  { pre: null,               bold: "Infinitas",             boldSmall: "oportunidades",                boldThird: "caminos, y versiones de ti.", sub: null, layout: "left",   preCursive: false, boldCursive: true  },
-  { pre: "Encuentra la tuya con nuestras", bold: "consultorías", boldSmall: null,                     boldThird: null,               sub: null, layout: "left",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
+  { pre: null,               bold: "Infinitas",             boldSmall: "oportunidades",                boldThird: "caminos y versiones de ti",  sub: null, layout: "left",   preCursive: false, boldCursive: true  },
+  { pre: "Encuentra la tuya\ncon nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -76,9 +76,12 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className={`absolute select-none ${posClass[scene.layout]}`}
       >
-        {/* Pre-título: cursiva grande (escena 1), normal uppercase, o nada */}
+        {/* Pre-título */}
         {scene.pre && (scene.preCursive ? (
-          <p className="font-dancing text-white/80 mb-1" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
+          <p
+            className="font-dancing text-white mb-1 whitespace-pre-line"
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)", lineHeight: 1.15 }}
+          >
             {scene.pre}
           </p>
         ) : (
@@ -89,7 +92,6 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
 
         {/* Título principal */}
         {(scene as any).boldAtSmallSize ? (
-          // Escena 3: bold a tamaño pequeño (mismo que oportunidades)
           <h2
             className="font-playfair font-bold leading-tight mb-3 text-white"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
@@ -98,21 +100,22 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
           </h2>
         ) : scene.boldSmall ? (
           <>
+            {/* "Infinitas" — cursiva, mismo tamaño que "Un universo de" */}
             <h2
-              className={`${scene.boldCursive ? "font-dancing" : "font-playfair font-bold"} leading-none text-white`}
-              style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
+              className="font-dancing text-white leading-none"
+              style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
             >
               {scene.bold}
             </h2>
             <h2
-              className="font-playfair font-bold leading-tight text-white/70"
+              className="font-playfair font-bold leading-tight text-white"
               style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
             >
               {scene.boldSmall}
             </h2>
             {(scene as any).boldThird && (
               <h2
-                className="font-playfair font-bold leading-tight mb-3 text-white/70"
+                className="font-playfair font-bold leading-tight mb-3 text-white"
                 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
               >
                 {(scene as any).boldThird}
@@ -230,7 +233,7 @@ function CinematicHero() {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         style={{ opacity: 0.28, zIndex: 0 }}
       >
-        <source src="/consultoría/stars.mp4" type="video/mp4" />
+        <source src="/consultoria/stars.mp4" type="video/mp4" />
       </video>
 
       {/* Nebulosas de fondo — halos suaves en colores marca */}
