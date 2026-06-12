@@ -221,6 +221,18 @@ function CinematicHero() {
       className="relative w-full overflow-hidden"
       style={{ height: "100vh", background: "#5c0030" }}
     >
+      {/* Video de estrellas de fondo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        style={{ opacity: 0.28, zIndex: 0 }}
+      >
+        <source src="/consultoría/stars.mp4" type="video/mp4" />
+      </video>
+
       {/* Nebulosas de fondo — halos suaves en colores marca */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
