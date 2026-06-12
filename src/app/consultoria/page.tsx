@@ -240,15 +240,15 @@ function CinematicHero() {
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ height: "100vh", background: "#0d0518" }}
+      style={{ height: "100vh", background: "#2d0018" }}
     >
       {/* Nebulosas de fondo — halos suaves en colores marca */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
-          { w: 500, h: 500, top: "-10%", left: "-5%",  bg: "rgba(192,0,90,0.12)",   blur: 120 },
-          { w: 400, h: 400, top: "50%",  left: "65%",  bg: "rgba(255,106,146,0.09)",blur: 100 },
-          { w: 300, h: 300, top: "20%",  left: "75%",  bg: "rgba(232,148,255,0.08)",blur: 90  },
-          { w: 250, h: 250, top: "70%",  left: "10%",  bg: "rgba(192,0,90,0.07)",   blur: 80  },
+          { w: 500, h: 500, top: "-10%", left: "-5%",  bg: "rgba(192,0,90,0.22)",   blur: 120 },
+          { w: 400, h: 400, top: "50%",  left: "65%",  bg: "rgba(255,106,146,0.18)",blur: 100 },
+          { w: 300, h: 300, top: "20%",  left: "75%",  bg: "rgba(212,0,90,0.14)",   blur: 90  },
+          { w: 250, h: 250, top: "70%",  left: "10%",  bg: "rgba(192,0,90,0.16)",   blur: 80  },
         ].map((b, i) => (
           <div key={i} style={{ position: "absolute", width: b.w, height: b.h, top: b.top, left: b.left, background: b.bg, borderRadius: "50%", filter: `blur(${b.blur}px)` }} />
         ))}
