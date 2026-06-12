@@ -147,8 +147,10 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
       if (el) {
         el.style.width   = `${size}px`;
         el.style.height  = `${size}px`;
-        el.style.left    = `calc(50% + ${ox - size / 2}px)`;
-        el.style.top     = `calc(50% + ${oy - size / 2}px)`;
+        // pivot es width:0 height:0 centrado en pantalla.
+        // desplazamos en px puros desde ese origen (0,0 = centro de la Tierra)
+        el.style.left    = `${ox - size / 2}px`;
+        el.style.top     = `${oy - size / 2}px`;
         el.style.zIndex  = depth > 0 ? "10" : "1";
         el.style.opacity = String(op);
       }
@@ -168,6 +170,8 @@ function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean 
       alt={p.name}
       style={{
         position: "absolute",
+        left: `${-p.size / 2}px`,
+        top:  `${-p.size / 2}px`,
         width: p.size,
         height: p.size,
         objectFit: "contain",
