@@ -26,9 +26,9 @@ const SECONDARY = [
     orbit: 220,
     speed: 12,
     start: 60,
+    tilt: 68,   // inclinación del plano orbital en grados X
     img: "/planet/venus.png",
     opacity: 0.85,
-    shadow: "0 0 20px rgba(255,179,198,0.6), 0 0 40px rgba(255,106,146,0.3)",
   },
   {
     name: "Marte",
@@ -36,9 +36,9 @@ const SECONDARY = [
     orbit: 320,
     speed: 20,
     start: 200,
+    tilt: 72,   // plano un poco más inclinado
     img: "/planet/marte.png",
     opacity: 0.8,
-    shadow: "0 0 16px rgba(192,0,90,0.55), 0 0 32px rgba(192,0,90,0.25)",
   },
 ];
 
@@ -87,7 +87,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         </p>
         <h2
           className="font-playfair font-bold leading-tight mb-3 text-white"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.8rem)" }}
+          style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
         >
           {scene.bold}
         </h2>
@@ -112,35 +112,45 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
   );
 }
 
-// ─── Planeta secundario orbitando ─────────────────────────────────────
+// ─── Planeta secundario orbitando en 3D ───────────────────────────────
 function OrbitPlanet({ p, visible }: { p: typeof SECONDARY[0]; visible: boolean }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       style={{
         position: "absolute",
         left: "50%", top: "50%",
         marginLeft: -p.orbit / 2, marginTop: -p.orbit / 2,
         width: p.orbit, height: p.orbit,
-        animation: visible ? `orbit ${p.speed}s linear infinite` : "none",
-        animationDelay: `-${(p.start / 360) * p.speed}s`,
+        // Inclina el plano orbital en 3D
+        transform: `rotateX(${p.tilt}deg)`,
+        transformStyle: "preserve-3d",
       }}
     >
-      <img
-        src={p.img}
-        alt={p.name}
+      {/* Este div gira en el plano ya inclinado */}
+      <div
         style={{
-          position: "absolute",
-          top: 0, left: "50%",
-          marginLeft: -p.size / 2,
-          marginTop: -p.size / 2,
-          width: p.size, height: p.size,
-          objectFit: "contain",
-          opacity: p.opacity,
+          width: "100%", height: "100%",
+          animation: visible ? `orbit ${p.speed}s linear infinite` : "none",
+          animationDelay: `-${(p.start / 360) * p.speed}s`,
         }}
-      />
+      >
+        <img
+          src={p.img}
+          alt={p.name}
+          style={{
+            position: "absolute",
+            top: 0, left: "50%",
+            marginLeft: -p.size / 2,
+            marginTop: -p.size / 2,
+            width: p.size, height: p.size,
+            objectFit: "contain",
+            opacity: p.opacity,
+          }}
+        />
+      </div>
     </motion.div>
   );
 }
@@ -187,9 +197,9 @@ function CinematicHero() {
         ))}
       </div>
 
-      {/* Anillos de órbita (visibles sólo en escenas 3 y 4) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {[210, 310].map((r, i) => (
+      {/* Anillos de órbita inclinados en 3D */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ perspective: "900px" }}>
+        {[{ r: 220, tilt: 68 }, { r: 320, tilt: 72 }].map(({ r, tilt }, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
@@ -199,15 +209,16 @@ function CinematicHero() {
               position: "absolute",
               width: r * 2, height: r * 2,
               borderRadius: "50%",
-              border: `1px solid rgba(255,106,146,${i === 0 ? 0.15 : 0.10})`,
+              border: `1px solid rgba(255,106,146,${i === 0 ? 0.2 : 0.14})`,
+              transform: `rotateX(${tilt}deg)`,
             }}
           />
         ))}
       </div>
 
-      {/* Venus y Marte orbitando */}
-      <div className="absolute inset-0 pointer-events-none" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ position: "relative", width: 0, height: 0 }}>
+      {/* Venus y Marte orbitando en 3D */}
+      <div className="absolute inset-0 pointer-events-none" style={{ display: "flex", alignItems: "center", justifyContent: "center", perspective: "900px" }}>
+        <div style={{ position: "relative", width: 0, height: 0, transformStyle: "preserve-3d" }}>
           {SECONDARY.map((p, i) => (
             <OrbitPlanet key={i} p={p} visible={showOrbit} />
           ))}
