@@ -84,39 +84,37 @@ export default function PortalPage() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/portal/bg.jpg')" }}
         />
-        {/* Overlay degradado */}
-        <div className="absolute inset-0" style={{ background: GRADIENT, opacity: 0.88 }} />
+        {/* Overlay — opacidad más baja para ver la imagen */}
+        <div className="absolute inset-0" style={{ background: GRADIENT, opacity: 0.75 }} />
 
-        <div className="relative z-10 max-w-2xl mx-auto w-full">
+        <div className="relative z-10 w-full max-w-4xl mx-auto">
 
-          {/* Badge cursiva */}
-          <div className="inline-flex items-center gap-2 bg-white/20 text-white px-6 py-2 rounded-full mb-8 backdrop-blur-sm border border-white/25">
-            <span className="font-dancing text-xl">Portal del Cliente</span>
-          </div>
-
-          <h1 className="font-playfair text-5xl sm:text-6xl font-bold text-white mb-4 leading-tight">
-            Próximamente
-          </h1>
-          <p className="text-white/75 text-lg leading-relaxed mb-10">
-            Muy pronto tendrás acceso a tu espacio personal donde podrás gestionar todo tu proyecto en un solo lugar.
+          {/* Título cursivo sin recuadro */}
+          <p className="font-dancing text-4xl sm:text-5xl text-white/90 mb-3">
+            Portal del Cliente
           </p>
 
-          {/* Barra de progreso */}
-          <div className="mb-10 px-4">
-            <div className="flex justify-between text-white/50 text-xs font-semibold tracking-widest uppercase mb-2">
-              <span>Progreso de desarrollo</span>
-              <span>{Math.round(progress)}%</span>
-            </div>
-            <div className="w-full h-2 rounded-full" style={{ background: "rgba(255,255,255,0.15)" }}>
+          <h1 className="font-playfair text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight">
+            Próximamente
+          </h1>
+
+          {/* Barra de progreso — justo debajo del título */}
+          <div className="mb-8 max-w-xl mx-auto">
+            <div className="w-full h-2 rounded-full" style={{ background: "rgba(255,255,255,0.20)" }}>
               <div
                 className="h-2 rounded-full transition-all duration-75"
                 style={{ width: `${progress}%`, background: "rgba(255,255,255,0.85)" }}
               />
             </div>
+            <p className="text-white/40 text-xs mt-2 text-right">{Math.round(progress)}%</p>
           </div>
 
+          <p className="text-white/75 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+            Muy pronto tendrás acceso a tu espacio personal donde podrás gestionar todo tu proyecto en un solo lugar.
+          </p>
+
           {/* Countdown */}
-          <div className="mb-10">
+          <div className="mb-12">
             <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-6">
               Lanzamiento en
             </p>
@@ -132,16 +130,16 @@ export default function PortalPage() {
             <p className="text-white/40 text-xs mt-4">15 de junio · 9:00 AM hora México</p>
           </div>
 
-          {/* Features — fila horizontal con scroll en mobile */}
-          <div className="flex flex-nowrap gap-3 overflow-x-auto pb-2 justify-start sm:justify-center scrollbar-hide">
+          {/* Features — fila completa sin scroll */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {FEATURES.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-2xl"
+                className="flex flex-col items-center gap-2 px-3 py-4 rounded-2xl"
                 style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)" }}
               >
-                <Icon size={15} className="text-white flex-shrink-0" />
-                <span className="text-white text-xs font-medium whitespace-nowrap">{label}</span>
+                <Icon size={18} className="text-white" />
+                <span className="text-white text-xs font-medium leading-snug text-center">{label}</span>
               </div>
             ))}
           </div>
