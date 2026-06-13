@@ -53,7 +53,7 @@ function EarthGlobe({ size }: { size: number }) {
 const SCENES = [
   { pre: "Un universo de",   bold: "posibilidades",         boldSmall: null,                           boldThird: null,               sub: null, layout: "center", preCursive: true,  boldCursive: false },
   { pre: null,               bold: "Infinitas",             boldSmall: "oportunidades",                boldThird: "caminos y versiones de ti",  sub: null, layout: "left",   preCursive: false, boldCursive: true  },
-  { pre: "Encuentra la tuya con nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
+  { pre: "Encuentra la tuya con nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left-shifted",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -61,6 +61,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
   const posClass: Record<string, string> = {
     "center":        "inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none",
     "left":          "inset-0 flex flex-col justify-center text-left px-8 sm:px-16 max-w-lg pointer-events-none",
+    "left-shifted":  "inset-0 flex flex-col justify-center text-left px-16 sm:px-32 max-w-xl pointer-events-none",
     "bottom-left":   "bottom-12 left-8 sm:left-14 text-left max-w-xs sm:max-w-sm pointer-events-none",
     "center-bottom": "bottom-12 left-0 right-0 text-center px-6 pointer-events-none",
     "left-cta":      "inset-0 flex flex-col justify-center text-left px-8 sm:px-16 max-w-md pointer-events-auto",
@@ -75,12 +76,13 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className={`absolute select-none ${posClass[scene.layout]}`}
+        style={{ zIndex: 20 }}
       >
         {/* Pre-título */}
         {scene.pre && (scene.preCursive ? (
           <p
             className="font-dancing text-white mb-1"
-            style={{ fontSize: "clamp(1.4rem, 3vw, 2.4rem)", lineHeight: 1.2 }}
+            style={{ fontSize: "clamp(1.7rem, 3.5vw, 2.8rem)", lineHeight: 1.2 }}
           >
             {scene.pre}
           </p>
@@ -147,7 +149,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
 }
 
 // ─── Planeta orbitando — posicionado desde el centro del viewport ──────
-function OrbitPlanet({ p }: { p: typeof SECONDARY[0] }) {
+function OrbitPlanet({ p, earthRadiusRef }: { p: typeof SECONDARY[0]; earthRadiusRef: React.RefObject<number> }) {
   const imgRef = useRef<HTMLImageElement>(null);
   const angleRef = useRef((p.start / 360) * Math.PI * 2);
   const rafRef = useRef<number>(0);
@@ -163,9 +165,11 @@ function OrbitPlanet({ p }: { p: typeof SECONDARY[0] }) {
       const depth = Math.sin(θ);
       const scale = 0.5 + 1.0 * (depth + 1) / 2;
       const size = p.size * scale;
-      // Cuando el planeta está detrás de la Tierra (depth < 0), se oculta completamente
-      // Zona de transición suave: de 0 (totalmente oculto) a 1 (totalmente visible)
-      const visibility = depth < 0 ? 0 : Math.min(1, depth * 4); // fade rápido al salir
+      // Ocultar si está detrás O si está dentro del radio visual de la Tierra
+      const screenDist = Math.sqrt(ox * ox + oy * oy);
+      const earthR = earthRadiusRef.current ?? 140;
+      const insideEarth = screenDist < earthR;
+      const visibility = (depth < 0 || insideEarth) ? 0 : Math.min(1, depth * 4);
       const op = p.opacity * visibility;
 
       const el = imgRef.current;
@@ -210,6 +214,7 @@ function OrbitPlanet({ p }: { p: typeof SECONDARY[0] }) {
 function CinematicHero() {
   const [scene, setScene] = useState(0);
   const TOTAL = SCENES.length;
+  const earthRadiusRef = useRef<number>(140);
 
   useEffect(() => {
     const id = setInterval(() => setScene((s) => (s + 1) % TOTAL), 3800);
@@ -217,6 +222,8 @@ function CinematicHero() {
   }, [TOTAL]);
 
   const ps = PLANET_STATES[scene];
+  // Actualizar radio visual de la Tierra según escena actual
+  earthRadiusRef.current = (ps.size * ps.scale) / 2;
   const showOrbit = true;
 
   return (
@@ -284,7 +291,7 @@ function CinematicHero() {
 
         {/* Venus y Marte — left:50% top:50% = centro del hero */}
         {SECONDARY.map((p, i) => (
-          <OrbitPlanet key={i} p={p} />
+          <OrbitPlanet key={i} p={p} earthRadiusRef={earthRadiusRef} />
         ))}
 
         {/* Tierra — zIndex 5, siempre entre planetas fondo(1) y frente(10) */}
