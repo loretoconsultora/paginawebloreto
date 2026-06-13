@@ -16,27 +16,6 @@ const PLANET_STATES = [
   { x: 160,  y: 40,   scale: 0.85, size: 280 },  // encuentra la tuya
 ];
 
-// Venus y Marte — Venus en órbita interior izquierda, Marte en exterior derecha
-const SECONDARY = [
-  {
-    name: "Venus",
-    size: 100,
-    orbit: 210,  // órbita interior (más cerca de la Tierra)
-    speed: 14,
-    start: 180,  // 180° → cos=-1 → lado izquierdo al arrancar
-    img: "/planet/venus.png",
-    opacity: 0.92,
-  },
-  {
-    name: "Marte",
-    size: 72,
-    orbit: 320,  // órbita exterior (más lejos)
-    speed: 22,
-    start: 0,    // 0° → cos=+1 → lado derecho al arrancar
-    img: "/planet/marte.png",
-    opacity: 0.88,
-  },
-];
 
 // ─── Tierra con imagen real ───────────────────────────────────────────
 function EarthGlobe({ size }: { size: number }) {
@@ -148,73 +127,11 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
   );
 }
 
-// ─── Planeta orbitando — posicionado desde el centro del viewport ──────
-function OrbitPlanet({ p, earthRadiusRef }: { p: typeof SECONDARY[0]; earthRadiusRef: React.RefObject<number> }) {
-  const imgRef = useRef<HTMLImageElement>(null);
-  const angleRef = useRef((p.start / 360) * Math.PI * 2);
-  const rafRef = useRef<number>(0);
-
-  useEffect(() => {
-    const delta = (2 * Math.PI) / (p.speed * 60);
-
-    const tick = () => {
-      angleRef.current += delta;
-      const θ = angleRef.current;
-      const ox = Math.cos(θ) * p.orbit;
-      const oy = Math.sin(θ) * p.orbit * 0.4;
-      const depth = Math.sin(θ);
-      const scale = 0.5 + 1.0 * (depth + 1) / 2;
-      const size = p.size * scale;
-      // Ocultar si está detrás O si está dentro del radio visual de la Tierra
-      const screenDist = Math.sqrt(ox * ox + oy * oy);
-      const earthR = earthRadiusRef.current ?? 140;
-      const insideEarth = screenDist < earthR;
-      const visibility = (depth < 0 || insideEarth) ? 0 : Math.min(1, depth * 4);
-      const op = p.opacity * visibility;
-
-      const el = imgRef.current;
-      if (el) {
-        el.style.width     = `${size}px`;
-        el.style.height    = `${size}px`;
-        // left:50% top:50% = centro del viewport; transform desplaza desde ahí
-        el.style.transform = `translate(calc(-50% + ${ox}px), calc(-50% + ${oy}px))`;
-        el.style.zIndex    = depth > 0 ? "10" : "1";
-        el.style.opacity   = String(op);
-      }
-
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <img
-      ref={imgRef}
-      src={p.img}
-      alt={p.name}
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        width: p.size,
-        height: p.size,
-        transform: `translate(-50%, -50%)`,
-        objectFit: "contain",
-        opacity: p.opacity,
-        pointerEvents: "none",
-      }}
-    />
-  );
-}
 
 // ─── Hero cinematográfico ─────────────────────────────────────────────
 function CinematicHero() {
   const [scene, setScene] = useState(0);
   const TOTAL = SCENES.length;
-  const earthRadiusRef = useRef<number>(140);
 
   useEffect(() => {
     const id = setInterval(() => setScene((s) => (s + 1) % TOTAL), 3800);
@@ -222,8 +139,6 @@ function CinematicHero() {
   }, [TOTAL]);
 
   const ps = PLANET_STATES[scene];
-  // Actualizar radio visual de la Tierra según escena actual
-  earthRadiusRef.current = (ps.size * ps.scale) / 2;
   const showOrbit = true;
 
   return (
@@ -289,12 +204,7 @@ function CinematicHero() {
       {/* Sistema solar — absolute inset-0, mismo stacking context */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 3 }}>
 
-        {/* Venus y Marte — left:50% top:50% = centro del hero */}
-        {SECONDARY.map((p, i) => (
-          <OrbitPlanet key={i} p={p} earthRadiusRef={earthRadiusRef} />
-        ))}
-
-        {/* Tierra — zIndex 5, siempre entre planetas fondo(1) y frente(10) */}
+        {/* Tierra */}
         <motion.div
           animate={{ x: ps.x, y: ps.y, scale: ps.scale }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
