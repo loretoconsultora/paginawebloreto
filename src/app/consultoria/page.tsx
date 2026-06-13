@@ -53,7 +53,7 @@ function EarthGlobe({ size }: { size: number }) {
 const SCENES = [
   { pre: "Un universo de",   bold: "posibilidades",         boldSmall: null,                           boldThird: null,               sub: null, layout: "center", preCursive: true,  boldCursive: false },
   { pre: null,               bold: "Infinitas",             boldSmall: "oportunidades",                boldThird: "caminos y versiones de ti",  sub: null, layout: "left",   preCursive: false, boldCursive: true  },
-  { pre: "Encuentra la tuya\ncon nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
+  { pre: "Encuentra la tuya con nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -79,7 +79,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         {/* Pre-título */}
         {scene.pre && (scene.preCursive ? (
           <p
-            className="font-dancing text-white mb-1 whitespace-pre-line"
+            className="font-dancing text-white mb-1"
             style={{ fontSize: "clamp(2rem, 5vw, 4rem)", lineHeight: 1.15 }}
           >
             {scene.pre}
@@ -231,7 +231,7 @@ function CinematicHero() {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        style={{ opacity: 0.28, zIndex: 0 }}
+        style={{ opacity: 0.14, zIndex: 1 }}
       >
         <source src="/consultoria/stars.mp4" type="video/mp4" />
       </video>
@@ -261,7 +261,7 @@ function CinematicHero() {
       </div>
 
       {/* Anillos de órbita — elipse inclinada que coincide con el movimiento de los planetas */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 2 }}>
         {[{ r: 210, alpha: 0.22 }, { r: 320, alpha: 0.15 }].map(({ r, alpha }, i) => (
           <motion.div
             key={i}
@@ -280,7 +280,7 @@ function CinematicHero() {
       </div>
 
       {/* Sistema solar — absolute inset-0, mismo stacking context */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 3 }}>
 
         {/* Venus y Marte — left:50% top:50% = centro del hero */}
         {SECONDARY.map((p, i) => (
