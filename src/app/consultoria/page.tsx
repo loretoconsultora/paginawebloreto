@@ -44,7 +44,7 @@ function EarthGlobe({ size }: { size: number }) {
     <img
       src="/planet/tierra.png"
       alt="Tierra"
-      style={{ width: size, height: size, objectFit: "contain", opacity: 0.4, flexShrink: 0 }}
+      style={{ width: size, height: size, objectFit: "contain", opacity: 1, flexShrink: 0 }}
     />
   );
 }
@@ -80,7 +80,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         {scene.pre && (scene.preCursive ? (
           <p
             className="font-dancing text-white mb-1"
-            style={{ fontSize: "clamp(2rem, 5vw, 4rem)", lineHeight: 1.15 }}
+            style={{ fontSize: "clamp(1.4rem, 3vw, 2.4rem)", lineHeight: 1.2 }}
           >
             {scene.pre}
           </p>
