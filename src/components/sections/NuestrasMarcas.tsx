@@ -14,6 +14,14 @@ const videos: { id: string; titulo: string }[] = [
   { id: "-Wz16y3WUnA", titulo: "Short 4" },
   { id: "XO6RLM5yrHs", titulo: "Short 5" },
   { id: "62YHw5evRFA", titulo: "Short 6" },
+  { id: "PRJjp33Xq3Y", titulo: "Short 7" },
+  { id: "_Rp_d4_gatk", titulo: "Short 8" },
+  { id: "8rXELdkr7ws", titulo: "Short 9" },
+  { id: "nAomfZnvWrA", titulo: "Short 10" },
+  { id: "Dq-koqabucc", titulo: "Short 11" },
+  { id: "6klmMXe8T8g", titulo: "Short 12" },
+  { id: "S5zqWfZxsbw", titulo: "Short 13" },
+  { id: "CzQdEQ5Z3vc", titulo: "Short 14" },
 ];
 
 export default function NuestrasMarcas() {
