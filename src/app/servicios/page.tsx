@@ -280,7 +280,7 @@ export default function ServiciosPage() {
                 lineHeight: 1.1,
               }}
             >
-              Nuestros Servicios
+              Buffet de Servicios
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -288,7 +288,8 @@ export default function ServiciosPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-grafito/65 text-lg leading-relaxed"
             >
-              Soluciones diseñadas para llevar tu marca al siguiente nivel con visión, estrategia y sistemas reales.
+              Soluciones diseñadas para llevar tu marca al siguiente nivel<br />
+              <span className="font-dancing" style={{ color: "#c0005a", fontSize: "1.15em" }}>con visión, estrategia y sistemas reales.</span>
             </motion.p>
           </div>
         </section>
