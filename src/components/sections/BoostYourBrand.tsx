@@ -182,7 +182,7 @@ export default function BoostYourBrand() {
               >
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso general</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Boost Your Brand</p>
-                <p className="font-playfair text-3xl font-black mb-4">$444 <span className="text-base font-normal text-white/60">USD</span></p>
+                <p className="font-playfair text-3xl font-black mb-4">444 <span className="text-base font-normal text-white/60">USD</span></p>
                 <ul className="space-y-2 mb-5">
                   {INCLUDES.slice(0, 4).map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-white/85">
@@ -209,7 +209,7 @@ export default function BoostYourBrand() {
                 </div>
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso VIP</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
-                <p className="font-playfair text-3xl font-black mb-4">$1,110 <span className="text-base font-normal text-white/60">USD</span></p>
+                <p className="font-playfair text-3xl font-black mb-4">1,110 <span className="text-base font-normal text-white/60">USD</span></p>
                 <p className="text-sm text-white/75 mb-5">Todo lo del plan Boost + mentoría 1:1, piezas publicitarias y CRM incluido.</p>
                 <GradientBorderButton href={HREF_VIP} gradient={GOLD_GRADIENT}>
                   Activar acceso VIP →
