@@ -12,6 +12,8 @@ const videos: { id: string; titulo: string }[] = [
   { id: "8b4IBY81fQ8", titulo: "Short 2" },
   { id: "MQDX9iByOYQ", titulo: "Short 3" },
   { id: "-Wz16y3WUnA", titulo: "Short 4" },
+  { id: "XO6RLM5yrHs", titulo: "Short 5" },
+  { id: "62YHw5evRFA", titulo: "Short 6" },
 ];
 
 export default function NuestrasMarcas() {
