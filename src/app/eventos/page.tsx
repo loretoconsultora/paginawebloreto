@@ -15,7 +15,7 @@ const ART_OF_BRAND = {
   titulo: "The Art of Brand",
   subtitulo: "Colección de Eventos",
   descripcion: "Una serie de experiencias creativas donde el branding deja de ser teoría y se convierte en algo que se siente, se piensa y se crea con las manos.",
-  descripcionLarga: "Aquí no vienes a "tomar un taller de branding". Vienes a explorar tu identidad, darle forma a tu narrativa y materializar la esencia de tu marca a través del arte.",
+  descripcionLarga: "Aquí no vienes a tomar un taller de branding. Vienes a explorar tu identidad, darle forma a tu narrativa y materializar la esencia de tu marca a través del arte.",
 };
 
 const EXPERIENCIAS = [
