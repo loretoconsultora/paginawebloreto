@@ -1,12 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 
-// Agrega aquí los YouTube Shorts IDs cuando los tengas
 const videos: { id: string; titulo: string }[] = [
   { id: "_MrMejtExu0", titulo: "Short 1" },
   { id: "8b4IBY81fQ8", titulo: "Short 2" },
@@ -24,16 +21,12 @@ const videos: { id: string; titulo: string }[] = [
   { id: "CzQdEQ5Z3vc", titulo: "Short 14" },
 ];
 
+// Duplicamos para loop infinito
+const track = [...videos, ...videos];
+
 export default function NuestrasMarcas() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: dir === "right" ? 320 : -320, behavior: "smooth" });
-  };
-
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Header centrado */}
@@ -61,81 +54,42 @@ export default function NuestrasMarcas() {
           </p>
         </motion.div>
 
-        {/* Carrusel de YouTube Shorts */}
-        {videos.length > 0 ? (
-          <div className="relative">
-            {/* Botón izquierdo */}
-            <button
-              onClick={() => scroll("left")}
-              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
-              style={{ border: "1px solid rgba(58,63,75,0.12)" }}
-            >
-              <ChevronLeft size={18} className="text-grafito" />
-            </button>
-
-            {/* Track */}
-            <div
-              ref={scrollRef}
-              className="flex gap-4 overflow-x-auto pb-4 scroll-smooth"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              {videos.map((v, i) => (
-                <motion.div
-                  key={v.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="flex-shrink-0 rounded-2xl overflow-hidden"
-                  style={{
-                    width: 300,
-                    height: 533,
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
-                  }}
-                >
-                  <iframe
-                    src={`https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`}
-                    title={v.titulo}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full border-0"
-                  />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Botón derecho */}
-            <button
-              onClick={() => scroll("right")}
-              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
-              style={{ border: "1px solid rgba(58,63,75,0.12)" }}
-            >
-              <ChevronRight size={18} className="text-grafito" />
-            </button>
-          </div>
-        ) : (
-          /* Placeholder mientras llegan los links */
-          <div className="flex gap-4 justify-center">
-            {[1, 2, 3].map((n) => (
-              <div
-                key={n}
-                className="rounded-2xl flex items-center justify-center flex-shrink-0"
-                style={{
-                  width: 280,
-                  height: 498,
-                  background: "rgba(58,63,75,0.04)",
-                  border: "2px dashed rgba(58,63,75,0.12)",
-                }}
-              >
-                <p className="text-grafito/30 text-xs font-mono text-center px-6">
-                  YouTube Short {n}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-
       </div>
+
+      {/* Carrusel animado — ancho completo */}
+      <div className="relative" style={{ maskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)" }}>
+        <div
+          className="flex gap-4"
+          style={{ animation: "salon-scroll 60s linear infinite", width: "max-content" }}
+        >
+          {track.map((v, i) => (
+            <div
+              key={`${v.id}-${i}`}
+              className="flex-shrink-0 rounded-2xl overflow-hidden"
+              style={{
+                width: 280,
+                height: 498,
+                boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
+              }}
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`}
+                title={v.titulo}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes salon-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }
