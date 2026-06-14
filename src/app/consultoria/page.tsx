@@ -249,49 +249,137 @@ function CinematicHero() {
 const GRUPOS = [
   {
     label: "Auditorías",
-    icon: "🔍",
     gradient: "linear-gradient(135deg, #3ab8ba, #67c6c8, #9de8ea)",
     color: "#0d6b6d",
     bg: "rgba(13,107,109,0.07)",
     border: "rgba(13,107,109,0.3)",
     items: [
-      { titulo: "Activos digitales",      icon: "📊" },
-      { titulo: "Optimización de oferta", icon: "🎯" },
-      { titulo: "Marca",                  icon: "✨" },
-      { titulo: "Mercado",                icon: "🌐" },
+      {
+        titulo: "Activos digitales",
+        desc: "¿Sabes si lo que tienes en digital realmente está funcionando para tu negocio? Revisamos todo lo que tienes visible en internet — redes sociales, sitio web, landing pages, ficha de Google, aplicaciones — y te decimos qué está bien, qué hay que mejorar y cómo hacerlo. Según el nivel elegido, vamos desde un diagnóstico básico hasta una optimización completa de todo tu ecosistema digital.",
+      },
+      {
+        titulo: "Optimización de oferta",
+        desc: "Tu producto o servicio puede ser bueno, pero si no está bien comunicado, estructurado o posicionado, no vende como debería. Analizamos lo que vendes, cómo lo vendes y a quién, y te damos un plan claro para mejorarlo. En los niveles más completos construimos tu escalera de valor, modelos de monetización y los sistemas para atraer y cerrar más clientes.",
+      },
+      {
+        titulo: "Marca",
+        desc: "¿Tu marca comunica lo que realmente eres? Revisamos tu identidad, el tono con el que hablas, cómo te posicionas frente a tu competencia y si todo eso está alineado en cada punto de contacto con tu cliente. El resultado es un diagnóstico honesto y un plan de acción para que tu marca transmita exactamente lo que quieres transmitir.",
+      },
+      {
+        titulo: "Mercado",
+        desc: "Antes de tomar decisiones de negocio grandes, necesitas saber qué está pasando afuera. Analizamos las tendencias de tu industria, quiénes son tus clientes ideales y qué está haciendo tu competencia. En niveles más avanzados, diseñamos contigo una estrategia de diferenciación para que sepas exactamente por qué elegirte a ti y no a otro.",
+      },
     ],
   },
   {
     label: "Estratégicas",
-    icon: "📡",
     gradient: "linear-gradient(135deg, #c0005a, #FF6A92, #E894FF)",
     color: "#c0005a",
     bg: "rgba(192,0,90,0.07)",
     border: "rgba(192,0,90,0.3)",
     items: [
-      { titulo: "Estrategia de Comunicación y Posicionamiento", icon: "📡" },
-      { titulo: "Estrategia de Marca y Dirección Creativa",     icon: "🎨" },
-      { titulo: "Procesos comerciales y Customer Journey",      icon: "🛤️" },
-      { titulo: "Estrategia Digital",                          icon: "💻" },
-      { titulo: "Estrategia RRSS",                             icon: "📱" },
-      { titulo: "Estrategias de Relaciones Públicas",          icon: "🤝" },
+      {
+        titulo: "Estrategia de Comunicación y Posicionamiento",
+        desc: "Tu negocio tiene valor. El problema es que si no sabes comunicarlo, el mercado no lo va a percibir. Definimos el mensaje estratégico de tu marca — el que conecta con tu cliente ideal, justifica tu precio y convierte atención en acción. Sin rodeos, sin genéricos. Comunicación que posiciona y que vende.",
+      },
+      {
+        titulo: "Estrategia de Marca y Dirección Creativa",
+        desc: "Esta consultoría define hacia dónde va tu marca visualmente — qué quieres transmitir, cómo debe verse, cómo debe sentirse — para que cada cosa que crees a partir de hoy esté integrada a esa dirección. Lo hacemos a través de un proceso estratégico que traduce la esencia de tu negocio en criterios visuales claros. Para que dejes de improvisar y empieces a construir una marca que se reconoce, que conecta y que se recuerda.",
+      },
+      {
+        titulo: "Procesos comerciales y Customer Journey",
+        desc: "¿Sabes exactamente qué vive tu cliente desde que te descubre hasta que te compra — y qué pasa después? La mayoría de los negocios pierden clientes en algún punto del camino sin saber dónde ni por qué. Mapeamos todo ese recorrido, identificamos en qué momento se van los leads y qué está causando esa fuga — para corregirlo. Porque antes de automatizar cualquier proceso con tecnología, necesitas tenerlo claro y estandarizado. En el nivel más avanzado aplicamos la metodología Lean para medir la eficiencia de tu proceso comercial y mejorarlo de forma continua — no solo el proceso, sino también los equipos y los activos que lo sostienen.",
+      },
+      {
+        titulo: "Estrategia Digital",
+        desc: "Revisamos las acciones de promoción que tienes activas y optimizamos tu estrategia de campañas publicitarias en Meta y Google Ads. A partir de ahí, diseñamos el sistema que atrae, convierte y acelera tus ventas — siempre con un enfoque total en el retorno de inversión.",
+      },
+      {
+        titulo: "Estrategia RRSS",
+        desc: "Definimos qué publicar, cuándo, cómo y por qué — para que tus redes sociales dejen de ser una tarea o una vitrina bonita y se conviertan en una herramienta real de posicionamiento y venta. Disponible desde una sola plataforma hasta la estrategia completa de todo tu ecosistema.",
+      },
+      {
+        titulo: "Estrategias de Relaciones Públicas",
+        desc: "La forma en que otros hablan de ti importa tanto como lo que tú dices. Diseñamos una estrategia para posicionarte en los espacios clave de tu industria — medios locales y nacionales, revistas especializadas, eventos, entrevistas, mesas redondas, e incluso la organización de tus propios espacios de visibilidad.",
+      },
     ],
   },
   {
     label: "Business Intelligence",
-    icon: "🧠",
     gradient: "linear-gradient(135deg, #1a0a2e, #6a00c8, #E894FF)",
     color: "#6a00c8",
     bg: "rgba(106,0,200,0.07)",
     border: "rgba(106,0,200,0.3)",
     items: [
-      { titulo: "Construcción y Lanzamiento de Oferta",              icon: "🚀" },
-      { titulo: "Sistema Comercial: Estrategias, Equipos y Activos", icon: "⚙️" },
-      { titulo: "Internacionalización de mercado",                   icon: "🌍" },
-      { titulo: "Herramientas de IA a la medida de mi negocio",      icon: "🤖" },
+      {
+        titulo: "Construcción y Lanzamiento de Oferta",
+        desc: "Tienes conocimiento, experiencia y valor que ofrecer — pero si para venderlo depende de tu tiempo, tu negocio tiene un techo. Te ayudamos a empaquetar lo que haces de una forma que puedas escalar: con el modelo de monetización correcto, la oferta bien estructurada y el plan de lanzamiento que lo lleva al mercado. Somos arquitectos de negocios rentables y escalables — porque el objetivo no es solo que tu negocio funcione, sino que te dé libertad para vivir de tu propósito.",
+      },
+      {
+        titulo: "Sistema Comercial: Estrategias, Equipos y Activos",
+        desc: "Si quieres aumentar tus ventas, el primer paso es tener un sistema comercial que funcione sin fricción. Este es un acompañamiento estratégico para alinear y potenciar tus procesos, equipo y herramientas — trabajando en la mejora continua de cómo atraes clientes, cómo los atiendes y cómo los conviertes. Disponible desde una consulta puntual hasta un esquema de outsourcing continuo con capacitación de tu equipo interno.",
+      },
+      {
+        titulo: "Internacionalización de mercado",
+        desc: "Tu negocio tiene potencial más allá de las fronteras — y llevar una marca o empresa al mercado internacional requiere más que avisarlo en tus redes sociales, viajar o activar nuevas campañas digitales. Diseñamos la estrategia completa para que entres a nuevos mercados de forma sólida y estructurada: estrategia de penetración, precios adaptados al mercado destino, logística de cobro internacional y construcción de equipos globales. Para que escales sin improvisar y sin dejar cabos sueltos.",
+      },
+      {
+        titulo: "Herramientas de IA a la medida de mi negocio",
+        desc: "La inteligencia artificial no es solo para grandes empresas — es para cualquier negocio que quiera hacer más con menos tiempo y esfuerzo. Si sabes que hay alguna parte de tu proceso que podría ser más rápida, más eficiente o más inteligente, aquí es donde empezamos. Desde automatizar cotizaciones o tareas operativas del día a día, hasta construir sistemas de IA que forman parte de lo que le entregas a tus clientes. Lo diseñamos completamente a la medida de tu negocio — sin tecnicismos, con resultados claros.",
+      },
     ],
   },
 ];
+
+// ─── Columna con acordeón ─────────────────────────────────────────────
+function GrupoColumna({ g }: { g: typeof GRUPOS[0] }) {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div className="rounded-3xl p-[3px]" style={{ background: g.gradient }}>
+      <div className="rounded-[22px] bg-white px-6 py-7 flex flex-col gap-4">
+        <div
+          className="inline-flex items-center self-start text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full border"
+          style={{ color: g.color, borderColor: g.border, background: g.bg }}
+        >
+          {g.label}
+        </div>
+        <div className="flex flex-col gap-2">
+          {g.items.map((item, i) => (
+            <div key={item.titulo} className="rounded-2xl overflow-hidden" style={{ background: g.bg }}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between px-4 py-3 text-left gap-3"
+              >
+                <span className="font-playfair text-sm font-bold text-grafito leading-snug">{item.titulo}</span>
+                <span
+                  className="flex-shrink-0 transition-transform duration-300"
+                  style={{ transform: open === i ? "rotate(180deg)" : "rotate(0deg)", color: g.color }}
+                >
+                  ▾
+                </span>
+              </button>
+              {open === i && (
+                <p className="px-4 pb-4 text-sm text-grafito/70 leading-relaxed">
+                  {item.desc}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+        <Link
+          href={CALENDAR}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity w-full mt-1"
+          style={{ background: g.gradient }}
+        >
+          Agendar <ArrowRight size={14} />
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 // ─── Página completa ──────────────────────────────────────────────────
 export default function ConsultoriaPage() {
@@ -316,56 +404,15 @@ export default function ConsultoriaPage() {
               }}>
                 Tu camino, tu ritmo
               </h2>
-              <p className="text-grafito/60 text-lg leading-relaxed max-w-xl mx-auto">
+              <p className="text-grafito/60 text-lg leading-relaxed whitespace-nowrap mx-auto">
                 Sesiones estratégicas diseñadas para el momento exacto de tu negocio.
               </p>
             </div>
 
             {/* 3 columnas verticales */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
               {GRUPOS.map((g) => (
-                <div key={g.label} className="rounded-3xl p-[3px] flex flex-col" style={{ background: g.gradient }}>
-                  <div className="rounded-[22px] bg-white px-6 py-7 flex flex-col gap-5 h-full">
-
-                    {/* Encabezado del grupo */}
-                    <div className="flex items-center justify-between">
-                      <div
-                        className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full border"
-                        style={{ color: g.color, borderColor: g.border, background: g.bg }}
-                      >
-                        {g.icon} {g.label}
-                      </div>
-                    </div>
-
-                    {/* Items */}
-                    <div className="flex flex-col gap-3 flex-1">
-                      {g.items.map((item) => (
-                        <div
-                          key={item.titulo}
-                          className="flex items-start gap-3 rounded-2xl px-4 py-3"
-                          style={{ background: g.bg }}
-                        >
-                          <span className="text-lg mt-0.5 flex-shrink-0">{item.icon}</span>
-                          <span className="font-playfair text-sm font-bold text-grafito leading-snug">
-                            {item.titulo}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Botón agendar */}
-                    <Link
-                      href={CALENDAR}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity w-full"
-                      style={{ background: g.gradient }}
-                    >
-                      Agendar <ArrowRight size={14} />
-                    </Link>
-
-                  </div>
-                </div>
+                <GrupoColumna key={g.label} g={g} />
               ))}
             </div>
 
