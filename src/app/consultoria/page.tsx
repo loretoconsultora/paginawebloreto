@@ -394,47 +394,57 @@ function FormularioConsultoria() {
         </div>
 
         {/* Columna derecha — formulario */}
-        <div className="px-10 sm:px-16 py-12" style={{ background: "#3A3F4B" }}>
-          <div className="bg-white rounded-2xl p-8">
+        <div className="px-6 sm:px-10 py-12" style={{ background: "#3A3F4B" }}>
+          <div className="bg-white rounded-2xl p-6 sm:p-8">
+
+          {/* Título del formulario */}
+          <h4 className="font-playfair text-xl sm:text-2xl font-bold text-center mb-6" style={{
+            background: "linear-gradient(135deg, #1a0a2e 0%, #c0005a 50%, #E894FF 100%)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+          }}>
+            Armar programa de consultoría a la medida
+          </h4>
+
           {estado === "ok" ? (
-            <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+            <div className="flex flex-col items-center justify-center gap-4 text-center py-10">
               <p className="font-playfair text-2xl font-bold text-grafito">¡Recibido!</p>
               <p className="text-sm text-grafito/60">Nos pondremos en contacto contigo pronto.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <input required name="nombre" placeholder="Nombre *" value={form.nombre} onChange={handleChange} className={inputClass} />
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
 
-              <div className="flex gap-2">
-                <div className="flex items-center gap-1 rounded-xl border border-gray-200 px-3 py-2.5 w-28 flex-shrink-0">
-                  <span className="text-sm text-grafito/50">+</span>
-                  <input name="lada" placeholder="52" value={form.lada} onChange={handleChange} required className="w-full text-sm text-grafito focus:outline-none bg-transparent" />
-                </div>
-                <input required name="telefono" placeholder="Teléfono *" value={form.telefono} onChange={handleChange} className={`${inputClass} flex-1`} />
+              {/* Nombre + Empresa en mismo renglón */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input required name="nombre" placeholder="Nombre *" value={form.nombre} onChange={handleChange} className={inputClass} />
+                <input name="empresa" placeholder="Empresa (opcional)" value={form.empresa} onChange={handleChange} className={inputClass} />
               </div>
 
-              <input required name="correo" type="email" placeholder="Correo *" value={form.correo} onChange={handleChange} className={inputClass} />
-              <input name="empresa" placeholder="Empresa (opcional)" value={form.empresa} onChange={handleChange} className={inputClass} />
+              {/* Teléfono + Correo en mismo renglón */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="flex gap-2">
+                  <div className="flex items-center gap-1 rounded-xl border border-gray-200 px-3 py-2.5 w-24 flex-shrink-0">
+                    <span className="text-sm text-grafito/50">+</span>
+                    <input name="lada" placeholder="52" value={form.lada} onChange={handleChange} required className="w-full text-sm text-grafito focus:outline-none bg-transparent" />
+                  </div>
+                  <input required name="telefono" placeholder="Teléfono *" value={form.telefono} onChange={handleChange} className={`${inputClass} flex-1`} />
+                </div>
+                <input required name="correo" type="email" placeholder="Correo *" value={form.correo} onChange={handleChange} className={inputClass} />
+              </div>
 
-              {/* Checkboxes */}
+              {/* Checkboxes en 2 columnas */}
               <div className="rounded-xl border border-gray-200 p-4">
                 <p className="text-xs font-semibold text-grafito/50 uppercase tracking-widest mb-3">Consultorías de interés</p>
-                <div className="grid grid-cols-1 gap-2 max-h-48 overflow-y-auto pr-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {TODAS_CONSULTORIAS.map((c) => (
                     <label key={c} className="flex items-start gap-2.5 cursor-pointer group">
-                      <input
-                        type="checkbox"
-                        checked={seleccionadas.includes(c)}
-                        onChange={() => toggle(c)}
-                        className="mt-0.5 accent-pink-500 flex-shrink-0"
-                      />
+                      <input type="checkbox" checked={seleccionadas.includes(c)} onChange={() => toggle(c)} className="mt-0.5 accent-pink-500 flex-shrink-0" />
                       <span className="text-sm text-grafito/70 group-hover:text-grafito transition-colors leading-snug">{c}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
-              <textarea name="comentarios" placeholder="Comentarios adicionales (opcional)" value={form.comentarios} onChange={handleChange} rows={3} className={`${inputClass} resize-none`} />
+              <textarea name="comentarios" placeholder="Comentarios adicionales (opcional)" value={form.comentarios} onChange={handleChange} rows={2} className={`${inputClass} resize-none`} />
 
               <button
                 type="submit"
