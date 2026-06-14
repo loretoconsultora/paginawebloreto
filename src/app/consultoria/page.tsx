@@ -380,24 +380,22 @@ function FormularioConsultoria() {
   const inputClass = "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-pink-300 transition-colors";
 
   return (
-    <div className="mt-14 rounded-3xl overflow-hidden" style={{ background: "#f5f5f5" }}>
+    <div className="mt-14 rounded-3xl overflow-hidden" style={{ background: "#3A3F4B" }}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
 
         {/* Columna izquierda — texto */}
-        <div className="px-10 py-12 flex flex-col justify-center" style={{ background: "#efefef" }}>
-          <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "#c0005a" }}>
-            Programa a tu medida
-          </p>
-          <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-grafito leading-snug mb-4">
+        <div className="px-10 py-12 flex flex-col justify-center">
+          <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-white leading-snug mb-4">
             ¿No sabes cuál es la indicada para ti o te gustaría recibir distintos programas de consultoría?
           </h3>
-          <p className="font-dancing text-2xl" style={{ color: "#c0005a" }}>
+          <p className="font-dancing" style={{ color: "#FF6A92", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
             Diseña tu programa a tu medida.
           </p>
         </div>
 
         {/* Columna derecha — formulario */}
-        <div className="px-10 py-12 bg-white">
+        <div className="px-10 py-12" style={{ background: "#3A3F4B" }}>
+          <div className="bg-white rounded-2xl p-8">
           {estado === "ok" ? (
             <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
               <p className="font-playfair text-2xl font-bold text-grafito">¡Recibido!</p>
@@ -441,7 +439,7 @@ function FormularioConsultoria() {
                 className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
                 style={{ background: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)" }}
               >
-                {estado === "loading" ? "Enviando..." : <>Enviar <ArrowRight size={14} /></>}
+                {estado === "loading" ? "Enviando..." : <>Solicitar consultoría <ArrowRight size={14} /></>}
               </button>
 
               {estado === "error" && (
@@ -449,6 +447,7 @@ function FormularioConsultoria() {
               )}
             </form>
           )}
+          </div>
         </div>
 
       </div>
