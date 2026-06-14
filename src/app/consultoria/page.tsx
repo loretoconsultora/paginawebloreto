@@ -381,7 +381,7 @@ function FormularioConsultoria() {
 
   return (
     <div style={{ background: "#3A3F4B" }}>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-0">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-0">
 
         {/* Columna izquierda — texto */}
         <div className="px-10 sm:px-16 py-12 flex flex-col justify-center">
