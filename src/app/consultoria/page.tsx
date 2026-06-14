@@ -332,6 +332,130 @@ const GRUPOS = [
   },
 ];
 
+// ─── Lista de todas las consultorías para checkboxes ─────────────────
+const TODAS_CONSULTORIAS = [
+  "Auditoría de activos digitales",
+  "Auditoría de optimización de oferta",
+  "Auditoría de marca",
+  "Análisis de mercado",
+  "Estrategia de Comunicación y Posicionamiento",
+  "Estrategia de Marca y Dirección Creativa",
+  "Procesos comerciales y Customer Journey",
+  "Estrategia Digital",
+  "Estrategia RRSS",
+  "Estrategias de Relaciones Públicas",
+  "Construcción y Lanzamiento de Oferta",
+  "Sistema Comercial: Estrategias, Equipos y Activos",
+  "Internacionalización de mercado",
+  "Herramientas de IA a la medida de mi negocio",
+];
+
+// ─── Formulario contacto consultorías ────────────────────────────────
+function FormularioConsultoria() {
+  const [form, setForm] = useState({ nombre: "", lada: "52", telefono: "", correo: "", empresa: "", comentarios: "" });
+  const [seleccionadas, setSeleccionadas] = useState<string[]>([]);
+  const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
+
+  const toggle = (c: string) =>
+    setSeleccionadas((prev) => prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setEstado("loading");
+    try {
+      const res = await fetch("/api/contacto-consultoria", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, consultorias: seleccionadas }),
+      });
+      setEstado(res.ok ? "ok" : "error");
+    } catch {
+      setEstado("error");
+    }
+  };
+
+  const inputClass = "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-pink-300 transition-colors";
+
+  return (
+    <div className="mt-14 rounded-3xl overflow-hidden" style={{ background: "#f5f5f5" }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+
+        {/* Columna izquierda — texto */}
+        <div className="px-10 py-12 flex flex-col justify-center" style={{ background: "#efefef" }}>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "#c0005a" }}>
+            Programa a tu medida
+          </p>
+          <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-grafito leading-snug mb-4">
+            ¿No sabes cuál es la indicada para ti o te gustaría recibir distintos programas de consultoría?
+          </h3>
+          <p className="font-dancing text-2xl" style={{ color: "#c0005a" }}>
+            Diseña tu programa a tu medida.
+          </p>
+        </div>
+
+        {/* Columna derecha — formulario */}
+        <div className="px-10 py-12 bg-white">
+          {estado === "ok" ? (
+            <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
+              <p className="font-playfair text-2xl font-bold text-grafito">¡Recibido!</p>
+              <p className="text-sm text-grafito/60">Nos pondremos en contacto contigo pronto.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <input required name="nombre" placeholder="Nombre *" value={form.nombre} onChange={handleChange} className={inputClass} />
+
+              <div className="flex gap-2">
+                <input name="lada" placeholder="Lada *" value={form.lada} onChange={handleChange} required className={`${inputClass} w-24`} />
+                <input required name="telefono" placeholder="Teléfono *" value={form.telefono} onChange={handleChange} className={`${inputClass} flex-1`} />
+              </div>
+
+              <input required name="correo" type="email" placeholder="Correo *" value={form.correo} onChange={handleChange} className={inputClass} />
+              <input name="empresa" placeholder="Empresa (opcional)" value={form.empresa} onChange={handleChange} className={inputClass} />
+
+              {/* Checkboxes */}
+              <div className="rounded-xl border border-gray-200 p-4">
+                <p className="text-xs font-semibold text-grafito/50 uppercase tracking-widest mb-3">Consultorías de interés</p>
+                <div className="grid grid-cols-1 gap-2 max-h-48 overflow-y-auto pr-1">
+                  {TODAS_CONSULTORIAS.map((c) => (
+                    <label key={c} className="flex items-start gap-2.5 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={seleccionadas.includes(c)}
+                        onChange={() => toggle(c)}
+                        className="mt-0.5 accent-pink-500 flex-shrink-0"
+                      />
+                      <span className="text-sm text-grafito/70 group-hover:text-grafito transition-colors leading-snug">{c}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <textarea name="comentarios" placeholder="Comentarios adicionales (opcional)" value={form.comentarios} onChange={handleChange} rows={3} className={`${inputClass} resize-none`} />
+
+              <button
+                type="submit"
+                disabled={estado === "loading"}
+                className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
+                style={{ background: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)" }}
+              >
+                {estado === "loading" ? "Enviando..." : <>Enviar <ArrowRight size={14} /></>}
+              </button>
+
+              {estado === "error" && (
+                <p className="text-xs text-red-500 text-center">Hubo un error al enviar. Intenta de nuevo.</p>
+              )}
+            </form>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 // ─── Columna con acordeón ─────────────────────────────────────────────
 function GrupoColumna({ g }: { g: typeof GRUPOS[0] }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -418,19 +542,8 @@ export default function ConsultoriaPage() {
               ))}
             </div>
 
-            {/* CTA final */}
-            <div className="text-center mt-14">
-              <p className="text-grafito/55 text-sm mb-5">¿No sabes cuál es la indicada para ti?</p>
-              <Link
-                href={CALENDAR}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition-opacity"
-                style={{ background: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)", boxShadow: "0 8px 28px rgba(192,0,90,0.35)" }}
-              >
-                Hablemos y lo encontramos juntos <ArrowRight size={16} />
-              </Link>
-            </div>
+            {/* CTA final — 2 columnas */}
+            <FormularioConsultoria />
 
           </div>
         </section>
