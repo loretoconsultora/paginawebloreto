@@ -41,7 +41,7 @@ export default function Servicios() {
               backgroundClip: "text",
             }}
           >
-            Si quieres que el 2026 sea el año en que tu marca habla por ti, atrae a los clientes correctos y construye un negocio que crece con propósito
+            Si quieres que el 2026 sea el año en que tu marca hable por ti, atraiga a los clientes correctos y construya un negocio que crece con propósito
           </motion.h2>
 
           <motion.p
@@ -148,7 +148,7 @@ export default function Servicios() {
                 backgroundClip: "text",
               }}
             >
-              Si quieres que el 2026 sea el año en que tu marca habla por ti, atrae a los clientes correctos y construye un negocio que crece con propósito
+              Si quieres que el 2026 sea el año en que tu marca hable por ti, atraiga a los clientes correctos y construya un negocio que crece con propósito
             </motion.h2>
 
             <motion.p

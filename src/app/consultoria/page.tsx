@@ -256,19 +256,19 @@ const GRUPOS = [
     items: [
       {
         titulo: "Activos digitales",
-        desc: "¿Sabes si lo que tienes en digital realmente está funcionando para tu negocio? Revisamos todo lo que tienes visible en internet — redes sociales, sitio web, landing pages, ficha de Google, aplicaciones — y te decimos qué está bien, qué hay que mejorar y cómo hacerlo. Según el nivel elegido, vamos desde un diagnóstico básico hasta una optimización completa de todo tu ecosistema digital.",
+        desc: "¿Sabes si lo que tienes en digital realmente está funcionando para tu negocio?\n\nRevisamos todo lo que tienes visible en internet — redes sociales, sitio web, landing pages, ficha de Google, aplicaciones — y te decimos qué está bien, qué hay que mejorar y cómo hacerlo.\n\nSegún el nivel elegido, vamos desde un diagnóstico básico hasta una optimización completa de todo tu ecosistema digital.",
       },
       {
         titulo: "Optimización de oferta",
-        desc: "Tu producto o servicio puede ser bueno, pero si no está bien comunicado, estructurado o posicionado, no vende como debería. Analizamos lo que vendes, cómo lo vendes y a quién, y te damos un plan claro para mejorarlo. En los niveles más completos construimos tu escalera de valor, modelos de monetización y los sistemas para atraer y cerrar más clientes.",
+        desc: "Tu producto o servicio puede ser bueno, pero si no está bien comunicado, estructurado o posicionado, no vende como debería.\n\nAnalizamos lo que vendes, cómo lo vendes y a quién, y te damos un plan claro para mejorarlo.\n\nEn los niveles más completos construimos tu escalera de valor, modelos de monetización y los sistemas para atraer y cerrar más clientes.",
       },
       {
         titulo: "Marca",
-        desc: "¿Tu marca comunica lo que realmente eres? Revisamos tu identidad, el tono con el que hablas, cómo te posicionas frente a tu competencia y si todo eso está alineado en cada punto de contacto con tu cliente. El resultado es un diagnóstico honesto y un plan de acción para que tu marca transmita exactamente lo que quieres transmitir.",
+        desc: "¿Tu marca comunica lo que realmente eres?\n\nRevisamos tu identidad, el tono con el que hablas, cómo te posicionas frente a tu competencia y si todo eso está alineado en cada punto de contacto con tu cliente.\n\nEl resultado es un diagnóstico honesto y un plan de acción para que tu marca transmita exactamente lo que quieres transmitir.",
       },
       {
         titulo: "Mercado",
-        desc: "Antes de tomar decisiones de negocio grandes, necesitas saber qué está pasando afuera. Analizamos las tendencias de tu industria, quiénes son tus clientes ideales y qué está haciendo tu competencia. En niveles más avanzados, diseñamos contigo una estrategia de diferenciación para que sepas exactamente por qué elegirte a ti y no a otro.",
+        desc: "Antes de tomar decisiones de negocio grandes, necesitas saber qué está pasando afuera.\n\nAnalizamos las tendencias de tu industria, quiénes son tus clientes ideales y qué está haciendo tu competencia.\n\nEn niveles más avanzados, diseñamos contigo una estrategia de diferenciación para que sepas exactamente por qué elegirte a ti y no a otro.",
       },
     ],
   },
@@ -281,19 +281,19 @@ const GRUPOS = [
     items: [
       {
         titulo: "Estrategia de Comunicación y Posicionamiento",
-        desc: "Tu negocio tiene valor. El problema es que si no sabes comunicarlo, el mercado no lo va a percibir. Definimos el mensaje estratégico de tu marca — el que conecta con tu cliente ideal, justifica tu precio y convierte atención en acción. Sin rodeos, sin genéricos. Comunicación que posiciona y que vende.",
+        desc: "Tu negocio tiene valor. El problema es que si no sabes comunicarlo, el mercado no lo va a percibir.\n\nDefinimos el mensaje estratégico de tu marca — el que conecta con tu cliente ideal, justifica tu precio y convierte atención en acción.\n\nSin rodeos, sin genéricos. Comunicación que posiciona y que vende.",
       },
       {
         titulo: "Estrategia de Marca y Dirección Creativa",
-        desc: "Esta consultoría define hacia dónde va tu marca visualmente — qué quieres transmitir, cómo debe verse, cómo debe sentirse — para que cada cosa que crees a partir de hoy esté integrada a esa dirección. Lo hacemos a través de un proceso estratégico que traduce la esencia de tu negocio en criterios visuales claros. Para que dejes de improvisar y empieces a construir una marca que se reconoce, que conecta y que se recuerda.",
+        desc: "Esta consultoría define hacia dónde va tu marca visualmente — qué quieres transmitir, cómo debe verse, cómo debe sentirse — para que cada cosa que crees a partir de hoy esté integrada a esa dirección.\n\nLo hacemos a través de un proceso estratégico que traduce la esencia de tu negocio en criterios visuales claros.\n\nPara que dejes de improvisar y empieces a construir una marca que se reconoce, que conecta y que se recuerda.",
       },
       {
         titulo: "Procesos comerciales y Customer Journey",
-        desc: "¿Sabes exactamente qué vive tu cliente desde que te descubre hasta que te compra — y qué pasa después? La mayoría de los negocios pierden clientes en algún punto del camino sin saber dónde ni por qué. Mapeamos todo ese recorrido, identificamos en qué momento se van los leads y qué está causando esa fuga — para corregirlo. Porque antes de automatizar cualquier proceso con tecnología, necesitas tenerlo claro y estandarizado. En el nivel más avanzado aplicamos la metodología Lean para medir la eficiencia de tu proceso comercial y mejorarlo de forma continua — no solo el proceso, sino también los equipos y los activos que lo sostienen.",
+        desc: "¿Sabes exactamente qué vive tu cliente desde que te descubre hasta que te compra — y qué pasa después?\n\nLa mayoría de los negocios pierden clientes en algún punto del camino sin saber dónde ni por qué. Mapeamos todo ese recorrido, identificamos en qué momento se van los leads y qué está causando esa fuga — para corregirlo.\n\nPorque antes de automatizar cualquier proceso con tecnología, necesitas tenerlo claro y estandarizado.\n\nEn el nivel más avanzado aplicamos la metodología Lean para medir la eficiencia de tu proceso comercial y mejorarlo de forma continua — no solo el proceso, sino también los equipos y los activos que lo sostienen.",
       },
       {
         titulo: "Estrategia Digital",
-        desc: "Revisamos las acciones de promoción que tienes activas y optimizamos tu estrategia de campañas publicitarias en Meta y Google Ads. A partir de ahí, diseñamos el sistema que atrae, convierte y acelera tus ventas — siempre con un enfoque total en el retorno de inversión.",
+        desc: "Revisamos las acciones de promoción que tienes activas y optimizamos tu estrategia de campañas publicitarias en Meta y Google Ads.\n\nA partir de ahí, diseñamos el sistema que atrae, convierte y acelera tus ventas — siempre con un enfoque total en el retorno de inversión.",
       },
       {
         titulo: "Estrategia RRSS",
@@ -314,19 +314,19 @@ const GRUPOS = [
     items: [
       {
         titulo: "Construcción y Lanzamiento de Oferta",
-        desc: "Tienes conocimiento, experiencia y valor que ofrecer — pero si para venderlo depende de tu tiempo, tu negocio tiene un techo. Te ayudamos a empaquetar lo que haces de una forma que puedas escalar: con el modelo de monetización correcto, la oferta bien estructurada y el plan de lanzamiento que lo lleva al mercado. Somos arquitectos de negocios rentables y escalables — porque el objetivo no es solo que tu negocio funcione, sino que te dé libertad para vivir de tu propósito.",
+        desc: "Tienes conocimiento, experiencia y valor que ofrecer — pero si para venderlo depende de tu tiempo, tu negocio tiene un techo.\n\nTe ayudamos a empaquetar lo que haces de una forma que puedas escalar: con el modelo de monetización correcto, la oferta bien estructurada y el plan de lanzamiento que lo lleva al mercado.\n\nSomos arquitectos de negocios rentables y escalables — porque el objetivo no es solo que tu negocio funcione, sino que te dé libertad para vivir de tu propósito.",
       },
       {
         titulo: "Sistema Comercial: Estrategias, Equipos y Activos",
-        desc: "Si quieres aumentar tus ventas, el primer paso es tener un sistema comercial que funcione sin fricción. Este es un acompañamiento estratégico para alinear y potenciar tus procesos, equipo y herramientas — trabajando en la mejora continua de cómo atraes clientes, cómo los atiendes y cómo los conviertes. Disponible desde una consulta puntual hasta un esquema de outsourcing continuo con capacitación de tu equipo interno.",
+        desc: "Si quieres aumentar tus ventas, el primer paso es tener un sistema comercial que funcione sin fricción.\n\nEste es un acompañamiento estratégico para alinear y potenciar tus procesos, equipo y herramientas — trabajando en la mejora continua de cómo atraes clientes, cómo los atiendes y cómo los conviertes.\n\nDisponible desde una consulta puntual hasta un esquema de outsourcing continuo con capacitación de tu equipo interno.",
       },
       {
         titulo: "Internacionalización de mercado",
-        desc: "Tu negocio tiene potencial más allá de las fronteras — y llevar una marca o empresa al mercado internacional requiere más que avisarlo en tus redes sociales, viajar o activar nuevas campañas digitales. Diseñamos la estrategia completa para que entres a nuevos mercados de forma sólida y estructurada: estrategia de penetración, precios adaptados al mercado destino, logística de cobro internacional y construcción de equipos globales. Para que escales sin improvisar y sin dejar cabos sueltos.",
+        desc: "Tu negocio tiene potencial más allá de las fronteras — y llevar una marca o empresa al mercado internacional requiere más que avisarlo en tus redes sociales, viajar o activar nuevas campañas digitales.\n\nDiseñamos la estrategia completa para que entres a nuevos mercados de forma sólida y estructurada: estrategia de penetración, precios adaptados al mercado destino, logística de cobro internacional y construcción de equipos globales.\n\nPara que escales sin improvisar y sin dejar cabos sueltos.",
       },
       {
         titulo: "Herramientas de IA a la medida de mi negocio",
-        desc: "La inteligencia artificial no es solo para grandes empresas — es para cualquier negocio que quiera hacer más con menos tiempo y esfuerzo. Si sabes que hay alguna parte de tu proceso que podría ser más rápida, más eficiente o más inteligente, aquí es donde empezamos. Desde automatizar cotizaciones o tareas operativas del día a día, hasta construir sistemas de IA que forman parte de lo que le entregas a tus clientes. Lo diseñamos completamente a la medida de tu negocio — sin tecnicismos, con resultados claros.",
+        desc: "La inteligencia artificial no es solo para grandes empresas — es para cualquier negocio que quiera hacer más con menos tiempo y esfuerzo.\n\nSi sabes que hay alguna parte de tu proceso que podría ser más rápida, más eficiente o más inteligente, aquí es donde empezamos.\n\nDesde automatizar cotizaciones o tareas operativas del día a día, hasta construir sistemas de IA que forman parte de lo que le entregas a tus clientes.\n\nLo diseñamos completamente a la medida de tu negocio — sin tecnicismos, con resultados claros.",
       },
     ],
   },
@@ -360,9 +360,11 @@ function GrupoColumna({ g }: { g: typeof GRUPOS[0] }) {
                 </span>
               </button>
               {open === i && (
-                <p className="px-4 pb-4 text-sm text-grafito/70 leading-relaxed">
-                  {item.desc}
-                </p>
+                <div className="px-4 pb-4 flex flex-col gap-3">
+                  {item.desc.split("\n\n").map((p, pi) => (
+                    <p key={pi} className="text-sm text-grafito/70 leading-relaxed">{p}</p>
+                  ))}
+                </div>
               )}
             </div>
           ))}

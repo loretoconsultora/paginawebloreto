@@ -289,7 +289,7 @@ export default function ServiciosPage() {
               className="text-grafito/65 text-lg leading-relaxed"
             >
               Soluciones diseñadas para llevar tu marca al siguiente nivel<br />
-              <span className="font-dancing" style={{ color: "#c0005a", fontSize: "1.15em" }}>con visión, estrategia y sistemas reales.</span>
+              <span className="font-dancing" style={{ color: "#c0005a", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>con visión, estrategia y sistemas reales.</span>
             </motion.p>
           </div>
         </section>
