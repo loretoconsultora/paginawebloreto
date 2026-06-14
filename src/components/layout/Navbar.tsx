@@ -11,10 +11,10 @@ const navLinks = [
   { label: "Reto", href: "https://boost-your-brand.vercel.app", external: true },
   { label: "Servicios", href: "/servicios", external: false },
   { label: "Consultoría", href: "/consultoria", external: false },
-  { label: "Formaciones", href: "/formaciones", external: false },
   { label: "Eventos", href: "/eventos", external: false },
-  { label: "Nosotros", href: "/nosotros", external: false },
   { label: "Blog", href: "/blog", external: false },
+  // { label: "Formaciones", href: "/formaciones", external: false }, // próximamente
+  // { label: "Nosotros", href: "/nosotros", external: false }, // próximamente
   // { label: "Herramientas", href: "/herramientas", external: false }, // próximamente
   // { label: "Vinculación", href: "/vinculacion", external: false }, // próximamente
 ];
