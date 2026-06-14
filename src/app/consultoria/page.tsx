@@ -380,21 +380,21 @@ function FormularioConsultoria() {
   const inputClass = "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-pink-300 transition-colors";
 
   return (
-    <div className="mt-14 rounded-3xl overflow-hidden" style={{ background: "#3A3F4B" }}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+    <div style={{ background: "#3A3F4B" }}>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0">
 
         {/* Columna izquierda — texto */}
-        <div className="px-10 py-12 flex flex-col justify-center">
+        <div className="px-10 sm:px-16 py-12 flex flex-col justify-center">
           <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-white leading-snug mb-4">
             ¿No sabes cuál es la indicada para ti o te gustaría recibir distintos programas de consultoría?
           </h3>
-          <p className="font-dancing" style={{ color: "#FF6A92", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
+          <p className="font-dancing" style={{ color: "#ffffff", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
             Diseña tu programa a tu medida.
           </p>
         </div>
 
         {/* Columna derecha — formulario */}
-        <div className="px-10 py-12" style={{ background: "#3A3F4B" }}>
+        <div className="px-10 sm:px-16 py-12" style={{ background: "#3A3F4B" }}>
           <div className="bg-white rounded-2xl p-8">
           {estado === "ok" ? (
             <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
@@ -541,11 +541,11 @@ export default function ConsultoriaPage() {
               ))}
             </div>
 
-            {/* CTA final — 2 columnas */}
-            <FormularioConsultoria />
-
           </div>
         </section>
+
+        {/* CTA final — ancho completo */}
+        <FormularioConsultoria />
       </main>
       <Footer />
     </>
