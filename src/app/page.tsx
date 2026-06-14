@@ -6,6 +6,7 @@ import Novedades from "@/components/sections/Novedades";
 import BoostYourBrand from "@/components/sections/BoostYourBrand";
 import Servicios from "@/components/sections/Servicios";
 import LogrosDestacados from "@/components/sections/LogrosDestacados";
+import SalonFama from "@/components/sections/SalonFama";
 import NuestrasMarcas from "@/components/sections/NuestrasMarcas";
 import ImpactoSocial from "@/components/sections/ImpactoSocial";
 import Blog from "@/components/sections/Blog";
@@ -22,6 +23,7 @@ export default function Home() {
         <BoostYourBrand />
         <Servicios />
         <LogrosDestacados />
+        <SalonFama />
         <NuestrasMarcas />
         <ImpactoSocial />
         <Blog />

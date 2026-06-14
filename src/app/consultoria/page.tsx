@@ -381,21 +381,20 @@ function FormularioConsultoria() {
 
   return (
     <div style={{ background: "#3A3F4B" }}>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-0">
+      <div className="max-w-3xl mx-auto px-6 py-14">
 
-        {/* Columna izquierda — texto */}
-        <div className="px-10 sm:px-16 py-12 flex flex-col justify-center">
-          <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-white leading-snug mb-4">
-            ¿No sabes cuál es la indicada para ti o te gustaría recibir distintos programas de consultoría?
+        {/* Encabezado centrado */}
+        <div className="text-center mb-8">
+          <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-white leading-snug mb-3">
+            ¿No sabes cuál es la indicada para ti?
           </h3>
           <p className="font-dancing" style={{ color: "#ffffff", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
             Diseña tu programa a tu medida.
           </p>
         </div>
 
-        {/* Columna derecha — formulario */}
-        <div className="px-6 sm:px-10 py-12" style={{ background: "#3A3F4B" }}>
-          <div className="bg-white rounded-2xl p-6 sm:p-8">
+        {/* Formulario */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8">
 
           {/* Título del formulario */}
           <h4 className="font-playfair text-xl sm:text-2xl font-bold text-center mb-6" style={{
@@ -460,7 +459,6 @@ function FormularioConsultoria() {
               )}
             </form>
           )}
-          </div>
         </div>
 
       </div>
