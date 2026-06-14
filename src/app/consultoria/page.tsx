@@ -406,7 +406,10 @@ function FormularioConsultoria() {
               <input required name="nombre" placeholder="Nombre *" value={form.nombre} onChange={handleChange} className={inputClass} />
 
               <div className="flex gap-2">
-                <input name="lada" placeholder="Lada *" value={form.lada} onChange={handleChange} required className={`${inputClass} w-24`} />
+                <div className="flex items-center gap-1 rounded-xl border border-gray-200 px-3 py-2.5 w-28 flex-shrink-0">
+                  <span className="text-sm text-grafito/50">+</span>
+                  <input name="lada" placeholder="52" value={form.lada} onChange={handleChange} required className="w-full text-sm text-grafito focus:outline-none bg-transparent" />
+                </div>
                 <input required name="telefono" placeholder="Teléfono *" value={form.telefono} onChange={handleChange} className={`${inputClass} flex-1`} />
               </div>
 
