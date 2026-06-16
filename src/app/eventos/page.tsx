@@ -95,18 +95,18 @@ const CIUDADES = [
     ciudad: "Querétaro",
     venue: "Alva Coffee & Health Bar",
     sesiones: [
-      { experiencia: "Brand & Bloom", fecha: "Mié 25 jun", hora: "5:00 pm", colorExp: "#c0005a" },
-      { experiencia: "The Brand Atelier", fecha: "Jue 26 jun", hora: "4:00 pm", colorExp: "#7a5800" },
-      { experiencia: "The Brand Atelier", fecha: "Jue 26 jun", hora: "7:30 pm", colorExp: "#7a5800" },
+      { experiencia: "Brand & Bloom",      fecha: "Jue 25 jun", hora: "4:00 pm", colorExp: "#c0005a" },
+      { experiencia: "The Brand Atelier",  fecha: "Vie 26 jun", hora: "4:00 pm", colorExp: "#7a5800" },
+      { experiencia: "The Brand Muse",     fecha: "Vie 26 jun", hora: "7:30 pm", colorExp: "#0d6b6d" },
     ],
   },
   {
     ciudad: "Ciudad de México",
     venue: "Tierra Garat Masaryk",
     sesiones: [
-      { experiencia: "Brand & Bloom", fecha: "Vie 27 jun", hora: "5:00 pm", colorExp: "#c0005a" },
-      { experiencia: "The Brand Atelier", fecha: "Sáb 28 jun", hora: "10:00 am", colorExp: "#7a5800" },
-      { experiencia: "The Brand Atelier", fecha: "Sáb 28 jun", hora: "5:00 pm", colorExp: "#7a5800" },
+      { experiencia: "Brand & Bloom",      fecha: "Sáb 27 jun", hora: "4:00 pm", colorExp: "#c0005a" },
+      { experiencia: "The Brand Atelier",  fecha: "Dom 28 jun", hora: "10:00 am", colorExp: "#7a5800" },
+      { experiencia: "The Brand Muse",     fecha: "Dom 28 jun", hora: "4:00 pm",  colorExp: "#0d6b6d" },
     ],
   },
 ];
@@ -229,6 +229,7 @@ export default function EventosPage() {
                       src={e.imagen}
                       alt={e.nombre}
                       className="w-full h-full object-cover"
+                      style={{ objectPosition: "top center" }}
                       onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>
