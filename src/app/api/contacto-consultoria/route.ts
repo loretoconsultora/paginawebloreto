@@ -6,13 +6,15 @@ export async function POST(req: NextRequest) {
   const { nombre, telefono, lada, correo, empresa, consultorias, comentarios } = body;
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT ?? 587),
+    host: "smtp.gmail.com",
+    port: 587,
     secure: false,
+    requireTLS: true,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    tls: { rejectUnauthorized: false },
   });
 
   const listaConsultorias = Array.isArray(consultorias) && consultorias.length
@@ -39,7 +41,7 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    console.error("SMTP error:", err);
+    return NextResponse.json({ ok: false, error: String(err) }, { status: 500 });
   }
 }
