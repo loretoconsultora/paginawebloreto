@@ -40,7 +40,6 @@ const EXPERIENCIAS = [
   },
 ];
 
-// Sesiones agrupadas por ciudad
 const CIUDADES = [
   {
     ciudad: "Querétaro",
@@ -91,7 +90,7 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
         </span>
-        <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo</span>
+        <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo · 6:00 pm</span>
         <span className="text-xs text-grafito/40 ml-1">· Instagram</span>
       </div>
       <h3 className="font-playfair text-base sm:text-lg font-bold text-grafito leading-snug flex-1">{m.titulo}</h3>
@@ -101,7 +100,7 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
       </div>
       <div className="flex items-center gap-2 text-xs text-grafito/45 -mt-2">
         <Radio size={12} style={{ color: "#c0005a" }} />
-        <span>@anyvillegas · @loretoconsultora</span>
+        <span>@anyvillegas.v · @loreto.consultora</span>
       </div>
       <Link
         href="/eventos/registro-masterclass"
@@ -122,28 +121,27 @@ export default function EventosPage() {
       <Navbar />
       <main>
 
-        {/* Hero */}
-        <section className="pt-36 pb-20 text-center" style={{ background: "#fafafa" }}>
-          <div className="max-w-3xl mx-auto px-6">
+        {/* Hero — fondo degradado */}
+        <section className="pt-36 pb-20 text-center" style={{ background: GRADIENT }}>
+          <div className="max-w-7xl mx-auto px-6">
             <motion.p
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              className="text-xs font-semibold tracking-widest uppercase mb-4"
-              style={{ color: "#c0005a" }}
+              className="text-xs font-semibold tracking-widest uppercase mb-4 text-white/70"
             >
               Junio 2026
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-playfair text-5xl sm:text-6xl font-bold mb-5"
-              style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: 1.1 }}
+              className="font-playfair text-5xl sm:text-6xl font-bold mb-5 text-white"
+              style={{ lineHeight: 1.1 }}
             >
               Eventos
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-grafito/60 text-lg leading-relaxed"
+              className="text-white/85 text-lg leading-relaxed"
             >
-              Experiencias y encuentros diseñados para transformar tu marca con intención, estrategia y presencia.
+              Experiencias y encuentros diseñados para transformar tu marca con estrategia y presencia.
             </motion.p>
           </div>
         </section>
@@ -163,12 +161,25 @@ export default function EventosPage() {
               >
                 Colección de Eventos
               </div>
-              <h2 className="font-playfair text-4xl sm:text-5xl font-bold mb-5" style={{ color: "#1a0a2e" }}>
+              <h2
+                className="font-playfair text-4xl sm:text-5xl font-bold mb-5"
+                style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              >
                 The Art of Brand
               </h2>
-              <p className="text-grafito/60 text-lg max-w-2xl mx-auto leading-relaxed">
-                Una serie de experiencias donde fusionamos el arte de hacer negocios con experiencias sensoriales. Aprende de planeación estratégica, estrategias de marca, estrategias de comunicación y herramientas de IA en una atmósfera creativa y segura.
+              <p className="text-grafito/60 text-lg max-w-2xl mx-auto leading-relaxed mb-3">
+                Una serie de experiencias donde fusionamos el arte de hacer negocios con experiencias sensoriales. Aprende en una atmósfera creativa y segura de:
               </p>
+              {/* Temas en un renglón */}
+              <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-sm font-semibold" style={{ color: "#c0005a" }}>
+                <span>Planeación estratégica</span>
+                <span className="text-grafito/25 hidden sm:inline">|</span>
+                <span>Estrategias de marca</span>
+                <span className="text-grafito/25 hidden sm:inline">|</span>
+                <span>Estrategias de comunicación</span>
+                <span className="text-grafito/25 hidden sm:inline">|</span>
+                <span>Herramientas de IA</span>
+              </div>
             </motion.div>
 
             {/* Las 3 experiencias con imagen */}
@@ -180,7 +191,6 @@ export default function EventosPage() {
                   className="rounded-2xl overflow-hidden"
                   style={{ border: `1px solid ${e.borderColor}` }}
                 >
-                  {/* Imagen */}
                   <div className="w-full overflow-hidden" style={{ height: 220 }}>
                     <img
                       src={e.imagen}
@@ -189,7 +199,6 @@ export default function EventosPage() {
                       onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>
-                  {/* Texto */}
                   <div className="p-6" style={{ background: e.bgColor }}>
                     <p className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: e.color }}>{e.subtipo}</p>
                     <h3 className="font-playfair text-xl font-bold text-grafito mb-3">{e.nombre}</h3>
@@ -199,7 +208,7 @@ export default function EventosPage() {
               ))}
             </div>
 
-            {/* Fechas por ciudad — 2 columnas, sesiones en fila */}
+            {/* Fechas por ciudad */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {CIUDADES.map((c, ci) => (
                 <motion.div
@@ -208,7 +217,6 @@ export default function EventosPage() {
                   className="rounded-2xl overflow-hidden"
                   style={{ border: "1px solid rgba(58,63,75,0.1)", boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}
                 >
-                  {/* Cabecera ciudad */}
                   <div className="px-6 py-4 flex items-center gap-3" style={{ background: GRADIENT }}>
                     <MapPin size={16} className="text-white flex-shrink-0" />
                     <div>
@@ -216,29 +224,23 @@ export default function EventosPage() {
                       <p className="text-white/70 text-xs">{c.venue}</p>
                     </div>
                   </div>
-
-                  {/* Sesiones en filas compactas */}
                   <div className="divide-y divide-gray-100 bg-white">
                     {c.sesiones.map((s, si) => (
                       <div key={si} className="flex items-center gap-3 px-5 py-3 flex-wrap sm:flex-nowrap">
-                        {/* Badge experiencia */}
                         <span
                           className="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0"
                           style={{ color: s.colorExp, background: `${s.colorExp}14`, border: `1px solid ${s.colorExp}33`, minWidth: 120, textAlign: "center" }}
                         >
                           {s.experiencia}
                         </span>
-                        {/* Fecha */}
                         <span className="flex items-center gap-1.5 text-sm text-grafito/65 flex-shrink-0">
                           <Calendar size={12} style={{ color: "#c0005a" }} />
                           {s.fecha}
                         </span>
-                        {/* Hora */}
                         <span className="flex items-center gap-1.5 text-sm text-grafito/65 flex-shrink-0">
                           <Clock size={12} style={{ color: "#c0005a" }} />
                           {s.hora}
                         </span>
-                        {/* CTA */}
                         <Link
                           href="/eventos/the-art-of-brand"
                           className="ml-auto text-xs font-semibold px-4 py-1.5 rounded-full text-white hover:opacity-85 transition-opacity flex-shrink-0"
@@ -273,11 +275,14 @@ export default function EventosPage() {
                 </span>
                 Junio 2026 · En vivo · Instagram
               </div>
-              <h2 className="font-playfair text-4xl sm:text-5xl font-bold mb-4" style={{ color: "#1a0a2e" }}>
+              <h2
+                className="font-playfair text-4xl sm:text-5xl font-bold mb-4"
+                style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              >
                 Masterclasses
               </h2>
               <p className="text-grafito/60 text-lg max-w-xl leading-relaxed">
-                Cuatro clases en vivo con <span className="font-semibold text-grafito">Any Villegas</span> y <span className="font-semibold text-grafito">Loreto Consultora</span> para construir y posicionar tu marca personal.
+                4 clases en vivo con nuestra Directora General <span className="font-semibold text-grafito">Any Villegas</span> para construir y posicionar tu marca personal.
               </p>
             </motion.div>
 
