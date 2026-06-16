@@ -32,7 +32,7 @@ function EarthGlobe({ size }: { size: number }) {
 const SCENES = [
   { pre: "Un universo de",   bold: "posibilidades",         boldSmall: null,                           boldThird: null,               sub: null, layout: "center", preCursive: true,  boldCursive: false },
   { pre: null,               bold: "Infinitas",             boldSmall: "oportunidades,",               boldThird: "caminos y\nversiones de ti",  sub: null, layout: "left",   preCursive: false, boldCursive: true  },
-  { pre: "Encuentra la tuya con nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left-shifted",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
+  { pre: "Encuentra la tuya\ncon nuestras", bold: "consultorías", boldSmall: null,                    boldThird: null,               sub: null, layout: "left-shifted",   preCursive: true,  boldCursive: false, boldAtSmallSize: true },
 ];
 
 // ─── Componente de texto por escena ──────────────────────────────────
@@ -60,7 +60,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         {/* Pre-título */}
         {scene.pre && (scene.preCursive ? (
           <p
-            className="font-dancing text-white mb-1"
+            className="font-dancing text-white mb-1 whitespace-pre-line"
             style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", lineHeight: 1.2 }}
           >
             {scene.pre}
