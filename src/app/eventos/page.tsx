@@ -8,6 +8,56 @@ import Footer from "@/components/layout/Footer";
 
 const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 
+// ─── Masterclasses ──────────────────────────────────────────────────────────
+
+const MASTERCLASSES = [
+  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01" },
+  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02" },
+  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03" },
+  { titulo: "Cómo elevar el valor de tu negocio", dia: "Martes 30 de junio", numero: "04" },
+];
+
+function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative bg-white rounded-2xl p-6 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300"
+      style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.07)", border: "1px solid rgba(58,63,75,0.08)" }}
+    >
+      <span className="font-playfair text-5xl font-bold leading-none" style={{ color: "rgba(192,0,90,0.1)" }}>
+        {m.numero}
+      </span>
+      <div className="flex items-center gap-1.5 self-start">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+        </span>
+        <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo · 6:00 pm</span>
+        <span className="text-xs text-grafito/40 ml-1">· Instagram</span>
+      </div>
+      <h3 className="font-playfair text-base sm:text-lg font-bold text-grafito leading-snug flex-1">{m.titulo}</h3>
+      <div className="flex items-center gap-2 text-sm text-grafito/60">
+        <Calendar size={14} style={{ color: "#c0005a" }} />
+        <span>{m.dia}</span>
+      </div>
+      <div className="flex items-center gap-2 text-xs text-grafito/45 -mt-2">
+        <Radio size={12} style={{ color: "#c0005a" }} />
+        <span>@anyvillegas.v · @loreto.consultora</span>
+      </div>
+      <Link
+        href="/eventos/registro-masterclass"
+        className="inline-flex items-center justify-center text-sm font-semibold px-5 py-2.5 rounded-full text-white hover:opacity-90 transition-opacity"
+        style={{ background: GRADIENT }}
+      >
+        Registrarme →
+      </Link>
+    </motion.div>
+  );
+}
+
 // ─── The Art of Brand ───────────────────────────────────────────────────────
 
 const EXPERIENCIAS = [
@@ -61,58 +111,6 @@ const CIUDADES = [
   },
 ];
 
-// ─── Masterclasses ──────────────────────────────────────────────────────────
-
-const MASTERCLASSES = [
-  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01" },
-  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02" },
-  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03" },
-  { titulo: "Cómo elevar el valor de tu negocio", dia: "Martes 30 de junio", numero: "04" },
-];
-
-// ─── Masterclass Card ────────────────────────────────────────────────────────
-
-function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative bg-white rounded-2xl p-6 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300"
-      style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.07)", border: "1px solid rgba(58,63,75,0.08)" }}
-    >
-      <span className="font-playfair text-5xl font-bold leading-none" style={{ color: "rgba(192,0,90,0.1)" }}>
-        {m.numero}
-      </span>
-      <div className="flex items-center gap-1.5 self-start">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-        </span>
-        <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo · 6:00 pm</span>
-        <span className="text-xs text-grafito/40 ml-1">· Instagram</span>
-      </div>
-      <h3 className="font-playfair text-base sm:text-lg font-bold text-grafito leading-snug flex-1">{m.titulo}</h3>
-      <div className="flex items-center gap-2 text-sm text-grafito/60">
-        <Calendar size={14} style={{ color: "#c0005a" }} />
-        <span>{m.dia}</span>
-      </div>
-      <div className="flex items-center gap-2 text-xs text-grafito/45 -mt-2">
-        <Radio size={12} style={{ color: "#c0005a" }} />
-        <span>@anyvillegas.v · @loreto.consultora</span>
-      </div>
-      <Link
-        href="/eventos/registro-masterclass"
-        className="inline-flex items-center justify-center text-sm font-semibold px-5 py-2.5 rounded-full text-white hover:opacity-90 transition-opacity"
-        style={{ background: GRADIENT }}
-      >
-        Registrarme →
-      </Link>
-    </motion.div>
-  );
-}
-
 // ─── Página ─────────────────────────────────────────────────────────────────
 
 export default function EventosPage() {
@@ -146,6 +144,42 @@ export default function EventosPage() {
           </div>
         </section>
 
+        {/* ── MASTERCLASSES — va primero ── */}
+        <section className="py-20" style={{ background: "#fafafa" }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
+            {/* Header centrado */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="text-center mb-14"
+            >
+              <div
+                className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full mb-5"
+                style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                </span>
+                Junio 2026 · En vivo · Instagram
+              </div>
+              <h2
+                className="font-playfair text-4xl sm:text-5xl font-bold mb-4"
+                style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              >
+                Masterclasses
+              </h2>
+              <p className="text-grafito/60 text-lg leading-relaxed">
+                4 clases en vivo con nuestra Directora General <span className="font-semibold text-grafito">Any Villegas</span> para construir y posicionar tu marca personal.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {MASTERCLASSES.map((m, i) => <MasterclassCard key={i} m={m} index={i} />)}
+            </div>
+          </div>
+        </section>
+
         {/* ── THE ART OF BRAND ── */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -168,9 +202,8 @@ export default function EventosPage() {
                 The Art of Brand
               </h2>
               <p className="text-grafito/60 text-lg max-w-2xl mx-auto leading-relaxed mb-3">
-                Una serie de experiencias donde fusionamos el arte de hacer negocios con experiencias sensoriales. Aprende en una atmósfera creativa y segura de:
+                Una serie de experiencias donde fusionamos el arte de hacer negocios con experiencias sensoriales. Aprende en una atmósfera creativa y segura sobre:
               </p>
-              {/* Temas en un renglón */}
               <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-sm font-semibold" style={{ color: "#c0005a" }}>
                 <span>Planeación estratégica</span>
                 <span className="text-grafito/25 hidden sm:inline">|</span>
@@ -255,40 +288,6 @@ export default function EventosPage() {
               ))}
             </div>
 
-          </div>
-        </section>
-
-        {/* ── MASTERCLASSES ── */}
-        <section className="py-20" style={{ background: "#fafafa" }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="mb-14"
-            >
-              <div
-                className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full mb-5"
-                style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                </span>
-                Junio 2026 · En vivo · Instagram
-              </div>
-              <h2
-                className="font-playfair text-4xl sm:text-5xl font-bold mb-4"
-                style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
-              >
-                Masterclasses
-              </h2>
-              <p className="text-grafito/60 text-lg max-w-xl leading-relaxed">
-                4 clases en vivo con nuestra Directora General <span className="font-semibold text-grafito">Any Villegas</span> para construir y posicionar tu marca personal.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {MASTERCLASSES.map((m, i) => <MasterclassCard key={i} m={m} index={i} />)}
-            </div>
           </div>
         </section>
 
