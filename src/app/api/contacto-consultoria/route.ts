@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  const listaConsultorias = (consultorias as string[]).length
+  const listaConsultorias = Array.isArray(consultorias) && consultorias.length
     ? (consultorias as string[]).map((c) => `• ${c}`).join("\n")
     : "Ninguna seleccionada";
 
