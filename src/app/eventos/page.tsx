@@ -68,7 +68,7 @@ const EXPERIENCIAS = [
     color: "#c0005a",
     bgColor: "rgba(192,0,90,0.07)",
     borderColor: "rgba(192,0,90,0.2)",
-    imagen: "/eventos/brand-bloom.jpg",
+    imagen: "/eventos/brand-bloom.png",
   },
   {
     nombre: "The Brand Atelier",
@@ -77,7 +77,7 @@ const EXPERIENCIAS = [
     color: "#7a5800",
     bgColor: "rgba(245,200,66,0.09)",
     borderColor: "rgba(245,200,66,0.35)",
-    imagen: "/eventos/brand-atelier.jpg",
+    imagen: "/eventos/brand-atelier.png",
   },
   {
     nombre: "Brand Muse",
@@ -86,7 +86,7 @@ const EXPERIENCIAS = [
     color: "#0d6b6d",
     bgColor: "rgba(13,107,109,0.07)",
     borderColor: "rgba(13,107,109,0.2)",
-    imagen: "/eventos/brand-muse.jpg",
+    imagen: "/eventos/brand-muse.png",
   },
 ];
 
