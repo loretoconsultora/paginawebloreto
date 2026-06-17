@@ -233,8 +233,8 @@ export default function EventosPage() {
               >
                 The Art of Brand
               </h2>
-              <p className="text-grafito/60 text-lg max-w-2xl mx-auto leading-relaxed mb-3">
-                Una serie de experiencias donde fusionamos el arte de hacer negocios con experiencias sensoriales, en una atmósfera creativa y segura. Aprende sobre:
+              <p className="text-grafito/60 text-lg max-w-3xl mx-auto leading-relaxed mb-3">
+                Fusionamos el arte de hacer negocios con experiencias sensoriales, en una atmósfera creativa y segura. Aprende sobre:
               </p>
               <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-sm font-semibold" style={{ color: "#c0005a" }}>
                 <span>Planeación estratégica</span>
