@@ -17,12 +17,12 @@ const HORARIOS = [
   { bandera: "🇦🇷", pais: "Bs. Aires", hora: "10:30 pm" },
 ];
 
-// Horario CDMX (UTC-6) usado como referencia para los eventos de calendario
+// Horario local de Ciudad de México (referencia oficial del evento, UTC-6 sin horario de verano)
 const CLASES = [
-  { id: "mc1", label: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "18 de junio", inicioUTC: "20260619T013000Z", finUTC: "20260619T030000Z" },
-  { id: "mc2", label: "Cómo comenzar a crear contenido para tu marca personal", dia: "23 de junio", inicioUTC: "20260624T013000Z", finUTC: "20260624T030000Z" },
-  { id: "mc3", label: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "25 de junio", inicioUTC: "20260626T013000Z", finUTC: "20260626T030000Z" },
-  { id: "mc4", label: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "30 de junio", inicioUTC: "20260701T013000Z", finUTC: "20260701T030000Z" },
+  { id: "mc1", label: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "18 de junio", inicioLocal: "20260618T193000", finLocal: "20260618T210000" },
+  { id: "mc2", label: "Cómo comenzar a crear contenido para tu marca personal", dia: "23 de junio", inicioLocal: "20260623T193000", finLocal: "20260623T210000" },
+  { id: "mc3", label: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "25 de junio", inicioLocal: "20260625T193000", finLocal: "20260625T210000" },
+  { id: "mc4", label: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "30 de junio", inicioLocal: "20260630T193000", finLocal: "20260630T210000" },
 ];
 
 const BENEFICIOS = [
@@ -31,35 +31,47 @@ const BENEFICIOS = [
   { icon: MessageCircle, texto: "Acceso a un grupo de WhatsApp con contenido exclusivo" },
 ];
 
-function googleCalendarUrl(titulo: string, inicioUTC: string, finUTC: string) {
+// Usamos el horario local de CDMX + ctz para que cada calendario lo convierta a la hora del visitante
+function googleCalendarUrl(titulo: string, inicioLocal: string, finLocal: string) {
   const params = new URLSearchParams({
     action: "TEMPLATE",
     text: `Masterclass: ${titulo}`,
-    dates: `${inicioUTC}/${finUTC}`,
+    dates: `${inicioLocal}/${finLocal}`,
     details: "Masterclass en vivo por Instagram con Any Villegas (@anyvillegas.v), CEO & Founder de Loreto Consultora.",
     location: "Instagram @anyvillegas.v",
+    ctz: "America/Mexico_City",
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
-function icsDate(utc: string) {
-  return utc;
-}
+// VTIMEZONE de Ciudad de México: zona fija UTC-6, sin horario de verano desde 2022
+const VTIMEZONE_MEXICO_CITY = [
+  "BEGIN:VTIMEZONE",
+  "TZID:America/Mexico_City",
+  "BEGIN:STANDARD",
+  "DTSTART:19700101T000000",
+  "TZOFFSETFROM:-0600",
+  "TZOFFSETTO:-0600",
+  "TZNAME:CST",
+  "END:STANDARD",
+  "END:VTIMEZONE",
+].join("\r\n");
 
 function buildIcs(clasesSeleccionadas: typeof CLASES) {
+  const dtstamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
   const eventos = clasesSeleccionadas.map((c) => [
     "BEGIN:VEVENT",
     `UID:${c.id}-loretoconsultora@loretoconsultora.lat`,
-    `DTSTAMP:${icsDate(c.inicioUTC)}`,
-    `DTSTART:${icsDate(c.inicioUTC)}`,
-    `DTEND:${icsDate(c.finUTC)}`,
+    `DTSTAMP:${dtstamp}`,
+    `DTSTART;TZID=America/Mexico_City:${c.inicioLocal}`,
+    `DTEND;TZID=America/Mexico_City:${c.finLocal}`,
     `SUMMARY:Masterclass: ${c.label}`,
     "DESCRIPTION:Masterclass en vivo por Instagram con Any Villegas (@anyvillegas.v)\\, CEO & Founder de Loreto Consultora.",
     "LOCATION:Instagram @anyvillegas.v",
     "END:VEVENT",
   ].join("\r\n")).join("\r\n");
 
-  return ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Loreto Consultora//Masterclasses//ES", eventos, "END:VCALENDAR"].join("\r\n");
+  return ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Loreto Consultora//Masterclasses//ES", VTIMEZONE_MEXICO_CITY, eventos, "END:VCALENDAR"].join("\r\n");
 }
 
 function descargarIcs(clasesSeleccionadas: typeof CLASES) {
@@ -200,7 +212,7 @@ export default function RegistroMasterclassPage() {
                     {clasesRegistradas.map((c, i) => (
                       <a
                         key={c.id}
-                        href={googleCalendarUrl(c.label, c.inicioUTC, c.finUTC)}
+                        href={googleCalendarUrl(c.label, c.inicioLocal, c.finLocal)}
                         target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-2.5 text-left rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
                         style={{ borderColor: "rgba(58,63,75,0.12)" }}

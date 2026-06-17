@@ -33,11 +33,11 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
       className="relative bg-white rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300"
       style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.07)", border: "1px solid rgba(58,63,75,0.08)" }}
     >
-      <div className="w-full overflow-hidden relative" style={{ height: 200 }}>
+      <div className="w-full aspect-square overflow-hidden relative">
         <img
           src={m.imagen}
           alt={m.titulo}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
         />
         <span
