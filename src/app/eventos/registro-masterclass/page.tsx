@@ -163,7 +163,7 @@ export default function RegistroMasterclassPage() {
                     Tu agenda de masterclasses
                   </p>
                   <p className="text-[11px] text-grafito/40 mb-3">
-                    Seleccionadas todas por default — desmarca las que no te interesen.
+                    Seleccionadas todas por default — desmarca las que no te interesen. El live es abierto a todos, pero solo quien se registra accede a los 30 min privados de preguntas y al grupo de WhatsApp.
                   </p>
                   <div className="flex flex-col gap-2.5">
                     {CLASES.map((c) => {
@@ -209,7 +209,7 @@ export default function RegistroMasterclassPage() {
                   {estado === "loading" ? "Registrando…" : "Quiero mi lugar gratis →"}
                 </button>
                 <p className="text-[11px] text-grafito/40 text-center -mt-1">
-                  100% gratis · Sin spam · Solo se usará para enviarte tus accesos
+                  100% gratis · Sin spam · Tu registro es lo único que te da acceso al Q&amp;A privado y al grupo de WhatsApp
                 </p>
 
                 {estado === "error" && (
