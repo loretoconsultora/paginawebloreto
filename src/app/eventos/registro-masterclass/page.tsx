@@ -106,14 +106,13 @@ export default function RegistroMasterclassPage() {
     setEstado("loading");
 
     const seleccionadas = CLASES.filter((c) => clases.includes(c.id));
-    const clasesSeleccionadas = seleccionadas.map((c) => c.label);
 
     try {
       if (N8N_WEBHOOK) {
         await fetch(N8N_WEBHOOK, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...form, clases: clasesSeleccionadas }),
+          body: JSON.stringify({ ...form, clases: seleccionadas.map((c) => c.id) }),
         });
       }
       setClasesRegistradas(seleccionadas);
