@@ -16,7 +16,7 @@ const novedades = [
       "📍 Querétaro · Alva Coffee & Health Bar",
       "Brand & Bloom · Jue 25 jun · 4:00 pm",
       "The Brand Atelier · Vie 26 jun · 4:00 pm",
-      "The Brand Muse · Vie 26 jun · 7:30 pm",
+      "The Brand Muse · Lun 29 jun · 5:00 pm",
       "📍 CDMX · Tierra Garat Masaryk",
       "Brand & Bloom · Sáb 27 jun · 4:00 pm",
       "The Brand Atelier · Dom 28 jun · 10:00 am",

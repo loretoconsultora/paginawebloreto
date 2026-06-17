@@ -127,18 +127,18 @@ const CIUDADES = [
     ciudad: "Querétaro",
     venue: "Alva Coffee & Health Bar",
     sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Jue 25 jun", hora: "4:00 pm", colorExp: "#c0005a" },
-      { experiencia: "The Brand Atelier",  fecha: "Vie 26 jun", hora: "4:00 pm", colorExp: "#7a5800" },
-      { experiencia: "The Brand Muse",     fecha: "Vie 26 jun", hora: "7:30 pm", colorExp: "#0d6b6d" },
+      { experiencia: "Brand & Bloom",      fecha: "Jue 25 jun", hora: "4:00 pm", colorExp: "#c0005a", estado: "cerrado" },
+      { experiencia: "The Brand Atelier",  fecha: "Vie 26 jun", hora: "4:00 pm", colorExp: "#7a5800", estado: "cerrado" },
+      { experiencia: "The Brand Muse",     fecha: "Lun 29 jun", hora: "5:00 pm", colorExp: "#0d6b6d", estado: "proximamente" },
     ],
   },
   {
     ciudad: "Ciudad de México",
     venue: "Tierra Garat Masaryk",
     sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Sáb 27 jun", hora: "4:00 pm", colorExp: "#c0005a" },
-      { experiencia: "The Brand Atelier",  fecha: "Dom 28 jun", hora: "10:00 am", colorExp: "#7a5800" },
-      { experiencia: "The Brand Muse",     fecha: "Dom 28 jun", hora: "4:00 pm",  colorExp: "#0d6b6d" },
+      { experiencia: "Brand & Bloom",      fecha: "Sáb 27 jun", hora: "4:00 pm", colorExp: "#c0005a", estado: "proximamente" },
+      { experiencia: "The Brand Atelier",  fecha: "Dom 28 jun", hora: "10:00 am", colorExp: "#7a5800", estado: "proximamente" },
+      { experiencia: "The Brand Muse",     fecha: "Dom 28 jun", hora: "4:00 pm",  colorExp: "#0d6b6d", estado: "proximamente" },
     ],
   },
 ];
@@ -315,13 +315,16 @@ export default function EventosPage() {
                           <Clock size={12} style={{ color: "#c0005a" }} />
                           {s.hora}
                         </span>
-                        <Link
-                          href="/eventos/the-art-of-brand"
-                          className="ml-auto text-xs font-semibold px-4 py-1.5 rounded-full text-white hover:opacity-85 transition-opacity flex-shrink-0"
-                          style={{ background: GRADIENT }}
+                        <span
+                          className="ml-auto text-xs font-semibold px-4 py-1.5 rounded-full flex-shrink-0"
+                          style={
+                            s.estado === "cerrado"
+                              ? { color: "#9aa0aa", background: "rgba(58,63,75,0.07)", border: "1px solid rgba(58,63,75,0.12)" }
+                              : { color: "#c0005a", background: "rgba(192,0,90,0.08)", border: "1px solid rgba(192,0,90,0.2)" }
+                          }
                         >
-                          Ver →
-                        </Link>
+                          {s.estado === "cerrado" ? "Cupo cerrado" : "Próximamente"}
+                        </span>
                       </div>
                     ))}
                   </div>
