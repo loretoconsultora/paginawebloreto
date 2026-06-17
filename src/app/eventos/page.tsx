@@ -273,17 +273,51 @@ export default function EventosPage() {
                       <span className="font-semibold" style={{ color: e.color }}>Aprende: </span>
                       {e.aprende}
                     </p>
-                    <p className="text-sm text-grafito/60 leading-relaxed mt-auto">
+                    <p className="text-sm text-grafito/60 leading-relaxed mb-4">
                       <span className="font-semibold" style={{ color: e.color }}>Incluye: </span>
                       {e.incluye}
                     </p>
+
+                    {/* Fechas por ciudad — solo móvil, justo bajo el card */}
+                    <div className="md:hidden mt-auto pt-4 space-y-3" style={{ borderTop: `1px solid ${e.borderColor}` }}>
+                      {CIUDADES.map((c) => {
+                        const sesion = c.sesiones.find((s) => s.experiencia === e.nombre);
+                        if (!sesion) return null;
+                        return (
+                          <div key={c.ciudad} className="flex items-center gap-2 flex-wrap">
+                            <span className="flex items-center gap-1 text-xs font-semibold text-grafito/80 flex-shrink-0">
+                              <MapPin size={12} style={{ color: e.color }} />
+                              {c.ciudad}
+                            </span>
+                            <span className="flex items-center gap-1 text-xs text-grafito/65 flex-shrink-0">
+                              <Calendar size={11} style={{ color: e.color }} />
+                              {sesion.fecha}
+                            </span>
+                            <span className="flex items-center gap-1 text-xs text-grafito/65 flex-shrink-0">
+                              <Clock size={11} style={{ color: e.color }} />
+                              {sesion.hora}
+                            </span>
+                            <span
+                              className="ml-auto text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0"
+                              style={
+                                sesion.estado === "cerrado"
+                                  ? { color: "#9aa0aa", background: "rgba(58,63,75,0.07)", border: "1px solid rgba(58,63,75,0.12)" }
+                                  : { color: "#c0005a", background: "rgba(192,0,90,0.08)", border: "1px solid rgba(192,0,90,0.2)" }
+                              }
+                            >
+                              {sesion.estado === "cerrado" ? "Cupo cerrado" : "Próximamente"}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Fechas por ciudad */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Fechas por ciudad — solo desktop, en móvil ya se muestran bajo cada card */}
+            <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-8">
               {CIUDADES.map((c, ci) => (
                 <motion.div
                   key={c.ciudad}
