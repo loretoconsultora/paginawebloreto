@@ -178,32 +178,10 @@ function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) 
       style={{ background: s.detailBg }}
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-10">
-        <div className={`flex flex-col lg:flex-row items-center gap-14 ${index % 2 === 0 ? "" : "lg:flex-row-reverse"}`}>
-
-          {/* Video placeholder */}
-          <div className="w-full lg:w-1/2 flex-shrink-0 min-w-0">
-            <div className="rounded-3xl p-[3px]" style={{ background: s.borderGradient }}>
-              <div
-                className="rounded-[22px] overflow-hidden flex flex-col items-center justify-center gap-3 w-full"
-                style={{ aspectRatio: "16/9", background: "rgba(0,0,0,0.12)" }}
-              >
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center"
-                  style={{ background: "rgba(255,255,255,0.15)", border: "2px solid rgba(255,255,255,0.3)" }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                    <polygon points="5,3 19,12 5,21" />
-                  </svg>
-                </div>
-                <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.4)" }}>
-                  video próximamente
-                </span>
-              </div>
-            </div>
-          </div>
+        <div className="flex flex-col items-center gap-14">
 
           {/* Texto */}
-          <div className="w-full lg:w-1/2 min-w-0">
+          <div className="w-full max-w-2xl min-w-0 mx-auto">
             <div
               className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 border"
               style={{ color: "white", borderColor: "rgba(255,255,255,0.5)", background: "rgba(255,255,255,0.18)" }}

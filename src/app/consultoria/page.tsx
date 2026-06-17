@@ -351,6 +351,8 @@ const TODAS_CONSULTORIAS = [
 ];
 
 // ─── Formulario contacto consultorías ────────────────────────────────
+const N8N_WEBHOOK = process.env.NEXT_PUBLIC_N8N_CONSULTORIA_WEBHOOK;
+
 function FormularioConsultoria() {
   const [form, setForm] = useState({ nombre: "", lada: "52", telefono: "", correo: "", empresa: "", comentarios: "" });
   const [seleccionadas, setSeleccionadas] = useState<string[]>([]);
@@ -366,7 +368,8 @@ function FormularioConsultoria() {
     e.preventDefault();
     setEstado("loading");
     try {
-      const res = await fetch("/api/contacto-consultoria", {
+      if (!N8N_WEBHOOK) throw new Error("Falta configurar el webhook de n8n");
+      const res = await fetch(N8N_WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, consultorias: seleccionadas }),

@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { ArrowLeft, LayoutDashboard, FileBarChart2, CheckSquare, FolderOpen, MessageCircle, Bell } from "lucide-react";
 
 const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)";
-const TARGET = new Date("2026-06-15T09:00:00-05:00").getTime();
+const TARGET = new Date("2026-06-18T19:00:00-06:00").getTime();
 
 const FEATURES = [
   { icon: LayoutDashboard, label: "Dashboards en tiempo real" },
@@ -127,7 +127,7 @@ export default function PortalPage() {
               <span className="text-white/30 font-bold text-xl sm:text-3xl mt-4 sm:mt-5">:</span>
               <Unit value={seconds} label="seg" />
             </div>
-            <p className="text-white/40 text-xs mt-4">15 de junio · 9:00 AM hora México</p>
+            <p className="text-white/40 text-xs mt-4">18 de junio · 7:00 PM hora México</p>
           </div>
 
           {/* Features — sin cards, directo sobre el fondo */}
