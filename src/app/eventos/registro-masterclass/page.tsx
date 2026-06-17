@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Radio, MessageCircle, HelpCircle, CheckCircle2, Clock } from "lucide-react";
+import { Radio, MessageCircle, HelpCircle, CheckCircle2, Clock, CalendarPlus } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -17,23 +17,67 @@ const HORARIOS = [
   { bandera: "🇦🇷", pais: "Bs. Aires", hora: "10:30 pm" },
 ];
 
+// Horario CDMX (UTC-6) usado como referencia para los eventos de calendario
 const CLASES = [
-  { id: "mc1", label: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "18 de junio" },
-  { id: "mc2", label: "Cómo comenzar a crear contenido para tu marca personal", dia: "23 de junio" },
-  { id: "mc3", label: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "25 de junio" },
-  { id: "mc4", label: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "30 de junio" },
+  { id: "mc1", label: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "18 de junio", inicioUTC: "20260619T013000Z", finUTC: "20260619T030000Z" },
+  { id: "mc2", label: "Cómo comenzar a crear contenido para tu marca personal", dia: "23 de junio", inicioUTC: "20260624T013000Z", finUTC: "20260624T030000Z" },
+  { id: "mc3", label: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "25 de junio", inicioUTC: "20260626T013000Z", finUTC: "20260626T030000Z" },
+  { id: "mc4", label: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "30 de junio", inicioUTC: "20260701T013000Z", finUTC: "20260701T030000Z" },
 ];
 
 const BENEFICIOS = [
-  { icon: Radio, texto: "4 masterclasses en vivo por Instagram, sin costo" },
-  { icon: HelpCircle, texto: "30 min privados de preguntas y respuestas con Any Villegas" },
+  { icon: Radio, texto: "4 masterclasses en vivo por Instagram" },
+  { icon: HelpCircle, texto: "Al finalizar, 30 min extra de preguntas y respuestas solo para registrados — haz todas tus consultas de cómo aterrizar a tu marca lo visto en la sesión del día" },
   { icon: MessageCircle, texto: "Acceso a un grupo de WhatsApp con contenido exclusivo" },
 ];
+
+function googleCalendarUrl(titulo: string, inicioUTC: string, finUTC: string) {
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `Masterclass: ${titulo}`,
+    dates: `${inicioUTC}/${finUTC}`,
+    details: "Masterclass en vivo por Instagram con Any Villegas (@anyvillegas.v), CEO & Founder de Loreto Consultora.",
+    location: "Instagram @anyvillegas.v",
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function icsDate(utc: string) {
+  return utc;
+}
+
+function buildIcs(clasesSeleccionadas: typeof CLASES) {
+  const eventos = clasesSeleccionadas.map((c) => [
+    "BEGIN:VEVENT",
+    `UID:${c.id}-loretoconsultora@loretoconsultora.lat`,
+    `DTSTAMP:${icsDate(c.inicioUTC)}`,
+    `DTSTART:${icsDate(c.inicioUTC)}`,
+    `DTEND:${icsDate(c.finUTC)}`,
+    `SUMMARY:Masterclass: ${c.label}`,
+    "DESCRIPTION:Masterclass en vivo por Instagram con Any Villegas (@anyvillegas.v)\\, CEO & Founder de Loreto Consultora.",
+    "LOCATION:Instagram @anyvillegas.v",
+    "END:VEVENT",
+  ].join("\r\n")).join("\r\n");
+
+  return ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Loreto Consultora//Masterclasses//ES", eventos, "END:VCALENDAR"].join("\r\n");
+}
+
+function descargarIcs(clasesSeleccionadas: typeof CLASES) {
+  const contenido = buildIcs(clasesSeleccionadas);
+  const blob = new Blob([contenido], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "masterclasses-loreto-consultora.ics";
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 export default function RegistroMasterclassPage() {
   const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "" });
   const [clases, setClases] = useState<string[]>(CLASES.map((c) => c.id));
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [clasesRegistradas, setClasesRegistradas] = useState<typeof CLASES>([]);
 
   const inputClass = "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-pink-300 transition-colors";
 
@@ -48,7 +92,8 @@ export default function RegistroMasterclassPage() {
     if (clases.length === 0) return;
     setEstado("loading");
 
-    const clasesSeleccionadas = CLASES.filter((c) => clases.includes(c.id)).map((c) => c.label);
+    const seleccionadas = CLASES.filter((c) => clases.includes(c.id));
+    const clasesSeleccionadas = seleccionadas.map((c) => c.label);
 
     try {
       if (N8N_WEBHOOK) {
@@ -58,11 +103,8 @@ export default function RegistroMasterclassPage() {
           body: JSON.stringify({ ...form, clases: clasesSeleccionadas }),
         });
       }
+      setClasesRegistradas(seleccionadas);
       setEstado("ok");
-      // Redirige a WhatsApp después de 2.5s
-      setTimeout(() => {
-        window.location.href = WHATSAPP_URL;
-      }, 2500);
     } catch {
       setEstado("error");
     }
@@ -99,7 +141,7 @@ export default function RegistroMasterclassPage() {
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/85 text-base sm:text-lg leading-relaxed mb-7"
             >
-              4 clases en vivo con <span className="font-semibold text-white">Any Villegas (@anyvillegas.v)</span> para construir y posicionar tu marca personal — completamente gratis.
+              4 clases en vivo con <span className="font-semibold text-white">Any Villegas (@anyvillegas.v)</span>, CEO &amp; Founder de Loreto Consultora, para construir y posicionar tu marca personal — completamente <span className="font-semibold text-white">GRATIS</span>.
             </motion.p>
 
             {/* Stack de beneficios */}
@@ -126,12 +168,50 @@ export default function RegistroMasterclassPage() {
             style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.1)" }}
           >
             {estado === "ok" ? (
-              <div className="flex flex-col items-center justify-center gap-3 text-center py-10">
+              <div className="flex flex-col items-center gap-4 text-center py-6">
                 <CheckCircle2 size={48} style={{ color: "#c0005a" }} />
-                <p className="font-playfair text-2xl font-bold text-grafito">¡Listo, ya tienes tu lugar!</p>
-                <p className="text-sm text-grafito/60 max-w-xs">
-                  Te llevamos al grupo de WhatsApp donde recibirás los accesos y el contenido exclusivo de las masterclasses.
-                </p>
+                <div>
+                  <p className="font-playfair text-2xl font-bold text-grafito mb-1.5">¡Listo, ya tienes tu lugar!</p>
+                  <p className="text-sm text-grafito/60 max-w-sm">
+                    No te lo dejes pasar: agrega cada clase a tu calendario para que te llegue el recordatorio.
+                  </p>
+                </div>
+
+                {/* Agregar a calendario */}
+                <div className="w-full flex flex-col gap-2 my-1">
+                  {clasesRegistradas.map((c, i) => (
+                    <a
+                      key={c.id}
+                      href={googleCalendarUrl(c.label, c.inicioUTC, c.finUTC)}
+                      target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 text-left rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                      style={{ borderColor: "rgba(58,63,75,0.12)" }}
+                    >
+                      <CalendarPlus size={16} className="flex-shrink-0" style={{ color: "#c0005a" }} />
+                      <span className="text-xs text-grafito/75">
+                        <span className="font-semibold">Masterclass {i + 1}</span> · {c.dia} → agregar a Google Calendar
+                      </span>
+                    </a>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => descargarIcs(clasesRegistradas)}
+                    className="flex items-center justify-center gap-2 text-xs font-semibold rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                    style={{ borderColor: "rgba(58,63,75,0.12)", color: "#3A3F4B" }}
+                  >
+                    <CalendarPlus size={14} />
+                    Descargar para Apple / Outlook Calendar (.ics)
+                  </button>
+                </div>
+
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity w-full"
+                  style={{ background: GRADIENT, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
+                >
+                  Unirme al grupo de WhatsApp →
+                </a>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -139,7 +219,7 @@ export default function RegistroMasterclassPage() {
                   Regístrate gratis
                 </h2>
                 <p className="text-xs text-grafito/50 text-center -mt-1 mb-2">
-                  Cupo limitado por el formato en vivo. Completa tus datos y entrarás al grupo de WhatsApp donde recibirás los accesos.
+                  ¡Accede a todos los beneficios! Un nivel más profundo de aprendizaje para quienes están realmente comprometidos con su marca.
                 </p>
 
                 {/* Nombre */}
@@ -163,10 +243,10 @@ export default function RegistroMasterclassPage() {
                     Tu agenda de masterclasses
                   </p>
                   <p className="text-[11px] text-grafito/40 mb-3">
-                    Seleccionadas todas por default — desmarca las que no te interesen. El live es abierto a todos, pero solo quien se registra accede a los 30 min privados de preguntas y al grupo de WhatsApp.
+                    Seleccionamos las 4 clases por ti, si alguna no es de tu interés, solo desmárcala 😉
                   </p>
                   <div className="flex flex-col gap-2.5">
-                    {CLASES.map((c) => {
+                    {CLASES.map((c, i) => {
                       const checked = clases.includes(c.id);
                       return (
                         <label
@@ -181,6 +261,9 @@ export default function RegistroMasterclassPage() {
                             className="mt-0.5 accent-pink-500 flex-shrink-0"
                           />
                           <div className="flex-1">
+                            <span className="block text-[10px] font-bold tracking-widest uppercase mb-0.5" style={{ color: "#c0005a" }}>
+                              Masterclass {i + 1}
+                            </span>
                             <span className="text-sm text-grafito/85 leading-snug font-medium">{c.label}</span>
                             <div className="flex items-center gap-1.5 mt-1 mb-1.5">
                               <Clock size={11} style={{ color: "#c0005a" }} />
