@@ -78,6 +78,7 @@ export default function RegistroMasterclassPage() {
   const [clases, setClases] = useState<string[]>(CLASES.map((c) => c.id));
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [clasesRegistradas, setClasesRegistradas] = useState<typeof CLASES>([]);
+  const [mostrarCalendario, setMostrarCalendario] = useState(false);
 
   const inputClass = "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-pink-300 transition-colors";
 
@@ -170,48 +171,57 @@ export default function RegistroMasterclassPage() {
             {estado === "ok" ? (
               <div className="flex flex-col items-center gap-4 text-center py-6">
                 <CheckCircle2 size={48} style={{ color: "#c0005a" }} />
-                <div>
-                  <p className="font-playfair text-2xl font-bold text-grafito mb-1.5">¡Listo, ya tienes tu lugar!</p>
-                  <p className="text-sm text-grafito/60 max-w-sm">
-                    No te lo dejes pasar: agrega cada clase a tu calendario para que te llegue el recordatorio.
-                  </p>
-                </div>
+                <p className="font-playfair text-2xl font-bold text-grafito">
+                  ¡Confirmado! 🥳 estás dentro de nuestro grupo exclusivo.
+                </p>
 
-                {/* Agregar a calendario */}
-                <div className="w-full flex flex-col gap-2 my-1">
-                  {clasesRegistradas.map((c, i) => (
-                    <a
-                      key={c.id}
-                      href={googleCalendarUrl(c.label, c.inicioUTC, c.finUTC)}
-                      target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 text-left rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
-                      style={{ borderColor: "rgba(58,63,75,0.12)" }}
-                    >
-                      <CalendarPlus size={16} className="flex-shrink-0" style={{ color: "#c0005a" }} />
-                      <span className="text-xs text-grafito/75">
-                        <span className="font-semibold">Masterclass {i + 1}</span> · {c.dia} → agregar a Google Calendar
-                      </span>
-                    </a>
-                  ))}
+                <div className="w-full flex flex-col gap-2.5">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity w-full"
+                    style={{ background: "#25D366", boxShadow: "0 8px 24px rgba(37,211,102,0.35)" }}
+                  >
+                    Unirme a grupo de WhatsApp →
+                  </a>
                   <button
                     type="button"
-                    onClick={() => descargarIcs(clasesRegistradas)}
-                    className="flex items-center justify-center gap-2 text-xs font-semibold rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
-                    style={{ borderColor: "rgba(58,63,75,0.12)", color: "#3A3F4B" }}
+                    onClick={() => setMostrarCalendario((v) => !v)}
+                    className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3.5 rounded-full text-sm border hover:bg-gray-50 transition-colors w-full"
+                    style={{ borderColor: "rgba(192,0,90,0.3)", color: "#c0005a" }}
                   >
-                    <CalendarPlus size={14} />
-                    Descargar para Apple / Outlook Calendar (.ics)
+                    <CalendarPlus size={16} />
+                    Agendar en mi calendario
                   </button>
                 </div>
 
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity w-full"
-                  style={{ background: GRADIENT, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
-                >
-                  Unirme al grupo de WhatsApp →
-                </a>
+                {mostrarCalendario && (
+                  <div className="w-full flex flex-col gap-2 mt-1">
+                    {clasesRegistradas.map((c, i) => (
+                      <a
+                        key={c.id}
+                        href={googleCalendarUrl(c.label, c.inicioUTC, c.finUTC)}
+                        target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2.5 text-left rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                        style={{ borderColor: "rgba(58,63,75,0.12)" }}
+                      >
+                        <CalendarPlus size={16} className="flex-shrink-0" style={{ color: "#c0005a" }} />
+                        <span className="text-xs text-grafito/75">
+                          <span className="font-semibold">Masterclass {i + 1}</span> · {c.dia} → agregar a Google Calendar
+                        </span>
+                      </a>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => descargarIcs(clasesRegistradas)}
+                      className="flex items-center justify-center gap-2 text-xs font-semibold rounded-xl border px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                      style={{ borderColor: "rgba(58,63,75,0.12)", color: "#3A3F4B" }}
+                    >
+                      <CalendarPlus size={14} />
+                      Descargar para Apple / Outlook Calendar (.ics)
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
