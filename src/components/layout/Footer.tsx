@@ -106,11 +106,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Loreto Consultora. Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacidad" className="text-xs hover:opacity-70 transition-opacity" style={{ color: "rgba(58,63,75,0.4)" }}>
-              Aviso de Privacidad
-            </Link>
-            <Link href="/terminos" className="text-xs hover:opacity-70 transition-opacity" style={{ color: "rgba(58,63,75,0.4)" }}>
-              Términos de Uso
+            <Link href="/politicadeprivacidad" className="text-xs hover:opacity-70 transition-opacity" style={{ color: "rgba(58,63,75,0.4)" }}>
+              Política de Privacidad
             </Link>
           </div>
         </div>
