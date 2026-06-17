@@ -16,7 +16,7 @@ const articulos = [
     borderGradient: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF)",
     badgeColor: "#c0005a",
     badgeBg: "rgba(192,0,90,0.10)",
-    href: "/blog/propuesta-de-valor",
+    href: "/blog",
   },
   {
     categoria: "Estrategia",
@@ -28,7 +28,7 @@ const articulos = [
     borderGradient: "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)",
     badgeColor: "#c0005a",
     badgeBg: "rgba(192,0,90,0.10)",
-    href: "/blog/errores-posicionamiento",
+    href: "/blog",
   },
   {
     categoria: "Crecimiento",
@@ -40,7 +40,7 @@ const articulos = [
     borderGradient: "linear-gradient(135deg, #1a0a2e, #6a00c8, #E894FF)",
     badgeColor: "#c0005a",
     badgeBg: "rgba(192,0,90,0.10)",
-    href: "/blog/emprendedor-a-empresario",
+    href: "/blog",
   },
 ];
 
