@@ -27,9 +27,9 @@ export default function BlogPage() {
       <main>
         <section
           className="min-h-screen flex items-center justify-center text-center px-6"
-          style={{ background: "#1a0a2e" }}
+          style={{ background: "#ffffff" }}
         >
-          <div className="max-w-lg w-full">
+          <div className="max-w-sm sm:max-w-lg w-full mx-auto">
             <h1
               className="font-playfair text-4xl sm:text-5xl font-bold mb-4"
               style={{
@@ -41,14 +41,15 @@ export default function BlogPage() {
             >
               En construcción
             </h1>
-            <p className="text-white/60 text-lg mb-12">
-              Escribiendo contenido especial para ti
+            <p className="text-grafito text-lg mb-12 leading-snug">
+              <span className="block sm:inline">Escribiendo contenido</span>{" "}
+              <span className="block sm:inline" style={{ color: "#c0005a" }}>especial para ti</span>
             </p>
 
-            <div className="relative">
+            <div className="relative w-full max-w-xs mx-auto">
               <div
                 className="w-full h-2 rounded-full overflow-hidden"
-                style={{ background: "rgba(255,255,255,0.1)" }}
+                style={{ background: "rgba(192,0,90,0.1)" }}
               >
                 <div
                   className="h-full rounded-full transition-all duration-100"
@@ -59,11 +60,11 @@ export default function BlogPage() {
                 className="absolute -top-5 transition-all duration-100"
                 style={{ left: `calc(${progress}% - 10px)` }}
               >
-                <PenLine size={20} style={{ color: "#E894FF" }} />
+                <PenLine size={20} style={{ color: "#c0005a" }} />
               </div>
             </div>
 
-            <p className="text-white/40 text-sm mt-6 font-mono">{progress}%</p>
+            <p className="text-grafito/40 text-sm mt-6 font-mono">{progress}%</p>
           </div>
         </section>
       </main>
