@@ -11,10 +11,10 @@ const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)
 // ─── Masterclasses ──────────────────────────────────────────────────────────
 
 const MASTERCLASSES = [
-  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01" },
-  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02" },
-  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03" },
-  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Martes 30 de junio", numero: "04" },
+  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01", imagen: "/eventos/masterclass-1.png" },
+  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02", imagen: "/eventos/masterclass-2.png" },
+  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03", imagen: "/eventos/masterclass-3.png" },
+  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Martes 30 de junio", numero: "04", imagen: "/eventos/masterclass-4.png" },
 ];
 
 const HORARIOS_MASTERCLASS = [
@@ -30,12 +30,24 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative bg-white rounded-2xl p-6 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300"
+      className="relative bg-white rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300"
       style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.07)", border: "1px solid rgba(58,63,75,0.08)" }}
     >
-      <span className="font-playfair text-5xl font-bold leading-none" style={{ color: "rgba(192,0,90,0.1)" }}>
-        {m.numero}
-      </span>
+      <div className="w-full overflow-hidden relative" style={{ height: 200 }}>
+        <img
+          src={m.imagen}
+          alt={m.titulo}
+          className="w-full h-full object-cover"
+          onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
+        />
+        <span
+          className="absolute top-3 left-3 font-playfair text-2xl font-bold leading-none text-white px-2.5 py-1 rounded-lg"
+          style={{ background: "rgba(26,10,46,0.55)" }}
+        >
+          {m.numero}
+        </span>
+      </div>
+      <div className="p-6 flex flex-col gap-4 flex-1">
       <div className="flex items-center gap-1.5 self-start">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
@@ -67,6 +79,7 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
       >
         Registrarme →
       </Link>
+      </div>
     </motion.div>
   );
 }
@@ -77,7 +90,9 @@ const EXPERIENCIAS = [
   {
     nombre: "Brand & Bloom",
     subtipo: "Diseño floral + branding",
-    desc: "Una experiencia para explorar la esencia de tu marca desde lo orgánico, lo simbólico y lo emocional mientras diseñas tu propio arreglo floral.",
+    paraQuien: "Experiencia de autor para emprendedor@s y dueñ@s de negocio que desean crecer su marca con autenticidad.",
+    aprende: "Storytelling, arquetipos de marca, comunicación estratégica y estrategia de contenidos para redes sociales.",
+    incluye: "Workshop de marketing (con manual post curso) + workshop de diseño floral (materiales incluidos) + bebida y aperitivos.",
     color: "#c0005a",
     bgColor: "rgba(192,0,90,0.07)",
     borderColor: "rgba(192,0,90,0.2)",
@@ -86,7 +101,9 @@ const EXPERIENCIAS = [
   {
     nombre: "The Brand Atelier",
     subtipo: "Cerámica + branding",
-    desc: "Una experiencia para crear con intención el plan de tu negocio para la segunda mitad del 2026 mientras intervienes una pieza de cerámica.",
+    paraQuien: "Experiencia de autor para emprendedor@s y dueñ@s de negocio que buscan cumplir sus metas 2026 con las herramientas más nuevas de marketing digital y ventas.",
+    aprende: "Planeación estratégica, project management interno, herramientas de mejora continua y las últimas actualizaciones de los negocios digitales.",
+    incluye: "Workshop de negocios (con manual post curso) + workshop de pintura de cerámica (materiales incluidos) + bebida y aperitivos.",
     color: "#7a5800",
     bgColor: "rgba(245,200,66,0.09)",
     borderColor: "rgba(245,200,66,0.35)",
@@ -95,7 +112,9 @@ const EXPERIENCIAS = [
   {
     nombre: "Brand Muse",
     subtipo: "Self Portrait + branding",
-    desc: "Una clase de negocios que devuelve la mirada a lo más importante, tu propósito. Re descubre, conecta y comparte tu valor único mientras generas un autoretrato.",
+    paraQuien: "Experiencia de autor para emprendedor@s y dueñ@s de negocio que se han sentido saturados o con incertidumbre últimamente, ideal para reconectar con claridad y certeza.",
+    aprende: "Identidad de marca, cómo pasar de emprendedor a empresario, y diseño de sistemas de negocio escalables que te den libertad.",
+    incluye: "Workshop de negocios (con manual post curso) + workshop de autorretrato en lienzo o espejo (materiales incluidos) + bebida y aperitivos.",
     color: "#0d6b6d",
     bgColor: "rgba(13,107,109,0.07)",
     borderColor: "rgba(13,107,109,0.2)",
@@ -234,10 +253,10 @@ export default function EventosPage() {
                 <motion.div
                   key={e.nombre}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="rounded-2xl overflow-hidden"
+                  className="rounded-2xl overflow-hidden flex flex-col h-full"
                   style={{ border: `1px solid ${e.borderColor}` }}
                 >
-                  <div className="w-full overflow-hidden" style={{ height: 220 }}>
+                  <div className="w-full overflow-hidden flex-shrink-0" style={{ height: 220 }}>
                     <img
                       src={e.imagen}
                       alt={e.nombre}
@@ -246,10 +265,18 @@ export default function EventosPage() {
                       onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                   </div>
-                  <div className="p-6" style={{ background: e.bgColor }}>
+                  <div className="p-6 flex flex-col h-full" style={{ background: e.bgColor }}>
                     <p className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: e.color }}>{e.subtipo}</p>
                     <h3 className="font-playfair text-xl font-bold text-grafito mb-3">{e.nombre}</h3>
-                    <p className="text-sm text-grafito/60 leading-relaxed">{e.desc}</p>
+                    <p className="text-sm text-grafito/70 leading-relaxed mb-3">{e.paraQuien}</p>
+                    <p className="text-sm text-grafito/60 leading-relaxed mb-3">
+                      <span className="font-semibold" style={{ color: e.color }}>Aprende: </span>
+                      {e.aprende}
+                    </p>
+                    <p className="text-sm text-grafito/60 leading-relaxed mt-auto">
+                      <span className="font-semibold" style={{ color: e.color }}>Incluye: </span>
+                      {e.incluye}
+                    </p>
                   </div>
                 </motion.div>
               ))}
