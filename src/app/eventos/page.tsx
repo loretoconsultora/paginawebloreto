@@ -110,7 +110,7 @@ const EXPERIENCIAS = [
     imagen: "/eventos/brand-atelier.png",
   },
   {
-    nombre: "Brand Muse",
+    nombre: "The Brand Muse",
     subtipo: "Self Portrait + branding",
     paraQuien: "Experiencia de autor para emprendedor@s y dueñ@s de negocio que se han sentido saturados o con incertidumbre últimamente, ideal para reconectar con claridad y certeza.",
     aprende: "Identidad de marca, cómo pasar de emprendedor a empresario, y diseño de sistemas de negocio escalables que te den libertad.",
