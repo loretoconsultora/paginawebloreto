@@ -14,7 +14,13 @@ const MASTERCLASSES = [
   { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01" },
   { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02" },
   { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03" },
-  { titulo: "Cómo elevar el valor de tu negocio", dia: "Martes 30 de junio", numero: "04" },
+  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Martes 30 de junio", numero: "04" },
+];
+
+const HORARIOS_MASTERCLASS = [
+  { bandera: "🇲🇽", pais: "CDMX", hora: "7:30 pm" },
+  { bandera: "🇨🇴", pais: "Bogotá", hora: "8:30 pm" },
+  { bandera: "🇦🇷", pais: "Bs. Aires", hora: "10:30 pm" },
 ];
 
 function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: number }) {
@@ -35,13 +41,20 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
         </span>
-        <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo · 6:00 pm</span>
+        <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo</span>
         <span className="text-xs text-grafito/40 ml-1">· Instagram</span>
       </div>
       <h3 className="font-playfair text-base sm:text-lg font-bold text-grafito leading-snug flex-1">{m.titulo}</h3>
       <div className="flex items-center gap-2 text-sm text-grafito/60">
         <Calendar size={14} style={{ color: "#c0005a" }} />
         <span>{m.dia}</span>
+      </div>
+      <div className="flex flex-wrap gap-x-3 gap-y-0.5 -mt-1">
+        {HORARIOS_MASTERCLASS.map((h) => (
+          <span key={h.pais} className="text-xs text-grafito/50">
+            {h.bandera} {h.pais} {h.hora}
+          </span>
+        ))}
       </div>
       <div className="flex items-center gap-2 text-xs text-grafito/45 -mt-2">
         <Radio size={12} style={{ color: "#c0005a" }} />
