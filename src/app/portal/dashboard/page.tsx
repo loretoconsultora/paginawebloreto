@@ -101,23 +101,51 @@ export default async function DashboardPage() {
     : { data: null };
 
   return (
-    <div className="-m-6 sm:-m-10">
+    <div className="relative -m-6 sm:-m-10 p-6 sm:p-10 overflow-hidden" style={{ background: "#ffffff" }}>
       <div
-        className="relative px-6 sm:px-10 pt-12 pb-20 sm:pb-28 text-center overflow-hidden"
-        style={{ background: GRADIENT }}
-      >
+        className="absolute pointer-events-none"
+        style={{
+          left: "-10%", top: "-15%",
+          width: "55vw", height: "55vw", maxWidth: 600, maxHeight: 600,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(192,0,90,0.16) 0%, rgba(255,106,146,0.08) 45%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          right: "-12%", top: "10%",
+          width: "45vw", height: "45vw", maxWidth: 500, maxHeight: 500,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(232,148,255,0.18) 0%, rgba(106,138,255,0.08) 45%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          left: "20%", bottom: "-15%",
+          width: "40vw", height: "40vw", maxWidth: 450, maxHeight: 450,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(255,106,146,0.14) 0%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
+
+      <div className="relative z-10 text-center mb-10">
         {cliente?.logo_url && (
           <div className="flex justify-center mb-4">
             <img src={cliente.logo_url} alt={cliente.nombre} style={{ height: "44px", width: "auto" }} />
           </div>
         )}
-        <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-2">Vista rápida</p>
+        <p className="text-xs font-semibold tracking-widest uppercase text-grafito/40 mb-2">Vista rápida</p>
         {cliente?.nombre && (
-          <h1 className="font-playfair text-4xl sm:text-5xl font-bold text-white">{cliente.nombre}</h1>
+          <h1 className="font-playfair text-4xl sm:text-5xl font-bold text-grafito">{cliente.nombre}</h1>
         )}
       </div>
 
-      <div className="px-6 sm:px-10 -mt-12 sm:-mt-16 pb-10">
+      <div className="relative z-10">
         <div className="grid sm:grid-cols-2 gap-5 mb-6">
           <div className="bg-white rounded-2xl p-5 border border-grafito/10 shadow-sm flex items-center gap-3">
             <div
