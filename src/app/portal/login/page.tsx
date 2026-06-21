@@ -35,11 +35,7 @@ export default function PortalLoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 sm:p-8" style={{ background: "#f0f4ff" }}>
-      <div
-        className="relative w-full max-w-5xl rounded-[2.5rem] py-16 px-6 flex flex-col items-center"
-        style={{ background: GRADIENT, minHeight: "640px" }}
-      >
+    <main className="relative min-h-screen flex flex-col items-center justify-center py-16 px-6" style={{ background: GRADIENT }}>
         <Link
           href="/"
           className="absolute top-8 left-8 flex items-center gap-2 text-white text-sm font-semibold hover:opacity-80 transition-opacity"
@@ -100,7 +96,6 @@ export default function PortalLoginPage() {
             </button>
           </form>
         </div>
-      </div>
     </main>
   );
 }
