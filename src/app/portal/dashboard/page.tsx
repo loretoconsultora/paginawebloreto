@@ -1,11 +1,18 @@
 import { createClient } from "@/lib/supabase/server";
 import { CalendarClock } from "lucide-react";
 
-const KPIS = [
-  { label: "Alcance mensual", value: "—" },
-  { label: "Leads generados", value: "—" },
-  { label: "Tasa de conversión", value: "—" },
+const KPI_NOMBRES = [
+  "Conversaciones iniciadas",
+  "Visitas a iPhone Market",
+  "Visitas a Cotizador Plan Canje",
+  "Alcance",
 ];
+
+type Kpi = {
+  nombre: string;
+  valor: number;
+  fecha: string;
+};
 
 type Servicio = {
   id: string;
@@ -57,6 +64,28 @@ export default async function DashboardPage() {
         .maybeSingle()
     : { data: null };
 
+  const { data: kpisRecientes } = servicioIds.length
+    ? await supabase
+        .from("kpis")
+        .select("nombre, valor, fecha")
+        .in("servicio_id", servicioIds)
+        .in("nombre", KPI_NOMBRES)
+        .order("fecha", { ascending: false })
+        .returns<Kpi[]>()
+    : { data: null };
+
+  const kpisPorNombre = new Map<string, Kpi>();
+  for (const k of kpisRecientes ?? []) {
+    if (!kpisPorNombre.has(k.nombre)) kpisPorNombre.set(k.nombre, k);
+  }
+
+  const kpis = KPI_NOMBRES.map((nombre) => ({
+    label: nombre,
+    value: kpisPorNombre.has(nombre)
+      ? new Intl.NumberFormat("es-MX").format(kpisPorNombre.get(nombre)!.valor)
+      : "—",
+  }));
+
   const { data: proximoEvento } = cliente
     ? await supabase
         .from("eventos_calendario")
@@ -107,8 +136,8 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-3 gap-5 mb-10">
-        {KPIS.map((k) => (
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        {kpis.map((k) => (
           <div key={k.label} className="bg-white rounded-2xl p-6 border border-grafito/10">
             <p className="text-xs text-grafito/40 uppercase tracking-widest mb-2">{k.label}</p>
             <p className="font-playfair text-3xl font-bold" style={{ color: "#c0005a" }}>{k.value}</p>
