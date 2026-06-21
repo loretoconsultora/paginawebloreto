@@ -1,5 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
-import { CalendarClock } from "lucide-react";
+import { CalendarClock, MessageSquare, Eye, MousePointerClick, Users } from "lucide-react";
+
+const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)";
+const KPI_ICONS = [MessageSquare, Eye, MousePointerClick, Users];
 
 const KPI_NOMBRES = [
   "Conversaciones iniciadas",
@@ -98,44 +101,48 @@ export default async function DashboardPage() {
     : { data: null };
 
   return (
-    <div
-      className="p-6 sm:p-10 -m-6 sm:-m-10 min-h-[calc(100vh-1px)]"
-      style={{ background: "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)" }}
-    >
+    <div className="-m-6 sm:-m-10">
       <div
-        className="rounded-3xl p-6 sm:p-10"
-        style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", boxShadow: "0 8px 32px rgba(106,138,255,0.10)" }}
+        className="relative px-6 sm:px-10 pt-12 pb-20 sm:pb-28 text-center overflow-hidden"
+        style={{ background: GRADIENT }}
       >
-        <p className="text-xs font-semibold tracking-widest uppercase text-grafito/40 text-center mb-4">
-          Vista rápida
-        </p>
-
         {cliente?.logo_url && (
           <div className="flex justify-center mb-4">
-            <img src={cliente.logo_url} alt={cliente.nombre} style={{ height: "48px", width: "auto" }} />
+            <img src={cliente.logo_url} alt={cliente.nombre} style={{ height: "44px", width: "auto" }} />
           </div>
         )}
-
+        <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-2">Vista rápida</p>
         {cliente?.nombre && (
-          <h1 className="font-playfair text-4xl font-bold text-grafito text-center mb-10">
-            {cliente.nombre}
-          </h1>
+          <h1 className="font-playfair text-4xl sm:text-5xl font-bold text-white">{cliente.nombre}</h1>
         )}
+      </div>
 
+      <div className="px-6 sm:px-10 -mt-12 sm:-mt-16 pb-10">
         <div className="grid sm:grid-cols-2 gap-5 mb-6">
-          <div className="rounded-2xl p-5 border border-grafito/10 flex items-center justify-between">
+          <div className="bg-white rounded-2xl p-5 border border-grafito/10 shadow-sm flex items-center gap-3">
+            <div
+              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: GRADIENT }}
+            >
+              <CalendarClock size={16} style={{ color: "#fff" }} />
+            </div>
             <div>
-              <p className="text-xs text-grafito/50 uppercase tracking-widest mb-1">Última actualización</p>
+              <p className="text-xs text-grafito/40 uppercase tracking-widest mb-1">Última actualización</p>
               <p className="text-sm font-semibold text-grafito">
                 {ultimoKpi?.fecha ? formatFecha(ultimoKpi.fecha) : "Sin datos todavía"}
               </p>
             </div>
           </div>
 
-          <div className="rounded-2xl p-5 border border-grafito/10 flex items-center gap-3">
-            <CalendarClock size={18} style={{ color: "#c0005a" }} className="flex-shrink-0" />
+          <div className="bg-white rounded-2xl p-5 border border-grafito/10 shadow-sm flex items-center gap-3">
+            <div
+              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: GRADIENT }}
+            >
+              <CalendarClock size={16} style={{ color: "#fff" }} />
+            </div>
             <div>
-              <p className="text-xs text-grafito/50 uppercase tracking-widest mb-1">Agenda</p>
+              <p className="text-xs text-grafito/40 uppercase tracking-widest mb-1">Agenda</p>
               <p className="text-sm font-semibold text-grafito capitalize">
                 {proximoEvento ? `${proximoEvento.titulo} — ${formatFechaHora(proximoEvento.fecha)}` : "Sin eventos próximos"}
               </p>
@@ -143,16 +150,26 @@ export default async function DashboardPage() {
           </div>
         </div>
 
+        <p className="text-xs font-semibold tracking-widest uppercase text-grafito/40 mb-3">¿Qué ha pasado?</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
-          {kpis.map((k) => (
-            <div key={k.label} className="rounded-2xl p-6 border border-grafito/10">
-              <p className="text-xs text-grafito/50 uppercase tracking-widest mb-2">{k.label}</p>
-              <p className="font-playfair text-3xl font-bold text-grafito">{k.value}</p>
-            </div>
-          ))}
+          {kpis.map((k, i) => {
+            const Icon = KPI_ICONS[i % KPI_ICONS.length];
+            return (
+              <div key={k.label} className="bg-white rounded-2xl p-6 border border-grafito/10 shadow-sm">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center mb-4"
+                  style={{ background: "linear-gradient(135deg, #fbc7d9, #f0f4ff)" }}
+                >
+                  <Icon size={15} style={{ color: "#c0005a" }} />
+                </div>
+                <p className="text-xs text-grafito/40 uppercase tracking-widest mb-2">{k.label}</p>
+                <p className="font-playfair text-3xl font-bold text-grafito">{k.value}</p>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="rounded-2xl p-6 border border-grafito/10">
+        <div className="bg-white rounded-2xl p-6 border border-grafito/10 shadow-sm">
           <h2 className="font-playfair text-lg font-bold text-grafito mb-4">Servicios activos</h2>
 
           {!servicios || servicios.length === 0 ? (

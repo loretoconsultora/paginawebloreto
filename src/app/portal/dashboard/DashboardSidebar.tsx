@@ -29,7 +29,10 @@ export default function DashboardSidebar({ email }: { email: string }) {
   }
 
   return (
-    <aside className="w-64 flex-shrink-0 bg-white border-r border-grafito/10 flex flex-col py-8 px-4">
+    <aside
+      className="w-64 flex-shrink-0 bg-white flex flex-col py-8 px-4 relative z-10"
+      style={{ boxShadow: "4px 0 24px rgba(58,63,75,0.08)" }}
+    >
       <div className="flex justify-center mb-3">
         <img src="/logo.svg" alt="Loreto Consultora" style={{ height: "40px", width: "auto" }} />
       </div>
