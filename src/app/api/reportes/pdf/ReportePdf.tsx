@@ -19,6 +19,7 @@ export type ResumenPdfRow = {
 
 const ROSA = "#c0005a";
 const GRAFITO = "#3A3F4B";
+const AQUA = "#67c6c8";
 
 const styles = StyleSheet.create({
   page: { padding: 36, fontSize: 10, color: GRAFITO, fontFamily: "Helvetica" },
@@ -29,13 +30,14 @@ const styles = StyleSheet.create({
   brand: { fontSize: 11, fontWeight: 700, color: ROSA, letterSpacing: 1 },
   title: { fontSize: 20, fontWeight: 700, marginTop: 4 },
   subtitle: { fontSize: 10, color: "#3A3F4B99", marginTop: 2 },
-  card: { border: "1pt solid #3A3F4B22", borderRadius: 8, padding: 12, marginBottom: 12 },
+  card: { border: `1pt solid ${AQUA}`, borderRadius: 8, padding: 12, marginBottom: 12 },
   cardTitle: { fontSize: 11, fontWeight: 700, marginBottom: 2 },
   cardSubtitle: { fontSize: 8, color: "#3A3F4B99", marginBottom: 8, textTransform: "uppercase" },
   row: { flexDirection: "row", justifyContent: "space-between", marginBottom: 4 },
   label: { color: "#3A3F4B99" },
   value: { fontWeight: 700 },
   bigValue: { fontSize: 18, fontWeight: 700, color: ROSA },
+  unidad: { fontSize: 9, color: "#3A3F4B99", marginLeft: 4 },
   badgeRow: { flexDirection: "row", gap: 6, marginTop: 6 },
   badge: { fontSize: 7, fontWeight: 700, paddingVertical: 3, paddingHorizontal: 8, borderRadius: 10, textTransform: "uppercase" },
   footer: { position: "absolute", bottom: 24, left: 36, right: 36, fontSize: 8, color: "#3A3F4B66", textAlign: "center" },
@@ -101,7 +103,10 @@ export default function ReportePdf({
               <Text style={styles.cardSubtitle}>{f.conjunto_anuncios}</Text>
 
               <View style={styles.row}>
-                <Text style={styles.bigValue}>{num(f.resultados)}</Text>
+                <View style={{ flexDirection: "row", alignItems: "baseline" }}>
+                  <Text style={styles.bigValue}>{num(f.resultados)}</Text>
+                  <Text style={styles.unidad}>{f.unidad_resultados}</Text>
+                </View>
                 <Text style={styles.label}>meta: {num(f.meta_resultados)} ({f.unidad_resultados})</Text>
               </View>
 

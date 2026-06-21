@@ -31,6 +31,25 @@ function formatPeriodo(periodo: string, tipo: "semanal" | "mensual") {
   return `${d.toLocaleDateString("es-MX", { day: "numeric", month: "short" })} – ${fin.toLocaleDateString("es-MX", { day: "numeric", month: "short" })}`;
 }
 
+function wrapLabel(texto: string): [string, string] {
+  const palabras = texto.split(" ");
+  if (palabras.length < 2) return [texto, ""];
+  const mitad = Math.ceil(palabras.length / 2);
+  return [palabras.slice(0, mitad).join(" "), palabras.slice(mitad).join(" ")];
+}
+
+function EjeXTick({ x, y, payload }: { x: number; y: number; payload: { value: string } }) {
+  const [linea1, linea2] = wrapLabel(payload.value);
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text x={0} y={0} dy={12} textAnchor="middle" fontSize={11} fill="#3A3F4B99">
+        <tspan x={0}>{linea1}</tspan>
+        {linea2 && <tspan x={0} dy={14}>{linea2}</tspan>}
+      </text>
+    </g>
+  );
+}
+
 function semaforoColor(valor: string | null) {
   return valor === "Cumple"
     ? { color: "#16a34a", background: "rgba(22,163,74,0.1)" }
@@ -107,14 +126,14 @@ export default function ResumenReportes({
               <ResponsiveContainer>
                 <BarChart data={chartData} margin={{ left: 0, right: 10, top: 5, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#3A3F4B15" vertical={false} />
-                  <XAxis dataKey="nombre" tick={{ fontSize: 11, fill: "#3A3F4B99" }} interval={0} angle={-35} textAnchor="end" height={90} />
+                  <XAxis dataKey="nombre" tick={<EjeXTick x={0} y={0} payload={{ value: "" }} />} interval={0} height={50} />
                   <YAxis tick={{ fontSize: 11, fill: "#3A3F4B99" }} />
                   <Tooltip
                     contentStyle={{ borderRadius: 12, border: "1px solid #3A3F4B1A", fontSize: 12, background: "#fff" }}
                     labelStyle={{ color: "#3A3F4B", fontWeight: 600 }}
                     itemStyle={{ color: "#3A3F4B" }}
                   />
-                  <Bar dataKey="meta" name="Meta" fill="#3A3F4B40" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="meta" name="Meta" fill="#67c6c880" radius={[6, 6, 0, 0]} />
                   <Bar dataKey="resultados" name="Resultados" fill="#c0005a" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
