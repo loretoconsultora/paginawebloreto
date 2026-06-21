@@ -104,7 +104,7 @@ export default async function DashboardPage() {
     >
       <div
         className="rounded-3xl p-6 sm:p-10"
-        style={{ background: "rgba(255,255,255,0.94)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", boxShadow: "0 8px 32px rgba(106,138,255,0.10)" }}
+        style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", boxShadow: "0 8px 32px rgba(106,138,255,0.10)" }}
       >
         <p className="text-xs font-semibold tracking-widest uppercase text-grafito/40 text-center mb-4">
           Vista rápida
