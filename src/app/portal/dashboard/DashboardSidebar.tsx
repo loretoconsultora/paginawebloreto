@@ -15,7 +15,7 @@ const LINKS = [
   { href: "/portal/dashboard/pagos", label: "Pagos", icon: CreditCard },
 ];
 
-const PROXIMAMENTE = { label: "Calendario de Contenidos", icon: CalendarDays };
+const PROXIMAMENTE = { label: "Calendario Contenidos", icon: CalendarDays };
 
 export default function DashboardSidebar({ email }: { email: string }) {
   const pathname = usePathname();
@@ -58,14 +58,17 @@ export default function DashboardSidebar({ email }: { email: string }) {
           );
         })}
 
-        <div
-          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-grafito/30 cursor-not-allowed"
-        >
-          <PROXIMAMENTE.icon size={16} />
-          <span className="flex-1">{PROXIMAMENTE.label}</span>
-          <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-grafito/5 text-grafito/40 flex-shrink-0">
-            Próximamente
-          </span>
+        <div className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm font-medium text-grafito/30 cursor-not-allowed">
+          <PROXIMAMENTE.icon size={16} className="flex-shrink-0 mt-0.5" />
+          <div>
+            <p>{PROXIMAMENTE.label}</p>
+            <p
+              className="text-[10px] font-bold uppercase tracking-widest mt-0.5 bg-clip-text text-transparent inline-block"
+              style={{ backgroundImage: "linear-gradient(90deg, #b8860b, #e6c558, #b8860b)" }}
+            >
+              Próximamente
+            </p>
+          </div>
         </div>
       </nav>
 
