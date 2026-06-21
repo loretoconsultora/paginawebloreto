@@ -18,7 +18,7 @@ export default async function AgendaPage() {
     <div>
       <h1 className="font-playfair text-3xl font-bold text-grafito mb-1">Agenda</h1>
       <p className="text-grafito/50 text-sm mb-8">
-        Reuniones, producciones, revisiones y sesiones especiales
+        Sesiones de Estatus, Producciones, y Reuniones Especiales
       </p>
 
       <AgendaView eventos={eventos ?? []} />
