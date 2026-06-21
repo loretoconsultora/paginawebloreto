@@ -69,7 +69,7 @@ export default async function ReportesPage() {
   return (
     <div>
       <h1 className="font-playfair text-3xl font-bold text-grafito mb-1">Reportes</h1>
-      <p className="text-grafito/50 text-sm mb-8">Reportes y métricas de tu servicio</p>
+      <p className="text-grafito/50 text-sm mb-8">Resultados META Ads</p>
 
       <ResumenReportes semanal={semanal} mensual={mensual} />
 

@@ -1,7 +1,16 @@
+import { readFile } from "fs/promises";
+import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { renderToBuffer } from "@react-pdf/renderer";
+import sharp from "sharp";
 import { createClient } from "@/lib/supabase/server";
 import ReportePdf, { ResumenPdfRow } from "./ReportePdf";
+
+async function aPngDataUri(input: Buffer | string): Promise<string> {
+  const buffer = typeof input === "string" ? Buffer.from(await (await fetch(input)).arrayBuffer()) : input;
+  const png = await sharp(buffer).png().toBuffer();
+  return `data:image/png;base64,${png.toString("base64")}`;
+}
 
 export async function GET(request: NextRequest) {
   const tipoParam = request.nextUrl.searchParams.get("tipo");
@@ -9,10 +18,16 @@ export async function GET(request: NextRequest) {
 
   const supabase = await createClient();
 
-  const { data: cliente } = await supabase.from("clientes").select("id, nombre").single();
+  const { data: cliente } = await supabase.from("clientes").select("id, nombre, logo_url").single();
   if (!cliente) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
+
+  const loretoLogoSvg = await readFile(path.join(process.cwd(), "public", "logo.svg"));
+  const [loretoLogo, clienteLogo] = await Promise.all([
+    aPngDataUri(loretoLogoSvg),
+    cliente.logo_url ? aPngDataUri(cliente.logo_url).catch(() => null) : Promise.resolve(null),
+  ]);
 
   const { data: servicios } = await supabase.from("servicios").select("id").eq("cliente_id", cliente.id);
   const servicioIds = (servicios ?? []).map((s) => s.id);
@@ -44,7 +59,7 @@ export async function GET(request: NextRequest) {
     : { data: [] };
 
   const buffer = await renderToBuffer(
-    ReportePdf({ cliente: cliente.nombre, tipo, filas: filas ?? [] })
+    ReportePdf({ cliente: cliente.nombre, tipo, filas: filas ?? [], loretoLogo, clienteLogo })
   );
 
   return new NextResponse(new Uint8Array(buffer), {

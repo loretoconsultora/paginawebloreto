@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 
 export type ResumenPdfRow = {
   conjunto_anuncios: string;
@@ -22,7 +22,10 @@ const GRAFITO = "#3A3F4B";
 
 const styles = StyleSheet.create({
   page: { padding: 36, fontSize: 10, color: GRAFITO, fontFamily: "Helvetica" },
-  header: { borderBottom: `2pt solid ${ROSA}`, paddingBottom: 14, marginBottom: 20 },
+  header: { borderBottom: `2pt solid ${ROSA}`, paddingBottom: 14, marginBottom: 20, flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end" },
+  headerText: { flexGrow: 1 },
+  logos: { flexDirection: "row", alignItems: "center", gap: 14 },
+  logo: { height: 28, objectFit: "contain" },
   brand: { fontSize: 11, fontWeight: 700, color: ROSA, letterSpacing: 1 },
   title: { fontSize: 20, fontWeight: 700, marginTop: 4 },
   subtitle: { fontSize: 10, color: "#3A3F4B99", marginTop: 2 },
@@ -61,10 +64,14 @@ export default function ReportePdf({
   cliente,
   tipo,
   filas,
+  loretoLogo,
+  clienteLogo,
 }: {
   cliente: string;
   tipo: "semanal" | "mensual";
   filas: ResumenPdfRow[];
+  loretoLogo?: string | null;
+  clienteLogo?: string | null;
 }) {
   const periodo = filas[0]?.periodo;
 
@@ -72,11 +79,17 @@ export default function ReportePdf({
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.brand}>LORETO CONSULTORA</Text>
-          <Text style={styles.title}>Reporte {tipo === "semanal" ? "semanal" : "mensual"} — {cliente}</Text>
-          <Text style={styles.subtitle}>
-            Periodo: {periodo ? formatPeriodo(periodo, tipo) : "Sin datos disponibles"}
-          </Text>
+          <View style={styles.headerText}>
+            <Text style={styles.brand}>LORETO CONSULTORA</Text>
+            <Text style={styles.title}>Reporte {tipo === "semanal" ? "semanal" : "mensual"} — {cliente}</Text>
+            <Text style={styles.subtitle}>
+              Periodo: {periodo ? formatPeriodo(periodo, tipo) : "Sin datos disponibles"}
+            </Text>
+          </View>
+          <View style={styles.logos}>
+            {clienteLogo && <Image src={clienteLogo} style={styles.logo} />}
+            {loretoLogo && <Image src={loretoLogo} style={styles.logo} />}
+          </View>
         </View>
 
         {filas.length === 0 ? (

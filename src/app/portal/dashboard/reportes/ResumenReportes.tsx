@@ -103,14 +103,18 @@ export default function ResumenReportes({
 
           <div className="bg-white rounded-2xl p-6 border border-grafito/10 mb-6">
             <h2 className="font-playfair text-lg font-bold text-grafito mb-4">Resultados vs. meta</h2>
-            <div style={{ width: "100%", height: 280 }}>
+            <div style={{ width: "100%", height: 320 }}>
               <ResponsiveContainer>
-                <BarChart data={chartData} margin={{ left: 0, right: 10, top: 5, bottom: 5 }}>
+                <BarChart data={chartData} margin={{ left: 0, right: 10, top: 5, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#3A3F4B15" vertical={false} />
-                  <XAxis dataKey="nombre" tick={{ fontSize: 11, fill: "#3A3F4B99" }} interval={0} angle={-10} textAnchor="end" height={60} />
+                  <XAxis dataKey="nombre" tick={{ fontSize: 11, fill: "#3A3F4B99" }} interval={0} angle={-35} textAnchor="end" height={90} />
                   <YAxis tick={{ fontSize: 11, fill: "#3A3F4B99" }} />
-                  <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #3A3F4B1A", fontSize: 12 }} />
-                  <Bar dataKey="meta" name="Meta" fill="#3A3F4B20" radius={[6, 6, 0, 0]} />
+                  <Tooltip
+                    contentStyle={{ borderRadius: 12, border: "1px solid #3A3F4B1A", fontSize: 12, background: "#fff" }}
+                    labelStyle={{ color: "#3A3F4B", fontWeight: 600 }}
+                    itemStyle={{ color: "#3A3F4B" }}
+                  />
+                  <Bar dataKey="meta" name="Meta" fill="#3A3F4B40" radius={[6, 6, 0, 0]} />
                   <Bar dataKey="resultados" name="Resultados" fill="#c0005a" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
