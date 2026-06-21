@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { CalendarClock } from "lucide-react";
 
 const KPIS = [
   { label: "Alcance mensual", value: "—" },
@@ -21,12 +22,22 @@ function formatFecha(fecha: string) {
   });
 }
 
+function formatFechaHora(fecha: string) {
+  return new Date(fecha).toLocaleString("es-MX", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export default async function DashboardPage() {
   const supabase = await createClient();
 
   const { data: cliente } = await supabase
     .from("clientes")
-    .select("nombre, logo_url")
+    .select("id, nombre, logo_url")
     .single();
 
   const { data: servicios } = await supabase
@@ -34,17 +45,67 @@ export default async function DashboardPage() {
     .select("id, nombre, estado, periodos_servicio(mes_inicio, mes_fin)")
     .returns<Servicio[]>();
 
+  const servicioIds = (servicios ?? []).map((s) => s.id);
+
+  const { data: ultimoKpi } = servicioIds.length
+    ? await supabase
+        .from("kpis")
+        .select("fecha")
+        .in("servicio_id", servicioIds)
+        .order("fecha", { ascending: false })
+        .limit(1)
+        .maybeSingle()
+    : { data: null };
+
+  const { data: proximoEvento } = cliente
+    ? await supabase
+        .from("eventos_calendario")
+        .select("titulo, fecha, tipo")
+        .eq("cliente_id", cliente.id)
+        .gte("fecha", new Date().toISOString())
+        .order("fecha", { ascending: true })
+        .limit(1)
+        .maybeSingle()
+    : { data: null };
+
   return (
     <div>
+      <p className="text-xs font-semibold tracking-widest uppercase text-grafito/40 text-center mb-4">
+        Vista rápida
+      </p>
+
       {cliente?.logo_url && (
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4">
           <img src={cliente.logo_url} alt={cliente.nombre} style={{ height: "48px", width: "auto" }} />
         </div>
       )}
 
-      <h1 className="font-playfair text-3xl font-bold text-grafito mb-8 text-center sm:text-left">
-        Vista rápida
-      </h1>
+      {cliente?.nombre && (
+        <h1 className="font-playfair text-4xl font-bold text-grafito text-center mb-10">
+          {cliente.nombre}
+        </h1>
+      )}
+
+      <div className="grid sm:grid-cols-2 gap-5 mb-6">
+        <div className="bg-white rounded-2xl p-5 border border-grafito/10 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-grafito/40 uppercase tracking-widest mb-1">Última actualización</p>
+            <p className="text-sm font-semibold text-grafito">
+              {ultimoKpi?.fecha ? formatFecha(ultimoKpi.fecha) : "Sin datos todavía"}
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl p-5 border border-grafito/10 flex items-center gap-3">
+          <CalendarClock size={18} style={{ color: "#c0005a" }} className="flex-shrink-0" />
+          <div>
+            <p className="text-xs text-grafito/40 uppercase tracking-widest mb-1">Agenda</p>
+            <p className="text-sm font-semibold text-grafito capitalize">
+              {proximoEvento ? `${proximoEvento.titulo} — ${formatFechaHora(proximoEvento.fecha)}` : "Sin eventos próximos"}
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div className="grid sm:grid-cols-3 gap-5 mb-10">
         {KPIS.map((k) => (

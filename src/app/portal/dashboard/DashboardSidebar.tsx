@@ -9,7 +9,7 @@ const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)
 
 const LINKS = [
   { href: "/portal/dashboard", label: "Vista rápida", icon: LayoutDashboard },
-  { href: "/portal/dashboard/calendario", label: "Calendario", icon: Calendar },
+  { href: "/portal/dashboard/agenda", label: "Agenda", icon: Calendar },
   { href: "/portal/dashboard/reportes", label: "Reportes", icon: FileBarChart2 },
   { href: "/portal/dashboard/notas", label: "Notas", icon: StickyNote },
 ];
