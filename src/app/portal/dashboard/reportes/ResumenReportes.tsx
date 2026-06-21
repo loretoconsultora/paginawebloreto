@@ -38,8 +38,10 @@ function wrapLabel(texto: string): [string, string] {
   return [palabras.slice(0, mitad).join(" "), palabras.slice(mitad).join(" ")];
 }
 
-function EjeXTick({ x, y, payload }: { x: number; y: number; payload: { value: string } }) {
-  const [linea1, linea2] = wrapLabel(payload.value);
+type EjeXTickProps = { x?: number | string; y?: number | string; payload?: { value: string } };
+
+function EjeXTick({ x = 0, y = 0, payload }: EjeXTickProps) {
+  const [linea1, linea2] = wrapLabel(payload?.value ?? "");
   return (
     <g transform={`translate(${x},${y})`}>
       <text x={0} y={0} dy={12} textAnchor="middle" fontSize={11} fill="#3A3F4B99">
@@ -126,15 +128,15 @@ export default function ResumenReportes({
               <ResponsiveContainer>
                 <BarChart data={chartData} margin={{ left: 0, right: 10, top: 5, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#3A3F4B15" vertical={false} />
-                  <XAxis dataKey="nombre" tick={<EjeXTick x={0} y={0} payload={{ value: "" }} />} interval={0} height={50} />
+                  <XAxis dataKey="nombre" tick={EjeXTick} interval={0} height={50} />
                   <YAxis tick={{ fontSize: 11, fill: "#3A3F4B99" }} />
                   <Tooltip
                     contentStyle={{ borderRadius: 12, border: "1px solid #3A3F4B1A", fontSize: 12, background: "#fff" }}
                     labelStyle={{ color: "#3A3F4B", fontWeight: 600 }}
                     itemStyle={{ color: "#3A3F4B" }}
                   />
-                  <Bar dataKey="meta" name="Meta" fill="#67c6c880" radius={[6, 6, 0, 0]} />
-                  <Bar dataKey="resultados" name="Resultados" fill="#c0005a" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="meta" name="Meta" fill="#67c6c8" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="resultados" name="Resultados" fill="#f393ae" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
