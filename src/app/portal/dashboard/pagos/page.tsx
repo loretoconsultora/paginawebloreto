@@ -44,12 +44,12 @@ export default async function PagosPage() {
       <p className="text-grafito/50 text-sm mb-6">Historial de servicios mensuales y su estatus de pago</p>
 
       <div
-        className="flex items-start gap-3 rounded-2xl p-4 mb-6 border"
-        style={{ background: "rgba(192,0,90,0.05)", borderColor: "rgba(192,0,90,0.15)" }}
+        className="flex items-start gap-3 rounded-2xl p-4 mb-6"
+        style={{ background: "#eab308" }}
       >
-        <Info size={16} style={{ color: "#c0005a" }} className="flex-shrink-0 mt-0.5" />
-        <p className="text-xs text-grafito/70">
-          Próxima fecha de pago: <span className="font-semibold text-grafito">del 1 al 7 de cada mes.</span>
+        <Info size={16} style={{ color: "#fff" }} className="flex-shrink-0 mt-0.5" />
+        <p className="text-xs text-white">
+          Próxima fecha de pago: <span className="font-semibold">del 1 al 7 de cada mes.</span>
         </p>
       </div>
 
