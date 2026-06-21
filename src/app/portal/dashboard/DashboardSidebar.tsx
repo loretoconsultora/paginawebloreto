@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Calendar, FileBarChart2, StickyNote, CreditCard, LogOut } from "lucide-react";
+import { LayoutDashboard, Calendar, FileBarChart2, StickyNote, CreditCard, CalendarDays, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)";
@@ -14,6 +14,8 @@ const LINKS = [
   { href: "/portal/dashboard/notas", label: "Notas", icon: StickyNote },
   { href: "/portal/dashboard/pagos", label: "Pagos", icon: CreditCard },
 ];
+
+const PROXIMAMENTE = { label: "Calendario de Contenidos", icon: CalendarDays };
 
 export default function DashboardSidebar({ email }: { email: string }) {
   const pathname = usePathname();
@@ -55,6 +57,16 @@ export default function DashboardSidebar({ email }: { email: string }) {
             </Link>
           );
         })}
+
+        <div
+          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-grafito/30 cursor-not-allowed"
+        >
+          <PROXIMAMENTE.icon size={16} />
+          <span className="flex-1">{PROXIMAMENTE.label}</span>
+          <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-grafito/5 text-grafito/40 flex-shrink-0">
+            Próximamente
+          </span>
+        </div>
       </nav>
 
       <button

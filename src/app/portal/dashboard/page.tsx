@@ -99,10 +99,13 @@ export default async function DashboardPage() {
 
   return (
     <div
-      className="rounded-3xl p-6 sm:p-10 -m-6 sm:-m-10"
+      className="p-6 sm:p-10 -m-6 sm:-m-10 min-h-[calc(100vh-1px)]"
       style={{ background: "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)" }}
     >
-      <div className="glass rounded-3xl p-6 sm:p-10">
+      <div
+        className="rounded-3xl p-6 sm:p-10"
+        style={{ background: "rgba(255,255,255,0.94)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", boxShadow: "0 8px 32px rgba(106,138,255,0.10)" }}
+      >
         <p className="text-xs font-semibold tracking-widest uppercase text-grafito/40 text-center mb-4">
           Vista rápida
         </p>
