@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)";
 
 const LINKS = [
-  { href: "/portal/dashboard", label: "Panel general", icon: LayoutDashboard },
+  { href: "/portal/dashboard", label: "Vista rápida", icon: LayoutDashboard },
   { href: "/portal/dashboard/calendario", label: "Calendario", icon: Calendar },
   { href: "/portal/dashboard/reportes", label: "Reportes", icon: FileBarChart2 },
   { href: "/portal/dashboard/notas", label: "Notas", icon: StickyNote },
@@ -27,6 +27,9 @@ export default function DashboardSidebar({ email }: { email: string }) {
 
   return (
     <aside className="w-64 flex-shrink-0 bg-white border-r border-grafito/10 flex flex-col py-8 px-4">
+      <div className="flex justify-center mb-3">
+        <img src="/logo.svg" alt="Loreto Consultora" style={{ height: "40px", width: "auto" }} />
+      </div>
       <p className="font-dancing text-2xl text-center mb-1" style={{ color: "#c0005a" }}>
         Portal del Cliente
       </p>

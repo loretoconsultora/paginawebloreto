@@ -24,6 +24,11 @@ function formatFecha(fecha: string) {
 export default async function DashboardPage() {
   const supabase = await createClient();
 
+  const { data: cliente } = await supabase
+    .from("clientes")
+    .select("nombre, logo_url")
+    .single();
+
   const { data: servicios } = await supabase
     .from("servicios")
     .select("id, nombre, estado, periodos_servicio(mes_inicio, mes_fin)")
@@ -31,8 +36,15 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <h1 className="font-playfair text-3xl font-bold text-grafito mb-1">Panel general</h1>
-      <p className="text-grafito/50 text-sm mb-8">Resumen de tus servicios activos</p>
+      {cliente?.logo_url && (
+        <div className="flex justify-center mb-6">
+          <img src={cliente.logo_url} alt={cliente.nombre} style={{ height: "48px", width: "auto" }} />
+        </div>
+      )}
+
+      <h1 className="font-playfair text-3xl font-bold text-grafito mb-8 text-center sm:text-left">
+        Vista rápida
+      </h1>
 
       <div className="grid sm:grid-cols-3 gap-5 mb-10">
         {KPIS.map((k) => (
