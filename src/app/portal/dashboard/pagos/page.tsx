@@ -9,6 +9,7 @@ type Pago = {
   conceptos: string[];
   detalle: ConceptoDetalle[] | null;
   estado: string;
+  nota: string | null;
 };
 
 const MESES = [
@@ -39,7 +40,7 @@ export default async function PagosPage() {
   const { data: pagos } = cliente
     ? await supabase
         .from("pagos")
-        .select("id, mes, conceptos, detalle, estado")
+        .select("id, mes, conceptos, detalle, estado, nota")
         .eq("cliente_id", cliente.id)
         .order("mes", { ascending: false })
         .returns<Pago[]>()
@@ -95,6 +96,9 @@ export default async function PagosPage() {
                     <p className="text-xs font-bold text-grafito mt-2">
                       Total: {formatMonto(p.detalle.reduce((sum, d) => sum + d.monto, 0))}
                     </p>
+                  )}
+                  {p.nota && (
+                    <p className="text-[11px] text-grafito/40 italic mt-1">{p.nota}</p>
                   )}
                 </div>
               </div>
