@@ -56,7 +56,7 @@ export default async function PagosPage() {
         style={{ background: "#eab308" }}
       >
         <Info size={22} style={{ color: "#fff" }} className="flex-shrink-0" />
-        <p className="text-lg sm:text-xl text-white">
+        <p className="text-sm text-white">
           Próxima fecha de pago: <span className="font-bold">del 1 al 7 de cada mes.</span>
         </p>
       </div>
