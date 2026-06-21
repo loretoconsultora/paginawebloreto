@@ -14,9 +14,11 @@ export type EventoAgenda = {
 
 const TIPO_LABEL: Record<string, string> = {
   produccion: "Producción de contenido",
-  sesion_semanal: "Sesión de estatus semanal",
+  sesion_semanal: "Revisión programada",
   especial: "Sesión especial",
 };
+
+const MEET_LINK = "https://meet.google.com/uaq-trnz-atq";
 
 const TIPO_EMOJI: Record<string, string> = {
   produccion: "🎬",
@@ -150,6 +152,17 @@ export default function AgendaView({ eventos }: { eventos: EventoAgenda[] }) {
                           <p className="font-semibold text-grafito text-sm">{e.titulo}</p>
                           <p className="text-xs text-grafito/50 mt-0.5 capitalize">{formatFechaHora(e.fecha)}</p>
                           {e.descripcion && <p className="text-xs text-grafito/50 mt-0.5">{e.descripcion}</p>}
+                          {e.tipo === "sesion_semanal" && (
+                            <a
+                              href={MEET_LINK}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs font-semibold mt-0.5 inline-block"
+                              style={{ color: "#c0005a" }}
+                            >
+                              {MEET_LINK}
+                            </a>
+                          )}
                         </div>
                       </div>
                       <span
