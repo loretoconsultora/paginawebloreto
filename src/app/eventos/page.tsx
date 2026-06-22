@@ -132,19 +132,23 @@ const CIUDADES = [
   {
     ciudad: "Querétaro",
     venue: "Alva Coffee & Health Bar",
+    direccion: "Colonia El Refugio",
+    mapsUrl: "https://maps.app.goo.gl/jMxfjyQg3ZC7cKv48",
     sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Jue 25 jun", hora: "4:00 pm", colorExp: "#c0005a", estado: "cerrado" },
-      { experiencia: "The Brand Atelier",  fecha: "Vie 26 jun", hora: "4:00 pm", colorExp: "#7a5800", estado: "cerrado" },
-      { experiencia: "The Brand Muse",     fecha: "Lun 29 jun", hora: "5:00 pm", colorExp: "#0d6b6d", estado: "proximamente" },
+      { experiencia: "Brand & Bloom",      fecha: "Vie 10 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
+      { experiencia: "The Brand Atelier",  fecha: "Sáb 11 jul", hora: "10:00 am - 1:00 pm", colorExp: "#7a5800", estado: "proximamente" },
+      { experiencia: "The Brand Muse",     fecha: "Sáb 11 jul", hora: "4:00 - 7:00 pm", colorExp: "#0d6b6d", estado: "proximamente" },
     ],
   },
   {
     ciudad: "Ciudad de México",
-    venue: "Tierra Garat Masaryk",
+    venue: "Mimbre",
+    direccion: "Colonia San Rafael",
+    mapsUrl: "https://maps.app.goo.gl/U3ARncK9UNJcLS8WA",
     sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Sáb 27 jun", hora: "4:00 pm", colorExp: "#c0005a", estado: "proximamente" },
-      { experiencia: "The Brand Atelier",  fecha: "Dom 28 jun", hora: "10:00 am", colorExp: "#7a5800", estado: "proximamente" },
-      { experiencia: "The Brand Muse",     fecha: "Dom 28 jun", hora: "4:00 pm",  colorExp: "#0d6b6d", estado: "proximamente" },
+      { experiencia: "Brand & Bloom",      fecha: "Mar 7 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
+      { experiencia: "The Brand Atelier",  fecha: "Mié 8 jul", hora: "4:00 - 7:00 pm", colorExp: "#7a5800", estado: "proximamente" },
+      { experiencia: "The Brand Muse",     fecha: "Jue 9 jul", hora: "4:00 - 7:00 pm",  colorExp: "#0d6b6d", estado: "proximamente" },
     ],
   },
 ];
@@ -290,7 +294,8 @@ export default function EventosPage() {
                         const sesion = c.sesiones.find((s) => s.experiencia === e.nombre);
                         if (!sesion) return null;
                         return (
-                          <div key={c.ciudad} className="flex items-center gap-2 flex-wrap">
+                          <div key={c.ciudad}>
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className="flex items-center gap-1 text-xs font-semibold text-grafito/80 flex-shrink-0">
                               <MapPin size={12} style={{ color: e.color }} />
                               {c.ciudad}
@@ -314,6 +319,15 @@ export default function EventosPage() {
                               {sesion.estado === "cerrado" ? "Cupo cerrado" : "Próximamente"}
                             </span>
                           </div>
+                          <a
+                            href={c.mapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[11px] text-grafito/45 hover:text-grafito/70 transition-colors pl-[18px]"
+                          >
+                            {c.venue}, {c.direccion}
+                          </a>
+                          </div>
                         );
                       })}
                     </div>
@@ -335,7 +349,14 @@ export default function EventosPage() {
                     <MapPin size={16} className="text-white flex-shrink-0" />
                     <div>
                       <p className="text-white font-bold text-base leading-tight">{c.ciudad}</p>
-                      <p className="text-white/70 text-xs">{c.venue}</p>
+                      <a
+                        href={c.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 text-xs hover:text-white transition-colors"
+                      >
+                        {c.venue}, {c.direccion}
+                      </a>
                     </div>
                   </div>
                   <div className="divide-y divide-gray-100 bg-white">
