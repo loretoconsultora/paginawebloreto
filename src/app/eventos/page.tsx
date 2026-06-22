@@ -255,6 +255,13 @@ export default function EventosPage() {
                 <span className="text-grafito/25 hidden sm:inline">|</span>
                 <span>Herramientas de IA</span>
               </div>
+              <Link
+                href="/eventos/registro-art-of-brand"
+                className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 rounded-full text-white hover:opacity-90 transition-opacity mt-6"
+                style={{ background: GRADIENT }}
+              >
+                Reservar mi lugar →
+              </Link>
             </motion.div>
 
             {/* Las 3 experiencias con imagen */}
