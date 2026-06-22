@@ -23,7 +23,7 @@ const logros = [
     industria: "Proyectos civiles e industriales",
     hito: "Producción de contenidos intensiva resulta en más de 17 contenidos estratégicos para redes sociales y publicidad.",
     foto: "/logros/foto-3.jpg",
-    fotoPosicion: "center 80%",
+    fotoPosicion: "center 65%",
   },
 ];
 
