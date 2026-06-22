@@ -130,17 +130,6 @@ const EXPERIENCIAS = [
 
 const CIUDADES = [
   {
-    ciudad: "Querétaro",
-    venue: "Alva Coffee & Health Bar",
-    direccion: "Colonia El Refugio",
-    mapsUrl: "https://maps.app.goo.gl/jMxfjyQg3ZC7cKv48",
-    sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Vie 10 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
-      { experiencia: "The Brand Atelier",  fecha: "Sáb 11 jul", hora: "10:00 am - 1:00 pm", colorExp: "#7a5800", estado: "proximamente" },
-      { experiencia: "The Brand Muse",     fecha: "Sáb 11 jul", hora: "4:00 - 7:00 pm", colorExp: "#0d6b6d", estado: "proximamente" },
-    ],
-  },
-  {
     ciudad: "Ciudad de México",
     venue: "Mimbre",
     direccion: "Colonia San Rafael",
@@ -149,6 +138,17 @@ const CIUDADES = [
       { experiencia: "Brand & Bloom",      fecha: "Mar 7 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
       { experiencia: "The Brand Atelier",  fecha: "Mié 8 jul", hora: "4:00 - 7:00 pm", colorExp: "#7a5800", estado: "proximamente" },
       { experiencia: "The Brand Muse",     fecha: "Jue 9 jul", hora: "4:00 - 7:00 pm",  colorExp: "#0d6b6d", estado: "proximamente" },
+    ],
+  },
+  {
+    ciudad: "Querétaro",
+    venue: "Alva Coffee & Health Bar",
+    direccion: "Colonia El Refugio",
+    mapsUrl: "https://maps.app.goo.gl/jMxfjyQg3ZC7cKv48",
+    sesiones: [
+      { experiencia: "Brand & Bloom",      fecha: "Vie 10 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
+      { experiencia: "The Brand Atelier",  fecha: "Sáb 11 jul", hora: "10:00 am - 1:00 pm", colorExp: "#7a5800", estado: "proximamente" },
+      { experiencia: "The Brand Muse",     fecha: "Sáb 11 jul", hora: "4:00 - 7:00 pm", colorExp: "#0d6b6d", estado: "proximamente" },
     ],
   },
 ];

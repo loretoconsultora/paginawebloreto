@@ -23,6 +23,7 @@ const logros = [
     industria: "Proyectos civiles e industriales",
     hito: "Producción de contenidos intensiva resulta en más de 17 contenidos estratégicos para redes sociales y publicidad.",
     foto: "/logros/foto-3.jpg",
+    fotoPosicion: "center 80%",
   },
 ];
 
@@ -60,7 +61,7 @@ function LogoCircle({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function EvidenciaPhoto({ src, alt }: { src: string; alt: string }) {
+function EvidenciaPhoto({ src, alt, posicion = "center" }: { src: string; alt: string; posicion?: string }) {
   return (
     <div
       className="w-full rounded-2xl overflow-hidden"
@@ -73,7 +74,7 @@ function EvidenciaPhoto({ src, alt }: { src: string; alt: string }) {
       <img
         src={src}
         alt={alt}
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: posicion }}
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).style.display = "none";
           const fb = (e.currentTarget as HTMLImageElement).nextElementSibling as HTMLElement;
@@ -140,7 +141,7 @@ export default function LogrosDestacados() {
               </div>
 
               {/* Foto de evidencia */}
-              <EvidenciaPhoto src={l.foto} alt={`Evidencia ${l.empresa}`} />
+              <EvidenciaPhoto src={l.foto} alt={`Evidencia ${l.empresa}`} posicion={l.fotoPosicion} />
             </div>
           ))}
         </div>

@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const nichos = [
+  "Empresarios",
+  "Emprendedores",
   "Asesores inmobiliarios",
   "Agentes de seguro",
   "Doctores",
@@ -14,8 +16,6 @@ const nichos = [
   "Freelancers",
   "Coaches",
   "Terapeutas",
-  "Empresarios",
-  "Emprendedores",
 ];
 
 export default function Servicios() {
@@ -115,7 +115,7 @@ export default function Servicios() {
                   Hemos<br />ayudado a:
                 </span>
                 <div className="overflow-hidden flex-1 ml-4">
-                  <div className="flex whitespace-nowrap" style={{ animation: "marquee-nichos 10s linear infinite" }}>
+                  <div className="flex whitespace-nowrap" style={{ animation: "marquee-nichos 7s linear infinite" }}>
                     {items.map((n, i) => (
                       <span key={i} className="inline-flex items-center gap-2 font-semibold flex-shrink-0 px-3 text-white"
                         style={{ opacity: 0.92, fontSize: "0.75rem" }}>
@@ -218,7 +218,7 @@ export default function Servicios() {
                   Hemos<br />ayudado a:
                 </span>
                 <div className="overflow-hidden flex-1 ml-5">
-                  <div className="flex whitespace-nowrap" style={{ animation: "marquee-nichos 10s linear infinite" }}>
+                  <div className="flex whitespace-nowrap" style={{ animation: "marquee-nichos 7s linear infinite" }}>
                     {items.map((n, i) => (
                       <span key={i} className="inline-flex items-center gap-3 font-semibold flex-shrink-0 px-4 text-white"
                         style={{ opacity: 0.92, fontSize: "0.82rem" }}>
