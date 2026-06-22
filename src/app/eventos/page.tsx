@@ -11,7 +11,7 @@ const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)
 // ─── Masterclasses ──────────────────────────────────────────────────────────
 
 const MASTERCLASSES = [
-  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01", imagen: "/eventos/masterclass-1.png" },
+  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01", imagen: "/eventos/masterclass-1.png", terminada: true },
   { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02", imagen: "/eventos/masterclass-2.png" },
   { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03", imagen: "/eventos/masterclass-3.png" },
   { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Martes 30 de junio", numero: "04", imagen: "/eventos/masterclass-4.png" },
@@ -38,6 +38,7 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
           src={m.imagen}
           alt={m.titulo}
           className="w-full h-full object-contain"
+          style={m.terminada ? { filter: "grayscale(1)" } : undefined}
           onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
         />
         <span
@@ -56,6 +57,11 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
         <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo</span>
         <span className="text-xs text-grafito/40 ml-1">· Instagram</span>
       </div>
+      {m.terminada && (
+        <span className="text-xs font-bold uppercase tracking-widest -mt-2" style={{ color: "#c0005a" }}>
+          Terminada
+        </span>
+      )}
       <h3 className="font-playfair text-base sm:text-lg font-bold text-grafito leading-snug flex-1">{m.titulo}</h3>
       <div className="flex items-center gap-2 text-sm text-grafito/60">
         <Calendar size={14} style={{ color: "#c0005a" }} />
