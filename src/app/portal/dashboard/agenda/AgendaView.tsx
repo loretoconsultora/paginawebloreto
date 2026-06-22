@@ -214,7 +214,7 @@ export default function AgendaView({ eventos }: { eventos: EventoAgenda[] }) {
               return (
                 <div
                   key={i}
-                  className="rounded-xl p-2 min-h-[90px] border"
+                  className="rounded-xl p-1.5 sm:p-2 min-h-[60px] sm:min-h-[90px] border"
                   style={{
                     borderColor: esHoy ? "#c0005a" : "#3A3F4B0F",
                     background: delMes ? "#fff" : "#3A3F4B05",

@@ -101,7 +101,7 @@ export default async function DashboardPage() {
     : { data: null };
 
   return (
-    <div className="relative -m-6 sm:-m-10 p-6 sm:p-10 overflow-hidden" style={{ background: "#ffffff" }}>
+    <div className="relative -m-4 sm:-m-6 md:-m-10 p-4 sm:p-6 md:p-10 overflow-hidden" style={{ background: "#ffffff" }}>
       <div
         className="absolute pointer-events-none"
         style={{
