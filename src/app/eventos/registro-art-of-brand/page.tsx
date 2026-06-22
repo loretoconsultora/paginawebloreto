@@ -85,13 +85,12 @@ const CIUDADES = [
 type CiudadId = typeof CIUDADES[number]["id"];
 
 const BENEFICIOS = [
-  { icon: Sparkles, texto: "Una experiencia de autor: negocios, marketing y branding fusionados con arte" },
   { icon: Users, texto: "Grupo íntimo y curado — solo 12 lugares por sesión" },
-  { icon: Palette, texto: "Materiales y workshop creativo incluidos + bebida y aperitivos" },
+  { icon: Palette, texto: "Incluye: Manual de trabajo, ejercicios para tu marca, Kit de arte + bebida y aperitivos" },
 ];
 
 export default function RegistroArtOfBrandPage() {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "" });
+  const [form, setForm] = useState({ nombre: "", negocio: "", correo: "", lada: "52", telefono: "" });
   const [ciudad, setCiudad] = useState<CiudadId>("cdmx");
   const [experiencias, setExperiencias] = useState<string[]>([]);
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
@@ -177,12 +176,12 @@ export default function RegistroArtOfBrandPage() {
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/85 text-base sm:text-lg leading-relaxed mb-7"
             >
-              Un evento de autor que combina talleres prácticos de negocios, marketing y branding con experiencias curadas e íntimas — donde con intención y a través del arte construimos las estrategias que impulsarán tu marca.
+              Una serie de eventos de autor que combina talleres prácticos de negocios, marketing y branding con experiencias íntimas, donde con intención y a través del arte construimos las estrategias que impulsarán tu marca.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col gap-2.5 max-w-md mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-2xl mx-auto"
             >
               {BENEFICIOS.map((b, i) => (
                 <div key={i} className="flex items-center gap-3 text-left bg-white/10 rounded-xl px-4 py-2.5">
@@ -335,6 +334,9 @@ export default function RegistroArtOfBrandPage() {
 
                 {/* Nombre */}
                 <input required name="nombre" placeholder="Nombre completo *" value={form.nombre} onChange={handleChange} className={inputClass} />
+
+                {/* Negocio */}
+                <input name="negocio" placeholder="Nombre de tu negocio" value={form.negocio} onChange={handleChange} className={inputClass} />
 
                 {/* Correo */}
                 <input required name="correo" type="email" placeholder="Correo electrónico *" value={form.correo} onChange={handleChange} className={inputClass} />
