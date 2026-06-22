@@ -14,6 +14,8 @@ const nichos = [
   "Freelancers",
   "Coaches",
   "Terapeutas",
+  "Empresarios",
+  "Emprendedores",
 ];
 
 export default function Servicios() {
