@@ -20,8 +20,8 @@ const CARD_GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)";
 const CARD_BG = "rgba(255,255,255,0.18)";
 
-// 1 de julio 2026, 18:00 hora México (CDT = UTC-5)
-const TARGET = new Date("2026-07-01T18:00:00-05:00").getTime();
+// 15 de julio 2026, 18:00 hora México (CDT = UTC-5)
+const TARGET = new Date("2026-07-15T18:00:00-05:00").getTime();
 
 function useCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -126,7 +126,7 @@ export default function BoostYourBrand() {
               </h3>
 
               <p className="font-dancing text-2xl text-white/85 mb-5">
-                Inicio: miércoles 1 de julio
+                Inicio: miércoles 15 de julio
               </p>
 
               <p className="text-white/90 text-lg leading-relaxed mb-3 font-medium">
