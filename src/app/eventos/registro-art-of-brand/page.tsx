@@ -16,7 +16,6 @@ declare global {
 }
 
 const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
-const WHATSAPP_URL = "https://chat.whatsapp.com/EB9jvFzRAzD0nLxoGqLJHi?s=cl&p=i&ilr=0";
 const N8N_WEBHOOK = process.env.NEXT_PUBLIC_N8N_ARTOFBRAND_WEBHOOK ?? "";
 
 const CUPO_POR_SESION = 12;
@@ -240,14 +239,6 @@ export default function RegistroArtOfBrandPage() {
                 <p className="text-sm text-grafito/60 max-w-sm">
                   Nuestro equipo te contactará por WhatsApp para confirmar tu lugar y los detalles de pago — los cupos son limitados.
                 </p>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity w-full"
-                  style={{ background: "#25D366", boxShadow: "0 8px 24px rgba(37,211,102,0.35)" }}
-                >
-                  Unirme a grupo de WhatsApp →
-                </a>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
