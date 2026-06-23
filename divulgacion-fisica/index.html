@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física en tu día a día | Divulgación científica</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <nav class="navbar">
+    <span class="logo">⚡ Física Cotidiana</span>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#temas">Temas</a></li>
+      <li><a href="#visuales">Visuales</a></li>
+      <li><a href="#reto">Reto</a></li>
+      <li><a href="#conclusion">Conclusión</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <h1>La física está en todo lo que te rodea</h1>
+    <p>Esta página explica fenómenos de la vida diaria con física sencilla, ejemplos reales
+       y comparaciones visuales. Sin fórmulas complicadas, solo curiosidad.</p>
+    <a href="#temas" class="btn">Empezar a explorar</a>
+  </div>
+</header>
+
+<main>
+
+  <section id="temas" class="section">
+    <h2>🔍 Fenómenos cotidianos explicados</h2>
+    <p class="section-intro">¿Te has preguntado por qué pasan estas cosas? Aquí te lo explico de forma simple.</p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>🥽 ¿Por qué se empañan los lentes?</h3>
+        <p>El aire que exhalas está caliente y lleno de vapor de agua. Cuando ese vapor toca
+           el vidrio frío de tus lentes, se enfría de golpe y se condensa en miles de gotitas
+           diminutas. Esas gotitas dispersan la luz... ¡y por eso ya no ves nada!</p>
+        <p class="ejemplo"><strong>En la vida real:</strong> lo mismo pasa con el espejo del baño
+           después de una ducha caliente.</p>
+      </article>
+
+      <article class="card">
+        <h3>❄️ ¿Cómo funciona un refrigerador?</h3>
+        <p>Dentro hay un líquido especial (refrigerante) que absorbe el calor de los alimentos
+           cuando se evapora. Luego un compresor lo comprime, lo convierte en líquido otra vez
+           y libera ese calor afuera, por eso la parte de atrás del refri está tibia.</p>
+        <p class="ejemplo"><strong>En la vida real:</strong> es la misma idea de cuando sudas:
+           el sudor se evapora y te enfría la piel.</p>
+      </article>
+
+      <article class="card">
+        <h3>⚡ ¿Por qué truena un rayo?</h3>
+        <p>Un rayo calienta el aire a su alrededor a más de 27,000 °C en una fracción de segundo.
+           Ese aire se expande tan rápido que genera una onda de choque: el sonido que llamamos trueno.</p>
+        <p class="ejemplo"><strong>Dato curioso:</strong> ves el rayo antes de oírlo porque la luz
+           viaja mucho más rápido que el sonido.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="visuales" class="section alt">
+    <h2>⚡ Comparaciones visuales</h2>
+    <p class="section-intro">A veces dos conceptos se confunden. Aquí los comparamos lado a lado.</p>
+
+    <div class="comparacion">
+      <div class="comp-box">
+        <h3>Energía potencial</h3>
+        <p>Es la energía "guardada" por la posición o el estado de un objeto.</p>
+        <p class="ejemplo">🪨 Una roca en lo alto de una colina, antes de caer.</p>
+      </div>
+      <div class="vs">VS</div>
+      <div class="comp-box">
+        <h3>Energía cinética</h3>
+        <p>Es la energía que tiene un objeto por estar en movimiento.</p>
+        <p class="ejemplo">🚴 Una bicicleta acelerando cuesta abajo.</p>
+      </div>
+    </div>
+
+    <div class="comparacion">
+      <div class="comp-box">
+        <h3>Fuerza</h3>
+        <p>Es lo que empuja o jala a un objeto, causando que cambie su movimiento.</p>
+        <p class="ejemplo">🤚 Empujar un carrito de supermercado.</p>
+      </div>
+      <div class="vs">VS</div>
+      <div class="comp-box">
+        <h3>Masa</h3>
+        <p>Es la cantidad de materia que tiene un objeto. A más masa, más difícil moverlo.</p>
+        <p class="ejemplo">🛒 Un carrito vacío vs uno lleno de bolsas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="section">
+    <h2>🧩 Pon a prueba lo que aprendiste</h2>
+    <p class="section-intro">Responde este mini quiz. ¡No te preocupes, puedes intentarlo varias veces!</p>
+
+    <div class="quiz" id="quiz">
+      <div class="pregunta" data-correcta="b">
+        <p>1. ¿Por qué se empañan tus lentes cuando exhalas en un día frío?</p>
+        <div class="opciones">
+          <button data-valor="a">El frío "pinta" el vidrio</button>
+          <button data-valor="b">El vapor de tu aliento se condensa al tocar el vidrio frío</button>
+          <button data-valor="c">Los lentes se ensucian solos</button>
+        </div>
+      </div>
+
+      <div class="pregunta" data-correcta="a">
+        <p>2. Una roca en lo alto de una colina tiene principalmente:</p>
+        <div class="opciones">
+          <button data-valor="a">Energía potencial</button>
+          <button data-valor="b">Energía cinética</button>
+          <button data-valor="c">Ninguna energía</button>
+        </div>
+      </div>
+
+      <div class="pregunta" data-correcta="c">
+        <p>3. ¿Por qué vemos el rayo antes de escuchar el trueno?</p>
+        <div class="opciones">
+          <button data-valor="a">El sonido se pierde en el cielo</button>
+          <button data-valor="b">El trueno tarda en formarse</button>
+          <button data-valor="c">La luz viaja mucho más rápido que el sonido</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultado-quiz"></div>
+  </section>
+
+  <section id="conclusion" class="section alt conclusion">
+    <h2>🌟 ¿Qué aprendiste hoy?</h2>
+    <p>
+      La física no vive solo en los libros: está en tus lentes empañados, en tu refrigerador,
+      en una tormenta y en cada vez que andas en bicicleta. Entender estos fenómenos te ayuda
+      a ver el mundo con más curiosidad... y eso es exactamente lo que hace la divulgación científica.
+    </p>
+    <p class="firma">Si llegaste hasta aquí y pensaste "ahora sí entendí" — misión cumplida. 🎉</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>Hecho con curiosidad, creatividad y un poco de física. 🔬</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
