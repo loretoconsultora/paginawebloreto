@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const GRADIENT = "linear-gradient(135deg, #0a1f3d 0%, #0f7a78 50%, #4fd1c5 100%)";
+const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)";
 
 const PROGRAMAS = [
   {
@@ -15,9 +15,9 @@ const PROGRAMAS = [
     frase: "La experiencia que recupera tu tiempo y potencia a tu equipo",
     para: "Colaboradores y líderes de equipo de empresas medianas",
     icon: Briefcase,
-    color: "#0f7a78",
-    bgColor: "rgba(15,122,120,0.06)",
-    borderColor: "rgba(15,122,120,0.2)",
+    color: "#3E7ECA",
+    bgColor: "rgba(62,126,202,0.06)",
+    borderColor: "rgba(62,126,202,0.2)",
   },
   {
     id: "elite",
@@ -25,9 +25,9 @@ const PROGRAMAS = [
     frase: "La experiencia que construye tu ventaja competitiva de 18-36 meses",
     para: "Directivos, CEOs y dueños de negocio — grupos de 10-12 personas",
     icon: Users,
-    color: "#0a4d8c",
-    bgColor: "rgba(10,77,140,0.08)",
-    borderColor: "rgba(10,77,140,0.35)",
+    color: "#6A8AFF",
+    bgColor: "rgba(106,138,255,0.08)",
+    borderColor: "rgba(106,138,255,0.35)",
   },
   {
     id: "joven",
@@ -35,9 +35,9 @@ const PROGRAMAS = [
     frase: "La experiencia que convierte a tu alumno en la Primera Generación IA",
     para: "Colegios privados y fundaciones educativas",
     icon: GraduationCap,
-    color: "#0d6b6d",
-    bgColor: "rgba(13,107,109,0.06)",
-    borderColor: "rgba(13,107,109,0.2)",
+    color: "#1f8a8c",
+    bgColor: "rgba(31,138,140,0.06)",
+    borderColor: "rgba(31,138,140,0.2)",
   },
 ];
 

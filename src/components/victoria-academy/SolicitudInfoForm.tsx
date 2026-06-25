@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
 const inputClass =
-  "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-teal-300 transition-colors";
+  "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-[#6A8AFF] transition-colors";
 
 type CityField =
   | { type: "text"; placeholder: string }
@@ -72,7 +72,7 @@ export default function SolicitudInfoForm({
   if (estado === "ok") {
     return (
       <div className="flex flex-col items-center gap-4 text-center py-6">
-        <CheckCircle2 size={48} style={{ color: "#0f7a78" }} />
+        <CheckCircle2 size={48} style={{ color: "#3E7ECA" }} />
         <p className="font-playfair text-2xl font-bold text-grafito">{confirmTitle}</p>
         <p className="text-sm text-grafito/60 max-w-sm">{confirmText}</p>
         {calendlyUrl ? (
@@ -121,7 +121,7 @@ export default function SolicitudInfoForm({
         type="submit"
         disabled={estado === "loading"}
         className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
-        style={{ background: gradient, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
+        style={{ background: gradient, boxShadow: "0 8px 24px rgba(62,126,202,0.3)" }}
       >
         {estado === "loading" ? "Enviando…" : submitLabel}
       </button>
