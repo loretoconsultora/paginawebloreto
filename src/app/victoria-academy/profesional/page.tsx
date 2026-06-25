@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 
-const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+const GRADIENT = "linear-gradient(135deg, #0a1f3d 0%, #0f7a78 50%, #4fd1c5 100%)";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
 
@@ -108,12 +108,12 @@ export default function VictoriaProfesionalPage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl p-5" style={{ background: "rgba(192,0,90,0.06)", border: "1px solid rgba(192,0,90,0.2)" }}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#c0005a" }}>Sí vendemos</p>
+            <div className="rounded-2xl p-5" style={{ background: "rgba(15,122,120,0.06)", border: "1px solid rgba(15,122,120,0.2)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#0f7a78" }}>Sí vendemos</p>
               <div className="flex flex-col gap-2.5">
                 {SI_VENDE.map((t) => (
                   <div key={t} className="flex items-start gap-2 text-sm text-grafito/75 font-medium">
-                    <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5" style={{ color: "#c0005a" }} />
+                    <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5" style={{ color: "#0f7a78" }} />
                     {t}
                   </div>
                 ))}
@@ -154,7 +154,7 @@ export default function VictoriaProfesionalPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {ENTREGABLES.map((e) => (
                 <div key={e.titulo} className="rounded-xl p-5 bg-white" style={{ border: "1px solid rgba(58,63,75,0.08)" }}>
-                  <e.icon size={20} style={{ color: "#c0005a" }} className="mb-2" />
+                  <e.icon size={20} style={{ color: "#0f7a78" }} className="mb-2" />
                   <h3 className="font-semibold text-sm text-grafito mb-1.5">{e.titulo}</h3>
                   <p className="text-xs text-grafito/55 leading-relaxed">{e.texto}</p>
                 </div>
@@ -166,7 +166,7 @@ export default function VictoriaProfesionalPage() {
           <motion.div
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="rounded-2xl p-6 mb-10 text-center"
-            style={{ background: "rgba(192,0,90,0.06)", border: "1px solid rgba(192,0,90,0.2)" }}
+            style={{ background: "rgba(15,122,120,0.06)", border: "1px solid rgba(15,122,120,0.2)" }}
           >
             <p className="text-sm text-grafito/75 leading-relaxed">
               La transformación no termina al salir del salón: incluye <strong>30 días de seguimiento estructurado</strong> (check-ins, sesión de preguntas en vivo, medición de impacto al día 30) y <strong>acceso a la comunidad Skool VictorIA Profesional</strong> — contenido semanal, red de pares y acceso directo a la facilitadora.
@@ -179,7 +179,7 @@ export default function VictoriaProfesionalPage() {
             className="flex items-start gap-4 rounded-2xl p-6 mb-10 bg-white"
             style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
           >
-            <ShieldCheck size={28} style={{ color: "#c0005a" }} className="flex-shrink-0 mt-0.5" />
+            <ShieldCheck size={28} style={{ color: "#0f7a78" }} className="flex-shrink-0 mt-0.5" />
             <div>
               <h3 className="font-playfair text-lg font-bold text-grafito mb-1">Garantía de Experiencia VictorIA</h3>
               <p className="text-sm text-grafito/65 leading-relaxed">

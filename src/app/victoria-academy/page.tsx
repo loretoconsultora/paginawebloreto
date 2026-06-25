@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+const GRADIENT = "linear-gradient(135deg, #0a1f3d 0%, #0f7a78 50%, #4fd1c5 100%)";
 
 const PROGRAMAS = [
   {
@@ -15,9 +15,9 @@ const PROGRAMAS = [
     frase: "La experiencia que recupera tu tiempo y potencia a tu equipo",
     para: "Colaboradores y líderes de equipo de empresas medianas",
     icon: Briefcase,
-    color: "#c0005a",
-    bgColor: "rgba(192,0,90,0.06)",
-    borderColor: "rgba(192,0,90,0.2)",
+    color: "#0f7a78",
+    bgColor: "rgba(15,122,120,0.06)",
+    borderColor: "rgba(15,122,120,0.2)",
   },
   {
     id: "elite",
@@ -25,9 +25,9 @@ const PROGRAMAS = [
     frase: "La experiencia que construye tu ventaja competitiva de 18-36 meses",
     para: "Directivos, CEOs y dueños de negocio — grupos de 10-12 personas",
     icon: Users,
-    color: "#7a5800",
-    bgColor: "rgba(245,200,66,0.08)",
-    borderColor: "rgba(245,200,66,0.35)",
+    color: "#0a4d8c",
+    bgColor: "rgba(10,77,140,0.08)",
+    borderColor: "rgba(10,77,140,0.35)",
   },
   {
     id: "joven",

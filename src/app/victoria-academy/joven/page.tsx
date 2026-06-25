@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 
-const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+const GRADIENT = "linear-gradient(135deg, #0a1f3d 0%, #0f7a78 50%, #4fd1c5 100%)";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_JOVEN ?? "";
 

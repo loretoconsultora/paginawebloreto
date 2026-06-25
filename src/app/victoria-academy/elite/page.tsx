@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 
-const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
+const GRADIENT = "linear-gradient(135deg, #0a1f3d 0%, #0a4d8c 50%, #4fd1c5 100%)";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_ELITE_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_ELITE ?? "";
 
@@ -107,7 +107,7 @@ export default function VictoriaElitePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {ENTREGABLES.map((e) => (
                 <div key={e.titulo} className="rounded-xl p-5 bg-white" style={{ border: "1px solid rgba(58,63,75,0.08)" }}>
-                  <e.icon size={20} style={{ color: "#7a5800" }} className="mb-2" />
+                  <e.icon size={20} style={{ color: "#0a4d8c" }} className="mb-2" />
                   <h3 className="font-semibold text-sm text-grafito mb-1.5">{e.titulo}</h3>
                   <p className="text-xs text-grafito/55 leading-relaxed">{e.texto}</p>
                 </div>
@@ -119,7 +119,7 @@ export default function VictoriaElitePage() {
           <motion.div
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="rounded-2xl p-6 mb-10 text-center"
-            style={{ background: "rgba(245,200,66,0.08)", border: "1px solid rgba(245,200,66,0.35)" }}
+            style={{ background: "rgba(10,77,140,0.08)", border: "1px solid rgba(10,77,140,0.35)" }}
           >
             <p className="text-sm text-grafito/75 leading-relaxed">
               Incluye <strong>acceso a la Comunidad VictorIA Elite</strong> — un espacio exclusivo de directivos que solo se accede completando el taller, con sesión de actualización estratégica trimestral. Más <strong>30 días de seguimiento estructurado</strong> con check-ins personales y documento de resultados individuales.
@@ -132,7 +132,7 @@ export default function VictoriaElitePage() {
             className="flex items-start gap-4 rounded-2xl p-6 mb-10 bg-white"
             style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
           >
-            <ShieldCheck size={28} style={{ color: "#7a5800" }} className="flex-shrink-0 mt-0.5" />
+            <ShieldCheck size={28} style={{ color: "#0a4d8c" }} className="flex-shrink-0 mt-0.5" />
             <div>
               <h3 className="font-playfair text-lg font-bold text-grafito mb-1">Garantía de Experiencia VictorIA</h3>
               <p className="text-sm text-grafito/65 leading-relaxed">
@@ -147,7 +147,7 @@ export default function VictoriaElitePage() {
             className="text-center mb-10"
           >
             <div className="inline-flex items-center gap-2 text-xs font-semibold text-grafito/50">
-              <CheckCircle2 size={14} style={{ color: "#7a5800" }} />
+              <CheckCircle2 size={14} style={{ color: "#0a4d8c" }} />
               El siguiente paso natural: Consultoría Done With You para implementar tu AI Roadmap con acompañamiento experto.
             </div>
           </motion.div>
