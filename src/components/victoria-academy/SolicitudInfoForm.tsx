@@ -12,8 +12,11 @@ type Props = {
   calendlyUrl: string;
   gradient: string;
   extraField: { name: string; placeholder: string };
+  selectField: { name: string; label: string; options: string[] };
   confirmTitle: string;
   confirmText: string;
+  submitLabel?: string;
+  waitlistNote?: string;
 };
 
 export default function SolicitudInfoForm({
@@ -22,13 +25,16 @@ export default function SolicitudInfoForm({
   calendlyUrl,
   gradient,
   extraField,
+  selectField,
   confirmTitle,
   confirmText,
+  submitLabel = "Solicitar información →",
+  waitlistNote,
 }: Props) {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", extra: "" });
+  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", extra: "", seleccion: "" });
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,6 +52,7 @@ export default function SolicitudInfoForm({
             lada: form.lada,
             telefono: form.telefono,
             [extraField.name]: form.extra,
+            [selectField.name]: form.seleccion,
           }),
         });
       }
@@ -66,9 +73,7 @@ export default function SolicitudInfoForm({
             <iframe src={calendlyUrl} title="Agenda tu llamada" width="100%" height="600" style={{ border: 0 }} />
           </div>
         ) : (
-          <p className="text-xs text-grafito/40">
-            Nuestro equipo te contactará en breve para agendar tu llamada.
-          </p>
+          <p className="text-xs text-grafito/40">{waitlistNote ?? "Nuestro equipo te contactará en breve."}</p>
         )}
       </div>
     );
@@ -87,13 +92,20 @@ export default function SolicitudInfoForm({
       </div>
       <input name="extra" placeholder={extraField.placeholder} value={form.extra} onChange={handleChange} className={inputClass} />
 
+      <select required name="seleccion" value={form.seleccion} onChange={handleChange} className={`${inputClass} ${form.seleccion ? "" : "text-gray-400"}`}>
+        <option value="" disabled>{selectField.label} *</option>
+        {selectField.options.map((opt) => (
+          <option key={opt} value={opt} className="text-grafito">{opt}</option>
+        ))}
+      </select>
+
       <button
         type="submit"
         disabled={estado === "loading"}
         className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
         style={{ background: gradient, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
       >
-        {estado === "loading" ? "Enviando…" : "Solicitar información →"}
+        {estado === "loading" ? "Enviando…" : submitLabel}
       </button>
       <p className="text-[11px] text-grafito/40 text-center -mt-1">
         Te contactaremos para agendar una breve llamada de diagnóstico.

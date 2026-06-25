@@ -40,7 +40,7 @@ export default function VictoriaElitePage() {
               style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.25)" }}
             >
               <Users size={13} className="text-white" />
-              <span className="text-xs font-bold text-white tracking-widest uppercase">VictorIA Academy · Elite</span>
+              <span className="text-xs font-bold text-white tracking-widest uppercase">Lista de espera · Apertura en septiembre</span>
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
@@ -53,7 +53,7 @@ export default function VictoriaElitePage() {
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/85 text-base sm:text-lg leading-relaxed"
             >
-              VictorIA Elite es la experiencia que construye tu ventaja competitiva de 18-36 meses: para directivos, CEOs y dueños de negocio. Grupos íntimos de 10 a 12 personas, presencial en ciudades clave.
+              VictorIA Elite es la experiencia que construye tu ventaja competitiva de 18-36 meses: para directivos, CEOs y dueños de negocio. Grupos íntimos de 10 a 12 personas, presencial en ciudades clave. Las puertas abren en septiembre — únete a la lista de espera para recibir tu invitación.
             </motion.p>
           </div>
         </section>
@@ -159,19 +159,22 @@ export default function VictoriaElitePage() {
             style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.1)" }}
           >
             <h2 className="font-playfair text-xl font-bold text-center mb-1" style={{ color: "#1a0a2e" }}>
-              Solicita tu lugar en VictorIA Elite
+              Únete a la lista de espera de VictorIA Elite
             </h2>
             <p className="text-xs text-grafito/50 text-center mb-6">
-              Grupos de 10-12 personas. Presencial en ciudades clave: CDMX, Monterrey, Guadalajara, Querétaro.
+              Grupos de 10-12 personas. Presencial en ciudades clave: CDMX, Monterrey, Guadalajara, Querétaro. Apertura en septiembre.
             </p>
             <SolicitudInfoForm
               programa="VictorIA Elite"
               webhookUrl={WEBHOOK}
-              calendlyUrl={CALENDLY}
+              calendlyUrl=""
               gradient={GRADIENT}
               extraField={{ name: "empresa", placeholder: "Empresa / cargo" }}
-              confirmTitle="¡Listo! Tu solicitud fue recibida."
-              confirmText="Nuestro equipo te contactará para agendar tu llamada de pre-admisión y confirmar que el programa es el fit correcto para ti."
+              selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
+              submitLabel="Unirme a la lista de espera →"
+              confirmTitle="¡Listo! Estás en la lista de espera."
+              confirmText="VictorIA Elite abre sus puertas en septiembre. Te contactaremos por WhatsApp para confirmar tu lugar y enviarte tu invitación apenas abramos el cupo."
+              waitlistNote="Eres parte de la lista de espera oficial — recibirás tu invitación antes que el público general."
             />
           </motion.div>
 

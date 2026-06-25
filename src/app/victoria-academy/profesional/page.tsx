@@ -206,6 +206,7 @@ export default function VictoriaProfesionalPage() {
               calendlyUrl={CALENDLY}
               gradient={GRADIENT}
               extraField={{ name: "empresa", placeholder: "Empresa / organización" }}
+              selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
               confirmTitle="¡Listo! Tu solicitud fue recibida."
               confirmText="Nuestro equipo te contactará por WhatsApp para agendar una breve llamada de diagnóstico y conocer el caso de tu equipo."
             />
