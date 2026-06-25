@@ -171,6 +171,7 @@ export default function VictoriaElitePage() {
               gradient={GRADIENT}
               extraField={{ name: "empresa", placeholder: "Empresa / cargo" }}
               selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
+              cityField={{ type: "select", options: ["CDMX", "Monterrey", "Guadalajara", "Querétaro"] }}
               submitLabel="Unirme a la lista de espera →"
               confirmTitle="¡Listo! Estás en la lista de espera."
               confirmText="VictorIA Elite abre sus puertas en septiembre. Te contactaremos por WhatsApp para confirmar tu lugar y enviarte tu invitación apenas abramos el cupo."

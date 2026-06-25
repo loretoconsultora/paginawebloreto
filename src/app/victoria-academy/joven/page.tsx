@@ -163,6 +163,7 @@ export default function VictoriaJovenPage() {
               gradient={GRADIENT}
               extraField={{ name: "colegio", placeholder: "Nombre del colegio / institución" }}
               selectField={{ name: "gradoAcademico", label: "Grado académico", options: ["Secundaria", "Preparatoria", "Universidad"] }}
+              cityField={{ type: "text", placeholder: "Ciudad" }}
               confirmTitle="¡Listo! Tu solicitud fue recibida."
               confirmText="Nuestro equipo te contactará para agendar una breve llamada y conocer las necesidades de tu institución."
             />

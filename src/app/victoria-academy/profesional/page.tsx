@@ -207,6 +207,7 @@ export default function VictoriaProfesionalPage() {
               gradient={GRADIENT}
               extraField={{ name: "empresa", placeholder: "Empresa / organización" }}
               selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
+              cityField={{ type: "text", placeholder: "Ciudad" }}
               confirmTitle="¡Listo! Tu solicitud fue recibida."
               confirmText="Nuestro equipo te contactará por WhatsApp para agendar una breve llamada de diagnóstico y conocer el caso de tu equipo."
             />

@@ -6,6 +6,10 @@ import { CheckCircle2 } from "lucide-react";
 const inputClass =
   "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-pink-300 transition-colors";
 
+type CityField =
+  | { type: "text"; placeholder: string }
+  | { type: "select"; options: string[] };
+
 type Props = {
   programa: string;
   webhookUrl: string;
@@ -13,6 +17,7 @@ type Props = {
   gradient: string;
   extraField: { name: string; placeholder: string };
   selectField: { name: string; label: string; options: string[] };
+  cityField: CityField;
   confirmTitle: string;
   confirmText: string;
   submitLabel?: string;
@@ -26,12 +31,13 @@ export default function SolicitudInfoForm({
   gradient,
   extraField,
   selectField,
+  cityField,
   confirmTitle,
   confirmText,
   submitLabel = "Solicitar información →",
   waitlistNote,
 }: Props) {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", extra: "", seleccion: "" });
+  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", extra: "", seleccion: "", ciudad: "" });
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -51,6 +57,7 @@ export default function SolicitudInfoForm({
             correo: form.correo,
             lada: form.lada,
             telefono: form.telefono,
+            ciudad: form.ciudad,
             [extraField.name]: form.extra,
             [selectField.name]: form.seleccion,
           }),
@@ -98,6 +105,17 @@ export default function SolicitudInfoForm({
           <option key={opt} value={opt} className="text-grafito">{opt}</option>
         ))}
       </select>
+
+      {cityField.type === "text" ? (
+        <input required name="ciudad" placeholder={cityField.placeholder} value={form.ciudad} onChange={handleChange} className={inputClass} />
+      ) : (
+        <select required name="ciudad" value={form.ciudad} onChange={handleChange} className={`${inputClass} ${form.ciudad ? "" : "text-gray-400"}`}>
+          <option value="" disabled>Ciudad *</option>
+          {cityField.options.map((opt) => (
+            <option key={opt} value={opt} className="text-grafito">{opt}</option>
+          ))}
+        </select>
+      )}
 
       <button
         type="submit"
