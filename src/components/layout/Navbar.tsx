@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Servicios", href: "/servicios", external: false },
   { label: "Consultoría", href: "/consultoria", external: false },
   { label: "Eventos", href: "/eventos", external: false },
+  { label: "VictorIA Academy", href: "/victoria-academy", external: false },
   { label: "Blog", href: "/blog", external: false },
   // { label: "Formaciones", href: "/formaciones", external: false }, // próximamente
   // { label: "Nosotros", href: "/nosotros", external: false }, // próximamente
@@ -34,7 +35,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || pathname === "/portal" || pathname === "/consultoria" || pathname?.startsWith("/eventos") ? "glass shadow-glass py-3" : "bg-transparent py-4"
+        scrolled || pathname === "/portal" || pathname === "/consultoria" || pathname?.startsWith("/eventos") || pathname?.startsWith("/victoria-academy") ? "glass shadow-glass py-3" : "bg-transparent py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
