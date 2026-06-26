@@ -4,20 +4,14 @@ import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
 const inputClass =
-  "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-grafito placeholder:text-gray-400 focus:outline-none focus:border-[#6A8AFF] transition-colors";
-
-type CityField =
-  | { type: "text"; placeholder: string }
-  | { type: "select"; options: string[] };
+  "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#6A8AFF] transition-colors";
 
 type Props = {
   programa: string;
   webhookUrl: string;
   calendlyUrl: string;
   gradient: string;
-  extraField: { name: string; placeholder: string };
   selectField: { name: string; label: string; options: string[] };
-  cityField: CityField;
   confirmTitle: string;
   confirmText: string;
   submitLabel?: string;
@@ -29,15 +23,13 @@ export default function SolicitudInfoForm({
   webhookUrl,
   calendlyUrl,
   gradient,
-  extraField,
   selectField,
-  cityField,
   confirmTitle,
   confirmText,
-  submitLabel = "Solicitar información →",
+  submitLabel = "Reservar mi lugar →",
   waitlistNote,
 }: Props) {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", extra: "", seleccion: "", ciudad: "" });
+  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", seleccion: "" });
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -57,8 +49,6 @@ export default function SolicitudInfoForm({
             correo: form.correo,
             lada: form.lada,
             telefono: form.telefono,
-            ciudad: form.ciudad,
-            [extraField.name]: form.extra,
             [selectField.name]: form.seleccion,
           }),
         });
@@ -73,14 +63,14 @@ export default function SolicitudInfoForm({
     return (
       <div className="flex flex-col items-center gap-4 text-center py-6">
         <CheckCircle2 size={48} style={{ color: "#3E7ECA" }} />
-        <p className="font-playfair text-2xl font-bold text-grafito">{confirmTitle}</p>
-        <p className="text-sm text-grafito/60 max-w-sm">{confirmText}</p>
+        <p className="font-playfair text-2xl font-bold" style={{ color: "#445055" }}>{confirmTitle}</p>
+        <p className="text-sm max-w-sm" style={{ color: "#445055", opacity: 0.75 }}>{confirmText}</p>
         {calendlyUrl ? (
           <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ minHeight: 600 }}>
             <iframe src={calendlyUrl} title="Agenda tu llamada" width="100%" height="600" style={{ border: 0 }} />
           </div>
         ) : (
-          <p className="text-xs text-grafito/40">{waitlistNote ?? "Nuestro equipo te contactará en breve."}</p>
+          <p className="text-xs" style={{ color: "#445055", opacity: 0.5 }}>{waitlistNote ?? "Nuestro equipo te contactará en breve."}</p>
         )}
       </div>
     );
@@ -88,34 +78,22 @@ export default function SolicitudInfoForm({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <input required name="nombre" placeholder="Nombre completo *" value={form.nombre} onChange={handleChange} className={inputClass} />
-      <input required name="correo" type="email" placeholder="Correo electrónico *" value={form.correo} onChange={handleChange} className={inputClass} />
+      <input required name="nombre" placeholder="¿Cómo te llamas? *" value={form.nombre} onChange={handleChange} className={inputClass} style={{ color: "#445055" }} />
+      <input required name="correo" type="email" placeholder="Tu mejor correo electrónico *" value={form.correo} onChange={handleChange} className={inputClass} style={{ color: "#445055" }} />
       <div className="flex gap-2">
         <div className="flex items-center gap-1 rounded-xl border border-gray-200 px-3 py-2.5 w-24 flex-shrink-0">
-          <span className="text-sm text-grafito/50">+</span>
-          <input name="lada" placeholder="52" value={form.lada} onChange={handleChange} className="w-full text-sm text-grafito focus:outline-none bg-transparent" />
+          <span className="text-sm text-gray-400">+</span>
+          <input name="lada" placeholder="52" value={form.lada} onChange={handleChange} className="w-full text-sm focus:outline-none bg-transparent" style={{ color: "#445055" }} />
         </div>
-        <input required name="telefono" placeholder="WhatsApp *" value={form.telefono} onChange={handleChange} className={`${inputClass} flex-1`} />
+        <input required name="telefono" placeholder="WhatsApp *" value={form.telefono} onChange={handleChange} className={`${inputClass} flex-1`} style={{ color: "#445055" }} />
       </div>
-      <input name="extra" placeholder={extraField.placeholder} value={form.extra} onChange={handleChange} className={inputClass} />
 
-      <select required name="seleccion" value={form.seleccion} onChange={handleChange} className={`${inputClass} ${form.seleccion ? "" : "text-gray-400"}`}>
+      <select required name="seleccion" value={form.seleccion} onChange={handleChange} className={`${inputClass} ${form.seleccion ? "" : "text-gray-400"}`} style={{ color: form.seleccion ? "#445055" : undefined }}>
         <option value="" disabled>{selectField.label} *</option>
         {selectField.options.map((opt) => (
-          <option key={opt} value={opt} className="text-grafito">{opt}</option>
+          <option key={opt} value={opt} style={{ color: "#445055" }}>{opt}</option>
         ))}
       </select>
-
-      {cityField.type === "text" ? (
-        <input required name="ciudad" placeholder={cityField.placeholder} value={form.ciudad} onChange={handleChange} className={inputClass} />
-      ) : (
-        <select required name="ciudad" value={form.ciudad} onChange={handleChange} className={`${inputClass} ${form.ciudad ? "" : "text-gray-400"}`}>
-          <option value="" disabled>Ciudad *</option>
-          {cityField.options.map((opt) => (
-            <option key={opt} value={opt} className="text-grafito">{opt}</option>
-          ))}
-        </select>
-      )}
 
       <button
         type="submit"
@@ -125,8 +103,8 @@ export default function SolicitudInfoForm({
       >
         {estado === "loading" ? "Enviando…" : submitLabel}
       </button>
-      <p className="text-[11px] text-grafito/40 text-center -mt-1">
-        Te contactaremos para agendar una breve llamada de diagnóstico.
+      <p className="text-[11px] text-center -mt-1" style={{ color: "#445055", opacity: 0.6 }}>
+        Sin spam. Solo lo necesario para contactarte y agendar tu diagnóstico.
       </p>
 
       {estado === "error" && (
