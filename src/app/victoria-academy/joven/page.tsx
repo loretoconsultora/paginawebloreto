@@ -50,13 +50,6 @@ const NO_ES = [
   "No tienes 6.5 horas presenciales disponibles para el grupo.",
 ];
 
-const CREDENCIALES = [
-  { icon: Target, texto: "Fundadora de Loreto Consultora y creadora de VictorIA Academy" },
-  { icon: Zap, texto: "Diseña el programa institucional VictorIA Joven para colegios y fundaciones" },
-  { icon: ShieldCheck, texto: "Entrega un reporte formal a la dirección académica al cierre" },
-  { icon: CheckCircle2, texto: "Crea el escalamiento natural hacia Semillero VictorIA" },
-];
-
 const FAQS = [
   { q: "¿Para qué edades es VictorIA Joven?", a: "Está diseñado para secundaria, preparatoria y universidad — el contenido y los ejemplos se adaptan al grado académico del grupo." },
   { q: "¿Cómo se contrata para mi colegio?", a: "Es una implementación institucional B2B para grupo escolar completo. Tras tu solicitud, agendamos una llamada para conocer las necesidades de tu institución." },
@@ -301,31 +294,6 @@ export default function VictoriaJovenPage() {
               <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Implementación para grupo escolar completo, 25-30 alumnos.</p>
             </div>
           </motion.div>
-        </section>
-
-        {/* Autoridad */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-8 items-start">
-            <div className="rounded-2xl overflow-hidden mx-auto" style={{ width: 200, border: "1px solid rgba(58,63,75,0.1)" }}>
-              <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={200} height={250} className="w-full h-auto object-cover" />
-            </div>
-            <div>
-              <h2 className="font-extrabold text-2xl sm:text-3xl mb-2 tracking-tight" style={{ color: HEAD }}>
-                Any Villegas, <span style={{ color: ACCENT }}>Founder y CEO de Loreto Consultora</span>
-              </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: HEAD, opacity: 0.8 }}>
-                Diseña VictorIA Joven como puerta de entrada institucional: un programa que tu colegio puede mostrar a las familias como evidencia de innovación real, no solo discurso.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {CREDENCIALES.map((c) => (
-                  <div key={c.texto} className="flex items-start gap-3">
-                    <c.icon size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-sm" style={{ color: HEAD, opacity: 0.85 }}>{c.texto}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* Prueba social — pendiente: subir capturas reales de testimonios */}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ShieldCheck, ChevronDown, Target, Zap, CalendarDays } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ShieldCheck, ChevronDown, CalendarDays } from "lucide-react";
 import { motion } from "framer-motion";
 import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
@@ -60,13 +60,6 @@ const NO_ES = [
   "No quieres que tu equipo destine 6.5 horas a una sesión presencial.",
   "Solo te interesa una demo de herramientas, no un cambio de hábito real.",
   "No te interesa medir el impacto después del taller.",
-];
-
-const CREDENCIALES = [
-  { icon: Target, texto: "Fundadora de Loreto Consultora y creadora de VictorIA Academy" },
-  { icon: Zap, texto: "Ha formado equipos en empresas, hospitales e instituciones académicas" },
-  { icon: ShieldCheck, texto: "Diseña cada programa con entregables medibles, no solo contenido" },
-  { icon: CheckCircle2, texto: "Acompaña personalmente la fase de diagnóstico de cada grupo" },
 ];
 
 const FAQS = [
@@ -398,31 +391,6 @@ export default function VictoriaProfesionalPage() {
               <p className="text-[11px] mt-3 text-white" style={{ opacity: 0.75 }}>Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona.</p>
             </div>
           </motion.div>
-        </section>
-
-        {/* Autoridad */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-8 items-start">
-            <div className="rounded-2xl overflow-hidden mx-auto" style={{ width: 200, border: "1px solid rgba(58,63,75,0.1)" }}>
-              <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={200} height={250} className="w-full h-auto object-cover" />
-            </div>
-            <div>
-              <h2 className="font-extrabold text-2xl sm:text-3xl mb-2 tracking-tight" style={{ color: HEAD }}>
-                Any Villegas, <span style={{ color: ACCENT }}>Founder y CEO de Loreto Consultora</span>
-              </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: HEAD, opacity: 0.8 }}>
-                Diseña e imparte VictorIA Academy con un enfoque consultivo: no enseña IA en abstracto, construye con cada equipo su caso real, en vivo, con entregables medibles.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {CREDENCIALES.map((c) => (
-                  <div key={c.texto} className="flex items-start gap-3">
-                    <c.icon size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-sm" style={{ color: HEAD, opacity: 0.85 }}>{c.texto}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* Prueba social — pendiente: subir capturas reales de testimonios */}

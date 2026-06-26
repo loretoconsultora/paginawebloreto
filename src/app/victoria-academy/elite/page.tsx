@@ -50,13 +50,6 @@ const NO_ES = [
   "Solo te interesa una plática motivacional, no un documento de trabajo.",
 ];
 
-const CREDENCIALES = [
-  { icon: Target, texto: "Fundadora de Loreto Consultora y creadora de VictorIA Academy" },
-  { icon: Zap, texto: "Asesora a directivos en la transición de liderazgo hacia la IA" },
-  { icon: ShieldCheck, texto: "Filtra cada grupo con una llamada de pre-admisión personal" },
-  { icon: CheckCircle2, texto: "Acompaña la implementación, no solo el taller" },
-];
-
 const FAQS = [
   { q: "¿Por qué hay una llamada de pre-admisión?", a: "Porque los grupos son íntimos (10-12 personas) y el fit importa: queremos asegurarnos de que el programa resuelve tu contexto antes de que ocupes un lugar." },
   { q: "¿Dónde se imparte?", a: "Presencial en ciudades clave: CDMX, Monterrey, Guadalajara y Querétaro. Confirmamos la sede exacta al validar tu lugar." },
@@ -282,31 +275,6 @@ export default function VictoriaElitePage() {
               <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Grupos de 10-12 personas · Apertura en septiembre</p>
             </div>
           </motion.div>
-        </section>
-
-        {/* Autoridad */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-8 items-start">
-            <div className="rounded-2xl overflow-hidden mx-auto" style={{ width: 200, border: "1px solid rgba(58,63,75,0.1)" }}>
-              <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={200} height={250} className="w-full h-auto object-cover" />
-            </div>
-            <div>
-              <h2 className="font-extrabold text-2xl sm:text-3xl mb-2 tracking-tight" style={{ color: HEAD }}>
-                Any Villegas, <span style={{ color: ACCENT }}>Founder y CEO de Loreto Consultora</span>
-              </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: HEAD, opacity: 0.8 }}>
-                Asesora a directivos y dueños de negocio en su transición de liderazgo hacia la IA, con grupos íntimos y una llamada de pre-admisión personal antes de cada cohorte.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {CREDENCIALES.map((c) => (
-                  <div key={c.texto} className="flex items-start gap-3">
-                    <c.icon size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-sm" style={{ color: HEAD, opacity: 0.85 }}>{c.texto}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* Prueba social — pendiente: subir capturas reales de testimonios */}
