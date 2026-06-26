@@ -378,12 +378,9 @@ export default function VictoriaJovenPage() {
       </main>
 
       <SolicitudModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
+        <h2 className="font-extrabold text-xl text-center mb-6 tracking-tight" style={{ color: ACCENT }}>
           Solicita información para tu colegio
         </h2>
-        <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
-          Implementación para grupo escolar completo. Venta institucional B2B.
-        </p>
         <SolicitudInfoForm
           programa="VictorIA Joven"
           webhookUrl={WEBHOOK}

@@ -359,12 +359,9 @@ export default function VictoriaElitePage() {
       </main>
 
       <SolicitudModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
+        <h2 className="font-extrabold text-xl text-center mb-6 tracking-tight" style={{ color: ACCENT }}>
           Únete a la lista de espera de VictorIA Elite
         </h2>
-        <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
-          Grupos de 10-12 personas. Presencial en ciudades clave: CDMX, Monterrey, Guadalajara, Querétaro. Apertura en septiembre.
-        </p>
         <SolicitudInfoForm
           programa="VictorIA Elite"
           webhookUrl={WEBHOOK}
