@@ -29,7 +29,7 @@ export default function SolicitudInfoForm({
   submitLabel = "Reservar mi lugar →",
   waitlistNote,
 }: Props) {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", seleccion: "", fechaLlamada: "" });
+  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", seleccion: "" });
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -50,7 +50,6 @@ export default function SolicitudInfoForm({
             lada: form.lada,
             telefono: form.telefono,
             [selectField.name]: form.seleccion,
-            fechaLlamada: form.fechaLlamada,
           }),
         });
       }
@@ -65,13 +64,26 @@ export default function SolicitudInfoForm({
       <div className="flex flex-col items-center gap-4 text-center py-6">
         <CheckCircle2 size={48} style={{ color: "#3E7ECA" }} />
         <p className="font-playfair text-2xl font-bold" style={{ color: "#445055" }}>{confirmTitle}</p>
-        <p className="text-sm max-w-sm" style={{ color: "#445055", opacity: 0.75 }}>{confirmText}</p>
         {calendlyUrl ? (
-          <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ minHeight: 600 }}>
-            <iframe src={calendlyUrl} title="Agenda tu llamada" width="100%" height="600" style={{ border: 0 }} />
-          </div>
+          <>
+            <p className="text-sm max-w-sm" style={{ color: "#445055", opacity: 0.85 }}>
+              Sólo un paso más, agenda tu llamada de Aplicación al Taller. En 15-30 minutos te ayudaremos a validar que este realmente es el programa ideal para ti.
+            </p>
+            <a
+              href={calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
+              style={{ background: gradient, boxShadow: "0 8px 24px rgba(62,126,202,0.3)" }}
+            >
+              Agendar mi llamada de aplicación →
+            </a>
+          </>
         ) : (
-          <p className="text-xs" style={{ color: "#445055", opacity: 0.5 }}>{waitlistNote ?? "Nuestro equipo te contactará en breve."}</p>
+          <>
+            <p className="text-sm max-w-sm" style={{ color: "#445055", opacity: 0.75 }}>{confirmText}</p>
+            <p className="text-xs" style={{ color: "#445055", opacity: 0.5 }}>{waitlistNote ?? "Nuestro equipo te contactará en breve."}</p>
+          </>
         )}
       </div>
     );
@@ -95,24 +107,6 @@ export default function SolicitudInfoForm({
           <option key={opt} value={opt} style={{ color: "#445055" }}>{opt}</option>
         ))}
       </select>
-
-      <div>
-        <label className="text-xs font-medium mb-1.5 block" style={{ color: "#445055", opacity: 0.7 }}>
-          Fecha y hora para tu llamada de aplicación *
-        </label>
-        <input
-          required
-          name="fechaLlamada"
-          type="datetime-local"
-          value={form.fechaLlamada}
-          onChange={handleChange}
-          className={inputClass}
-          style={{ color: "#445055" }}
-        />
-        <p className="text-[11px] mt-1.5" style={{ color: "#445055", opacity: 0.55 }}>
-          En esta llamada conoceremos más de tu organización para definir los alcances y diseñar una experiencia personalizada.
-        </p>
-      </div>
 
       <button
         type="submit"

@@ -388,7 +388,7 @@ export default function VictoriaJovenPage() {
           calendlyUrl={CALENDLY}
           gradient={GRADIENT}
           selectField={{ name: "gradoAcademico", label: "Grado académico", options: ["Secundaria", "Preparatoria", "Universidad"] }}
-          confirmTitle="¡Listo! Tu solicitud fue recibida."
+          confirmTitle="Registro Completado"
           confirmText="Nuestro equipo te contactará para confirmar tu llamada de aplicación y conocer las necesidades de tu institución."
         />
       </SolicitudModal>

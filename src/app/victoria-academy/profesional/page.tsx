@@ -481,7 +481,7 @@ export default function VictoriaProfesionalPage() {
           calendlyUrl={CALENDLY}
           gradient={GRADIENT}
           selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
-          confirmTitle="¡Listo! Tu solicitud fue recibida."
+          confirmTitle="Registro Completado"
           confirmText="Nuestro equipo te contactará por WhatsApp para confirmar tu llamada de aplicación y conocer el caso de tu equipo."
         />
       </SolicitudModal>
