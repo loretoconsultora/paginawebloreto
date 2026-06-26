@@ -64,8 +64,8 @@ const NO_ES = [
 
 const FAQS = [
   { q: "¿Por qué hay una llamada de pre-admisión?", a: "Porque los grupos son íntimos (10-12 personas) y el fit importa: queremos asegurarnos de que el programa resuelve tu contexto antes de que ocupes un lugar." },
-  { q: "¿Dónde se imparte?", a: "Presencial en ciudades clave: CDMX, Monterrey, Guadalajara y Querétaro. Confirmamos la sede exacta al validar tu lugar." },
-  { q: "¿Cuándo abren las puertas?", a: "VictorIA Elite abre sus formaciones el 7, 9 y 14 de septiembre. Al unirte a la lista de espera, recibes tu invitación antes que el público general." },
+  { q: "¿Dónde se imparte?", a: "Las formaciones del 7, 9 y 14 de septiembre son online. En noviembre se complementan con un seminario presencial en ciudades clave (CDMX, Monterrey, Guadalajara y Querétaro) para co-crear en vivo tu plan 2027." },
+  { q: "¿Cuándo abren las puertas?", a: "VictorIA Elite abre sus formaciones online el 7, 9 y 14 de septiembre, seguidas del seminario presencial en noviembre. Al unirte a la lista de espera, recibes tu invitación antes que el público general." },
   { q: "¿Qué pasa después del taller?", a: "Incluye acceso a la Comunidad VictorIA Elite, sesión de actualización estratégica trimestral y 30 días de seguimiento estructurado." },
   { q: "¿Y si no obtengo un roadmap usable?", a: "Tenemos Garantía de Experiencia VictorIA: si no sales con un AI Roadmap usable para tu organización, ofrecemos una sesión adicional sin costo." },
 ];
@@ -119,10 +119,10 @@ export default function VictoriaElitePage() {
               >
                 <CalendarDays size={18} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                 <div>
-                  <p className="text-sm font-bold" style={{ color: HEAD }}>Únete a la Lista de Espera · Formaciones 7, 9 y 14 de septiembre</p>
+                  <p className="text-sm font-bold" style={{ color: HEAD }}>Únete a la Lista de Espera · Formaciones online 7, 9 y 14 de septiembre</p>
                   <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
                     <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas + pre-admisión</span>
-                    <span>Presencial · CDMX, MTY, GDL, QRO</span>
+                    <span>Online en septiembre + seminario presencial en noviembre</span>
                     <span>Grupos de 10-12 personas</span>
                   </p>
                 </div>
@@ -159,7 +159,7 @@ export default function VictoriaElitePage() {
                 Disponible sólo para la Lista de Espera Fundadora
               </p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Unirte antes de las formaciones del 7, 9 y 14 de septiembre.
+                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Unirte antes de las formaciones online del 7, 9 y 14 de septiembre.
               </h2>
               <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
                 Al unirte a la lista de espera de VictorIA Elite, recibe:
@@ -480,10 +480,10 @@ export default function VictoriaElitePage() {
           webhookUrl={WEBHOOK}
           calendlyUrl=""
           gradient={GRADIENT}
-          selectField={{ name: "ciudad", label: "Ciudad", options: ["CDMX", "Monterrey", "Guadalajara", "Querétaro"] }}
+          selectField={{ name: "ciudad", label: "Ciudad para el seminario presencial de noviembre", options: ["CDMX", "Monterrey", "Guadalajara", "Querétaro"] }}
           submitLabel="Unirme a la lista de espera →"
           confirmTitle="¡Listo! Estás en la lista de espera."
-          confirmText="VictorIA Elite abre sus formaciones el 7, 9 y 14 de septiembre. Te contactaremos por WhatsApp para confirmar tu llamada de aplicación y tu lugar."
+          confirmText="VictorIA Elite abre sus formaciones online el 7, 9 y 14 de septiembre, seguidas del seminario presencial en noviembre para co-crear tu plan 2027. Te contactaremos por WhatsApp para confirmar tu llamada de aplicación y tu lugar."
           waitlistNote="Eres parte de la lista de espera oficial — recibirás tu invitación antes que el público general."
         />
       </SolicitudModal>
