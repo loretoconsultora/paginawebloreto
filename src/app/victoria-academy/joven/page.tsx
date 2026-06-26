@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, XCircle, Clock, FileText, Award, GraduationCap, ShieldCheck, ChevronDown, Target, Zap, Gift } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, FileText, Award, GraduationCap, ShieldCheck, ChevronDown, Target, Zap, Gift, CalendarDays } from "lucide-react";
 import { motion } from "framer-motion";
 import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
@@ -77,50 +77,76 @@ const FAQS = [
 export default function VictoriaJovenPage() {
   return (
     <>
-      <LandingHeader badge="Implementación institucional · Cupo limitado" accent={ACCENT} ctaLabel="Solicitar información" />
+      <LandingHeader accent={ACCENT} />
       <main className="min-h-screen bg-white">
 
         {/* Hero */}
-        <section className="pt-14 sm:pt-20 pb-10 px-4 sm:px-6">
-          <div className="max-w-2xl mx-auto text-center">
+        <section className="pt-12 sm:pt-16 pb-10 px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+                className="inline-flex items-center px-4 py-1.5 rounded-full mb-6 text-xs font-medium"
+                style={{ border: "1px solid rgba(58,63,75,0.18)", color: GRIS }}
+              >
+                Programa VictorIA Joven
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-extrabold text-4xl sm:text-5xl mb-5 tracking-tight"
+                style={{ lineHeight: 1.05, color: HEAD }}
+              >
+                La nueva forma de <span style={{ color: ACCENT }}>EDUCAR</span> con IA.
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-base sm:text-lg leading-relaxed mb-4"
+                style={{ color: GRIS, opacity: 0.85 }}
+              >
+                Enseña a tus alumnos a usar la inteligencia artificial para construir un proyecto real con criterio y honestidad académica.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
+                className="text-sm leading-relaxed mb-6"
+                style={{ color: GRIS, opacity: 0.7 }}
+              >
+                En este programa vive la experiencia de co crear con la IA para formar a la primera generación con criterio, y logra que cada alumno presente su propio proyecto documentado.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex items-start gap-3 mb-7 rounded-xl p-4"
+                style={{ border: "1px solid rgba(58,63,75,0.1)" }}
+              >
+                <CalendarDays size={18} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
+                <div>
+                  <p className="text-sm font-bold" style={{ color: HEAD }}>Agenda tu Entrenamiento en tu Institución</p>
+                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: GRIS, opacity: 0.6 }}>
+                    <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas</span>
+                    <span>Implementación presencial</span>
+                    <span>Grupos de 25-30 alumnos</span>
+                  </p>
+                </div>
+              </motion.div>
+              <motion.a
+                href="#solicitud"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
+                className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
+                style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
+              >
+                Solicitar información →
+              </motion.a>
+            </div>
             <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-1.5 rounded-full mb-6 text-xs font-medium"
-              style={{ border: "1px solid rgba(58,63,75,0.18)", color: GRIS }}
+              initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden"
+              style={{ border: "1px solid rgba(58,63,75,0.1)" }}
             >
-              Implementación institucional · Próximos ciclos
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-extrabold text-4xl sm:text-6xl mb-5 tracking-tight"
-              style={{ lineHeight: 1.05, color: HEAD }}
-            >
-              Convierte a tus alumnos en <span style={{ color: ACCENT }}>la Primera Generación IA</span>.
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg leading-relaxed mb-6 max-w-xl mx-auto"
-              style={{ color: GRIS, opacity: 0.85 }}
-            >
-              Un programa institucional presencial para colegios privados y fundaciones educativas. En 6.5 horas, cada estudiante construye su primer proyecto real con IA y se lleva su portafolio documentado.
-            </motion.p>
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-8 text-xs" style={{ color: GRIS, opacity: 0.6 }}>
-              <span className="flex items-center gap-1.5"><Clock size={13} /> 6.5 horas</span>
-              <span>Implementación presencial</span>
-              <span>Grupos de 25-30 alumnos</span>
-            </motion.div>
-            <motion.a
-              href="#solicitud"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
-              className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
-            >
-              Solicitar información →
-            </motion.a>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-8">
-              <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: GRIS, opacity: 0.4 }} />
+              <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={600} height={600} className="w-full h-auto object-cover" />
             </motion.div>
           </div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
+            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: GRIS, opacity: 0.4 }} />
+          </motion.div>
         </section>
 
         {/* Bono de inscripción */}
