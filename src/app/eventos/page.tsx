@@ -255,26 +255,28 @@ export default function EventosPage() {
                 <span className="text-grafito/25 hidden sm:inline">|</span>
                 <span>Herramientas de IA</span>
               </div>
-              <div className="flex items-center justify-center gap-2.5 mt-6 overflow-x-auto pb-1 max-w-full">
+              <div className="flex flex-col items-center gap-2.5 mt-6">
                 <div
-                  className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full whitespace-nowrap"
+                  className="inline-flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full"
                   style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
                 >
                   $1,450 MXN por experiencia
                 </div>
-                <div
-                  className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2.5 rounded-full whitespace-nowrap"
-                  style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
-                >
-                  Bundle 2 Eventos — 10%
-                  <span className="text-[10px] font-normal text-grafito/40">· código 2exp_TAoB</span>
-                </div>
-                <div
-                  className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2.5 rounded-full whitespace-nowrap"
-                  style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
-                >
-                  Total Pass 3 Eventos — 20%
-                  <span className="text-[10px] font-normal text-grafito/40">· código full_TAoB</span>
+                <div className="flex flex-wrap items-center justify-center gap-2.5">
+                  <div
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2.5 rounded-full whitespace-nowrap"
+                    style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
+                  >
+                    Bundle 2 Eventos — 10%
+                    <span className="text-[10px] font-normal text-grafito/40">· código 2exp_TAoB</span>
+                  </div>
+                  <div
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2.5 rounded-full whitespace-nowrap"
+                    style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
+                  >
+                    Total Pass 3 Eventos — 20%
+                    <span className="text-[10px] font-normal text-grafito/40">· código full_TAoB</span>
+                  </div>
                 </div>
               </div>
               <div className="mt-4">
