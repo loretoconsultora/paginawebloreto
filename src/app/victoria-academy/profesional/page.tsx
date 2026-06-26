@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ShieldCheck, ChevronDown, CalendarDays, Star } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ChevronDown, CalendarDays, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
@@ -427,24 +427,12 @@ export default function VictoriaProfesionalPage() {
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20 flex flex-col gap-10">
           {/* Garantía */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="flex items-start gap-4 rounded-2xl p-6"
-            style={{ border: "1px solid rgba(58,63,75,0.1)" }}
-          >
-            <ShieldCheck size={28} style={{ color: ACCENT }} className="flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-extrabold text-lg mb-1" style={{ color: HEAD }}>Garantía de Experiencia VictorIA</h3>
-              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>
-                Si al terminar el taller no tienes en tus manos al menos 3 entregables concretos aplicables a tu trabajo real, te ofrecemos una sesión adicional personalizada de 60 minutos sin costo adicional para cerrar esa brecha. No es una garantía de devolución de dinero — es una garantía de resultado.
-              </p>
-            </div>
-          </motion.div>
-
           {/* FAQ */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-extrabold text-2xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>Resuelve tus dudas</h2>
-            <p className="text-sm text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>Antes de solicitar información para tu equipo</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: ACCENT }}>Preguntas frecuentes</p>
+            <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-6 tracking-tight" style={{ color: HEAD }}>
+              Resuelve tus dudas antes de solicitar información
+            </h2>
             <Faq items={FAQS} accent={ACCENT} />
           </motion.div>
         </div>
