@@ -11,7 +11,6 @@ import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)";
 const ACCENT = "#3E7ECA";
 const HEAD = "#1a1f24";
-const HEADFAINT = "#a7afb6";
 const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
@@ -30,12 +29,12 @@ const BONOS = [
 ];
 
 const PROBLEMAS = [
-  { num: "01", titulo: "No sabes por dónde empezar con IA", texto: "Tu equipo ve que otros ya la usan, pero nadie en la organización tiene un plan claro de por dónde empezar." },
-  { num: "02", titulo: "Sientes que el tiempo se va en lo mismo", texto: "Los reportes y las juntas siguen tomando horas que ya no debería tomar." },
-  { num: "03", titulo: "Te preocupa hacerlo mal", texto: "Usar IA sin criterio puede ser peor que no usarla — y eso frena a tu equipo en lugar de impulsarlo." },
-  { num: "04", titulo: "Crees que necesitas un equipo técnico", texto: "Antes era así. Hoy cualquier persona de tu equipo puede aprender a usar IA con criterio, sin ser programador." },
-  { num: "05", titulo: "Te falta tiempo para capacitar a tu gente", texto: "Un taller de 6.5 horas resuelve lo que normalmente tomaría semanas de prueba y error por su cuenta." },
-  { num: "06", titulo: "Sientes que la competencia ya te lleva ventaja", texto: "Mientras unos siguen dudando, otros equipos ya recuperan horas cada semana usando IA con criterio." },
+  { num: "01", titulo: "Viven ocupados, pero nada cambia", texto: "La rutina da la sensación de avance, pero el reporte que prometieron sigue a medias y el día se va en juntas que no decidieron nada." },
+  { num: "02", titulo: "El miedo a equivocarse los frena", texto: "\"¿Y si lo intento y me equivoco frente a mi equipo?\" — esa duda basta para que ni siquiera lo intenten." },
+  { num: "03", titulo: "La brecha crece en silencio", texto: "Nadie te dice que te estás quedando atrás. Simplemente te van dejando fuera, mientras otros entregan más rápido sin que entiendas cómo." },
+  { num: "04", titulo: "Creen que esto es solo para técnicos", texto: "Se disfrazan de humildad — \"no soy bueno con la tecnología\" — cuando en realidad solo les falta el método correcto." },
+  { num: "05", titulo: "Tu equipo trabaja mucho, en lo que no debería tomar tanto", texto: "El proyecto que debía salir el miércoles sale el viernes. No es falta de compromiso — es que nadie les dio la infraestructura para hacerlo distinto." },
+  { num: "06", titulo: "La inacción de hoy es la desventaja de mañana", texto: "En IA, 6 meses sin actuar equivalen a 2 años de retraso en otros campos. Cada semana que pasa, la brecha es más difícil de cerrar." },
 ];
 
 const SENTIMIENTOS = [
@@ -237,20 +236,25 @@ export default function VictoriaProfesionalPage() {
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El problema</p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEADFAINT, lineHeight: 1.15 }}>
-              ¿Por qué tu equipo sigue trabajando igual que hace dos años?
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
+              ¿Por qué tu equipo sigue trabajando igual que hace años?
             </h2>
-            <p className="text-sm sm:text-base" style={{ color: GRIS, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este taller es para tu equipo.</p>
+            <p className="text-sm sm:text-base" style={{ color: GRIS, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este taller es para tu organización.</p>
           </div>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
             {PROBLEMAS.map((p) => (
-              <motion.div key={p.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl p-5" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-extrabold text-2xl" style={{ color: ACCENT }}>{p.num}</span>
-                  <XCircle size={18} style={{ color: ACCENT, opacity: 0.5 }} />
+              <motion.div
+                key={p.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                className="relative overflow-hidden rounded-2xl p-7"
+                style={{ border: "1px solid rgba(58,63,75,0.1)" }}
+              >
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full pointer-events-none" style={{ background: ACCENT, opacity: 0.12, filter: "blur(40px)" }} />
+                <div className="relative flex items-center justify-between mb-4">
+                  <span className="font-extrabold text-3xl" style={{ color: ACCENT }}>{p.num}</span>
+                  <XCircle size={20} style={{ color: ACCENT, opacity: 0.5 }} />
                 </div>
-                <p className="font-bold text-sm mb-1.5" style={{ color: HEAD }}>{p.titulo}</p>
-                <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{p.texto}</p>
+                <p className="relative font-bold text-base mb-2" style={{ color: HEAD }}>{p.titulo}</p>
+                <p className="relative text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{p.texto}</p>
               </motion.div>
             ))}
           </div>
