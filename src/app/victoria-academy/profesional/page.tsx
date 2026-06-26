@@ -385,7 +385,7 @@ export default function VictoriaProfesionalPage() {
             <a
               href="#solicitud"
               className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{ background: ACCENT, color: "#ffffff" }}
+              style={{ background: GRADIENT, color: "#ffffff" }}
             >
               Solicitar información →
             </a>
@@ -413,16 +413,15 @@ export default function VictoriaProfesionalPage() {
               </span>
             </div>
           </div>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="rounded-2xl flex items-center justify-center text-center p-6"
-                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: HEAD, opacity: 0.4 }}
-              >
-                <p className="text-xs">Espacio reservado para captura de testimonio real</p>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <Image
+              src="/victoria-academy/testimonios-victoria-academy.png"
+              alt="Testimonios de equipos que han asistido a talleres previos"
+              width={1200}
+              height={800}
+              className="w-full h-auto rounded-2xl"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
+            />
           </div>
         </section>
 
