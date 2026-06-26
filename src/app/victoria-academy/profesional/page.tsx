@@ -374,18 +374,21 @@ export default function VictoriaProfesionalPage() {
           {/* Micro CTA */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto mt-10 text-center">
             <div
-              className="rounded-2xl p-7"
+              className="rounded-2xl p-6 mb-6 flex items-center gap-3 justify-center"
               style={{ background: ACCENT, boxShadow: `0 0 60px ${ACCENT}50` }}
             >
-              <p className="font-medium mb-5 text-white">Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
-              <a
-                href="#solicitud"
-                className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
-                style={{ background: "#0a0a0a", color: "#ffffff" }}
-              >
-                Solicitar información →
-              </a>
+              <CheckCircle2 size={20} className="flex-shrink-0 text-white" />
+              <p className="font-medium text-white text-left">
+                Si te reconociste en al menos dos puntos de la columna izquierda, este taller es exactamente para tu organización.
+              </p>
             </div>
+            <a
+              href="#solicitud"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
+              style={{ background: ACCENT, color: "#ffffff" }}
+            >
+              Solicitar información →
+            </a>
           </motion.div>
         </section>
 
