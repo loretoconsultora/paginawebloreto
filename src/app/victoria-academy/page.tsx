@@ -14,7 +14,6 @@ const PROGRAMAS = [
   {
     id: "profesional",
     nombre: "VictorIA Profesional",
-    frase: "La experiencia que recupera tu tiempo y potencia a tu equipo",
     para: "Colaboradores y líderes de equipo de empresas medianas",
     icon: Briefcase,
     color: "#3E7ECA",
@@ -23,8 +22,7 @@ const PROGRAMAS = [
   {
     id: "elite",
     nombre: "VictorIA Elite",
-    frase: "La experiencia que construye tu ventaja competitiva de 18-36 meses",
-    para: "Directivos, CEOs y dueños de negocio — grupos de 10-12 personas",
+    para: "Directivos, CEOs y dueños de negocio",
     icon: Users,
     color: "#6A8AFF",
     portada: "/victoria-academy/elite.jpg",
@@ -32,7 +30,6 @@ const PROGRAMAS = [
   {
     id: "joven",
     nombre: "VictorIA Joven",
-    frase: "La experiencia que convierte a tu alumno en la Primera Generación IA",
     para: "Colegios privados y fundaciones educativas",
     icon: GraduationCap,
     color: "#1f8a8c",
@@ -65,9 +62,10 @@ export default function VictoriaAcademyPage() {
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white/85 text-base sm:text-lg leading-relaxed mb-8"
+              className="text-white/85 text-xl sm:text-2xl leading-relaxed mb-8"
             >
-              La nueva VIA hacia tu potencial completo en la era de la inteligencia artificial.
+              La nueva VIA hacia tu potencial completo en la era de la{" "}
+              <strong className="font-bold whitespace-nowrap">Inteligencia Artificial</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
@@ -85,12 +83,9 @@ export default function VictoriaAcademyPage() {
 
         {/* Carrusel de programas */}
         <div className="py-16 sm:py-20">
-          <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-center text-grafito mb-2 px-4">
-            Tres programas, un mismo punto de partida
+          <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-center text-grafito mb-10 px-4">
+            3 Programas para Co Crear con la Inteligencia Artificial y modelar el futuro con propósito
           </h2>
-          <p className="text-sm text-grafito/55 text-center mb-10 px-4">
-            Uno para tu equipo, uno para tu liderazgo, y uno para la próxima generación.
-          </p>
 
           <div
             ref={trackRef}
@@ -117,9 +112,10 @@ export default function VictoriaAcademyPage() {
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="font-playfair text-xl font-bold text-grafito mb-2">{p.nombre}</h3>
-                  <p className="text-sm text-grafito/65 leading-relaxed mb-3 flex-1">{p.frase}</p>
-                  <p className="text-xs text-grafito/45 mb-5">{p.para}</p>
+                  <h3 className="font-playfair text-xl font-bold text-grafito mb-3">{p.nombre}</h3>
+                  <p className="text-base text-grafito/70 leading-relaxed mb-6 flex-1">
+                    <span className="font-semibold text-grafito">Dirigido a:</span> {p.para}
+                  </p>
                   <Link
                     href={`/victoria-academy/${p.id}`}
                     className="inline-flex items-center justify-center gap-2 text-white font-semibold px-5 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
