@@ -81,8 +81,11 @@ export default function VictoriaProfesionalPage() {
       <main className="min-h-screen bg-white">
 
         {/* Hero */}
-        <section className="pt-12 sm:pt-16 pb-10 px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <section className="relative overflow-hidden pt-12 sm:pt-16 pb-10 px-4 sm:px-6">
+          <div className="absolute -top-24 -left-16 w-80 h-80 rounded-full pointer-events-none" style={{ background: ACCENT, opacity: 0.16, filter: "blur(90px)" }} />
+          <div className="absolute top-10 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.14, filter: "blur(100px)" }} />
+          <div className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#6A8AFF", opacity: 0.12, filter: "blur(90px)" }} />
+          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -123,9 +126,20 @@ export default function VictoriaProfesionalPage() {
                   <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: GRIS, opacity: 0.6 }}>
                     <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas</span>
                     <span>Presencial o virtual</span>
-                    <span>Grupos de hasta 15 personas</span>
+                    <span>Formación Grupal</span>
                   </p>
                 </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.32 }}
+                className="flex items-center gap-2 mb-6"
+              >
+                <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0" style={{ border: `1px solid ${ACCENT}40` }}>
+                  <Image src="/loreto-directora.jpg" alt="Any Villegas" width={28} height={28} className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs" style={{ color: GRIS }}>
+                  <span className="font-bold" style={{ color: HEAD }}>EN VIVO CON</span> Any Villegas
+                </p>
               </motion.div>
               <motion.a
                 href="#solicitud"
@@ -133,15 +147,15 @@ export default function VictoriaProfesionalPage() {
                 className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
                 style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
               >
-                Solicitar información →
+                Solicitar Programa →
               </motion.a>
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden"
-              style={{ border: "1px solid rgba(58,63,75,0.1)" }}
+              className="relative rounded-2xl flex items-center justify-center"
+              style={{ border: "1px dashed rgba(58,63,75,0.25)", aspectRatio: "1 / 1" }}
             >
-              <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={600} height={600} className="w-full h-auto object-cover" />
+              <p className="text-xs px-6 text-center" style={{ color: GRIS, opacity: 0.4 }}>Espacio reservado para imagen o video</p>
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
