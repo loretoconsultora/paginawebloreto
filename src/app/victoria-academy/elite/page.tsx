@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ChevronDown, Target, Zap, CalendarDays, Star } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ChevronDown, CalendarDays, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
@@ -14,8 +14,18 @@ const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)
 const ACCENT = "#6A8AFF";
 const HEAD = "#1a1f24";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_ELITE_WEBHOOK ?? "";
-// Sin precio público: VictorIA Elite se maneja como lista de espera
-const PRECIO = "";
+
+const BARRERA = [
+  { num: "01", texto: "Antes liderar la adopción de IA exigía un equipo de consultores externos. Hoy basta una sesión estratégica con el criterio correcto." },
+  { num: "02", texto: "Antes construir un roadmap ejecutivo tomaba meses de consultoría. Hoy se logra en un solo programa que termina con un documento presentable a tu consejo." },
+  { num: "03", texto: "Antes la ventaja competitiva con IA era solo para corporativos grandes. Hoy cualquier líder con visión puede construirla." },
+];
+
+const BONOS = [
+  { num: "1", texto: "Sesión de seguimiento estratégico trimestral durante tu primer año en la Comunidad VictorIA Elite." },
+  { num: "2", texto: "Auditoría de IA de 1 hora para tu organización, antes de tu llamada de pre-admisión." },
+  { num: "3", texto: "Acceso prioritario a futuras ediciones y nuevos contenidos ejecutivos de VictorIA." },
+];
 
 const PROBLEMAS = [
   { num: "01", titulo: "Decides sobre IA sin tener claridad", texto: "Sientes la presión de tomar decisiones estratégicas sobre IA sin un marco claro para hacerlo." },
@@ -139,6 +149,75 @@ export default function VictoriaElitePage() {
           </motion.div>
         </section>
 
+        {/* Bono de inscripción */}
+        <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
+          <div className="absolute top-1/4 -right-10 w-96 h-96 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.18, filter: "blur(100px)" }} />
+          <div className="absolute -bottom-16 left-10 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#3E7ECA", opacity: 0.12, filter: "blur(90px)" }} />
+          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+                Disponible sólo para la Lista de Espera Fundadora
+              </p>
+              <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
+                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Unirte antes de la apertura en septiembre.
+              </h2>
+              <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
+                Al unirte a la lista de espera de VictorIA Elite, recibe:
+              </p>
+              <div className="space-y-4 mb-6">
+                {BONOS.map((b) => (
+                  <div key={b.num} className="rounded-2xl p-5 flex items-start gap-4 text-left" style={{ background: `${ACCENT}15`, border: `1px solid ${ACCENT}40` }}>
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 font-extrabold text-sm text-white" style={{ background: ACCENT }}>
+                      {b.num}
+                    </div>
+                    <p className="text-sm leading-relaxed font-medium" style={{ color: HEAD }}>{b.texto}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.6 }}>
+                Al confirmar tu lugar en VictorIA Elite te daremos las instrucciones para participar de estos bonos. Los bonos no se reasignan.
+              </p>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="relative w-full"
+              style={{ aspectRatio: "3 / 2" }}
+            >
+              <Image src="/victoria-academy/elite.jpg" alt="Bono de la lista de espera VictorIA Elite" fill className="object-cover rounded-2xl" />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* La barrera de entrada desapareció */}
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
+          <div className="max-w-6xl mx-auto text-left">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+              La barrera de entrada desapareció
+            </p>
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
+              Liderar con IA hoy no requiere un equipo de consultores.
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed mb-12" style={{ color: "#ffffff", opacity: 0.7 }}>
+              Hoy hay una forma accesible y rápida de construir tu ventaja competitiva. Y esa ventaja está al alcance de cualquier directivo que dedique sólo un programa... incluso si aún no tiene claro totalmente por dónde empezar.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+              {BARRERA.map((b) => (
+                <motion.div
+                  key={b.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                  className="rounded-2xl p-6 text-left"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  <p className="font-extrabold text-3xl mb-4" style={{ color: ACCENT }}>{b.num}</p>
+                  <p className="text-sm leading-relaxed text-white" style={{ opacity: 0.85 }}>{b.texto}</p>
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-sm sm:text-base font-bold text-white text-center" style={{ opacity: 0.9 }}>
+              Los directivos que ya tienen un AI Roadmap están a 18-36 meses de ventaja sobre los que aún lo están pensando.
+            </p>
+          </div>
+        </section>
+
         {/* Reencuadre del problema */}
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-10">
@@ -148,67 +227,90 @@ export default function VictoriaElitePage() {
             </h2>
             <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este programa es para ti.</p>
           </div>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
             {PROBLEMAS.map((p) => (
-              <motion.div key={p.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl p-5" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-extrabold text-2xl" style={{ color: ACCENT }}>{p.num}</span>
-                  <XCircle size={18} style={{ color: ACCENT, opacity: 0.5 }} />
+              <motion.div
+                key={p.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                className="relative overflow-hidden rounded-2xl p-7"
+                style={{ border: "1px solid rgba(58,63,75,0.1)" }}
+              >
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full pointer-events-none" style={{ background: ACCENT, opacity: 0.12, filter: "blur(40px)" }} />
+                <div className="relative flex items-center justify-between mb-4">
+                  <span className="font-extrabold text-3xl" style={{ color: ACCENT }}>{p.num}</span>
+                  <XCircle size={20} style={{ color: ACCENT, opacity: 0.5 }} />
                 </div>
-                <p className="font-bold text-sm mb-1.5" style={{ color: HEAD }}>{p.titulo}</p>
-                <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{p.texto}</p>
+                <p className="relative font-bold text-base mb-2" style={{ color: HEAD }}>{p.titulo}</p>
+                <p className="relative text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{p.texto}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Lo que te vas a llevar */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
-            <motion.div initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+        <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6">
+          <div className="absolute -top-20 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: ACCENT, opacity: 0.14, filter: "blur(100px)" }} />
+          <div className="absolute top-0 -right-16 w-80 h-80 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.16, filter: "blur(90px)" }} />
+          <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#3E7ECA", opacity: 0.1, filter: "blur(90px)" }} />
+          <div className="relative max-w-3xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Lo que te vas a llevar</p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
-                La forma en que tu empresa decide cambia aquí
+                La forma en que tu empresa decide<br /><span style={{ color: ACCENT }}>cambia aquí</span>
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
                 Esto no es un taller corporativo más. Es donde por fin entiendes qué decisiones tomar sobre IA, con qué prioridad, y cómo liderar la adopción sin que tu equipo se resista. Vienes a construir en vivo tu propio AI Roadmap, junto a un grupo íntimo de pares en tu mismo nivel de decisión.
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative flex justify-center">
-              <div className="relative w-full max-w-xs rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={400} height={500} className="w-full h-auto object-cover" />
-              </div>
-              <div className="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center bg-white" style={{ border: `1px solid ${ACCENT}40`, boxShadow: "0 8px 20px rgba(0,0,0,0.08)" }}>
-                <Target size={18} style={{ color: ACCENT }} />
-              </div>
-              <div className="absolute bottom-10 -right-3 w-11 h-11 rounded-full flex items-center justify-center bg-white" style={{ border: `1px solid ${ACCENT}40`, boxShadow: "0 8px 20px rgba(0,0,0,0.08)" }}>
-                <Zap size={16} style={{ color: ACCENT }} />
-              </div>
-            </motion.div>
           </div>
         </section>
 
         {/* Cómo te vas a sentir / Qué vas a poder hacer */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-0 sm:divide-x" style={{ borderColor: "rgba(58,63,75,0.1)" }}>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="sm:pr-10">
-              <h3 className="font-extrabold text-2xl mb-6 tracking-tight" style={{ color: HEAD }}>Cómo te vas a sentir después</h3>
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="relative overflow-hidden rounded-2xl bg-white p-8"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: ACCENT }} />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: ACCENT }}>
+                  <CheckCircle2 size={18} className="text-white" />
+                </div>
+                <h3 className="font-extrabold text-xl sm:text-2xl tracking-tight" style={{ color: HEAD }}>Cómo te vas a sentir después</h3>
+              </div>
               <div className="flex flex-col gap-5">
                 {SENTIMIENTOS.map((s) => (
-                  <div key={s.titulo}>
-                    <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
+                  <div key={s.titulo} className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: ACCENT }} />
+                    <div>
+                      <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="sm:pl-10">
-              <h3 className="font-extrabold text-2xl mb-6 tracking-tight" style={{ color: HEAD }}>Lo que vas a poder hacer después</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="relative overflow-hidden rounded-2xl bg-white p-8"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: HEAD }} />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: HEAD }}>
+                  <CheckCircle2 size={18} className="text-white" />
+                </div>
+                <h3 className="font-extrabold text-xl sm:text-2xl tracking-tight" style={{ color: HEAD }}>Lo que vas a poder hacer después</h3>
+              </div>
               <div className="flex flex-col gap-5">
                 {CAPACIDADES.map((c) => (
-                  <div key={c.titulo}>
-                    <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
+                  <div key={c.titulo} className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: HEAD }} />
+                    <div>
+                      <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -217,38 +319,52 @@ export default function VictoriaElitePage() {
         </section>
 
         {/* Para quién es */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
           <div className="max-w-3xl mx-auto text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Para quién es</p>
-            <h2 className="font-extrabold text-2xl sm:text-3xl mb-3 tracking-tight" style={{ color: HEAD, lineHeight: 1.25 }}>
+            <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+              <span className="w-8 h-px" style={{ background: ACCENT }} />
+              Para quién es
+              <span className="w-8 h-px" style={{ background: ACCENT }} />
+            </p>
+            <h2 className="font-extrabold text-2xl sm:text-4xl mb-3 tracking-tight text-white" style={{ lineHeight: 1.25 }}>
               Este programa es para ti si quieres liderar la transición a IA, no improvisarla.
             </h2>
-            <p className="text-sm" style={{ color: HEAD, opacity: 0.65 }}>Antes de avanzar, mira si VictorIA Elite encaja con tu momento.</p>
+            <p className="text-sm text-white" style={{ opacity: 0.6 }}>Antes de avanzar, mira si VictorIA Elite encaja con tu momento.</p>
           </div>
-          <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <CheckCircle2 size={18} style={{ color: ACCENT }} />
-                <h3 className="font-extrabold" style={{ color: HEAD }}>Para quién SÍ es</h3>
+          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div
+              className="rounded-2xl p-7"
+              style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${ACCENT}40`, borderTop: `3px solid ${ACCENT}` }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: ACCENT }}>
+                  <CheckCircle2 size={18} className="text-white" />
+                </div>
+                <h3 className="font-extrabold text-white text-lg">Para quién SÍ es</h3>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 {SI_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.85 }}>
-                    <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
+                  <div key={t} className="flex items-start gap-3 text-sm text-white" style={{ opacity: 0.85 }}>
+                    <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                     {t}
                   </div>
                 ))}
               </div>
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <XCircle size={18} style={{ color: HEAD, opacity: 0.4 }} />
-                <h3 className="font-extrabold" style={{ color: HEAD, opacity: 0.5 }}>Para quién NO es</h3>
+            <div
+              className="rounded-2xl p-7"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.1)" }}>
+                  <XCircle size={18} className="text-white" style={{ opacity: 0.6 }} />
+                </div>
+                <h3 className="font-extrabold text-white text-lg" style={{ opacity: 0.6 }}>Para quién NO es</h3>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 {NO_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.55 }}>
-                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: HEAD, opacity: 0.35 }} />
+                  <div key={t} className="flex items-start gap-3 text-sm text-white" style={{ opacity: 0.45 }}>
+                    <XCircle size={16} className="flex-shrink-0 mt-0.5 text-white" style={{ opacity: 0.4 }} />
                     {t}
                   </div>
                 ))}
@@ -257,26 +373,23 @@ export default function VictoriaElitePage() {
           </div>
 
           {/* Micro CTA */}
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto mt-12 text-center">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto mt-10 text-center">
             <div
-              className="rounded-2xl p-7"
-              style={{ background: `radial-gradient(circle at 50% 0%, ${ACCENT}12, transparent 70%)`, border: `1px solid ${ACCENT}30` }}
+              className="rounded-2xl p-6 mb-6 flex items-center gap-3 justify-center"
+              style={{ background: ACCENT, boxShadow: `0 0 60px ${ACCENT}50` }}
             >
-              <p className="font-medium mb-4" style={{ color: HEAD }}>Si te reconociste en 2 o más puntos, este programa es para ti.</p>
-              {PRECIO && (
-                <p className="text-sm mb-3" style={{ color: HEAD }}>
-                  Inversión: <span className="font-bold">{PRECIO}</span>
-                </p>
-              )}
-              <button
-                onClick={() => setModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
-                style={{ background: GRADIENT }}
-              >
-                Unirme a la lista de espera →
-              </button>
-              <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Grupos de 10-12 personas · Apertura en septiembre</p>
+              <CheckCircle2 size={20} className="flex-shrink-0 text-white" />
+              <p className="font-medium text-white text-left">
+                Si te reconociste en al menos dos puntos de la columna izquierda, este programa es exactamente para ti.
+              </p>
             </div>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
+              style={{ background: GRADIENT, color: "#ffffff" }}
+            >
+              Unirme a la lista de espera →
+            </button>
           </motion.div>
         </section>
 
