@@ -29,7 +29,7 @@ export default function SolicitudInfoForm({
   submitLabel = "Reservar mi lugar →",
   waitlistNote,
 }: Props) {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", seleccion: "" });
+  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", seleccion: "", fechaLlamada: "" });
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -50,6 +50,7 @@ export default function SolicitudInfoForm({
             lada: form.lada,
             telefono: form.telefono,
             [selectField.name]: form.seleccion,
+            fechaLlamada: form.fechaLlamada,
           }),
         });
       }
@@ -94,6 +95,24 @@ export default function SolicitudInfoForm({
           <option key={opt} value={opt} style={{ color: "#445055" }}>{opt}</option>
         ))}
       </select>
+
+      <div>
+        <label className="text-xs font-medium mb-1.5 block" style={{ color: "#445055", opacity: 0.7 }}>
+          Fecha y hora para tu llamada de aplicación *
+        </label>
+        <input
+          required
+          name="fechaLlamada"
+          type="datetime-local"
+          value={form.fechaLlamada}
+          onChange={handleChange}
+          className={inputClass}
+          style={{ color: "#445055" }}
+        />
+        <p className="text-[11px] mt-1.5" style={{ color: "#445055", opacity: 0.55 }}>
+          En esta llamada conoceremos más de tu organización para definir los alcances y diseñar una experiencia personalizada.
+        </p>
+      </div>
 
       <button
         type="submit"

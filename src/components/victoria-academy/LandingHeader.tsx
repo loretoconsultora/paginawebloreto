@@ -9,10 +9,15 @@ type Props = {
   accent: string;
   ctaLabel?: string;
   formId?: string;
+  onApply?: () => void;
 };
 
-export default function LandingHeader({ accent, ctaLabel = "Aplicar AHORA", formId = "solicitud" }: Props) {
+export default function LandingHeader({ accent, ctaLabel = "Aplicar AHORA", formId = "solicitud", onApply }: Props) {
   const handleClick = () => {
+    if (onApply) {
+      onApply();
+      return;
+    }
     document.getElementById(formId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 

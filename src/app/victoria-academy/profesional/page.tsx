@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ChevronDown, CalendarDays, Star } from "lucide-react";
 import { motion } from "framer-motion";
@@ -7,6 +8,7 @@ import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
 import Footer from "@/components/layout/Footer";
 import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
+import SolicitudModal from "@/components/victoria-academy/SolicitudModal";
 
 const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)";
 const ACCENT = "#3E7ECA";
@@ -71,9 +73,10 @@ const FAQS = [
 ];
 
 export default function VictoriaProfesionalPage() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
-      <LandingHeader accent={ACCENT} />
+      <LandingHeader accent={ACCENT} onApply={() => setModalOpen(true)} />
       <main className="min-h-screen bg-white">
 
         {/* Hero */}
@@ -126,14 +129,14 @@ export default function VictoriaProfesionalPage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.a
-                href="#solicitud"
+              <motion.button
+                onClick={() => setModalOpen(true)}
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
                 className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
                 style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
               >
                 Solicitar Programa →
-              </motion.a>
+              </motion.button>
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
@@ -382,13 +385,13 @@ export default function VictoriaProfesionalPage() {
                 Si te reconociste en al menos dos puntos de la columna izquierda, este taller es exactamente para tu organización.
               </p>
             </div>
-            <a
-              href="#solicitud"
+            <button
+              onClick={() => setModalOpen(true)}
               className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
               style={{ background: GRADIENT, color: "#ffffff" }}
             >
               Solicitar información →
-            </a>
+            </button>
           </motion.div>
         </section>
 
@@ -448,13 +451,13 @@ export default function VictoriaProfesionalPage() {
               <p className="text-base leading-relaxed mb-8" style={{ color: HEAD, opacity: 0.8 }}>
                 Aprende a operar y crecer con IA. Ya puedes aprender a hacerlo con un sólo programa y pasar de la urgencia y reactividad a la verdadera proactividad. Co crea el futuro de tu organización con tu propio sistema y la más última tecnología.
               </p>
-              <a
-                href="#solicitud"
+              <button
+                onClick={() => setModalOpen(true)}
                 className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
                 style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
               >
                 Solicitar información para mi equipo →
-              </a>
+              </button>
             </div>
             <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}>
               <Image
@@ -466,32 +469,25 @@ export default function VictoriaProfesionalPage() {
             </div>
           </div>
         </section>
-
-        {/* Form */}
-        <div id="solicitud" className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="bg-white rounded-2xl p-6 sm:p-8 relative z-10"
-            style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.1)" }}
-          >
-            <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
-              Solicita información para tu equipo
-            </h2>
-            <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
-              Cupo máximo: 15 personas por grupo. Disponible para empresas, hospitales y escuelas.
-            </p>
-            <SolicitudInfoForm
-              programa="VictorIA Profesional"
-              webhookUrl={WEBHOOK}
-              calendlyUrl={CALENDLY}
-              gradient={GRADIENT}
-              selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
-              confirmTitle="¡Listo! Tu solicitud fue recibida."
-              confirmText="Nuestro equipo te contactará por WhatsApp para agendar una breve llamada de diagnóstico y conocer el caso de tu equipo."
-            />
-          </motion.div>
-        </div>
       </main>
+
+      <SolicitudModal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
+          Solicita información para tu equipo
+        </h2>
+        <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
+          Cupo máximo: 15 personas por grupo. Disponible para empresas, hospitales y escuelas.
+        </p>
+        <SolicitudInfoForm
+          programa="VictorIA Profesional"
+          webhookUrl={WEBHOOK}
+          calendlyUrl={CALENDLY}
+          gradient={GRADIENT}
+          selectField={{ name: "tipoOrganizacion", label: "Tipo de organización", options: ["Empresa", "Institución académica", "Hospital", "Otro"] }}
+          confirmTitle="¡Listo! Tu solicitud fue recibida."
+          confirmText="Nuestro equipo te contactará por WhatsApp para confirmar tu llamada de aplicación y conocer el caso de tu equipo."
+        />
+      </SolicitudModal>
       <Footer />
     </>
   );
