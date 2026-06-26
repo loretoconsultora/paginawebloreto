@@ -13,7 +13,6 @@ const ACCENT = "#3E7ECA";
 const HEAD = "#1a1f24";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
-const PRECIO = "$2,850 USD ($49,875 MXN) por grupo de hasta 15 personas — $190 USD/persona";
 
 const BARRERA = [
   { num: "01", texto: "Antes necesitabas un departamento de TI. Hoy basta con tu equipo actual y el criterio correcto para usar la IA." },
@@ -49,8 +48,9 @@ const CAPACIDADES = [
 ];
 
 const SI_ES = [
-  "Tu equipo ya usa IA de forma desordenada y quieres darle criterio y dirección.",
-  "Sientes que las juntas y reportes te quitan más tiempo del que deberían.",
+  "Tu equipo no usa IA o si la usa, lo hace de forma aislada, desordenada y quieres darle criterio y dirección.",
+  "Sientes que las actividades repetitivas quitan más tiempo del que deberían.",
+  "Gran parte de la atención se dedica a lo urgente en vez de a lo que suma mayor valor para cumplir objetivos.",
   "Quieres entregables reales en las manos de tu gente, no solo un certificado.",
   "Estás dispuesto a que tu equipo practique con su caso real, no con ejemplos genéricos.",
 ];
@@ -377,10 +377,7 @@ export default function VictoriaProfesionalPage() {
               className="rounded-2xl p-7"
               style={{ background: ACCENT, boxShadow: `0 0 60px ${ACCENT}50` }}
             >
-              <p className="font-medium mb-4 text-white">Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
-              <p className="text-sm mb-4 text-white" style={{ opacity: 0.9 }}>
-                Inversión: <span className="font-bold">{PRECIO}</span>
-              </p>
+              <p className="font-medium mb-5 text-white">Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
               <a
                 href="#solicitud"
                 className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
@@ -388,7 +385,6 @@ export default function VictoriaProfesionalPage() {
               >
                 Solicitar información →
               </a>
-              <p className="text-[11px] mt-3 text-white" style={{ opacity: 0.75 }}>Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona.</p>
             </div>
           </motion.div>
         </section>
