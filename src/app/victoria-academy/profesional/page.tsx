@@ -261,7 +261,7 @@ export default function VictoriaProfesionalPage() {
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El cambio empieza contigo</p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
-                Lo que hoy te frena no es el tiempo. Es no potenciar el valor de tu equipo y herramientas
+                Lo que hoy te frena no es el tiempo.<br /><span style={{ color: ACCENT }}>Es no potenciar el valor de tu equipo y herramientas</span>
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
                 Cada persona sale de este programa con su propio pack de herramientas y un proyecto de optimización listo para aplicar en tu organización.
