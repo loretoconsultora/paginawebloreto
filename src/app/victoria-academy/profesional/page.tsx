@@ -260,8 +260,11 @@ export default function VictoriaProfesionalPage() {
         </section>
 
         {/* Lo que te vas a llevar */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6">
+          <div className="absolute -top-20 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: ACCENT, opacity: 0.14, filter: "blur(100px)" }} />
+          <div className="absolute top-0 -right-16 w-80 h-80 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.16, filter: "blur(90px)" }} />
+          <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#6A8AFF", opacity: 0.1, filter: "blur(90px)" }} />
+          <div className="relative max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El cambio empieza contigo</p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
