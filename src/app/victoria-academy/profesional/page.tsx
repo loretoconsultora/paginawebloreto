@@ -472,12 +472,9 @@ export default function VictoriaProfesionalPage() {
       </main>
 
       <SolicitudModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
+        <h2 className="font-extrabold text-xl text-center mb-6 tracking-tight" style={{ color: ACCENT }}>
           Solicita información para tu equipo
         </h2>
-        <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
-          Cupo máximo: 15 personas por grupo. Disponible para empresas, hospitales y escuelas.
-        </p>
         <SolicitudInfoForm
           programa="VictorIA Profesional"
           webhookUrl={WEBHOOK}
