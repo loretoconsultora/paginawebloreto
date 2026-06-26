@@ -174,14 +174,14 @@ export default function VictoriaProfesionalPage() {
                 Disponible sólo PARA TALLERES JUNIO - AGOSTO
               </p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-                Más de <span style={{ color: "#67C6C8" }}>USD 1,500 de Bonificación</span>. Una sóla condición: Tomar la oportunidad este verano.
+                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Tomar la oportunidad este verano.
               </h2>
               <p className="text-sm mb-6" style={{ color: GRIS, opacity: 0.8 }}>
                 Al reservar tu programa VictorIA Profesional en tu empresa, recibe:
               </p>
               <div className="space-y-4 mb-6">
                 {BONOS.map((b) => (
-                  <div key={b.num} className="rounded-2xl p-5 flex items-start gap-4 text-left" style={{ background: "#67C6C815", border: "1px solid #67C6C840" }}>
+                  <div key={b.num} className="rounded-2xl p-5 flex items-start gap-4 text-left" style={{ background: `${ACCENT}15`, border: `1px solid ${ACCENT}40` }}>
                     <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 font-extrabold text-sm text-white" style={{ background: "#3E7ECA" }}>
                       {b.num}
                     </div>
@@ -206,7 +206,7 @@ export default function VictoriaProfesionalPage() {
         {/* La barrera de entrada desapareció */}
         <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
           <div className="max-w-6xl mx-auto text-left">
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#67C6C8" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
               La barrera de entrada desapareció
             </p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
@@ -222,7 +222,7 @@ export default function VictoriaProfesionalPage() {
                   className="rounded-2xl p-6 text-left"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
-                  <p className="font-extrabold text-3xl mb-4" style={{ color: "#67C6C8" }}>{b.num}</p>
+                  <p className="font-extrabold text-3xl mb-4" style={{ color: ACCENT }}>{b.num}</p>
                   <p className="text-sm leading-relaxed text-white" style={{ opacity: 0.85 }}>{b.texto}</p>
                 </motion.div>
               ))}
