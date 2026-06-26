@@ -255,13 +255,21 @@ export default function EventosPage() {
                 <span className="text-grafito/25 hidden sm:inline">|</span>
                 <span>Herramientas de IA</span>
               </div>
-              <Link
-                href="/eventos/registro-art-of-brand"
-                className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 rounded-full text-white hover:opacity-90 transition-opacity mt-6"
-                style={{ background: GRADIENT }}
+              <div
+                className="inline-flex items-center gap-2 text-sm font-bold px-4 py-1.5 rounded-full mt-6"
+                style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
               >
-                Reservar mi lugar →
-              </Link>
+                $1,450 MXN por experiencia
+              </div>
+              <div>
+                <Link
+                  href="/eventos/registro-art-of-brand"
+                  className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 rounded-full text-white hover:opacity-90 transition-opacity mt-4"
+                  style={{ background: GRADIENT }}
+                >
+                  Reservar mi lugar →
+                </Link>
+              </div>
             </motion.div>
 
             {/* Las 3 experiencias con imagen */}

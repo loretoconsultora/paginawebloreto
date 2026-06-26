@@ -19,6 +19,13 @@ const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)
 const N8N_WEBHOOK = process.env.NEXT_PUBLIC_N8N_ARTOFBRAND_WEBHOOK ?? "";
 
 const CUPO_POR_SESION = 12;
+const PRECIO_MXN = "$1,450 MXN";
+
+const STRIPE_LINKS: Record<string, string> = {
+  bloom: "https://book.stripe.com/14AeVd2bh8ed9ZW1D32Nq00",
+  atelier: "https://book.stripe.com/7sY7sL5ntcut2xu95v2Nq01",
+  muse: "https://book.stripe.com/4gM14naHN0LL8VS1D32Nq02",
+};
 
 const EXPERIENCIAS = [
   {
@@ -189,6 +196,15 @@ export default function RegistroArtOfBrandPage() {
                 </div>
               ))}
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
+              className="mt-6 inline-flex items-center gap-2 px-5 py-2 rounded-full"
+              style={{ background: "rgba(255,255,255,0.95)" }}
+            >
+              <span className="text-sm font-bold" style={{ color: "#1a0a2e" }}>{PRECIO_MXN}</span>
+              <span className="text-xs text-grafito/60">por experiencia</span>
+            </motion.div>
           </div>
         </section>
 
@@ -237,7 +253,29 @@ export default function RegistroArtOfBrandPage() {
                   ¡Listo! 🎨 Tu lugar quedó pre-reservado.
                 </p>
                 <p className="text-sm text-grafito/60 max-w-sm">
-                  Nuestro equipo te contactará por WhatsApp para confirmar tu lugar y los detalles de pago — los cupos son limitados.
+                  Para asegurar tu lugar, completa tu pago de {PRECIO_MXN} por experiencia — los cupos son limitados.
+                </p>
+                <div className="flex flex-col gap-2.5 w-full max-w-xs">
+                  {experiencias.map((id) => {
+                    const exp = EXPERIENCIAS.find((e) => e.id === id);
+                    const link = STRIPE_LINKS[id];
+                    if (!exp || !link) return null;
+                    return (
+                      <a
+                        key={id}
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
+                        style={{ background: GRADIENT, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
+                      >
+                        Reservar lugar — {exp.nombre} →
+                      </a>
+                    );
+                  })}
+                </div>
+                <p className="text-[11px] text-grafito/40 max-w-sm">
+                  Nuestro equipo te contactará por WhatsApp para confirmar los detalles de tu sesión.
                 </p>
               </div>
             ) : (
@@ -350,7 +388,7 @@ export default function RegistroArtOfBrandPage() {
                   {estado === "loading" ? "Reservando…" : "Reservar mi lugar →"}
                 </button>
                 <p className="text-[11px] text-grafito/40 text-center -mt-1">
-                  Tu lugar se confirma por WhatsApp · Cupo limitado e íntimo
+                  {PRECIO_MXN} por experiencia · Tu lugar se confirma por WhatsApp · Cupo limitado e íntimo
                 </p>
 
                 {estado === "error" && (
