@@ -22,12 +22,6 @@ const BARRERA = [
   { num: "03", texto: "Antes esto era solo para colegios con presupuesto de innovación. Hoy cualquier institución puede dar a sus alumnos esta ventaja." },
 ];
 
-const BONOS = [
-  { num: "1", texto: "Masterclass de Creación de Contenidos con IA: tus alumnos aprenden a crear avatares y piezas creativas con IA." },
-  { num: "2", texto: "Reporte Institucional de Resultados incluido sin costo adicional, con métricas de participación y evidencia del showcase final." },
-  { num: "3", texto: "Acceso a la Comunidad VictorIA Joven para el facilitador interno de tu institución." },
-];
-
 const PROBLEMAS = [
   { num: "01", titulo: "Tus alumnos ya usan IA, pero sin criterio", texto: "La usan para tareas y atajos, sin entender cuándo es honesto usarla y cuándo no." },
   { num: "02", titulo: "El colegio no tiene una postura clara", texto: "Mientras se debate prohibir o permitir, los alumnos siguen usándola por su cuenta." },
@@ -148,45 +142,6 @@ export default function VictoriaJovenPage() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
             <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: HEAD, opacity: 0.4 }} />
           </motion.div>
-        </section>
-
-        {/* Bono de inscripción */}
-        <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="absolute top-1/4 -right-10 w-96 h-96 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.18, filter: "blur(100px)" }} />
-          <div className="absolute -bottom-16 left-10 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#6A8AFF", opacity: 0.12, filter: "blur(90px)" }} />
-          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
-                Disponible sólo para implementaciones JUNIO - AGOSTO
-              </p>
-              <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Agendar este verano.
-              </h2>
-              <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
-                Al reservar el programa VictorIA Joven para tu institución, recibe:
-              </p>
-              <div className="space-y-4 mb-6">
-                {BONOS.map((b) => (
-                  <div key={b.num} className="rounded-2xl p-5 flex items-start gap-4 text-left" style={{ background: `${ACCENT}15`, border: `1px solid ${ACCENT}40` }}>
-                    <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 font-extrabold text-sm text-white" style={{ background: ACCENT }}>
-                      {b.num}
-                    </div>
-                    <p className="text-sm leading-relaxed font-medium" style={{ color: HEAD }}>{b.texto}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.6 }}>
-                Al finalizar VictorIA Joven te daremos las instrucciones para participar de estos bonos. Los bonos no se reasignan.
-              </p>
-            </div>
-            <motion.div
-              initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="relative w-full"
-              style={{ aspectRatio: "3 / 2" }}
-            >
-              <Image src="/victoria-academy/joven.jpg" alt="Bono de inscripción VictorIA Joven" fill className="object-cover rounded-2xl" />
-            </motion.div>
-          </div>
         </section>
 
         {/* La barrera de entrada desapareció */}
