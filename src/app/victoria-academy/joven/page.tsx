@@ -141,10 +141,10 @@ export default function VictoriaJovenPage() {
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl flex items-center justify-center"
-              style={{ border: "1px dashed rgba(58,63,75,0.25)", aspectRatio: "1 / 1" }}
+              className="relative rounded-2xl overflow-hidden"
+              style={{ aspectRatio: "1 / 1" }}
             >
-              <p className="text-xs px-6 text-center" style={{ color: GRIS, opacity: 0.4 }}>Espacio reservado para imagen o video</p>
+              <Image src="/victoria-academy/hero-joven.png" alt="VictorIA Joven" fill className="object-cover" />
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">

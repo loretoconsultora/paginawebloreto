@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ShieldCheck, ChevronDown, Target, Zap, Gift, CalendarDays } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, Library, Map as MapIcon, ScrollText, ShieldCheck, ChevronDown, Target, Zap, CalendarDays } from "lucide-react";
 import { motion } from "framer-motion";
 import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
@@ -16,6 +16,12 @@ const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
 const PRECIO = "$2,850 USD ($49,875 MXN) por grupo de hasta 15 personas — $190 USD/persona";
+
+const BONOS = [
+  { num: "1", texto: "Masterclass de Creación de Contenido con IA: Tu equipo aprende a crear avatares, videos creativos y profesionales, y piezas de diseño gráfico." },
+  { num: "2", texto: "Consultoría de 2 horas de marketing, IA y ventas para tu marca o negocio." },
+  { num: "3", texto: "3 prompts maestros para ti como líder / director." },
+];
 
 const PROBLEMAS = [
   { num: "01", titulo: "No sabes por dónde empezar con IA", texto: "Tu equipo ve que otros ya la usan, pero nadie en la organización tiene un plan claro de por dónde empezar." },
@@ -141,10 +147,10 @@ export default function VictoriaProfesionalPage() {
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl flex items-center justify-center"
-              style={{ border: "1px dashed rgba(58,63,75,0.25)", aspectRatio: "1 / 1" }}
+              className="relative rounded-2xl overflow-hidden"
+              style={{ aspectRatio: "1 / 1" }}
             >
-              <p className="text-xs px-6 text-center" style={{ color: GRIS, opacity: 0.4 }}>Espacio reservado para imagen o video</p>
+              <Image src="/victoria-academy/hero-profesional.png" alt="VictorIA Profesional" fill className="object-cover" />
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
@@ -153,23 +159,39 @@ export default function VictoriaProfesionalPage() {
         </section>
 
         {/* Bono de inscripción */}
-        <section className="py-14 sm:py-16 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Bono de inscripción · Junio y julio 2026</p>
-            <h2 className="font-extrabold text-2xl sm:text-3xl mb-6 tracking-tight" style={{ color: HEAD }}>
-              Reserva tu lugar este verano y entra gratis a una masterclass más.
-            </h2>
-            <div className="rounded-2xl bg-white p-6 sm:p-7 flex items-start gap-4 text-left" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${ACCENT}15` }}>
-                <Gift size={20} style={{ color: ACCENT }} />
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+                Disponible sólo PARA TALLERES JUNIO - AGOSTO
+              </p>
+              <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
+                Más de USD 1,500 de Bonificación. Una sóla condición: Tomar la oportunidad este verano.
+              </h2>
+              <p className="text-sm mb-6" style={{ color: GRIS, opacity: 0.8 }}>
+                Al reservar tu programa VictorIA Profesional en tu empresa, recibe:
+              </p>
+              <div className="space-y-4 mb-6">
+                {BONOS.map((b) => (
+                  <div key={b.num} className="rounded-2xl bg-white p-5 flex items-start gap-4 text-left" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 font-extrabold text-sm" style={{ background: `${ACCENT}15`, color: ACCENT }}>
+                      {b.num}
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.85 }}>{b.texto}</p>
+                  </div>
+                ))}
               </div>
-              <div>
-                <p className="font-bold text-sm mb-1" style={{ color: HEAD }}>Masterclass de Creación de Contenidos con IA</p>
-                <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.8 }}>
-                  Aprende a crear avatares con IA y edición profesional para impulsar tu trabajo con creatividad. Incluido sin costo adicional al inscribirte en junio o julio.
-                </p>
-              </div>
+              <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.6 }}>
+                Al finalizar VictorIA Profesional te daremos las instrucciones para participar de estos bonos. Los bonos no se reasignan.
+              </p>
             </div>
+            <motion.div
+              initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="relative rounded-2xl overflow-hidden"
+              style={{ aspectRatio: "1 / 1" }}
+            >
+              <Image src="/victoria-academy/bono-profesional.jpg" alt="Bono de inscripción VictorIA Profesional" fill className="object-cover" />
+            </motion.div>
           </div>
         </section>
 
