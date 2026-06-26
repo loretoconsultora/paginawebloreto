@@ -196,7 +196,7 @@ export default function VictoriaProfesionalPage() {
               className="relative rounded-2xl overflow-hidden"
               style={{ aspectRatio: "1 / 1" }}
             >
-              <Image src="/victoria-academy/bono-profesional.jpg" alt="Bono de inscripción VictorIA Profesional" fill className="object-cover" />
+              <Image src="/victoria-academy/bono-profesional.png" alt="Bono de inscripción VictorIA Profesional" fill className="object-cover" />
             </motion.div>
           </div>
         </section>
