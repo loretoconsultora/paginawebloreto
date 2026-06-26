@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, XCircle, Clock, FileText, Award, GraduationCap, ShieldCheck, ChevronDown, Target, Zap, Gift, CalendarDays } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, FileText, Award, GraduationCap, ShieldCheck, ChevronDown, Target, Zap, Gift, CalendarDays, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import LandingHeader from "@/components/victoria-academy/LandingHeader";
 import Faq from "@/components/victoria-academy/Faq";
@@ -299,10 +299,23 @@ export default function VictoriaJovenPage() {
         {/* Prueba social — pendiente: subir capturas reales de testimonios */}
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Lo que dicen los colegios</p>
-            <h2 className="font-extrabold text-2xl sm:text-3xl tracking-tight" style={{ color: HEAD }}>
-              Resultados reales de instituciones que ya implementaron el programa
+            <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+              <span className="w-8 h-px" style={{ background: ACCENT }} />
+              Prueba social
+              <span className="w-8 h-px" style={{ background: ACCENT }} />
+            </p>
+            <h2 className="font-extrabold text-2xl sm:text-3xl tracking-tight mb-4" style={{ color: HEAD }}>
+              Lo que dicen instituciones que han{" "}
+              <span style={{ color: ACCENT }} className="italic">implementado el programa.</span>
             </h2>
+            <div className="flex items-center justify-center gap-1.5">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <Star key={i} size={18} fill={ACCENT} style={{ color: ACCENT }} />
+              ))}
+              <span className="text-xs font-semibold uppercase tracking-wide ml-2" style={{ color: HEAD, opacity: 0.5 }}>
+                Valoración promedio de asistentes
+              </span>
+            </div>
           </div>
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
