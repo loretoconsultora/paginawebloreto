@@ -278,26 +278,52 @@ export default function VictoriaProfesionalPage() {
         </section>
 
         {/* Cómo te vas a sentir / Qué vas a poder hacer */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-0 sm:divide-x" style={{ borderColor: "rgba(58,63,75,0.1)" }}>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="sm:pr-10">
-              <h3 className="font-extrabold text-2xl mb-6 tracking-tight" style={{ color: HEAD }}>Cómo se va a sentir tu equipo después</h3>
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="relative overflow-hidden rounded-2xl bg-white p-8"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: ACCENT }} />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: ACCENT }}>
+                  <CheckCircle2 size={18} className="text-white" />
+                </div>
+                <h3 className="font-extrabold text-xl sm:text-2xl tracking-tight" style={{ color: HEAD }}>Cómo se va a sentir tu equipo después</h3>
+              </div>
               <div className="flex flex-col gap-5">
                 {SENTIMIENTOS.map((s) => (
-                  <div key={s.titulo}>
-                    <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
+                  <div key={s.titulo} className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: ACCENT }} />
+                    <div>
+                      <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="sm:pl-10">
-              <h3 className="font-extrabold text-2xl mb-6 tracking-tight" style={{ color: HEAD }}>Lo que va a poder hacer después</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="relative overflow-hidden rounded-2xl bg-white p-8"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: HEAD }} />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: HEAD }}>
+                  <CheckCircle2 size={18} className="text-white" />
+                </div>
+                <h3 className="font-extrabold text-xl sm:text-2xl tracking-tight" style={{ color: HEAD }}>Lo que va a poder hacer después</h3>
+              </div>
               <div className="flex flex-col gap-5">
                 {CAPACIDADES.map((c) => (
-                  <div key={c.titulo}>
-                    <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
+                  <div key={c.titulo} className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: HEAD }} />
+                    <div>
+                      <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
+                    </div>
                   </div>
                 ))}
               </div>
