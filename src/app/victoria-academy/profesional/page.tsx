@@ -325,38 +325,52 @@ export default function VictoriaProfesionalPage() {
         </section>
 
         {/* Para quién es */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
           <div className="max-w-3xl mx-auto text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Para quién es</p>
-            <h2 className="font-extrabold text-2xl sm:text-3xl mb-3 tracking-tight" style={{ color: HEAD, lineHeight: 1.25 }}>
+            <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+              <span className="w-8 h-px" style={{ background: ACCENT }} />
+              Para quién es
+              <span className="w-8 h-px" style={{ background: ACCENT }} />
+            </p>
+            <h2 className="font-extrabold text-2xl sm:text-4xl mb-3 tracking-tight text-white" style={{ lineHeight: 1.25 }}>
               Este taller es para ti si quieres que tu equipo trabaje con criterio, no solo con más herramientas.
             </h2>
-            <p className="text-sm" style={{ color: HEAD, opacity: 0.65 }}>Antes de avanzar, mira si este programa encaja con lo que tu equipo necesita ahora.</p>
+            <p className="text-sm text-white" style={{ opacity: 0.6 }}>Antes de avanzar, mira si este programa encaja con lo que tu equipo necesita ahora.</p>
           </div>
-          <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <CheckCircle2 size={18} style={{ color: ACCENT }} />
-                <h3 className="font-extrabold" style={{ color: HEAD }}>Para quién SÍ es</h3>
+          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div
+              className="rounded-2xl p-7"
+              style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${ACCENT}40`, borderTop: `3px solid ${ACCENT}` }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: ACCENT }}>
+                  <CheckCircle2 size={18} className="text-white" />
+                </div>
+                <h3 className="font-extrabold text-white text-lg">Para quién SÍ es</h3>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 {SI_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.85 }}>
-                    <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
+                  <div key={t} className="flex items-start gap-3 text-sm text-white" style={{ opacity: 0.85 }}>
+                    <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                     {t}
                   </div>
                 ))}
               </div>
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <XCircle size={18} style={{ color: HEAD, opacity: 0.4 }} />
-                <h3 className="font-extrabold" style={{ color: HEAD, opacity: 0.5 }}>Para quién NO es</h3>
+            <div
+              className="rounded-2xl p-7"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.1)" }}>
+                  <XCircle size={18} className="text-white" style={{ opacity: 0.6 }} />
+                </div>
+                <h3 className="font-extrabold text-white text-lg" style={{ opacity: 0.6 }}>Para quién NO es</h3>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 {NO_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.55 }}>
-                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: HEAD, opacity: 0.35 }} />
+                  <div key={t} className="flex items-start gap-3 text-sm text-white" style={{ opacity: 0.45 }}>
+                    <XCircle size={16} className="flex-shrink-0 mt-0.5 text-white" style={{ opacity: 0.4 }} />
                     {t}
                   </div>
                 ))}
@@ -365,23 +379,23 @@ export default function VictoriaProfesionalPage() {
           </div>
 
           {/* Micro CTA */}
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto mt-12 text-center">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto mt-10 text-center">
             <div
               className="rounded-2xl p-7"
-              style={{ background: `radial-gradient(circle at 50% 0%, ${ACCENT}12, transparent 70%)`, border: `1px solid ${ACCENT}30` }}
+              style={{ background: ACCENT, boxShadow: `0 0 60px ${ACCENT}50` }}
             >
-              <p className="font-medium mb-4" style={{ color: HEAD }}>Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
-              <p className="text-sm mb-4" style={{ color: HEAD }}>
+              <p className="font-medium mb-4 text-white">Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
+              <p className="text-sm mb-4 text-white" style={{ opacity: 0.9 }}>
                 Inversión: <span className="font-bold">{PRECIO}</span>
               </p>
               <a
                 href="#solicitud"
-                className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
-                style={{ background: GRADIENT }}
+                className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
+                style={{ background: "#0a0a0a", color: "#ffffff" }}
               >
                 Solicitar información →
               </a>
-              <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona.</p>
+              <p className="text-[11px] mt-3 text-white" style={{ opacity: 0.75 }}>Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona.</p>
             </div>
           </motion.div>
         </section>
