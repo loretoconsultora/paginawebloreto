@@ -22,9 +22,9 @@ const BARRERA = [
 ];
 
 const BONOS = [
-  { num: "1", texto: "Sesión de seguimiento estratégico trimestral durante tu primer año en la Comunidad VictorIA Elite." },
-  { num: "2", texto: "Auditoría de IA de 1 hora para tu organización, antes de tu llamada de pre-admisión." },
-  { num: "3", texto: "Acceso prioritario a futuras ediciones y nuevos contenidos ejecutivos de VictorIA." },
+  { num: "1", texto: "Masterclass de Creación de Contenido con IA: Tu equipo aprende a crear avatares, videos creativos y profesionales, y piezas de diseño gráfico." },
+  { num: "2", texto: "Consultoría de 2 horas de marketing, IA y ventas para tu marca o negocio." },
+  { num: "3", texto: "3 prompts maestros para ti como líder / director." },
 ];
 
 const PROBLEMAS = [
@@ -159,7 +159,7 @@ export default function VictoriaElitePage() {
                 Disponible sólo para la Lista de Espera Fundadora
               </p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Unirte antes de las formaciones online del 7, 9 y 14 de septiembre.
+                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Unirte antes del 30 de agosto.
               </h2>
               <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
                 Al unirte a la lista de espera de VictorIA Elite, recibe:
