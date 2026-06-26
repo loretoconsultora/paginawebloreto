@@ -85,7 +85,7 @@ export default function VictoriaJovenPage() {
           <div className="absolute -top-24 -left-16 w-80 h-80 rounded-full pointer-events-none" style={{ background: ACCENT, opacity: 0.16, filter: "blur(90px)" }} />
           <div className="absolute top-10 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.14, filter: "blur(100px)" }} />
           <div className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#6A8AFF", opacity: 0.12, filter: "blur(90px)" }} />
-          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -141,10 +141,10 @@ export default function VictoriaJovenPage() {
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden"
-              style={{ aspectRatio: "1 / 1" }}
+              className="relative w-full lg:-mr-10"
+              style={{ aspectRatio: "4 / 3" }}
             >
-              <Image src="/victoria-academy/hero-joven.png" alt="VictorIA Joven" fill className="object-cover" />
+              <Image src="/victoria-academy/hero-joven.png" alt="VictorIA Joven" fill className="object-contain" />
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
