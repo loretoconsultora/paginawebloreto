@@ -19,8 +19,8 @@ const PRECIO = "$2,850 USD ($49,875 MXN) por grupo de hasta 15 personas — $190
 
 const BARRERA = [
   { num: "01", texto: "Antes necesitabas un departamento de TI. Hoy basta con tu equipo actual y el criterio correcto para usar la IA." },
-  { num: "02", texto: "Antes capacitar a tu equipo tomaba meses. Hoy se logra en un solo entrenamiento de 6.5 horas." },
-  { num: "03", texto: "Antes la IA era solo para \"los técnicos\". Hoy cualquier colaborador la usa para producir más y mejor." },
+  { num: "02", texto: "Antes capacitar a tu equipo tomaba meses. Hoy se logra en un solo entrenamiento que termina con un portafolio de entregables." },
+  { num: "03", texto: "Antes la IA era solo para \"empresas grandes\". Hoy cualquier rubro puede usarla para producir más y mejor." },
 ];
 
 const BONOS = [
@@ -204,9 +204,9 @@ export default function VictoriaProfesionalPage() {
         </section>
 
         {/* La barrera de entrada desapareció */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#445055" }}>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
+          <div className="max-w-6xl mx-auto text-left">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#67C6C8" }}>
               La barrera de entrada desapareció
             </p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
@@ -219,15 +219,15 @@ export default function VictoriaProfesionalPage() {
               {BARRERA.map((b) => (
                 <motion.div
                   key={b.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                  className="rounded-2xl p-6"
+                  className="rounded-2xl p-6 text-left"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
-                  <p className="font-extrabold text-3xl mb-4" style={{ color: ACCENT }}>{b.num}</p>
+                  <p className="font-extrabold text-3xl mb-4" style={{ color: "#67C6C8" }}>{b.num}</p>
                   <p className="text-sm leading-relaxed text-white" style={{ opacity: 0.85 }}>{b.texto}</p>
                 </motion.div>
               ))}
             </div>
-            <p className="font-extrabold text-xl sm:text-2xl text-white" style={{ lineHeight: 1.3 }}>
+            <p className="text-sm sm:text-base font-bold text-white text-center" style={{ opacity: 0.9 }}>
               88% de las organizaciones usa IA, solo 1% ha alcanzado madurez.
             </p>
           </div>
