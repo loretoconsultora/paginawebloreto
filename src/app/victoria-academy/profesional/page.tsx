@@ -36,15 +36,15 @@ const PROBLEMAS = [
 ];
 
 const SENTIMIENTOS = [
-  { titulo: "Te sentirás capaz", texto: "Descubrirás que no necesitas ser técnico para usar IA con criterio. Tu equipo también puede." },
-  { titulo: "Te sentirás en control", texto: "La presión de no saber por dónde empezar desaparece. Sales con un plan claro y específico." },
-  { titulo: "Te sentirás respaldado", texto: "Ya no dependes de adivinar — tienes un roadmap y prompts probados para tu trabajo real." },
+  { titulo: "Capaz", texto: "No necesitas ser técnico para usar IA. Tu equipo también puede co crear con visión, identidad y criterio para implementar." },
+  { titulo: "En control", texto: "La presión de no saber por dónde empezar desaparece. Cada participante sale con un plan claro y herramientas listas para usar." },
+  { titulo: "Respaldado", texto: "Existe un acompañamiento antes, durante y después del taller para garantizar resultados medibles y escalables." },
 ];
 
 const CAPACIDADES = [
-  { icon: Library, titulo: "Construir tu Biblioteca Personal de 10 Prompts", texto: "Documentada y lista para usar el lunes siguiente, en tu trabajo específico." },
-  { icon: ScrollText, titulo: "Automatizar tu tarea más repetitiva", texto: "Una SOP rediseñada con IA incorporada, que cualquiera de tu equipo puede replicar." },
-  { icon: MapIcon, titulo: "Tener un AI Roadmap de 18-36 meses", texto: "Tu hoja de ruta de transformación, con métricas de éxito para tu contexto real." },
+  { icon: Library, titulo: "Construir su Biblioteca Personal de Prompts maestros", texto: "Documentada y lista para usar." },
+  { icon: ScrollText, titulo: "Automatizar su tarea más repetitiva", texto: "Una web, herramienta digital, o app diseñada con IA incorporada 100% funcional." },
+  { icon: MapIcon, titulo: "Tener una hoja de ruta para los siguientes 6-12 meses", texto: "Sistema de métricas para evaluar el éxito de sus herramientas y la claridad de cómo crear nuevas en el futuro." },
 ];
 
 const SI_ES = [
@@ -300,7 +300,7 @@ export default function VictoriaProfesionalPage() {
                 <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: HEAD }}>
                   <CheckCircle2 size={18} className="text-white" />
                 </div>
-                <h3 className="font-extrabold text-xl sm:text-2xl tracking-tight" style={{ color: HEAD }}>Lo que va a poder hacer después</h3>
+                <h3 className="font-extrabold text-xl sm:text-2xl tracking-tight" style={{ color: HEAD }}>Lo que van a poder hacer después</h3>
               </div>
               <div className="flex flex-col gap-5">
                 {CAPACIDADES.map((c) => (
