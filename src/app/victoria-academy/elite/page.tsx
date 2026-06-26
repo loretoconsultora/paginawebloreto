@@ -326,14 +326,14 @@ export default function VictoriaElitePage() {
         </div>
 
         {/* Cierre final */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0d1217" }}>
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Decisión final</p>
-              <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6A8AFF" }}>Decisión final</p>
+              <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight text-white" style={{ lineHeight: 1.1 }}>
                 Tu competencia no está esperando.
               </h2>
-              <p className="text-base leading-relaxed mb-8" style={{ color: HEAD, opacity: 0.8 }}>
+              <p className="text-base leading-relaxed mb-8 text-white" style={{ opacity: 0.8 }}>
                 Aprende a operar y crecer con IA. Ya puedes aprender a hacerlo con un sólo programa y pasar de la urgencia y reactividad a la verdadera proactividad. Co crea el futuro de tu organización con tu propio sistema y la más última tecnología.
               </p>
               <button
