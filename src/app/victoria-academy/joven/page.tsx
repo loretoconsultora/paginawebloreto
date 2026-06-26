@@ -343,21 +343,31 @@ export default function VictoriaJovenPage() {
 
         {/* Cierre final */}
         <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Decisión final</p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
-              Otros colegios ya están formando a su primera generación IA.
-            </h2>
-            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: HEAD, opacity: 0.8 }}>
-              Mientras algunas instituciones siguen debatiendo si prohibir o permitir la IA, otras ya están formando el criterio de sus alumnos para usarla bien. Una sola sesión puede posicionar a tu colegio como referente de innovación real.
-            </p>
-            <a
-              href="#solicitud"
-              className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
-            >
-              Solicitar información para mi colegio →
-            </a>
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Decisión final</p>
+              <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
+                Otros colegios ya están formando a su primera generación IA.
+              </h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: HEAD, opacity: 0.8 }}>
+                Aprende a operar y crecer con IA. Ya puedes aprender a hacerlo con un sólo programa y pasar de la urgencia y reactividad a la verdadera proactividad. Co crea el futuro de tu institución con tu propio sistema y la más última tecnología.
+              </p>
+              <a
+                href="#solicitud"
+                className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
+                style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
+              >
+                Solicitar información para mi colegio →
+              </a>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}>
+              <Image
+                src="/victoria-academy/decision-final-joven.png"
+                alt="Estudiantes de VictorIA Joven trabajando con IA"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </section>
 

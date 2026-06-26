@@ -63,7 +63,7 @@ const NO_ES = [
 ];
 
 const FAQS = [
-  { q: "¿De verdad necesito 6.5 horas completas?", a: "Sí — es lo que toma construir, no solo explicar, los 3 entregables que tu equipo se lleva. Repartimos la sesión en bloques con descansos para que el aprendizaje se quede." },
+  { q: "¿De verdad necesito 6.5 horas completas?", a: "Sí — es lo que toma construir, no solo explicar, los entregables que tu equipo se lleva. Repartimos la sesión en bloques con descansos, puedes distribuir la duración total en 1, 2 o 3 días." },
   { q: "¿Mi equipo necesita saber de tecnología?", a: "No. El taller está diseñado para personas sin background técnico. Trabajamos con su caso real, sin código y sin tecnicismos." },
   { q: "¿Qué pasa después del taller?", a: "Incluye 30 días de seguimiento estructurado y acceso a la comunidad VictorIA Profesional, para que la transformación no se quede en el salón." },
   { q: "¿Aplica para mi tipo de organización?", a: "Sí. Hemos trabajado con empresas, hospitales e instituciones académicas — el taller se adapta al caso real de cada grupo." },
@@ -439,21 +439,31 @@ export default function VictoriaProfesionalPage() {
 
         {/* Cierre final */}
         <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Decisión final</p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
-              Tu competencia no está esperando.
-            </h2>
-            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: HEAD, opacity: 0.8 }}>
-              Mientras otros equipos ya recuperan horas semanales por persona, el tuyo puede seguir igual o dar el paso hoy. Una sola sesión puede cambiar cómo trabaja tu gente de aquí a 18 meses.
-            </p>
-            <a
-              href="#solicitud"
-              className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
-              style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
-            >
-              Solicitar información para mi equipo →
-            </a>
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Decisión final</p>
+              <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
+                Tu competencia no está esperando.
+              </h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: HEAD, opacity: 0.8 }}>
+                Aprende a operar y crecer con IA. Ya puedes aprender a hacerlo con un sólo programa y pasar de la urgencia y reactividad a la verdadera proactividad. Co crea el futuro de tu organización con tu propio sistema y la más última tecnología.
+              </p>
+              <a
+                href="#solicitud"
+                className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
+                style={{ background: GRADIENT, boxShadow: `0 12px 32px ${ACCENT}40` }}
+              >
+                Solicitar información para mi equipo →
+              </a>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}>
+              <Image
+                src="/victoria-academy/decision-final-profesional.png"
+                alt="Equipo de VictorIA Profesional trabajando con IA"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </section>
 
