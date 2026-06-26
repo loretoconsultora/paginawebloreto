@@ -106,14 +106,14 @@ export default function VictoriaProfesionalPage() {
                 className="text-base sm:text-lg leading-relaxed mb-4"
                 style={{ color: GRIS, opacity: 0.85 }}
               >
-                Tu equipo aprende a usar la inteligencia artificial para automatizar tareas repetitivas y tomar decisiones con más criterio.
+                Tu equipo aprende a usar la inteligencia artificial para automatizar tareas, elaborar proyectos, crear sus propias herramientas y tomar decisiones sin depender de ti.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-sm leading-relaxed mb-6"
                 style={{ color: GRIS, opacity: 0.7 }}
               >
-                En este programa vive la experiencia de co crear con la IA para transformar la forma en que tu equipo trabaja, y logra entregables reales en un solo taller de 6.5 horas.
+                Este programa te ayuda a recuperar desde 10 horas semanales por persona. Tu mismo equipo, pero con súper poderes.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
@@ -129,17 +129,6 @@ export default function VictoriaProfesionalPage() {
                     <span>Formación Grupal</span>
                   </p>
                 </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.32 }}
-                className="flex items-center gap-2 mb-6"
-              >
-                <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0" style={{ border: `1px solid ${ACCENT}40` }}>
-                  <Image src="/loreto-directora.jpg" alt="Any Villegas" width={28} height={28} className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs" style={{ color: GRIS }}>
-                  <span className="font-bold" style={{ color: HEAD }}>EN VIVO CON</span> Any Villegas
-                </p>
               </motion.div>
               <motion.a
                 href="#solicitud"

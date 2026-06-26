@@ -131,17 +131,6 @@ export default function VictoriaElitePage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.32 }}
-                className="flex items-center gap-2 mb-6"
-              >
-                <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0" style={{ border: `1px solid ${ACCENT}40` }}>
-                  <Image src="/loreto-directora.jpg" alt="Any Villegas" width={28} height={28} className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs" style={{ color: GRIS }}>
-                  <span className="font-bold" style={{ color: HEAD }}>EN VIVO CON</span> Any Villegas
-                </p>
-              </motion.div>
               <motion.a
                 href="#solicitud"
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
