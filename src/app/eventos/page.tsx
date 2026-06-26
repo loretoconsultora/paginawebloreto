@@ -262,6 +262,18 @@ export default function EventosPage() {
                 >
                   $1,450 MXN por experiencia
                 </div>
+                <div
+                  className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-3 rounded-full"
+                  style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
+                >
+                  Bundle 2 Eventos — 10% de descuento
+                </div>
+                <div
+                  className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-3 rounded-full"
+                  style={{ background: "rgba(192,0,90,0.07)", color: "#c0005a", border: "1px solid rgba(192,0,90,0.2)" }}
+                >
+                  Total Pass 3 Eventos — 20% de descuento
+                </div>
                 <Link
                   href="/eventos/registro-art-of-brand"
                   className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 rounded-full text-white hover:opacity-90 transition-opacity"
