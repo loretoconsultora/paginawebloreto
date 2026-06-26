@@ -18,7 +18,7 @@ export default function LandingHeader({ accent, ctaLabel = "Aplicar AHORA", form
 
   return (
     <header
-      className="py-4"
+      className="py-4 sticky top-0 z-50"
       style={{ background: "#ffffff", borderBottom: "1px solid rgba(58,63,75,0.08)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
@@ -33,8 +33,8 @@ export default function LandingHeader({ accent, ctaLabel = "Aplicar AHORA", form
 
         <button
           onClick={handleClick}
-          className="inline-flex items-center gap-1.5 font-semibold px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm hover:opacity-90 transition-opacity flex-shrink-0"
-          style={{ border: `1px solid ${accent}`, color: accent }}
+          className="inline-flex items-center gap-1.5 font-semibold px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm text-white hover:opacity-90 transition-opacity flex-shrink-0"
+          style={{ background: GRADIENT }}
         >
           {ctaLabel} →
         </button>
