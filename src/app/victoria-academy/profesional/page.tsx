@@ -48,13 +48,6 @@ const CAPACIDADES = [
   { icon: MapIcon, titulo: "Tener un AI Roadmap de 18-36 meses", texto: "Tu hoja de ruta de transformación, con métricas de éxito para tu contexto real." },
 ];
 
-const SESIONES = [
-  { tag: "S0", titulo: "Activación Pre-Taller", dur: "45 min asíncrono", texto: "Video de urgencia + formulario de diagnóstico personalizado + guía técnica de configuración. Llegas listo, activado y con tu caso real identificado." },
-  { tag: "S1", titulo: "Visión: Claridad y Dirección", dur: "90 min", texto: "Panorama de IA sin tecnicismos. Mapa Personal de Oportunidades — 3 casos de uso específicos para tu rol e industria." },
-  { tag: "S2", titulo: "Identidad: El Arte de Pensar con IA", dur: "2 horas", texto: "Anatomía del prompt efectivo. Práctica intensiva con tu caso real. Construcción de tu Biblioteca Personal de 10 Prompts." },
-  { tag: "S3", titulo: "Acción Aplicada: IA en Mi Mundo", dur: "2 horas", texto: "Use-Case Workbook personalizado. SOP automatizada de tu tarea más repetitiva. AI Roadmap de 18-36 meses." },
-];
-
 const SI_ES = [
   "Tu equipo ya usa IA de forma desordenada y quieres darle criterio y dirección.",
   "Sientes que las juntas y reportes te quitan más tiempo del que deberían.",
@@ -323,34 +316,6 @@ export default function VictoriaProfesionalPage() {
                     <div>
                       <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
                       <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Sesiones */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-3xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>La experiencia del taller — 6.5 horas</h2>
-              <p className="text-sm text-center mb-8" style={{ color: HEAD, opacity: 0.6 }}>Todo en un solo precio, sin extras ocultos</p>
-              <div className="flex flex-col gap-3">
-                {SESIONES.map((s) => (
-                  <div key={s.tag} className="flex gap-4 rounded-xl p-4 bg-white" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-sm text-white" style={{ background: GRADIENT }}>
-                      {s.tag}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold text-sm" style={{ color: HEAD }}>{s.titulo}</h3>
-                        <span className="flex items-center gap-1 text-[11px]" style={{ color: HEAD, opacity: 0.5 }}>
-                          <Clock size={11} /> {s.dur}
-                        </span>
-                      </div>
-                      <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{s.texto}</p>
                     </div>
                   </div>
                 ))}

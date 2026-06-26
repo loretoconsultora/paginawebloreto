@@ -36,14 +36,6 @@ const CAPACIDADES = [
   { icon: Library, titulo: "Resolver tus contextos más frecuentes con IA", texto: "Biblioteca ejecutiva de 10 prompts: directorio, análisis de mercado, brief de equipo, evaluación de propuesta." },
 ];
 
-const SESIONES = [
-  { tag: "S0", titulo: "Activación Estratégica", dur: "45 min", texto: "Video de contexto estratégico con datos McKinsey/BCG. Módulo pregrabado exclusivo: 'Liderazgo Humano en la Transición Tecnológica'." },
-  { tag: "LAC", titulo: "Llamada de Pre-Admisión", dur: "20 min", texto: "Llamada personal con la facilitadora antes del taller, para alinear expectativas y garantizar que el programa es el fit correcto." },
-  { tag: "S1", titulo: "El Tablero del Líder", dur: "90 min", texto: "Manifiesto de Liderazgo. Panorama estratégico de IA. Mapa de Oportunidades Organizacionales. Primera Mesa de Pares." },
-  { tag: "S2", titulo: "Prompt Thinking Ejecutivo", dur: "2 horas", texto: "Prompting para decisiones estratégicas. Casos ejecutivos en vivo: análisis competitivo, reporte de directorio, brief de equipo." },
-  { tag: "S3", titulo: "El AI Roadmap Ejecutivo", dur: "2 horas", texto: "Use-Case Workbook ejecutivo. AI Roadmap de 18-36 meses en formato presentable. Mesa Redonda Final." },
-];
-
 const SI_ES = [
   "Eres directivo, CEO o dueño de negocio y sientes la presión de decidir sobre IA sin tener claridad.",
   "Quieres un grupo íntimo de pares, no un salón de 50 personas.",
@@ -221,34 +213,6 @@ export default function VictoriaElitePage() {
                   <div key={c.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
                     <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Sesiones */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-3xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>La experiencia del taller</h2>
-              <p className="text-sm text-center mb-8" style={{ color: HEAD, opacity: 0.6 }}>6.5 horas + llamada de pre-admisión personal</p>
-              <div className="flex flex-col gap-3">
-                {SESIONES.map((s) => (
-                  <div key={s.tag} className="flex gap-4 rounded-xl p-4 bg-white" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-[11px] text-white" style={{ background: GRADIENT }}>
-                      {s.tag}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold text-sm" style={{ color: HEAD }}>{s.titulo}</h3>
-                        <span className="flex items-center gap-1 text-[11px]" style={{ color: HEAD, opacity: 0.5 }}>
-                          <Clock size={11} /> {s.dur}
-                        </span>
-                      </div>
-                      <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{s.texto}</p>
-                    </div>
                   </div>
                 ))}
               </div>

@@ -36,13 +36,6 @@ const CAPACIDADES = [
   { icon: Award, titulo: "Presentar su primer pitch de 2 minutos", texto: "Comunicar su proyecto con seguridad frente a sus compañeros y la dirección del colegio." },
 ];
 
-const SESIONES = [
-  { tag: "S0", titulo: "Activación Digital", dur: "30 min asíncrono", texto: "Video cinematográfico de oportunidad histórica. Guía visual de configuración en español. La Pregunta del Manifiesto Joven." },
-  { tag: "S1", titulo: "La Generación que Llegó Primero", dur: "90 min", texto: "Apertura cinematográfica. Panorama de IA para jóvenes. Mapa de oportunidades académicas y de carrera." },
-  { tag: "S2", titulo: "El Arte de Hablar con IA con Criterio", dur: "2 horas", texto: "Honestidad académica con IA antes de la técnica. Prompting para estudiantes. Biblioteca de 10 Prompts académicos." },
-  { tag: "S3", titulo: "Mi Primer Proyecto con IA", dur: "2 horas", texto: "Diseño del proyecto de portafolio. Construcción en vivo. Preparación del pitch de 2 minutos." },
-];
-
 const SI_ES = [
   "Tu colegio quiere dar a sus alumnos una ventaja real para su futuro académico y laboral.",
   "Tus alumnos ya usan IA para tareas, pero sin criterio ni honestidad académica.",
@@ -241,34 +234,6 @@ export default function VictoriaJovenPage() {
                   <div key={c.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
                     <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Sesiones */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="max-w-3xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>La experiencia del taller — 6.5 horas</h2>
-              <p className="text-sm text-center mb-8" style={{ color: HEAD, opacity: 0.6 }}>Implementación institucional presencial</p>
-              <div className="flex flex-col gap-3">
-                {SESIONES.map((s) => (
-                  <div key={s.tag} className="flex gap-4 rounded-xl p-4 bg-white" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-sm text-white" style={{ background: GRADIENT }}>
-                      {s.tag}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold text-sm" style={{ color: HEAD }}>{s.titulo}</h3>
-                        <span className="flex items-center gap-1 text-[11px]" style={{ color: HEAD, opacity: 0.5 }}>
-                          <Clock size={11} /> {s.dur}
-                        </span>
-                      </div>
-                      <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{s.texto}</p>
-                    </div>
                   </div>
                 ))}
               </div>
