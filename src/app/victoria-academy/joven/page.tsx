@@ -11,8 +11,6 @@ import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)";
 const ACCENT = "#1f8a8c";
 const HEAD = "#1a1f24";
-const HEADFAINT = "#a7afb6";
-const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_JOVEN ?? "";
 const PRECIO = "$1,000–$1,500 USD ($17,500–$26,250 MXN) por evento, grupos de 25-30 alumnos";
@@ -90,7 +88,7 @@ export default function VictoriaJovenPage() {
               <motion.div
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
                 className="inline-flex items-center px-4 py-1.5 rounded-full mb-6 text-xs font-medium"
-                style={{ border: "1px solid rgba(58,63,75,0.18)", color: GRIS }}
+                style={{ border: "1px solid rgba(58,63,75,0.18)", color: HEAD }}
               >
                 Programa VictorIA Joven
               </motion.div>
@@ -104,14 +102,14 @@ export default function VictoriaJovenPage() {
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-base sm:text-lg leading-relaxed mb-4"
-                style={{ color: GRIS, opacity: 0.85 }}
+                style={{ color: HEAD, opacity: 0.85 }}
               >
                 Enseña a tus alumnos a usar la inteligencia artificial para construir un proyecto real con criterio y honestidad académica.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: GRIS, opacity: 0.7 }}
+                style={{ color: HEAD, opacity: 0.7 }}
               >
                 En este programa vive la experiencia de co crear con la IA para formar a la primera generación con criterio, y logra que cada alumno presente su propio proyecto documentado.
               </motion.p>
@@ -123,7 +121,7 @@ export default function VictoriaJovenPage() {
                 <CalendarDays size={18} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                 <div>
                   <p className="text-sm font-bold" style={{ color: HEAD }}>Agenda tu Entrenamiento en tu Institución</p>
-                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: GRIS, opacity: 0.6 }}>
+                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
                     <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas</span>
                     <span>Implementación presencial</span>
                     <span>Grupos de 25-30 alumnos</span>
@@ -148,7 +146,7 @@ export default function VictoriaJovenPage() {
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
-            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: GRIS, opacity: 0.4 }} />
+            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: HEAD, opacity: 0.4 }} />
           </motion.div>
         </section>
 
@@ -165,7 +163,7 @@ export default function VictoriaJovenPage() {
               </div>
               <div>
                 <p className="font-bold text-sm mb-1" style={{ color: HEAD }}>Masterclass de Creación de Contenidos con IA</p>
-                <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.8 }}>
+                <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
                   Aprende a crear avatares con IA y edición profesional para impulsar tu trabajo con creatividad. Incluido sin costo adicional al agendar en junio o julio.
                 </p>
               </div>
@@ -177,10 +175,10 @@ export default function VictoriaJovenPage() {
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El problema</p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEADFAINT, lineHeight: 1.15 }}>
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
               ¿Por qué tus alumnos usan IA sin que nadie les enseñe a usarla bien?
             </h2>
-            <p className="text-sm sm:text-base" style={{ color: GRIS, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este programa es para tu colegio.</p>
+            <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este programa es para tu colegio.</p>
           </div>
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
             {PROBLEMAS.map((p) => (
@@ -190,7 +188,7 @@ export default function VictoriaJovenPage() {
                   <XCircle size={18} style={{ color: ACCENT, opacity: 0.5 }} />
                 </div>
                 <p className="font-bold text-sm mb-1.5" style={{ color: HEAD }}>{p.titulo}</p>
-                <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{p.texto}</p>
+                <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{p.texto}</p>
               </motion.div>
             ))}
           </div>
@@ -204,7 +202,7 @@ export default function VictoriaJovenPage() {
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
                 La forma en que tus alumnos aprenden cambia aquí
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
                 Esto no es una conferencia más. Es donde tus alumnos por fin entienden cómo usar IA con criterio y honestidad académica, sin complicarse y sin saber programar. Vienen a construir en vivo su primer proyecto real con IA, frente a sus compañeros y la dirección de tu colegio.
               </p>
             </motion.div>
@@ -231,7 +229,7 @@ export default function VictoriaJovenPage() {
                 {SENTIMIENTOS.map((s) => (
                   <div key={s.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>{s.texto}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
                   </div>
                 ))}
               </div>
@@ -242,7 +240,7 @@ export default function VictoriaJovenPage() {
                 {CAPACIDADES.map((c) => (
                   <div key={c.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>{c.texto}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
                   </div>
                 ))}
               </div>
@@ -255,7 +253,7 @@ export default function VictoriaJovenPage() {
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>La experiencia del taller — 6.5 horas</h2>
-              <p className="text-sm text-center mb-8" style={{ color: GRIS, opacity: 0.6 }}>Implementación institucional presencial</p>
+              <p className="text-sm text-center mb-8" style={{ color: HEAD, opacity: 0.6 }}>Implementación institucional presencial</p>
               <div className="flex flex-col gap-3">
                 {SESIONES.map((s) => (
                   <div key={s.tag} className="flex gap-4 rounded-xl p-4 bg-white" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
@@ -265,11 +263,11 @@ export default function VictoriaJovenPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-bold text-sm" style={{ color: HEAD }}>{s.titulo}</h3>
-                        <span className="flex items-center gap-1 text-[11px]" style={{ color: GRIS, opacity: 0.5 }}>
+                        <span className="flex items-center gap-1 text-[11px]" style={{ color: HEAD, opacity: 0.5 }}>
                           <Clock size={11} /> {s.dur}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{s.texto}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{s.texto}</p>
                     </div>
                   </div>
                 ))}
@@ -285,7 +283,7 @@ export default function VictoriaJovenPage() {
             <h2 className="font-extrabold text-2xl sm:text-3xl mb-3 tracking-tight" style={{ color: HEAD, lineHeight: 1.25 }}>
               Este programa es para tu colegio si quieres formar criterio en IA, no solo permitirla o prohibirla.
             </h2>
-            <p className="text-sm" style={{ color: GRIS, opacity: 0.65 }}>Antes de avanzar, mira si VictorIA Joven encaja con lo que tu institución necesita.</p>
+            <p className="text-sm" style={{ color: HEAD, opacity: 0.65 }}>Antes de avanzar, mira si VictorIA Joven encaja con lo que tu institución necesita.</p>
           </div>
           <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div>
@@ -295,7 +293,7 @@ export default function VictoriaJovenPage() {
               </div>
               <div className="flex flex-col gap-3">
                 {SI_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: GRIS, opacity: 0.85 }}>
+                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.85 }}>
                     <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                     {t}
                   </div>
@@ -304,13 +302,13 @@ export default function VictoriaJovenPage() {
             </div>
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <XCircle size={18} style={{ color: GRIS, opacity: 0.4 }} />
-                <h3 className="font-extrabold" style={{ color: GRIS, opacity: 0.5 }}>Para quién NO es</h3>
+                <XCircle size={18} style={{ color: HEAD, opacity: 0.4 }} />
+                <h3 className="font-extrabold" style={{ color: HEAD, opacity: 0.5 }}>Para quién NO es</h3>
               </div>
               <div className="flex flex-col gap-3">
                 {NO_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: GRIS, opacity: 0.55 }}>
-                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: GRIS, opacity: 0.35 }} />
+                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.55 }}>
+                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: HEAD, opacity: 0.35 }} />
                     {t}
                   </div>
                 ))}
@@ -325,7 +323,7 @@ export default function VictoriaJovenPage() {
               style={{ background: `radial-gradient(circle at 50% 0%, ${ACCENT}12, transparent 70%)`, border: `1px solid ${ACCENT}30` }}
             >
               <p className="font-medium mb-4" style={{ color: HEAD }}>Si te reconociste en 2 o más puntos, este programa es para tu colegio.</p>
-              <p className="text-sm mb-4" style={{ color: GRIS }}>
+              <p className="text-sm mb-4" style={{ color: HEAD }}>
                 Inversión: <span className="font-bold">{PRECIO}</span>
               </p>
               <a
@@ -335,7 +333,7 @@ export default function VictoriaJovenPage() {
               >
                 Solicitar información →
               </a>
-              <p className="text-[11px] mt-3" style={{ color: GRIS, opacity: 0.6 }}>Implementación para grupo escolar completo, 25-30 alumnos.</p>
+              <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Implementación para grupo escolar completo, 25-30 alumnos.</p>
             </div>
           </motion.div>
         </section>
@@ -350,14 +348,14 @@ export default function VictoriaJovenPage() {
               <h2 className="font-extrabold text-2xl sm:text-3xl mb-2 tracking-tight" style={{ color: HEAD }}>
                 Any Villegas, <span style={{ color: ACCENT }}>Founder y CEO de Loreto Consultora</span>
               </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: HEAD, opacity: 0.8 }}>
                 Diseña VictorIA Joven como puerta de entrada institucional: un programa que tu colegio puede mostrar a las familias como evidencia de innovación real, no solo discurso.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {CREDENCIALES.map((c) => (
                   <div key={c.texto} className="flex items-start gap-3">
                     <c.icon size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-sm" style={{ color: GRIS, opacity: 0.85 }}>{c.texto}</p>
+                    <p className="text-sm" style={{ color: HEAD, opacity: 0.85 }}>{c.texto}</p>
                   </div>
                 ))}
               </div>
@@ -378,7 +376,7 @@ export default function VictoriaJovenPage() {
               <div
                 key={i}
                 className="rounded-2xl flex items-center justify-center text-center p-6"
-                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: GRIS, opacity: 0.4 }}
+                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: HEAD, opacity: 0.4 }}
               >
                 <p className="text-xs">Espacio reservado para captura de testimonio real</p>
               </div>
@@ -396,7 +394,7 @@ export default function VictoriaJovenPage() {
             <ShieldCheck size={28} style={{ color: ACCENT }} className="flex-shrink-0 mt-0.5" />
             <div>
               <h3 className="font-extrabold text-lg mb-1" style={{ color: HEAD }}>Garantía de Experiencia VictorIA</h3>
-              <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>
+              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>
                 Si el reporte institucional no refleja evidencia clara de impacto, ofrecemos una sesión adicional sin costo para cerrar esa brecha. No vendemos un taller — vendemos transformación visible y documentada.
               </p>
             </div>
@@ -405,7 +403,7 @@ export default function VictoriaJovenPage() {
           {/* FAQ */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-extrabold text-2xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>Resuelve tus dudas</h2>
-            <p className="text-sm text-center mb-6" style={{ color: GRIS, opacity: 0.6 }}>Antes de solicitar información para tu colegio</p>
+            <p className="text-sm text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>Antes de solicitar información para tu colegio</p>
             <Faq items={FAQS} accent={ACCENT} />
           </motion.div>
         </div>
@@ -417,7 +415,7 @@ export default function VictoriaJovenPage() {
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
               Otros colegios ya están formando a su primera generación IA.
             </h2>
-            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: GRIS, opacity: 0.8 }}>
+            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: HEAD, opacity: 0.8 }}>
               Mientras algunas instituciones siguen debatiendo si prohibir o permitir la IA, otras ya están formando el criterio de sus alumnos para usarla bien. Una sola sesión puede posicionar a tu colegio como referente de innovación real.
             </p>
             <a
@@ -440,7 +438,7 @@ export default function VictoriaJovenPage() {
             <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
               Solicita información para tu colegio
             </h2>
-            <p className="text-xs text-center mb-6" style={{ color: GRIS, opacity: 0.6 }}>
+            <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
               Implementación para grupo escolar completo. Venta institucional B2B.
             </p>
             <SolicitudInfoForm

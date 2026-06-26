@@ -11,8 +11,6 @@ import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)";
 const ACCENT = "#6A8AFF";
 const HEAD = "#1a1f24";
-const HEADFAINT = "#a7afb6";
-const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_ELITE_WEBHOOK ?? "";
 // Sin precio público: VictorIA Elite se maneja como lista de espera
 const PRECIO = "";
@@ -91,7 +89,7 @@ export default function VictoriaElitePage() {
               <motion.div
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
                 className="inline-flex items-center px-4 py-1.5 rounded-full mb-6 text-xs font-medium"
-                style={{ border: "1px solid rgba(58,63,75,0.18)", color: GRIS }}
+                style={{ border: "1px solid rgba(58,63,75,0.18)", color: HEAD }}
               >
                 Programa VictorIA Elite
               </motion.div>
@@ -105,14 +103,14 @@ export default function VictoriaElitePage() {
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-base sm:text-lg leading-relaxed mb-4"
-                style={{ color: GRIS, opacity: 0.85 }}
+                style={{ color: HEAD, opacity: 0.85 }}
               >
                 Aprende a usar la inteligencia artificial para tomar decisiones estratégicas y construir tu ventaja competitiva de 18-36 meses.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: GRIS, opacity: 0.7 }}
+                style={{ color: HEAD, opacity: 0.7 }}
               >
                 En este programa vive la experiencia de co crear con la IA para liderar con claridad, y logra un AI Roadmap ejecutivo presentable a tu consejo o socios.
               </motion.p>
@@ -124,7 +122,7 @@ export default function VictoriaElitePage() {
                 <CalendarDays size={18} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                 <div>
                   <p className="text-sm font-bold" style={{ color: HEAD }}>Únete a la Lista de Espera · Apertura en septiembre</p>
-                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: GRIS, opacity: 0.6 }}>
+                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
                     <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas + pre-admisión</span>
                     <span>Presencial · CDMX, MTY, GDL, QRO</span>
                     <span>Grupos de 10-12 personas</span>
@@ -149,7 +147,7 @@ export default function VictoriaElitePage() {
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
-            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: GRIS, opacity: 0.4 }} />
+            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: HEAD, opacity: 0.4 }} />
           </motion.div>
         </section>
 
@@ -157,10 +155,10 @@ export default function VictoriaElitePage() {
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El problema</p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEADFAINT, lineHeight: 1.15 }}>
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
               ¿Por qué sigues postergando la decisión sobre IA?
             </h2>
-            <p className="text-sm sm:text-base" style={{ color: GRIS, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este programa es para ti.</p>
+            <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este programa es para ti.</p>
           </div>
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
             {PROBLEMAS.map((p) => (
@@ -170,7 +168,7 @@ export default function VictoriaElitePage() {
                   <XCircle size={18} style={{ color: ACCENT, opacity: 0.5 }} />
                 </div>
                 <p className="font-bold text-sm mb-1.5" style={{ color: HEAD }}>{p.titulo}</p>
-                <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{p.texto}</p>
+                <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{p.texto}</p>
               </motion.div>
             ))}
           </div>
@@ -184,7 +182,7 @@ export default function VictoriaElitePage() {
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
                 La forma en que tu empresa decide cambia aquí
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
                 Esto no es un taller corporativo más. Es donde por fin entiendes qué decisiones tomar sobre IA, con qué prioridad, y cómo liderar la adopción sin que tu equipo se resista. Vienes a construir en vivo tu propio AI Roadmap, junto a un grupo íntimo de pares en tu mismo nivel de decisión.
               </p>
             </motion.div>
@@ -211,7 +209,7 @@ export default function VictoriaElitePage() {
                 {SENTIMIENTOS.map((s) => (
                   <div key={s.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>{s.texto}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
                   </div>
                 ))}
               </div>
@@ -222,7 +220,7 @@ export default function VictoriaElitePage() {
                 {CAPACIDADES.map((c) => (
                   <div key={c.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>{c.texto}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
                   </div>
                 ))}
               </div>
@@ -235,7 +233,7 @@ export default function VictoriaElitePage() {
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>La experiencia del taller</h2>
-              <p className="text-sm text-center mb-8" style={{ color: GRIS, opacity: 0.6 }}>6.5 horas + llamada de pre-admisión personal</p>
+              <p className="text-sm text-center mb-8" style={{ color: HEAD, opacity: 0.6 }}>6.5 horas + llamada de pre-admisión personal</p>
               <div className="flex flex-col gap-3">
                 {SESIONES.map((s) => (
                   <div key={s.tag} className="flex gap-4 rounded-xl p-4 bg-white" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
@@ -245,11 +243,11 @@ export default function VictoriaElitePage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-bold text-sm" style={{ color: HEAD }}>{s.titulo}</h3>
-                        <span className="flex items-center gap-1 text-[11px]" style={{ color: GRIS, opacity: 0.5 }}>
+                        <span className="flex items-center gap-1 text-[11px]" style={{ color: HEAD, opacity: 0.5 }}>
                           <Clock size={11} /> {s.dur}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{s.texto}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{s.texto}</p>
                     </div>
                   </div>
                 ))}
@@ -265,7 +263,7 @@ export default function VictoriaElitePage() {
             <h2 className="font-extrabold text-2xl sm:text-3xl mb-3 tracking-tight" style={{ color: HEAD, lineHeight: 1.25 }}>
               Este programa es para ti si quieres liderar la transición a IA, no improvisarla.
             </h2>
-            <p className="text-sm" style={{ color: GRIS, opacity: 0.65 }}>Antes de avanzar, mira si VictorIA Elite encaja con tu momento.</p>
+            <p className="text-sm" style={{ color: HEAD, opacity: 0.65 }}>Antes de avanzar, mira si VictorIA Elite encaja con tu momento.</p>
           </div>
           <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div>
@@ -275,7 +273,7 @@ export default function VictoriaElitePage() {
               </div>
               <div className="flex flex-col gap-3">
                 {SI_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: GRIS, opacity: 0.85 }}>
+                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.85 }}>
                     <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                     {t}
                   </div>
@@ -284,13 +282,13 @@ export default function VictoriaElitePage() {
             </div>
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <XCircle size={18} style={{ color: GRIS, opacity: 0.4 }} />
-                <h3 className="font-extrabold" style={{ color: GRIS, opacity: 0.5 }}>Para quién NO es</h3>
+                <XCircle size={18} style={{ color: HEAD, opacity: 0.4 }} />
+                <h3 className="font-extrabold" style={{ color: HEAD, opacity: 0.5 }}>Para quién NO es</h3>
               </div>
               <div className="flex flex-col gap-3">
                 {NO_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: GRIS, opacity: 0.55 }}>
-                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: GRIS, opacity: 0.35 }} />
+                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.55 }}>
+                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: HEAD, opacity: 0.35 }} />
                     {t}
                   </div>
                 ))}
@@ -306,7 +304,7 @@ export default function VictoriaElitePage() {
             >
               <p className="font-medium mb-4" style={{ color: HEAD }}>Si te reconociste en 2 o más puntos, este programa es para ti.</p>
               {PRECIO && (
-                <p className="text-sm mb-3" style={{ color: GRIS }}>
+                <p className="text-sm mb-3" style={{ color: HEAD }}>
                   Inversión: <span className="font-bold">{PRECIO}</span>
                 </p>
               )}
@@ -317,7 +315,7 @@ export default function VictoriaElitePage() {
               >
                 Unirme a la lista de espera →
               </a>
-              <p className="text-[11px] mt-3" style={{ color: GRIS, opacity: 0.6 }}>Grupos de 10-12 personas · Apertura en septiembre</p>
+              <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Grupos de 10-12 personas · Apertura en septiembre</p>
             </div>
           </motion.div>
         </section>
@@ -332,14 +330,14 @@ export default function VictoriaElitePage() {
               <h2 className="font-extrabold text-2xl sm:text-3xl mb-2 tracking-tight" style={{ color: HEAD }}>
                 Any Villegas, <span style={{ color: ACCENT }}>Founder y CEO de Loreto Consultora</span>
               </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: HEAD, opacity: 0.8 }}>
                 Asesora a directivos y dueños de negocio en su transición de liderazgo hacia la IA, con grupos íntimos y una llamada de pre-admisión personal antes de cada cohorte.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {CREDENCIALES.map((c) => (
                   <div key={c.texto} className="flex items-start gap-3">
                     <c.icon size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-sm" style={{ color: GRIS, opacity: 0.85 }}>{c.texto}</p>
+                    <p className="text-sm" style={{ color: HEAD, opacity: 0.85 }}>{c.texto}</p>
                   </div>
                 ))}
               </div>
@@ -360,7 +358,7 @@ export default function VictoriaElitePage() {
               <div
                 key={i}
                 className="rounded-2xl flex items-center justify-center text-center p-6"
-                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: GRIS, opacity: 0.4 }}
+                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: HEAD, opacity: 0.4 }}
               >
                 <p className="text-xs">Espacio reservado para captura de testimonio real</p>
               </div>
@@ -378,7 +376,7 @@ export default function VictoriaElitePage() {
             <ShieldCheck size={28} style={{ color: ACCENT }} className="flex-shrink-0 mt-0.5" />
             <div>
               <h3 className="font-extrabold text-lg mb-1" style={{ color: HEAD }}>Garantía de Experiencia VictorIA</h3>
-              <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>
+              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>
                 Si al terminar el taller no tienes un AI Roadmap usable para tu organización, te ofrecemos una sesión adicional personalizada sin costo para cerrar esa brecha. No es una garantía de devolución de dinero — es una garantía de resultado.
               </p>
             </div>
@@ -387,7 +385,7 @@ export default function VictoriaElitePage() {
           {/* FAQ */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-extrabold text-2xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>Resuelve tus dudas</h2>
-            <p className="text-sm text-center mb-6" style={{ color: GRIS, opacity: 0.6 }}>Antes de unirte a la lista de espera</p>
+            <p className="text-sm text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>Antes de unirte a la lista de espera</p>
             <Faq items={FAQS} accent={ACCENT} />
           </motion.div>
         </div>
@@ -399,7 +397,7 @@ export default function VictoriaElitePage() {
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
               Tu competencia no está esperando.
             </h2>
-            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: GRIS, opacity: 0.8 }}>
+            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: HEAD, opacity: 0.8 }}>
               Mientras otros directivos ya construyen su ventaja competitiva, tú puedes seguir postergando o asegurar tu lugar en el próximo grupo de septiembre.
             </p>
             <a
@@ -422,7 +420,7 @@ export default function VictoriaElitePage() {
             <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
               Únete a la lista de espera de VictorIA Elite
             </h2>
-            <p className="text-xs text-center mb-6" style={{ color: GRIS, opacity: 0.6 }}>
+            <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
               Grupos de 10-12 personas. Presencial en ciudades clave: CDMX, Monterrey, Guadalajara, Querétaro. Apertura en septiembre.
             </p>
             <SolicitudInfoForm

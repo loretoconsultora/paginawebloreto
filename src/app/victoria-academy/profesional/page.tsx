@@ -11,7 +11,6 @@ import SolicitudInfoForm from "@/components/victoria-academy/SolicitudInfoForm";
 const GRADIENT = "linear-gradient(135deg, #6A8AFF 0%, #3E7ECA 55%, #67C6C8 100%)";
 const ACCENT = "#3E7ECA";
 const HEAD = "#1a1f24";
-const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
 const PRECIO = "$2,850 USD ($49,875 MXN) por grupo de hasta 15 personas — $190 USD/persona";
@@ -101,7 +100,7 @@ export default function VictoriaProfesionalPage() {
               <motion.div
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
                 className="inline-flex items-center px-4 py-1.5 rounded-full mb-6 text-xs font-medium"
-                style={{ border: "1px solid rgba(58,63,75,0.18)", color: GRIS }}
+                style={{ border: "1px solid rgba(58,63,75,0.18)", color: HEAD }}
               >
                 Programa VictorIA Profesional
               </motion.div>
@@ -115,14 +114,14 @@ export default function VictoriaProfesionalPage() {
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-base sm:text-lg leading-relaxed mb-4"
-                style={{ color: GRIS, opacity: 0.85 }}
+                style={{ color: HEAD, opacity: 0.85 }}
               >
                 Tu equipo aprende a usar la inteligencia artificial para automatizar tareas, elaborar proyectos, crear sus propias herramientas y tomar decisiones sin depender de ti.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: GRIS, opacity: 0.7 }}
+                style={{ color: HEAD, opacity: 0.7 }}
               >
                 Este programa te ayuda a recuperar desde 10 horas semanales por persona. Tu mismo equipo, pero con súper poderes.
               </motion.p>
@@ -133,8 +132,8 @@ export default function VictoriaProfesionalPage() {
               >
                 <CalendarDays size={18} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                 <div>
-                  <p className="text-sm font-bold" style={{ color: HEAD }}>Agenda tu Entrenamiento en tu Empresa</p>
-                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: GRIS, opacity: 0.6 }}>
+                  <p className="text-sm font-bold" style={{ color: HEAD }}>Agenda tu Entrenamiento en tu Organización</p>
+                  <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
                     <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas</span>
                     <span>Presencial o virtual</span>
                     <span>Formación Grupal</span>
@@ -159,7 +158,7 @@ export default function VictoriaProfesionalPage() {
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }} className="mt-10 text-center">
-            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: GRIS, opacity: 0.4 }} />
+            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: HEAD, opacity: 0.4 }} />
           </motion.div>
         </section>
 
@@ -175,7 +174,7 @@ export default function VictoriaProfesionalPage() {
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
                 Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Tomar la oportunidad este verano.
               </h2>
-              <p className="text-sm mb-6" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
                 Al reservar tu programa VictorIA Profesional en tu empresa, recibe:
               </p>
               <div className="space-y-4 mb-6">
@@ -188,7 +187,7 @@ export default function VictoriaProfesionalPage() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.6 }}>
+              <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.6 }}>
                 Al finalizar VictorIA Profesional te daremos las instrucciones para participar de estos bonos. Los bonos no se reasignan.
               </p>
             </div>
@@ -239,7 +238,7 @@ export default function VictoriaProfesionalPage() {
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
               ¿Por qué tu equipo sigue trabajando igual que hace años?
             </h2>
-            <p className="text-sm sm:text-base" style={{ color: GRIS, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este taller es para tu organización.</p>
+            <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este taller es para tu organización.</p>
           </div>
           <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
             {PROBLEMAS.map((p) => (
@@ -254,7 +253,7 @@ export default function VictoriaProfesionalPage() {
                   <XCircle size={20} style={{ color: ACCENT, opacity: 0.5 }} />
                 </div>
                 <p className="relative font-bold text-base mb-2" style={{ color: HEAD }}>{p.titulo}</p>
-                <p className="relative text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{p.texto}</p>
+                <p className="relative text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{p.texto}</p>
               </motion.div>
             ))}
           </div>
@@ -268,7 +267,7 @@ export default function VictoriaProfesionalPage() {
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
                 Lo que hoy te frena no es el tiempo. Es no potenciar el valor de tu equipo y herramientas
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
                 Cada persona sale de este programa con su propio pack de herramientas y un proyecto de optimización listo para aplicar en tu organización.
               </p>
             </motion.div>
@@ -284,7 +283,7 @@ export default function VictoriaProfesionalPage() {
                 {SENTIMIENTOS.map((s) => (
                   <div key={s.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{s.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>{s.texto}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{s.texto}</p>
                   </div>
                 ))}
               </div>
@@ -295,7 +294,7 @@ export default function VictoriaProfesionalPage() {
                 {CAPACIDADES.map((c) => (
                   <div key={c.titulo}>
                     <p className="text-sm font-bold mb-1" style={{ color: HEAD }}>{c.titulo}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>{c.texto}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>{c.texto}</p>
                   </div>
                 ))}
               </div>
@@ -308,7 +307,7 @@ export default function VictoriaProfesionalPage() {
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="font-extrabold text-2xl sm:text-3xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>La experiencia del taller — 6.5 horas</h2>
-              <p className="text-sm text-center mb-8" style={{ color: GRIS, opacity: 0.6 }}>Todo en un solo precio, sin extras ocultos</p>
+              <p className="text-sm text-center mb-8" style={{ color: HEAD, opacity: 0.6 }}>Todo en un solo precio, sin extras ocultos</p>
               <div className="flex flex-col gap-3">
                 {SESIONES.map((s) => (
                   <div key={s.tag} className="flex gap-4 rounded-xl p-4 bg-white" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
@@ -318,11 +317,11 @@ export default function VictoriaProfesionalPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-bold text-sm" style={{ color: HEAD }}>{s.titulo}</h3>
-                        <span className="flex items-center gap-1 text-[11px]" style={{ color: GRIS, opacity: 0.5 }}>
+                        <span className="flex items-center gap-1 text-[11px]" style={{ color: HEAD, opacity: 0.5 }}>
                           <Clock size={11} /> {s.dur}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed" style={{ color: GRIS, opacity: 0.7 }}>{s.texto}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: HEAD, opacity: 0.7 }}>{s.texto}</p>
                     </div>
                   </div>
                 ))}
@@ -338,7 +337,7 @@ export default function VictoriaProfesionalPage() {
             <h2 className="font-extrabold text-2xl sm:text-3xl mb-3 tracking-tight" style={{ color: HEAD, lineHeight: 1.25 }}>
               Este taller es para ti si quieres que tu equipo trabaje con criterio, no solo con más herramientas.
             </h2>
-            <p className="text-sm" style={{ color: GRIS, opacity: 0.65 }}>Antes de avanzar, mira si este programa encaja con lo que tu equipo necesita ahora.</p>
+            <p className="text-sm" style={{ color: HEAD, opacity: 0.65 }}>Antes de avanzar, mira si este programa encaja con lo que tu equipo necesita ahora.</p>
           </div>
           <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div>
@@ -348,7 +347,7 @@ export default function VictoriaProfesionalPage() {
               </div>
               <div className="flex flex-col gap-3">
                 {SI_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: GRIS, opacity: 0.85 }}>
+                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.85 }}>
                     <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
                     {t}
                   </div>
@@ -357,13 +356,13 @@ export default function VictoriaProfesionalPage() {
             </div>
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <XCircle size={18} style={{ color: GRIS, opacity: 0.4 }} />
-                <h3 className="font-extrabold" style={{ color: GRIS, opacity: 0.5 }}>Para quién NO es</h3>
+                <XCircle size={18} style={{ color: HEAD, opacity: 0.4 }} />
+                <h3 className="font-extrabold" style={{ color: HEAD, opacity: 0.5 }}>Para quién NO es</h3>
               </div>
               <div className="flex flex-col gap-3">
                 {NO_ES.map((t) => (
-                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: GRIS, opacity: 0.55 }}>
-                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: GRIS, opacity: 0.35 }} />
+                  <div key={t} className="flex items-start gap-2 text-sm" style={{ color: HEAD, opacity: 0.55 }}>
+                    <XCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: HEAD, opacity: 0.35 }} />
                     {t}
                   </div>
                 ))}
@@ -378,7 +377,7 @@ export default function VictoriaProfesionalPage() {
               style={{ background: `radial-gradient(circle at 50% 0%, ${ACCENT}12, transparent 70%)`, border: `1px solid ${ACCENT}30` }}
             >
               <p className="font-medium mb-4" style={{ color: HEAD }}>Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
-              <p className="text-sm mb-4" style={{ color: GRIS }}>
+              <p className="text-sm mb-4" style={{ color: HEAD }}>
                 Inversión: <span className="font-bold">{PRECIO}</span>
               </p>
               <a
@@ -388,7 +387,7 @@ export default function VictoriaProfesionalPage() {
               >
                 Solicitar información →
               </a>
-              <p className="text-[11px] mt-3" style={{ color: GRIS, opacity: 0.6 }}>Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona.</p>
+              <p className="text-[11px] mt-3" style={{ color: HEAD, opacity: 0.6 }}>Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona.</p>
             </div>
           </motion.div>
         </section>
@@ -403,14 +402,14 @@ export default function VictoriaProfesionalPage() {
               <h2 className="font-extrabold text-2xl sm:text-3xl mb-2 tracking-tight" style={{ color: HEAD }}>
                 Any Villegas, <span style={{ color: ACCENT }}>Founder y CEO de Loreto Consultora</span>
               </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: GRIS, opacity: 0.8 }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: HEAD, opacity: 0.8 }}>
                 Diseña e imparte VictorIA Academy con un enfoque consultivo: no enseña IA en abstracto, construye con cada equipo su caso real, en vivo, con entregables medibles.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {CREDENCIALES.map((c) => (
                   <div key={c.texto} className="flex items-start gap-3">
                     <c.icon size={16} className="flex-shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-sm" style={{ color: GRIS, opacity: 0.85 }}>{c.texto}</p>
+                    <p className="text-sm" style={{ color: HEAD, opacity: 0.85 }}>{c.texto}</p>
                   </div>
                 ))}
               </div>
@@ -431,7 +430,7 @@ export default function VictoriaProfesionalPage() {
               <div
                 key={i}
                 className="rounded-2xl flex items-center justify-center text-center p-6"
-                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: GRIS, opacity: 0.4 }}
+                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 160, color: HEAD, opacity: 0.4 }}
               >
                 <p className="text-xs">Espacio reservado para captura de testimonio real</p>
               </div>
@@ -449,7 +448,7 @@ export default function VictoriaProfesionalPage() {
             <ShieldCheck size={28} style={{ color: ACCENT }} className="flex-shrink-0 mt-0.5" />
             <div>
               <h3 className="font-extrabold text-lg mb-1" style={{ color: HEAD }}>Garantía de Experiencia VictorIA</h3>
-              <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.75 }}>
+              <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.75 }}>
                 Si al terminar el taller no tienes en tus manos al menos 3 entregables concretos aplicables a tu trabajo real, te ofrecemos una sesión adicional personalizada de 60 minutos sin costo adicional para cerrar esa brecha. No es una garantía de devolución de dinero — es una garantía de resultado.
               </p>
             </div>
@@ -458,7 +457,7 @@ export default function VictoriaProfesionalPage() {
           {/* FAQ */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-extrabold text-2xl text-center mb-1 tracking-tight" style={{ color: HEAD }}>Resuelve tus dudas</h2>
-            <p className="text-sm text-center mb-6" style={{ color: GRIS, opacity: 0.6 }}>Antes de solicitar información para tu equipo</p>
+            <p className="text-sm text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>Antes de solicitar información para tu equipo</p>
             <Faq items={FAQS} accent={ACCENT} />
           </motion.div>
         </div>
@@ -470,7 +469,7 @@ export default function VictoriaProfesionalPage() {
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
               Tu competencia no está esperando.
             </h2>
-            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: GRIS, opacity: 0.8 }}>
+            <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto" style={{ color: HEAD, opacity: 0.8 }}>
               Mientras otros equipos ya recuperan horas semanales por persona, el tuyo puede seguir igual o dar el paso hoy. Una sola sesión puede cambiar cómo trabaja tu gente de aquí a 18 meses.
             </p>
             <a
@@ -493,7 +492,7 @@ export default function VictoriaProfesionalPage() {
             <h2 className="font-extrabold text-xl text-center mb-1 tracking-tight" style={{ color: ACCENT }}>
               Solicita información para tu equipo
             </h2>
-            <p className="text-xs text-center mb-6" style={{ color: GRIS, opacity: 0.6 }}>
+            <p className="text-xs text-center mb-6" style={{ color: HEAD, opacity: 0.6 }}>
               Cupo máximo: 15 personas por grupo. Disponible para empresas, hospitales y escuelas.
             </p>
             <SolicitudInfoForm
