@@ -14,8 +14,7 @@ const DARK = "#171b1f";
 const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
-// TODO: precio real pendiente de confirmar — dejar vacío oculta el ancla de precio
-const PRECIO = "";
+const PRECIO = "$2,850 USD ($49,875 MXN) por grupo de hasta 15 personas — $190 USD/persona";
 
 const SENTIMIENTOS = [
   { titulo: "Te sentirás capaz", texto: "Descubrirás que no necesitas ser técnico para usar IA con criterio. Tu equipo también puede." },
@@ -248,7 +247,7 @@ export default function VictoriaProfesionalPage() {
               <p className="text-white font-medium mb-4">Si te reconociste en 2 o más puntos, este taller es para tu equipo.</p>
               {PRECIO && (
                 <p className="text-white/90 text-sm mb-3">
-                  Inversión por persona: <span className="font-bold">{PRECIO}</span>
+                  Inversión: <span className="font-bold">{PRECIO}</span>
                 </p>
               )}
               <a
@@ -364,7 +363,7 @@ export default function VictoriaProfesionalPage() {
               Solicita información para tu equipo
             </h2>
             <p className="text-xs text-center mb-6" style={{ color: GRIS, opacity: 0.5 }}>
-              Cupo máximo: 15 personas por grupo. Disponible para empresas, hospitales y escuelas.
+              Cupo máximo: 15 personas por grupo. Precio educativo preferencial desde $80 USD ($1,400 MXN) por persona para docentes e instituciones académicas.
             </p>
             <SolicitudInfoForm
               programa="VictorIA Profesional"

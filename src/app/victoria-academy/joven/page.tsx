@@ -14,8 +14,7 @@ const DARK = "#171b1f";
 const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_JOVEN ?? "";
-// TODO: precio real pendiente de confirmar — dejar vacío oculta el ancla de precio
-const PRECIO = "";
+const PRECIO = "$1,000–$1,500 USD ($17,500–$26,250 MXN) por evento, grupos de 25-30 alumnos";
 
 const SENTIMIENTOS = [
   { titulo: "Se van a sentir capaces", texto: "Descubren que no necesitan ser expertos en tecnología para usar IA con criterio." },
