@@ -14,6 +14,8 @@ const DARK = "#171b1f";
 const GRIS = "#445055";
 const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_JOVEN ?? "";
+// TODO: precio real pendiente de confirmar — dejar vacío oculta el ancla de precio
+const PRECIO = "";
 
 const SENTIMIENTOS = [
   { titulo: "Se van a sentir capaces", texto: "Descubren que no necesitan ser expertos en tecnología para usar IA con criterio." },
@@ -241,6 +243,11 @@ export default function VictoriaJovenPage() {
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto mt-10 text-center">
             <div className="rounded-2xl p-6" style={{ background: ACCENT, boxShadow: `0 12px 40px ${ACCENT}55` }}>
               <p className="text-white font-medium mb-4">Si te reconociste en 2 o más puntos, este programa es para tu colegio.</p>
+              {PRECIO && (
+                <p className="text-white/90 text-sm mb-3">
+                  Inversión: <span className="font-bold">{PRECIO}</span>
+                </p>
+              )}
               <a
                 href="#solicitud"
                 className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
@@ -275,6 +282,27 @@ export default function VictoriaJovenPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Prueba social — pendiente: subir capturas reales de testimonios */}
+        <section className="py-16 sm:py-20 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-8">
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Lo que dicen los colegios</p>
+            <h2 className="font-playfair text-2xl sm:text-3xl font-bold" style={{ color: GRIS }}>
+              Resultados reales de instituciones que ya implementaron el programa
+            </h2>
+          </div>
+          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="rounded-2xl flex items-center justify-center text-center p-6"
+                style={{ border: "1px dashed rgba(58,63,75,0.25)", minHeight: 180, color: GRIS, opacity: 0.4 }}
+              >
+                <p className="text-xs">Espacio reservado para captura de testimonio real</p>
+              </div>
+            ))}
           </div>
         </section>
 

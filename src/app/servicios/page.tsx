@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 
 const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 const BRAND_COMPASS = "https://brand-compass-pwa.vercel.app";
-const CALENDARIO = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2";
+const CALENDARIO = "https://calendly.com/hello-loretoconsultora-jott/loreto-consultora-diagnostico";
 
 const servicios = [
   {

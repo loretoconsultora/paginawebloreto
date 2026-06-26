@@ -74,7 +74,7 @@ export default function Navbar() {
             Portal
           </Link>
           <Link
-            href="https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2"
+            href="https://calendly.com/hello-loretoconsultora-jott/loreto-consultora-diagnostico"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-semibold text-white px-5 py-2 rounded-full hover:opacity-90 transition-all duration-200"
@@ -120,7 +120,7 @@ export default function Navbar() {
               Portal
             </Link>
             <Link
-              href="https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2"
+              href="https://calendly.com/hello-loretoconsultora-jott/loreto-consultora-diagnostico"
             target="_blank"
             rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}

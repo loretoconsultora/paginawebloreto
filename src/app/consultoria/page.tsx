@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const CALENDAR = "https://links.victoranza.com/widget/booking/gn3nH4IgtAreQ9jPQ7C2";
+const CALENDAR = "https://calendly.com/hello-loretoconsultora-jott/loreto-consultora-diagnostico";
 
 // ─── Planeta principal ───────────────────────────────────────────────
 const PLANET_STATES = [

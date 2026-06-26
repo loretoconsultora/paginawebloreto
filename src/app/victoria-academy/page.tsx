@@ -84,7 +84,7 @@ export default function VictoriaAcademyPage() {
         {/* Carrusel de programas */}
         <div className="py-16 sm:py-20">
           <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-center text-grafito mb-10 px-4">
-            3 Programas para Co Crear con la Inteligencia Artificial y modelar el futuro con propósito
+            3 Programas para Co Crear con la IA y modelar el futuro con propósito
           </h2>
 
           <div
