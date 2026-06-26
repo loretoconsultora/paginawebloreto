@@ -183,7 +183,7 @@ export default function VictoriaElitePage() {
               className="relative w-full"
               style={{ aspectRatio: "3 / 2" }}
             >
-              <Image src="/victoria-academy/elite.jpg" alt="Bono de la lista de espera VictorIA Elite" fill className="object-cover rounded-2xl" />
+              <Image src="/victoria-academy/bono-profesional.png" alt="Bono de la lista de espera VictorIA Elite" fill className="object-contain" />
             </motion.div>
           </div>
         </section>
