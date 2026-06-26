@@ -142,8 +142,8 @@ export default function VictoriaElitePage() {
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative w-full lg:-mr-10"
-              style={{ aspectRatio: "4 / 3" }}
+              className="relative w-full lg:scale-125 lg:-mr-10"
+              style={{ aspectRatio: "1 / 1" }}
             >
               <Image src="/victoria-academy/hero-elite.png" alt="VictorIA Elite" fill className="object-contain" />
             </motion.div>

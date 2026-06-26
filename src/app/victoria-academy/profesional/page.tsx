@@ -153,8 +153,8 @@ export default function VictoriaProfesionalPage() {
             </div>
             <motion.div
               initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative w-full lg:-mr-10"
-              style={{ aspectRatio: "4 / 3" }}
+              className="relative w-full lg:scale-125 lg:-mr-10"
+              style={{ aspectRatio: "1 / 1" }}
             >
               <Image src="/victoria-academy/hero-profesional.png" alt="VictorIA Profesional" fill className="object-contain" />
             </motion.div>
@@ -166,8 +166,8 @@ export default function VictoriaProfesionalPage() {
 
         {/* Bono de inscripción */}
         <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#fafbfc" }}>
-          <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full pointer-events-none" style={{ background: "#6A8AFF", opacity: 0.14, filter: "blur(100px)" }} />
-          <div className="absolute bottom-0 -right-16 w-96 h-96 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.16, filter: "blur(100px)" }} />
+          <div className="absolute top-1/4 -right-10 w-96 h-96 rounded-full pointer-events-none" style={{ background: "#67C6C8", opacity: 0.18, filter: "blur(100px)" }} />
+          <div className="absolute -bottom-16 left-10 w-72 h-72 rounded-full pointer-events-none" style={{ background: "#6A8AFF", opacity: 0.12, filter: "blur(90px)" }} />
           <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
@@ -196,7 +196,7 @@ export default function VictoriaProfesionalPage() {
             <motion.div
               initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="relative w-full"
-              style={{ aspectRatio: "1 / 1" }}
+              style={{ aspectRatio: "3 / 2" }}
             >
               <Image src="/victoria-academy/bono-profesional.png" alt="Bono de inscripción VictorIA Profesional" fill className="object-contain" />
             </motion.div>
