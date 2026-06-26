@@ -459,13 +459,15 @@ export default function VictoriaProfesionalPage() {
                 Solicitar información para mi equipo →
               </button>
             </div>
-            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}>
-              <Image
-                src="/victoria-academy/decision-final-profesional.png"
-                alt="Equipo de VictorIA Profesional trabajando con IA"
-                fill
-                className="object-cover"
-              />
+            <div className="rounded-2xl bg-white p-3 sm:p-4" style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.25)" }}>
+              <div className="relative rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                <Image
+                  src="/victoria-academy/decision-final-profesional.png"
+                  alt="Equipo de VictorIA Profesional trabajando con IA"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>
