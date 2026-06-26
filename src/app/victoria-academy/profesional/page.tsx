@@ -17,6 +17,12 @@ const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_PROFESIONAL ?? "";
 const PRECIO = "$2,850 USD ($49,875 MXN) por grupo de hasta 15 personas — $190 USD/persona";
 
+const BARRERA = [
+  { num: "01", texto: "Antes necesitabas un departamento de TI. Hoy basta con tu equipo actual y el criterio correcto para usar la IA." },
+  { num: "02", texto: "Antes capacitar a tu equipo tomaba meses. Hoy se logra en un solo entrenamiento de 6.5 horas." },
+  { num: "03", texto: "Antes la IA era solo para \"los técnicos\". Hoy cualquier colaborador la usa para producir más y mejor." },
+];
+
 const BONOS = [
   { num: "1", texto: "Masterclass de Creación de Contenido con IA: Tu equipo aprende a crear avatares, videos creativos y profesionales, y piezas de diseño gráfico." },
   { num: "2", texto: "Consultoría de 2 horas de marketing, IA y ventas para tu marca o negocio." },
@@ -192,6 +198,36 @@ export default function VictoriaProfesionalPage() {
             >
               <Image src="/victoria-academy/bono-profesional.jpg" alt="Bono de inscripción VictorIA Profesional" fill className="object-cover" />
             </motion.div>
+          </div>
+        </section>
+
+        {/* La barrera de entrada desapareció */}
+        <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#445055" }}>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+              La barrera de entrada desapareció
+            </p>
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
+              La IA de hoy no requiere que seas experto para aprovecharla.
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed mb-12" style={{ color: "#ffffff", opacity: 0.7 }}>
+              Hoy hay una forma accesible y rápida de potenciar los talentos y experiencia de tus colaboradores. Y las ganancias de esa productividad está al alcance de cualquier organización que dedique sólo 6.5 horas... incluso si aún no tiene claro totalmente cómo usar la IA.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+              {BARRERA.map((b) => (
+                <motion.div
+                  key={b.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                  className="rounded-2xl p-6"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  <p className="font-extrabold text-3xl mb-4" style={{ color: ACCENT }}>{b.num}</p>
+                  <p className="text-sm leading-relaxed text-white" style={{ opacity: 0.85 }}>{b.texto}</p>
+                </motion.div>
+              ))}
+            </div>
+            <p className="font-extrabold text-xl sm:text-2xl text-white" style={{ lineHeight: 1.3 }}>
+              88% de las organizaciones usa IA, solo 1% ha alcanzado madurez.
+            </p>
           </div>
         </section>
 
