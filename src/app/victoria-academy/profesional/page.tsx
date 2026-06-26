@@ -262,26 +262,15 @@ export default function VictoriaProfesionalPage() {
 
         {/* Lo que te vas a llevar */}
         <section className="py-16 sm:py-20 px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
-            <motion.div initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Lo que te vas a llevar</p>
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El cambio empieza contigo</p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.1 }}>
-                La forma en que tu equipo trabaja cambia aquí
+                Lo que hoy te frena no es el tiempo. Es no potenciar el valor de tu equipo y herramientas
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: GRIS, opacity: 0.8 }}>
-                Esto no es un taller más. Es donde tu equipo por fin entiende qué hacer para trabajar más rápido y con más criterio, sin complicarse y sin ser experto en tecnología. Vienen a construir en vivo cómo la IA hace por ellos lo que antes tomaba horas.
+                Cada persona sale de este programa con su propio pack de herramientas y un proyecto de optimización listo para aplicar en tu organización.
               </p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative flex justify-center">
-              <div className="relative w-full max-w-xs rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(58,63,75,0.1)" }}>
-                <Image src="/loreto-directora.jpg" alt="Any Villegas — Founder y CEO de Loreto Consultora" width={400} height={500} className="w-full h-auto object-cover" />
-              </div>
-              <div className="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center bg-white" style={{ border: `1px solid ${ACCENT}40`, boxShadow: "0 8px 20px rgba(0,0,0,0.08)" }}>
-                <Target size={18} style={{ color: ACCENT }} />
-              </div>
-              <div className="absolute bottom-10 -right-3 w-11 h-11 rounded-full flex items-center justify-center bg-white" style={{ border: `1px solid ${ACCENT}40`, boxShadow: "0 8px 20px rgba(0,0,0,0.08)" }}>
-                <Zap size={16} style={{ color: ACCENT }} />
-              </div>
             </motion.div>
           </div>
         </section>
