@@ -29,7 +29,7 @@ export default function SolicitudInfoForm({
   submitLabel = "Reservar mi lugar →",
   waitlistNote,
 }: Props) {
-  const [form, setForm] = useState({ nombre: "", correo: "", lada: "52", telefono: "", seleccion: "" });
+  const [form, setForm] = useState({ nombre: "", empresa: "", ciudad: "", correo: "", lada: "52", telefono: "", seleccion: "" });
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -46,6 +46,8 @@ export default function SolicitudInfoForm({
           body: JSON.stringify({
             programa,
             nombre: form.nombre,
+            empresa: form.empresa,
+            ciudad: form.ciudad,
             correo: form.correo,
             lada: form.lada,
             telefono: form.telefono,
@@ -92,6 +94,8 @@ export default function SolicitudInfoForm({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input required name="nombre" placeholder="¿Cómo te llamas? *" value={form.nombre} onChange={handleChange} className={inputClass} style={{ color: "#445055" }} />
+      <input required name="empresa" placeholder="Nombre de la Empresa o Institución *" value={form.empresa} onChange={handleChange} className={inputClass} style={{ color: "#445055" }} />
+      <input required name="ciudad" placeholder="Ciudad *" value={form.ciudad} onChange={handleChange} className={inputClass} style={{ color: "#445055" }} />
       <input required name="correo" type="email" placeholder="Tu mejor correo electrónico *" value={form.correo} onChange={handleChange} className={inputClass} style={{ color: "#445055" }} />
       <div className="flex gap-2">
         <div className="flex items-center gap-1 rounded-xl border border-gray-200 px-3 py-2.5 w-24 flex-shrink-0">
