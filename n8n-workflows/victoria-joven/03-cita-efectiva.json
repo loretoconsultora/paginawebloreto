@@ -1,0 +1,130 @@
+{
+  "name": "VictorIA Joven - 03 Cita Efectiva",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "victoria-academy-joven-monday-status",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000001",
+      "name": "Webhook Monday Status",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "victoria-academy-joven-monday-status"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            { "leftValue": "={{$json.body.challenge}}", "rightValue": "", "operator": { "type": "string", "operation": "exists" } }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000002",
+      "name": "¿Es Handshake de Monday?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { challenge: $json.body.challenge } }}",
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000003",
+      "name": "Responder Challenge",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 220]
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000004",
+      "name": "Responder OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 380]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            { "leftValue": "={{$json.body.event.columnId}}", "rightValue": "status_lead", "operator": { "type": "string", "operation": "equals" } },
+            { "leftValue": "={{$json.body.event.value?.label?.text}}", "rightValue": "Cita Efectiva", "operator": { "type": "string", "operation": "equals" } }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000005",
+      "name": "¿Cambió a Cita Efectiva?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 460]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.monday.com/v2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [{ "name": "Content-Type", "value": "application/json" }] },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: \"query($itemId: [ID!]) { items(ids: $itemId) { name column_values(ids: [\\\"text_correo\\\"]) { text } } }\", variables: { itemId: [$json.body.event.pulseId] } }) }}",
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000006",
+      "name": "Obtener Datos del Item",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 460],
+      "credentials": { "httpHeaderAuth": { "id": "TODO", "name": "Monday API Token" } }
+    },
+    {
+      "parameters": {
+        "fromEmail": "hello@loretoconsultora.lat",
+        "toEmail": "={{$json.data.items[0].column_values[0].text}}",
+        "subject": "Gracias por estar en tu sesión de hoy — VictorIA Joven",
+        "emailFormat": "html",
+        "html": "=<div style=\"font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#445055;\"><div style=\"background:linear-gradient(135deg,#6A8AFF 0%,#1f8a8c 55%,#67C6C8 100%);padding:24px;border-radius:12px 12px 0 0;text-align:center;\"><h2 style=\"color:#fff;margin:0;font-family:Georgia,serif;\">¡Gracias por tu tiempo!</h2></div><div style=\"border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:24px;\"><p>Hola {{$json.data.items[0].name}},</p><p>Gracias por estar hoy en tu sesión de VictorIA Joven. Fue un gusto conocerte y conocer más sobre tu negocio.</p><p>Nuestro equipo te contactará en breve con los siguientes pasos.</p><p style=\"font-size:13px;margin-top:24px;\"><strong>Paola Gutiérrez</strong> — Coordinadora VictorIA Academy<br/>Tel/WhatsApp: +52 1 993 167 8824<br/>Correo: hello@loretoconsultora.lat</p></div></div>",
+        "options": {}
+      },
+      "id": "33333333-0000-4000-8000-000000000007",
+      "name": "Email Agradecimiento",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [1120, 460],
+      "credentials": { "smtp": { "id": "TODO", "name": "SMTP Loreto" } }
+    },
+    {
+      "parameters": { "respondWith": "noData", "options": {} },
+      "id": "33333333-0000-4000-8000-000000000008",
+      "name": "Responder OK Final",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1340, 460]
+    }
+  ],
+  "connections": {
+    "Webhook Monday Status": { "main": [[{ "node": "¿Es Handshake de Monday?", "type": "main", "index": 0 }]] },
+    "¿Es Handshake de Monday?": { "main": [[{ "node": "Responder Challenge", "type": "main", "index": 0 }], [{ "node": "¿Cambió a Cita Efectiva?", "type": "main", "index": 0 }]] },
+    "¿Cambió a Cita Efectiva?": { "main": [[{ "node": "Obtener Datos del Item", "type": "main", "index": 0 }], [{ "node": "Responder OK", "type": "main", "index": 0 }]] },
+    "Obtener Datos del Item": { "main": [[{ "node": "Email Agradecimiento", "type": "main", "index": 0 }]] },
+    "Email Agradecimiento": { "main": [[{ "node": "Responder OK Final", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "active": false
+}
