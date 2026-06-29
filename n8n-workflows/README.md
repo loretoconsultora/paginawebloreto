@@ -1,33 +1,52 @@
 # Workflows de n8n — VictorIA Academy
 
-Estos 9 archivos son workflows de n8n listos para **importar** (Workflows → Import from File) para los 3 programas de VictorIA Academy: Profesional, Elite y Joven. Cada programa tiene 3 workflows que cubren todo el flujo descrito:
+Workflows de n8n listos para **importar** (Workflows → Import from File) para los 3 programas de VictorIA Academy.
 
-| Archivo | Qué hace |
+- **Profesional** y **Joven** sí agendan llamada por Calendly → tienen 3 workflows cada uno.
+- **Elite** hoy **no** tiene Calendly conectado en su landing (no hay cita real, solo lista de espera) → tiene un solo workflow.
+
+| Carpeta / Archivo | Qué hace |
 |---|---|
-| `01-registro.json` | Recibe el webhook del formulario de la landing → crea el item en el tablero de Monday del programa → envía correo HTML interno avisando del nuevo lead. |
-| `02-confirmacion-cita-calendly.json` | Se dispara cuando el lead agenda su llamada en Calendly (evento `invitee.created`) → actualiza el item en Monday con la cita → envía al lead el correo HTML de confirmación (día, hora, link de Google Meet, link para agregar a su calendario, datos de contacto) → avisa internamente → programa los dos recordatorios (24h y 2h antes) usando nodos `Wait`. |
-| `03-cita-efectiva.json` | Escucha el webhook de cambios de columna de Monday → si el estatus cambia manualmente a **"Cita Efectiva"**, envía el correo de agradecimiento por la sesión. |
+| `victoria-profesional/01-registro.json`, `victoria-joven/01-registro.json` | Webhook del formulario → crea el item en Monday → correo HTML interno de nuevo lead (a `hello@loretoconsultora.lat` y `paola.gv.victoranza@gmail.com`). |
+| `victoria-profesional/02-confirmacion-cita-calendly.json`, `victoria-joven/02-confirmacion-cita-calendly.json` | Se dispara cuando el lead agenda en Calendly (`invitee.created`) → actualiza el item en Monday con la cita → correo de confirmación al lead (día, hora, Google Meet, link para agregar a calendario, datos de contacto) → aviso interno → programa los recordatorios de 24h y 2h antes con nodos `Wait`. |
+| `victoria-profesional/03-cita-efectiva.json`, `victoria-joven/03-cita-efectiva.json` | Escucha el webhook de cambio de columna de Monday → si el estatus pasa a **"Cita Efectiva"**, envía el correo de agradecimiento por la sesión. |
+| `victoria-elite/01-registro.json` | Webhook del formulario → crea el item en Monday con estatus "Lista de Espera" → correo al lead confirmando que quedó en lista de espera (sin día/hora, ya que no hay cita) → aviso interno. **No** incluye recordatorios de 24h/2h ni el flujo de "Cita Efectiva", porque Elite no agenda citas — solo se contacta por WhatsApp manualmente. Si en el futuro Elite agenda con Calendly, dímelo y le agrego los mismos workflows 02/03 que Profesional y Joven.
 
-> **Nota sobre el paso 3 del proceso descrito:** el correo de confirmación con día/hora de la reunión solo puede enviarse **después** de que el lead agenda su llamada en Calendly (el formulario de la landing no captura fecha/hora, solo lo redirige a Calendly). Por eso separé "registro" (workflow 01) de "confirmación de cita" (workflow 02) — son dos eventos distintos en el tiempo, aunque para el usuario se sienten como un solo flujo continuo.
+> **Nota sobre el correo de confirmación de cita:** solo puede enviarse **después** de que el lead agenda en Calendly (el formulario de la landing no captura fecha/hora). Por eso "registro" (01) y "confirmación de cita" (02) son workflows separados, aunque para el usuario final se sienten como un solo flujo continuo.
 
-## Antes de activar los workflows, necesitas configurar:
+## Cómo darme las credenciales y los IDs de tablero
 
-### 1. Credencial de Monday.com
-Crea en n8n una credencial **Header Auth** llamada `Monday API Token`:
-- Header name: `Authorization`
-- Header value: tu API token de Monday (Avatar → Administration → API)
+**Las credenciales (token de Monday, usuario/contraseña SMTP) nunca se guardan dentro del archivo del workflow** — n8n las guarda cifradas por separado, y el workflow solo las referencia por nombre. Así que no hace falta (ni sirve) pegármelas a mí; se configuran directamente en la app de n8n:
 
-### 2. Credencial SMTP
-Crea una credencial **SMTP** llamada `SMTP Loreto` con el correo desde el que se enviarán los avisos (`hello@loretoconsultora.lat` o el que prefieras). Si usas Gmail/Google Workspace necesitas una contraseña de aplicación.
+1. Entra a tu instancia de n8n → menú izquierdo **Credentials** → **+ Add Credential**.
+2. **Credencial de Monday:**
+   - Busca el tipo **"Header Auth"**.
+   - Name (nombre de la credencial): `Monday API Token` — debe llamarse exactamente así para que coincida con lo que ya referencian los workflows, o si le pones otro nombre, solo tendrás que re-seleccionarla en cada nodo HTTP Request después de importar.
+   - Header Name: `Authorization`
+   - Header Value: tu API token de Monday (lo sacas en Monday: tu avatar → **Administration** → **API**, o Perfil → **Developers** → **My access tokens**).
+3. **Credencial SMTP:**
+   - Busca el tipo **"SMTP"**.
+   - Name: `SMTP Loreto`.
+   - Host, puerto, usuario y contraseña del correo que enviará los avisos (`hello@loretoconsultora.lat` u otro). Si usas Gmail/Google Workspace, necesitas una "contraseña de aplicación", no la contraseña normal de la cuenta.
+4. Importa los workflows (paso siguiente) y en cada nodo que diga `credentials: { "id": "TODO" }` (los HTTP Request de Monday y los Email Send) selecciona la credencial real desde el dropdown — n8n te lo va a pedir automáticamente la primera vez que abras cada nodo después de importar, marcándolo en rojo si falta.
 
-### 3. IDs de tablero y de columna en Monday
-En cada archivo busca y reemplaza:
-- `TODO_BOARD_ID_VICTORIA_PROFESIONAL` / `_ELITE` / `_JOVEN` → el ID numérico del tablero correspondiente (se ve en la URL del tablero).
-- Los IDs de columna usados como ejemplo (`text_correo`, `text_telefono`, `text_empresa`, `text_ciudad`, `text_tipo_organizacion`, `status_lead`, `fecha_cita`, `text_meet_link`) son **nombres genéricos** — debes reemplazarlos por los IDs reales de tus columnas. Para verlos: abre la columna en Monday → "..." → "More options" → en la URL/API aparece el `column_id` real, o usa el endpoint `boards(ids:[ID]){columns{id title}}` en el API Playground de Monday.
-- El estatus debe tener exactamente la etiqueta `"Cita Efectiva"` para que el workflow 03 lo detecte — si tu columna usa otro texto, ajústalo en el nodo `¿Cambió a Cita Efectiva?`.
+**Lo único que sí puedes darme para que lo incluya directo en los archivos son los 3 IDs de tablero de Monday** (no son secretos, son solo números que se ven en la URL del tablero, ej. `https://tuempresa.monday.com/boards/1234567890` → el ID es `1234567890`). Pásame:
+- ID del tablero VictorIA Profesional
+- ID del tablero VictorIA Elite
+- ID del tablero VictorIA Joven
 
-### 4. Webhook de cambio de estatus en Monday (workflow 03)
-Monday no te deja crear este webhook desde la UI fácilmente — créalo vía API una vez que tengas la URL del webhook de n8n (la verás en el nodo "Webhook Monday Status" tras activar el workflow):
+y te regreso los 7 archivos con `TODO_BOARD_ID_VICTORIA_PROFESIONAL` / `_ELITE` / `_JOVEN` ya reemplazados por los IDs reales.
+
+## Otros TODOs que quedan pendientes (no son secretos, pero sí necesito que me los confirmes o los ajustes tú mismo en Monday):
+
+### IDs de columna
+Los nombres de columna usados en los workflows (`text_correo`, `text_telefono`, `text_empresa`, `text_ciudad`, `text_tipo_organizacion`, `status_lead`, `fecha_cita`, `text_meet_link`) son **genéricos** — debes reemplazarlos por los IDs reales de cada tablero. Para verlos: en Monday, abre el tablero → "..." en la columna → o usa el GraphQL Playground de Monday con `{ boards(ids:[ID]){ columns { id title } } }`. Si me pasas esa lista de columnas con sus IDs reales, te regreso los archivos ya completos también en esa parte.
+
+### Estatus exacto "Cita Efectiva"
+Para que el workflow 03 detecte el cambio, la etiqueta del estatus en Monday debe decir exactamente `"Cita Efectiva"`. Si la tuya dice distinto, dímelo y lo ajusto.
+
+### Webhook de cambio de estatus en Monday (workflow 03, Profesional/Joven)
+Una vez que tengas la URL pública del webhook de n8n (aparece en el nodo "Webhook Monday Status" después de activar el workflow), créalo en Monday vía API:
 
 ```graphql
 mutation {
@@ -39,25 +58,20 @@ mutation {
   ) { id }
 }
 ```
-Monday enviará un "challenge" la primera vez para verificar la URL — el workflow ya lo responde automáticamente (nodo "Responder Challenge").
+Monday manda un "challenge" la primera vez para verificar la URL — el workflow ya lo responde automáticamente.
 
-### 5. Webhook de Calendly (workflow 02)
+### Webhook de Calendly (workflow 02, Profesional/Joven)
 En Calendly → Integrations → Webhooks, crea una suscripción al evento **invitee.created**, filtrada por el Event Type de cada programa, apuntando a:
 ```
 https://TU-INSTANCIA-N8N.com/webhook/victoria-academy-profesional-calendly
 ```
-(sustituye `profesional` por `elite`/`joven` según el archivo).
+(sustituye `profesional` por `joven` según el archivo).
 
-> **Importante para VictorIA Elite:** el código actual de la landing (`src/app/victoria-academy/elite/page.tsx`) tiene `calendlyUrl=""` — es decir, hoy Elite no muestra botón de Calendly tras el registro. Si quieres que Elite siga este mismo flujo de cita + recordatorios, hay que configurar `NEXT_PUBLIC_CALENDLY_ELITE` en el sitio y pasar esa URL al formulario (igual que Profesional/Joven). Si no, el workflow 02/03 de Elite quedará sin disparador real hasta que se haga ese cambio.
-
-### 6. URLs de los webhooks de registro (workflow 01)
+### URLs de los webhooks de registro (workflow 01, los 3 programas)
 Deben coincidir con las variables de entorno ya usadas en el sitio:
 - `NEXT_PUBLIC_N8N_VICTORIA_PROFESIONAL_WEBHOOK` → URL del webhook de `victoria-profesional/01-registro.json`
 - `NEXT_PUBLIC_N8N_VICTORIA_ELITE_WEBHOOK` → URL del webhook de `victoria-elite/01-registro.json`
 - `NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK` → URL del webhook de `victoria-joven/01-registro.json`
 
-### 7. Segundo correo interno (paso 4 del proceso)
-Mencionaste un segundo correo además de `hello@loretoconsultora.lat` pero no llegó la dirección — por ahora todos los avisos internos solo van a `hello@loretoconsultora.lat`. Si me das la segunda dirección la agrego a los nodos `Notificación Interna...` (o puedes añadirla tú mismo separando direcciones con coma en el campo "To Email" de esos nodos).
-
 ## Activar
-Una vez configurado todo lo anterior, activa los 3 workflows de cada carpeta (toggle "Active" arriba a la derecha en n8n).
+Una vez configurado todo lo anterior, activa cada workflow (toggle "Active" arriba a la derecha en n8n).

@@ -88,7 +88,7 @@
     {
       "parameters": {
         "fromEmail": "hello@loretoconsultora.lat",
-        "toEmail": "hello@loretoconsultora.lat",
+        "toEmail": "hello@loretoconsultora.lat, paola.gv.victoranza@gmail.com",
         "subject": "=Cita agendada — VictorIA Profesional — {{$('Extraer Datos Calendly').item.json.nombre}}",
         "emailFormat": "html",
         "html": "=<div style=\"font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#445055;\"><h3>Cita agendada vía Calendly</h3><p><strong>{{$('Extraer Datos Calendly').item.json.nombre}}</strong> ({{$('Extraer Datos Calendly').item.json.correo}}) agendó su llamada de aplicación para el {{ new Date($('Extraer Datos Calendly').item.json.inicio).toLocaleString('es-MX', { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/Mexico_City' }) }}.</p><p>Link de Meet: <a href=\"{{$('Extraer Datos Calendly').item.json.meetLink}}\">{{$('Extraer Datos Calendly').item.json.meetLink}}</a></p></div>",
