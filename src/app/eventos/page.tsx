@@ -11,10 +11,9 @@ const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)
 // ─── Masterclasses ──────────────────────────────────────────────────────────
 
 const MASTERCLASSES = [
-  { titulo: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "Jueves 18 de junio", numero: "01", imagen: "/eventos/masterclass-1.png", terminada: true },
-  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Martes 23 de junio", numero: "02", imagen: "/eventos/masterclass-2.png" },
-  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Jueves 25 de junio", numero: "03", imagen: "/eventos/masterclass-3.png" },
-  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Martes 30 de junio", numero: "04", imagen: "/eventos/masterclass-4.png" },
+  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Jueves 02 de julio", numero: "02", imagen: "/eventos/masterclass-2.png" },
+  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Martes 07 de julio", numero: "03", imagen: "/eventos/masterclass-3.png" },
+  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Jueves 09 de julio", numero: "04", imagen: "/eventos/masterclass-4.png" },
 ];
 
 const HORARIOS_MASTERCLASS = [
@@ -38,7 +37,7 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
           src={m.imagen}
           alt={m.titulo}
           className="w-full h-full object-contain"
-          style={m.terminada ? { filter: "grayscale(1)" } : undefined}
+          style={undefined}
           onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = "none"; }}
         />
         <span
@@ -57,11 +56,7 @@ function MasterclassCard({ m, index }: { m: typeof MASTERCLASSES[0]; index: numb
         <span className="text-xs font-bold text-red-500 tracking-widest uppercase">En vivo</span>
         <span className="text-xs text-grafito/40 ml-1">· Instagram</span>
       </div>
-      {m.terminada && (
-        <span className="text-xs font-bold uppercase tracking-widest -mt-2" style={{ color: "#c0005a" }}>
-          Terminada
-        </span>
-      )}
+
       <h3 className="font-playfair text-base sm:text-lg font-bold text-grafito leading-snug flex-1">{m.titulo}</h3>
       <div className="flex items-center gap-2 text-sm text-grafito/60">
         <Calendar size={14} style={{ color: "#c0005a" }} />
@@ -168,7 +163,7 @@ export default function EventosPage() {
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
               className="text-xs font-semibold tracking-widest uppercase mb-4 text-white/70"
             >
-              Junio 2026
+              Julio 2026
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
@@ -203,7 +198,7 @@ export default function EventosPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
                 </span>
-                Junio 2026 · En vivo · Instagram
+                Julio 2026 · En vivo · Instagram
               </div>
               <h2
                 className="font-playfair text-4xl sm:text-5xl font-bold mb-4"
@@ -212,11 +207,11 @@ export default function EventosPage() {
                 Masterclasses
               </h2>
               <p className="text-grafito/60 text-lg leading-relaxed">
-                4 clases en vivo con nuestra Directora General <span className="font-semibold text-grafito">Any Villegas</span> para construir y posicionar tu marca personal.
+                3 clases en vivo con nuestra Directora General <span className="font-semibold text-grafito">Any Villegas</span> para construir y posicionar tu marca personal.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {MASTERCLASSES.map((m, i) => <MasterclassCard key={i} m={m} index={i} />)}
             </div>
           </div>
