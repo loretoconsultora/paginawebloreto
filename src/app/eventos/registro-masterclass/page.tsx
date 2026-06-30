@@ -28,14 +28,13 @@ const HORARIOS = [
 
 // Horario local de Ciudad de México (referencia oficial del evento, UTC-6 sin horario de verano)
 const CLASES = [
-  { id: "mc1", label: "Cómo posicionarte como especialista y dejar de competir por precio", dia: "18 de junio", inicioLocal: "20260618T193000", finLocal: "20260618T210000" },
-  { id: "mc2", label: "Cómo comenzar a crear contenido para tu marca personal", dia: "23 de junio", inicioLocal: "20260623T193000", finLocal: "20260623T210000" },
-  { id: "mc3", label: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "25 de junio", inicioLocal: "20260625T193000", finLocal: "20260625T210000" },
-  { id: "mc4", label: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "30 de junio", inicioLocal: "20260630T193000", finLocal: "20260630T210000" },
+  { id: "mc2", label: "Cómo comenzar a crear contenido para tu marca personal", dia: "02 de julio", inicioLocal: "20260702T193000", finLocal: "20260702T210000" },
+  { id: "mc3", label: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "07 de julio", inicioLocal: "20260707T193000", finLocal: "20260707T210000" },
+  { id: "mc4", label: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "09 de julio", inicioLocal: "20260709T193000", finLocal: "20260709T210000" },
 ];
 
 const BENEFICIOS = [
-  { icon: Radio, texto: "4 masterclasses en vivo por Instagram" },
+  { icon: Radio, texto: "3 masterclasses en vivo por Instagram" },
   { icon: HelpCircle, texto: "Al finalizar, 30 min extra de preguntas y respuestas solo para registrados — haz todas tus consultas de cómo aterrizar a tu marca lo visto en la sesión del día" },
   { icon: MessageCircle, texto: "Acceso a un grupo de WhatsApp con contenido exclusivo" },
 ];
@@ -180,13 +179,13 @@ export default function RegistroMasterclassPage() {
               className="font-playfair text-4xl sm:text-5xl font-bold mb-4 text-white"
               style={{ lineHeight: 1.15 }}
             >
-              Asegura tu lugar en las Masterclasses de Junio
+              Asegura tu lugar en las Masterclasses de Julio
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/85 text-base sm:text-lg leading-relaxed mb-7"
             >
-              4 clases en vivo con <span className="font-semibold text-white">Any Villegas (@anyvillegas.v)</span>, CEO &amp; Founder de Loreto Consultora, para construir y posicionar tu marca personal — completamente <span className="font-semibold text-white">GRATIS</span>.
+              3 clases en vivo con <span className="font-semibold text-white">Any Villegas (@anyvillegas.v)</span>, CEO &amp; Founder de Loreto Consultora, para construir y posicionar tu marca personal — completamente <span className="font-semibold text-white">GRATIS</span>.
             </motion.p>
 
             {/* Stack de beneficios */}
@@ -297,7 +296,7 @@ export default function RegistroMasterclassPage() {
                     Tu agenda de masterclasses
                   </p>
                   <p className="text-[11px] text-grafito/40 mb-3">
-                    Seleccionamos las 4 clases por ti, si alguna no es de tu interés, solo desmárcala 😉
+                    Seleccionamos las 3 clases por ti, si alguna no es de tu interés, solo desmárcala 😉
                   </p>
                   <div className="flex flex-col gap-2.5">
                     {CLASES.map((c, i) => {
