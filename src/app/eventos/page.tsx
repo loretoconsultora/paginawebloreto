@@ -130,9 +130,9 @@ const CIUDADES = [
     direccion: "Colonia San Rafael",
     mapsUrl: "https://maps.app.goo.gl/U3ARncK9UNJcLS8WA",
     sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Mar 7 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
-      { experiencia: "The Brand Atelier",  fecha: "Mié 8 jul", hora: "4:00 - 7:00 pm", colorExp: "#7a5800", estado: "proximamente" },
-      { experiencia: "The Brand Muse",     fecha: "Jue 9 jul", hora: "4:00 - 7:00 pm",  colorExp: "#0d6b6d", estado: "proximamente" },
+      { experiencia: "Brand & Bloom",      fecha: "Mar 7 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "lleno" },
+      { experiencia: "The Brand Atelier",  fecha: "Mié 8 jul", hora: "4:00 - 7:00 pm", colorExp: "#7a5800", estado: "lleno" },
+      { experiencia: "The Brand Muse",     fecha: "Jue 9 jul", hora: "4:00 - 7:00 pm",  colorExp: "#0d6b6d", estado: "lleno" },
     ],
   },
   {
@@ -141,9 +141,9 @@ const CIUDADES = [
     direccion: "Colonia El Refugio",
     mapsUrl: "https://maps.app.goo.gl/jMxfjyQg3ZC7cKv48",
     sesiones: [
-      { experiencia: "Brand & Bloom",      fecha: "Vie 10 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "proximamente" },
-      { experiencia: "The Brand Atelier",  fecha: "Sáb 11 jul", hora: "10:00 am - 1:00 pm", colorExp: "#7a5800", estado: "proximamente" },
-      { experiencia: "The Brand Muse",     fecha: "Sáb 11 jul", hora: "4:00 - 7:00 pm", colorExp: "#0d6b6d", estado: "proximamente" },
+      { experiencia: "Brand & Bloom",      fecha: "Vie 10 jul", hora: "4:00 - 7:00 pm", colorExp: "#c0005a", estado: "registro" },
+      { experiencia: "The Brand Atelier",  fecha: "Sáb 11 jul", hora: "10:00 am - 1:00 pm", colorExp: "#7a5800", estado: "registro" },
+      { experiencia: "The Brand Muse",     fecha: "Sáb 11 jul", hora: "4:00 - 7:00 pm", colorExp: "#0d6b6d", estado: "registro" },
     ],
   },
 ];
@@ -336,16 +336,26 @@ export default function EventosPage() {
                               <Clock size={11} style={{ color: e.color }} />
                               {sesion.hora}
                             </span>
-                            <span
-                              className="ml-auto text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0"
-                              style={
-                                sesion.estado === "cerrado"
-                                  ? { color: "#9aa0aa", background: "rgba(58,63,75,0.07)", border: "1px solid rgba(58,63,75,0.12)" }
-                                  : { color: "#c0005a", background: "rgba(192,0,90,0.08)", border: "1px solid rgba(192,0,90,0.2)" }
-                              }
-                            >
-                              {sesion.estado === "cerrado" ? "Cupo cerrado" : "Próximamente"}
-                            </span>
+                            {sesion.estado === "registro" ? (
+                              <a
+                                href="/eventos/registro-art-of-brand"
+                                className="ml-auto text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0 hover:opacity-80 transition-opacity"
+                                style={{ color: "#fff", background: "#c0005a", border: "1px solid #c0005a" }}
+                              >
+                                Regístrate →
+                              </a>
+                            ) : (
+                              <span
+                                className="ml-auto text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0"
+                                style={
+                                  sesion.estado === "lleno"
+                                    ? { color: "#c0005a", background: "rgba(192,0,90,0.07)", border: "1px solid rgba(192,0,90,0.25)" }
+                                    : { color: "#9aa0aa", background: "rgba(58,63,75,0.07)", border: "1px solid rgba(58,63,75,0.12)" }
+                                }
+                              >
+                                {sesion.estado === "lleno" ? "Cupo lleno" : "Próximamente"}
+                              </span>
+                            )}
                           </div>
                           <a
                             href={c.mapsUrl}
@@ -404,16 +414,26 @@ export default function EventosPage() {
                           <Clock size={12} style={{ color: "#c0005a" }} />
                           {s.hora}
                         </span>
-                        <span
-                          className="ml-auto text-xs font-semibold px-4 py-1.5 rounded-full flex-shrink-0"
-                          style={
-                            s.estado === "cerrado"
-                              ? { color: "#9aa0aa", background: "rgba(58,63,75,0.07)", border: "1px solid rgba(58,63,75,0.12)" }
-                              : { color: "#c0005a", background: "rgba(192,0,90,0.08)", border: "1px solid rgba(192,0,90,0.2)" }
-                          }
-                        >
-                          {s.estado === "cerrado" ? "Cupo cerrado" : "Próximamente"}
-                        </span>
+                        {s.estado === "registro" ? (
+                          <a
+                            href="/eventos/registro-art-of-brand"
+                            className="ml-auto text-xs font-semibold px-4 py-1.5 rounded-full flex-shrink-0 hover:opacity-80 transition-opacity"
+                            style={{ color: "#fff", background: "#c0005a", border: "1px solid #c0005a" }}
+                          >
+                            Regístrate →
+                          </a>
+                        ) : (
+                          <span
+                            className="ml-auto text-xs font-semibold px-4 py-1.5 rounded-full flex-shrink-0"
+                            style={
+                              s.estado === "lleno"
+                                ? { color: "#c0005a", background: "rgba(192,0,90,0.07)", border: "1px solid rgba(192,0,90,0.25)" }
+                                : { color: "#9aa0aa", background: "rgba(58,63,75,0.07)", border: "1px solid rgba(58,63,75,0.12)" }
+                            }
+                          >
+                            {s.estado === "lleno" ? "Cupo lleno" : "Próximamente"}
+                          </span>
+                        )}
                       </div>
                     ))}
                   </div>
