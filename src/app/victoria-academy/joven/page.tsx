@@ -54,7 +54,7 @@ const NO_ES = [
   "Buscas solo una conferencia de una hora sin construcción práctica.",
   "No te interesa un seguimiento ni un reporte institucional de resultados.",
   "Prefieres prohibir el uso de IA en lugar de formar criterio en tus alumnos.",
-  "No tienes 6.5 horas presenciales disponibles para el grupo.",
+  "No tienes 3 horas presenciales disponibles para el grupo.",
 ];
 
 const FAQS = [
@@ -116,7 +116,7 @@ export default function VictoriaJovenPage() {
                 <div>
                   <p className="text-sm font-bold" style={{ color: HEAD }}>Agenda tu Entrenamiento en tu Institución</p>
                   <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
-                    <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas</span>
+                    <span className="flex items-center gap-1.5"><Clock size={11} /> 3 horas</span>
                     <span>Implementación presencial</span>
                     <span>Grupos de 25-30 alumnos</span>
                   </p>
@@ -154,7 +154,7 @@ export default function VictoriaJovenPage() {
               Formar criterio en IA hoy no requiere un experto en tecnología en el salón.
             </h2>
             <p className="text-sm sm:text-base leading-relaxed mb-12" style={{ color: "#ffffff", opacity: 0.7 }}>
-              Hoy hay una forma accesible y rápida de dar a tus alumnos una ventaja real para su futuro académico y laboral. Y esa ventaja está al alcance de cualquier institución que dedique sólo 6.5 horas... incluso si tu colegio aún no tiene una postura definida sobre el uso de IA.
+              Hoy hay una forma accesible y rápida de dar a tus alumnos una ventaja real para su futuro académico y laboral. Y esa ventaja está al alcance de cualquier institución que dedique sólo 3 horas... incluso si tu colegio aún no tiene una postura definida sobre el uso de IA.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
               {BARRERA.map((b) => (

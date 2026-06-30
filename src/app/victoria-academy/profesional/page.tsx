@@ -24,7 +24,7 @@ const BARRERA = [
 
 const BONOS = [
   { num: "1", texto: "Masterclass de Creación de Contenido con IA: Tu equipo aprende a crear avatares, videos creativos y profesionales, y piezas de diseño gráfico." },
-  { num: "2", texto: "Consultoría de 2 horas de marketing, IA y ventas para tu marca o negocio." },
+  { num: "2", texto: "Consultoría de 1 hora de marketing, IA y ventas para tu marca o negocio." },
   { num: "3", texto: "3 prompts maestros para ti como líder / director." },
 ];
 
@@ -59,13 +59,13 @@ const SI_ES = [
 
 const NO_ES = [
   "Buscas un curso grabado para ver cuando tengas tiempo.",
-  "No quieres que tu equipo destine 6.5 horas a una sesión presencial.",
+  "No quieres que tu equipo destine 6 horas a una sesión presencial.",
   "Solo te interesa una demo de herramientas, no un cambio de hábito real.",
   "No te interesa medir el impacto después del taller.",
 ];
 
 const FAQS = [
-  { q: "¿De verdad necesito 6.5 horas completas?", a: "Sí — es lo que toma construir, no solo explicar, los entregables que tu equipo se lleva. Repartimos la sesión en bloques con descansos, puedes distribuir la duración total en 1, 2 o 3 días." },
+  { q: "¿De verdad necesito 6 horas completas?", a: "Sí — es lo que toma construir, no solo explicar, los entregables que tu equipo se lleva. Repartimos la sesión en bloques con descansos, puedes distribuir la duración total en 1, 2 o 3 días." },
   { q: "¿Mi equipo necesita saber de tecnología?", a: "No. El taller está diseñado para personas sin background técnico. Trabajamos con su caso real, sin código y sin tecnicismos." },
   { q: "¿Qué pasa después del taller?", a: "Incluye 30 días de seguimiento estructurado y acceso a la comunidad VictorIA Profesional, para que la transformación no se quede en el salón." },
   { q: "¿Aplica para mi tipo de organización?", a: "Sí. Hemos trabajado con empresas, hospitales e instituciones académicas — el taller se adapta al caso real de cada grupo." },
@@ -123,7 +123,7 @@ export default function VictoriaProfesionalPage() {
                 <div>
                   <p className="text-sm font-bold" style={{ color: HEAD }}>Agenda tu Entrenamiento en tu Organización</p>
                   <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
-                    <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas</span>
+                    <span className="flex items-center gap-1.5"><Clock size={11} /> 6 horas</span>
                     <span>Presencial o virtual</span>
                     <span>Formación Grupal</span>
                   </p>
@@ -161,7 +161,7 @@ export default function VictoriaProfesionalPage() {
                 Disponible sólo PARA TALLERES JUNIO - AGOSTO
               </p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Tomar la oportunidad este verano.
+                Más de <span style={{ color: ACCENT }}>USD 500 de Bonificación</span>. Una sóla condición: Tomar la oportunidad este verano.
               </h2>
               <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
                 Al reservar tu programa VictorIA Profesional en tu empresa, recibe:
@@ -200,7 +200,7 @@ export default function VictoriaProfesionalPage() {
               La IA de hoy no requiere que seas experto para aprovecharla.
             </h2>
             <p className="text-sm sm:text-base leading-relaxed mb-12" style={{ color: "#ffffff", opacity: 0.7 }}>
-              Hoy hay una forma accesible y rápida de potenciar los talentos y experiencia de tus colaboradores. Y las ganancias de esa productividad está al alcance de cualquier organización que dedique sólo 6.5 horas... incluso si aún no tiene claro totalmente cómo usar la IA.
+              Hoy hay una forma accesible y rápida de potenciar los talentos y experiencia de tus colaboradores. Y las ganancias de esa productividad está al alcance de cualquier organización que dedique sólo 6 horas... incluso si aún no tiene claro totalmente cómo usar la IA.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
               {BARRERA.map((b) => (

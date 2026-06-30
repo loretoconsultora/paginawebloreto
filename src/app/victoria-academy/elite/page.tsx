@@ -23,7 +23,7 @@ const BARRERA = [
 
 const BONOS = [
   { num: "1", texto: "Masterclass de Creación de Contenido con IA: Tu equipo aprende a crear avatares, videos creativos y profesionales, y piezas de diseño gráfico." },
-  { num: "2", texto: "Consultoría de 2 horas de marketing, IA y ventas para tu marca o negocio." },
+  { num: "2", texto: "Consultoría de 1 hora de marketing, IA y ventas para tu marca o negocio." },
   { num: "3", texto: "3 prompts maestros para ti como líder / director." },
 ];
 
@@ -121,7 +121,7 @@ export default function VictoriaElitePage() {
                 <div>
                   <p className="text-sm font-bold" style={{ color: HEAD }}>Únete a la Lista de Espera · Formaciones online 7, 9 y 14 de septiembre</p>
                   <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs mt-1" style={{ color: HEAD, opacity: 0.6 }}>
-                    <span className="flex items-center gap-1.5"><Clock size={11} /> 6.5 horas + pre-admisión</span>
+                    <span className="flex items-center gap-1.5"><Clock size={11} /> 6 horas + pre-admisión</span>
                     <span>Online en septiembre + seminario presencial en noviembre</span>
                     <span>Grupos de 10-12 personas</span>
                   </p>
@@ -159,7 +159,7 @@ export default function VictoriaElitePage() {
                 Disponible sólo para la Lista de Espera Fundadora
               </p>
               <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-                Más de <span style={{ color: ACCENT }}>USD 1,500 de Bonificación</span>. Una sóla condición: Unirte antes del 30 de agosto.
+                Más de <span style={{ color: ACCENT }}>USD 500 de Bonificación</span>. Una sóla condición: Unirte antes del 30 de agosto.
               </h2>
               <p className="text-sm mb-6" style={{ color: HEAD, opacity: 0.8 }}>
                 Al unirte a la lista de espera de VictorIA Elite, recibe:
