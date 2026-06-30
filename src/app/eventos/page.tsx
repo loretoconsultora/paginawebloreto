@@ -11,9 +11,9 @@ const GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)
 // ─── Masterclasses ──────────────────────────────────────────────────────────
 
 const MASTERCLASSES = [
-  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Jueves 02 de julio", numero: "02", imagen: "/eventos/masterclass-2.png" },
-  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Martes 07 de julio", numero: "03", imagen: "/eventos/masterclass-3.png" },
-  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Jueves 09 de julio", numero: "04", imagen: "/eventos/masterclass-4.png" },
+  { titulo: "Cómo comenzar a crear contenido para tu marca personal", dia: "Jueves 02 de julio", numero: "01", imagen: "/eventos/masterclass-2.png" },
+  { titulo: "Cómo convertir tu audiencia en clientes y tus clientes en una comunidad rentable", dia: "Martes 07 de julio", numero: "02", imagen: "/eventos/masterclass-3.png" },
+  { titulo: "Cómo elevar el valor de tu negocio con Inteligencia Artificial", dia: "Jueves 09 de julio", numero: "03", imagen: "/eventos/masterclass-4.png" },
 ];
 
 const HORARIOS_MASTERCLASS = [
