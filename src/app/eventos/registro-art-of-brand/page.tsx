@@ -69,6 +69,7 @@ const CIUDADES = [
     ciudad: "Ciudad de México",
     venue: "Mimbre, Colonia San Rafael",
     mapsUrl: "https://maps.app.goo.gl/U3ARncK9UNJcLS8WA",
+    cupoLleno: true,
     sesiones: {
       bloom: { fecha: "Martes 7 de julio", hora: "4:00 - 7:00 pm" },
       atelier: { fecha: "Miércoles 8 de julio", hora: "4:00 - 7:00 pm" },
@@ -80,6 +81,7 @@ const CIUDADES = [
     ciudad: "Querétaro",
     venue: "Alva Coffee & Health Bar, Colonia El Refugio",
     mapsUrl: "https://maps.app.goo.gl/jMxfjyQg3ZC7cKv48",
+    cupoLleno: false,
     sesiones: {
       bloom: { fecha: "Viernes 10 de julio", hora: "4:00 - 7:00 pm" },
       atelier: { fecha: "Sábado 11 de julio", hora: "10:00 am - 1:00 pm" },
@@ -97,7 +99,7 @@ const BENEFICIOS = [
 
 export default function RegistroArtOfBrandPage() {
   const [form, setForm] = useState({ nombre: "", negocio: "", correo: "", lada: "52", telefono: "" });
-  const [ciudad, setCiudad] = useState<CiudadId>("cdmx");
+  const [ciudad, setCiudad] = useState<CiudadId>("queretaro");
   const [experiencias, setExperiencias] = useState<string[]>([]);
   const [estado, setEstado] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
@@ -308,17 +310,27 @@ export default function RegistroArtOfBrandPage() {
                         <button
                           key={c.id}
                           type="button"
-                          onClick={() => { setCiudad(c.id); setExperiencias([]); }}
+                          onClick={() => { if (!c.cupoLleno) { setCiudad(c.id); setExperiencias([]); } }}
+                          disabled={c.cupoLleno}
                           className="rounded-xl p-3 text-left transition-colors"
-                          style={activa
-                            ? { background: "rgba(192,0,90,0.06)", border: "1px solid rgba(192,0,90,0.3)" }
-                            : { background: "transparent", border: "1px solid rgba(58,63,75,0.12)" }}
+                          style={c.cupoLleno
+                            ? { background: "rgba(58,63,75,0.04)", border: "1px solid rgba(58,63,75,0.1)", cursor: "not-allowed", opacity: 0.7 }
+                            : activa
+                              ? { background: "rgba(192,0,90,0.06)", border: "1px solid rgba(192,0,90,0.3)" }
+                              : { background: "transparent", border: "1px solid rgba(58,63,75,0.12)" }}
                         >
-                          <span className="flex items-center gap-1.5 text-sm font-bold text-grafito">
-                            <MapPin size={13} style={{ color: "#c0005a" }} />
-                            {c.ciudad}
+                          <span className="flex items-center justify-between gap-1.5">
+                            <span className="flex items-center gap-1.5 text-sm font-bold" style={{ color: c.cupoLleno ? "rgba(58,63,75,0.4)" : "#1a1f24" }}>
+                              <MapPin size={13} style={{ color: c.cupoLleno ? "rgba(58,63,75,0.3)" : "#c0005a" }} />
+                              {c.ciudad}
+                            </span>
+                            {c.cupoLleno && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0" style={{ color: "#c0005a", background: "rgba(192,0,90,0.08)", border: "1px solid rgba(192,0,90,0.2)" }}>
+                                Cupo lleno
+                              </span>
+                            )}
                           </span>
-                          <span className="block text-[11px] text-grafito/45 mt-0.5">{c.venue}</span>
+                          <span className="block text-[11px] mt-0.5" style={{ color: c.cupoLleno ? "rgba(58,63,75,0.3)" : "rgba(58,63,75,0.45)" }}>{c.venue}</span>
                         </button>
                       );
                     })}
@@ -337,16 +349,18 @@ export default function RegistroArtOfBrandPage() {
                     {EXPERIENCIAS.map((e) => {
                       const sesion = ciudadActual.sesiones[e.id as keyof typeof ciudadActual.sesiones];
                       const checked = experiencias.includes(e.id);
+                      const bloqueada = ciudadActual.cupoLleno;
                       return (
                         <label
                           key={e.id}
-                          className="flex items-start gap-3 cursor-pointer rounded-lg p-2.5 transition-colors"
-                          style={{ background: checked ? e.bgColor : "transparent", border: `1px solid ${checked ? e.borderColor : "transparent"}` }}
+                          className="flex items-start gap-3 rounded-lg p-2.5 transition-colors"
+                          style={{ background: bloqueada ? "rgba(58,63,75,0.03)" : checked ? e.bgColor : "transparent", border: `1px solid ${bloqueada ? "rgba(58,63,75,0.08)" : checked ? e.borderColor : "transparent"}`, cursor: bloqueada ? "not-allowed" : "pointer", opacity: bloqueada ? 0.5 : 1 }}
                         >
                           <input
                             type="checkbox"
                             checked={checked}
-                            onChange={() => toggle(e.id)}
+                            onChange={() => { if (!bloqueada) toggle(e.id); }}
+                            disabled={bloqueada}
                             className="mt-0.5 accent-pink-500 flex-shrink-0"
                           />
                           <div className="flex-1">
