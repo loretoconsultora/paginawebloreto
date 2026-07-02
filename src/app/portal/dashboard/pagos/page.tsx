@@ -35,7 +35,7 @@ function formatMonto(monto: number) {
 export default async function PagosPage() {
   const supabase = await createClient();
 
-  const { data: cliente } = await supabase.from("clientes").select("id").single();
+  const { data: cliente } = await supabase.from("clientes").select("id, fecha_pago").single();
 
   const { data: pagos } = cliente
     ? await supabase
@@ -51,15 +51,17 @@ export default async function PagosPage() {
       <h1 className="font-playfair text-3xl font-bold text-grafito mb-1">Pagos</h1>
       <p className="text-grafito/50 text-sm mb-6">Historial de servicios mensuales y su estatus de pago</p>
 
-      <div
-        className="flex items-center gap-3 rounded-2xl p-5 mb-6"
-        style={{ background: "#eab308" }}
-      >
-        <Info size={22} style={{ color: "#fff" }} className="flex-shrink-0" />
-        <p className="text-sm text-white">
-          Próxima fecha de pago: <span className="font-bold">del 1 al 7 de cada mes.</span>
-        </p>
-      </div>
+      {cliente?.fecha_pago && (
+        <div
+          className="flex items-center gap-3 rounded-2xl p-5 mb-6"
+          style={{ background: "#eab308" }}
+        >
+          <Info size={22} style={{ color: "#fff" }} className="flex-shrink-0" />
+          <p className="text-sm text-white">
+            Próxima fecha de pago: <span className="font-bold">{cliente.fecha_pago}.</span>
+          </p>
+        </div>
+      )}
 
       {!pagos || pagos.length === 0 ? (
         <div className="bg-white rounded-2xl p-6 border border-grafito/10">
