@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Calendar, FileBarChart2, StickyNote, CreditCard, CalendarDays, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Calendar, FileBarChart2, StickyNote, CreditCard, CalendarDays, BookOpen, LogOut, Menu, X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 const GRADIENT = "linear-gradient(135deg, #c0005a 0%, #FF6A92 50%, #E894FF 100%)";
@@ -14,6 +14,7 @@ const LINKS = [
   { href: "/portal/dashboard/reportes", label: "Reportes", icon: FileBarChart2 },
   { href: "/portal/dashboard/notas", label: "Notas", icon: StickyNote },
   { href: "/portal/dashboard/pagos", label: "Pagos", icon: CreditCard },
+  { href: "/portal/dashboard/recursos", label: "Recursos", icon: BookOpen },
 ];
 
 const PROXIMAMENTE = { label: "Calendario Contenidos", icon: CalendarDays };
