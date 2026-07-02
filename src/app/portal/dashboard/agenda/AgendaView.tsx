@@ -71,7 +71,7 @@ function diasMismaFecha(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-export default function AgendaView({ eventos }: { eventos: EventoAgenda[] }) {
+export default function AgendaView({ eventos, mostrarZonaExtra }: { eventos: EventoAgenda[]; mostrarZonaExtra: boolean }) {
   const [vista, setVista] = useState<"lista" | "calendario">("lista");
   const hoy = useMemo(() => new Date(), []);
   const [mesActual, setMesActual] = useState(() => new Date(hoy.getFullYear(), hoy.getMonth(), 1));
@@ -159,7 +159,9 @@ export default function AgendaView({ eventos }: { eventos: EventoAgenda[] }) {
                         <div>
                           <p className="font-semibold text-grafito text-sm">{e.titulo}</p>
                           <p className="text-xs text-grafito/50 mt-0.5 capitalize">{formatFechaHora(e.fecha)}</p>
-                          <p className="text-xs text-grafito/35 mt-0.5">{formatHoraBuenosAires(e.fecha)} Buenos Aires</p>
+                          {mostrarZonaExtra && (
+                            <p className="text-xs text-grafito/35 mt-0.5">{formatHoraBuenosAires(e.fecha)} Buenos Aires</p>
+                          )}
                           {e.descripcion && <p className="text-xs text-grafito/50 mt-0.5">{e.descripcion}</p>}
                           {e.link && (
                             <a

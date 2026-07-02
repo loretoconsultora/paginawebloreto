@@ -4,7 +4,7 @@ import AgendaView from "./AgendaView";
 export default async function AgendaPage() {
   const supabase = await createClient();
 
-  const { data: cliente } = await supabase.from("clientes").select("id").single();
+  const { data: cliente } = await supabase.from("clientes").select("id, mostrar_zona_extra").single();
 
   const { data: eventos } = cliente
     ? await supabase
@@ -21,7 +21,7 @@ export default async function AgendaPage() {
         Sesiones de Estatus, Producciones, y Reuniones Especiales
       </p>
 
-      <AgendaView eventos={eventos ?? []} />
+      <AgendaView eventos={eventos ?? []} mostrarZonaExtra={cliente?.mostrar_zona_extra ?? false} />
     </div>
   );
 }
