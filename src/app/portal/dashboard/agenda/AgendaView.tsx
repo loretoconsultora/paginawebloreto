@@ -10,6 +10,7 @@ export type EventoAgenda = {
   fecha: string;
   tipo: string;
   emoji: string | null;
+  link: string | null;
 };
 
 const TIPO_LABEL: Record<string, string> = {
@@ -18,7 +19,6 @@ const TIPO_LABEL: Record<string, string> = {
   especial: "Sesión especial",
 };
 
-const MEET_LINK = "https://meet.google.com/uaq-trnz-atq";
 
 const TIPO_EMOJI: Record<string, string> = {
   produccion: "🎬",
@@ -41,6 +41,14 @@ function formatFechaHora(fecha: string) {
     month: "long",
     hour: "numeric",
     minute: "2-digit",
+  });
+}
+
+function formatHoraBuenosAires(fecha: string) {
+  return new Date(fecha).toLocaleTimeString("es-AR", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/Argentina/Buenos_Aires",
   });
 }
 
@@ -151,16 +159,17 @@ export default function AgendaView({ eventos }: { eventos: EventoAgenda[] }) {
                         <div>
                           <p className="font-semibold text-grafito text-sm">{e.titulo}</p>
                           <p className="text-xs text-grafito/50 mt-0.5 capitalize">{formatFechaHora(e.fecha)}</p>
+                          <p className="text-xs text-grafito/35 mt-0.5">{formatHoraBuenosAires(e.fecha)} Buenos Aires</p>
                           {e.descripcion && <p className="text-xs text-grafito/50 mt-0.5">{e.descripcion}</p>}
-                          {e.tipo === "sesion_semanal" && (
+                          {e.link && (
                             <a
-                              href={MEET_LINK}
+                              href={e.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-xs font-semibold mt-0.5 inline-block"
+                              className="text-xs font-semibold mt-1 inline-block"
                               style={{ color: "#c0005a" }}
                             >
-                              {MEET_LINK}
+                              {e.link}
                             </a>
                           )}
                         </div>

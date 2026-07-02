@@ -9,7 +9,7 @@ export default async function AgendaPage() {
   const { data: eventos } = cliente
     ? await supabase
         .from("eventos_calendario")
-        .select("id, titulo, descripcion, fecha, tipo, emoji")
+        .select("id, titulo, descripcion, fecha, tipo, emoji, link")
         .eq("cliente_id", cliente.id)
         .order("fecha", { ascending: true })
     : { data: null };
