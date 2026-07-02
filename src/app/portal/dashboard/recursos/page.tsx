@@ -12,7 +12,7 @@ export default async function RecursosPage() {
   const { data: recursos } = cliente
     ? await supabase
         .from("recursos")
-        .select("id, titulo, descripcion, url, tipo, creado_en")
+        .select("id, titulo, descripcion, url, tipo, es_archivo, creado_en")
         .eq("cliente_id", cliente.id)
         .order("creado_en", { ascending: false })
     : { data: null };
