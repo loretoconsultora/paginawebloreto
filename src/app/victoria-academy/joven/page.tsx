@@ -151,10 +151,14 @@ export default function VictoriaJovenPage() {
               La barrera de entrada desapareció
             </p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
-              Formar criterio en IA hoy no requiere un experto en tecnología en el salón.
+              Tu institución, formando a los profesionistas que moldearán el futuro.
             </h2>
             <p className="text-sm sm:text-base leading-relaxed mb-12" style={{ color: "#ffffff", opacity: 0.7 }}>
-              Hoy hay una forma accesible y rápida de dar a tus alumnos una ventaja real para su futuro académico y laboral. Y esa ventaja está al alcance de cualquier institución que dedique sólo 3 horas... incluso si tu colegio aún no tiene una postura definida sobre el uso de IA.
+              La generación que hoy está en tus salones será la primera en entrar al mundo laboral y universitario con IA como herramienta cotidiana.
+              <br /><br />
+              En solo 3 horas, tu institución puede darles lo que pocas escuelas ofrecen: criterio, ética y ventaja real.
+              <br /><br />
+              Una inversión que los padres reconocen, la comunidad valora y que posiciona a tu escuela como referente de innovación educativa.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
               {BARRERA.map((b) => (
