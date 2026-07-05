@@ -98,7 +98,7 @@ export default function VictoriaJovenPage() {
                 className="text-base sm:text-lg leading-relaxed mb-4"
                 style={{ color: HEAD, opacity: 0.85 }}
               >
-                Enseña a tus alumnos a usar la inteligencia artificial para construir un proyecto real con criterio y honestidad académica.
+                Posiciona tu institución como líder en educación del futuro. Forma a tus alumnos con las habilidades de IA que el mundo ya exige — y que pocas escuelas en México están enseñando.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
