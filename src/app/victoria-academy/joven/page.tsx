@@ -151,12 +151,10 @@ export default function VictoriaJovenPage() {
               3 razones para actuar ahora
             </p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white text-center" style={{ lineHeight: 1.15 }}>
-              Tu institución, formando a los profesionistas que moldearán el futuro
+              Tu institución, formando a los<br />profesionistas que moldearán el futuro
             </h2>
             <p className="text-base sm:text-lg leading-relaxed mb-12 text-center max-w-3xl mx-auto" style={{ color: "#ffffff", opacity: 0.7 }}>
-              En solo 3 horas, tu institución puede darles lo que pocas escuelas ofrecen: criterio, ética y ventaja real.
-              <br /><br />
-              Una inversión que los padres reconocen, la comunidad valora y que posiciona a tu escuela como referente de innovación educativa.
+              En solo 3 horas, tu institución puede darles lo que pocas escuelas ofrecen: criterio, ética y ventaja real. Una inversión que los padres reconocen, la comunidad valora y que posiciona a tu escuela como referente de innovación educativa.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
               {BARRERA.map((b) => (
