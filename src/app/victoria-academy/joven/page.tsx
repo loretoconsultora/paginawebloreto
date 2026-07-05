@@ -105,7 +105,7 @@ export default function VictoriaJovenPage() {
                 className="text-sm leading-relaxed mb-6"
                 style={{ color: HEAD, opacity: 0.7 }}
               >
-                En este programa vive la experiencia de co crear con la IA para formar a la primera generación con criterio, y logra que cada alumno presente su propio proyecto documentado.
+                En este programa tus alumnos viven la experiencia de co-crear con IA desde cero — desarrollando un proyecto real para su comunidad y construyendo las habilidades que el mercado laboral y las universidades más competitivas ya están buscando en la próxima generación.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
