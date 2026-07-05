@@ -98,14 +98,14 @@ export default function VictoriaJovenPage() {
                 className="text-base sm:text-lg leading-relaxed mb-4"
                 style={{ color: HEAD, opacity: 0.85 }}
               >
-                Posiciona tu institución como líder en educación del futuro. Forma a tus alumnos con las habilidades de IA que el mundo ya exige — y que pocas escuelas en México están enseñando.
+                Forma a tus alumnos con las habilidades de IA que el mundo ya exige y que pocas escuelas en México están enseñando.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-sm leading-relaxed mb-6"
                 style={{ color: HEAD, opacity: 0.7 }}
               >
-                En este programa tus alumnos viven la experiencia de co-crear con IA desde cero — desarrollando un proyecto real para su comunidad y construyendo las habilidades que el mercado laboral y las universidades más competitivas ya están buscando en la próxima generación.
+                Tus alumnos vivirán la experiencia de co-crear con IA desde cero, desarrollando un proyecto real para su comunidad y construyendo las habilidades que el mercado laboral y las universidades más competitivas ya están buscando en la próxima generación.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
@@ -147,15 +147,13 @@ export default function VictoriaJovenPage() {
         {/* La barrera de entrada desapareció */}
         <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
           <div className="max-w-6xl mx-auto text-left">
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4 text-center" style={{ color: ACCENT }}>
               3 razones para actuar ahora
             </p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
-              Tu institución, formando a los profesionistas que moldearán el futuro.
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white text-center" style={{ lineHeight: 1.15 }}>
+              Tu institución, formando a los profesionistas que moldearán el futuro
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed mb-12" style={{ color: "#ffffff", opacity: 0.7 }}>
-              La generación que hoy está en tus salones será la primera en entrar al mundo laboral y universitario con IA como herramienta cotidiana.
-              <br /><br />
+            <p className="text-base sm:text-lg leading-relaxed mb-12 text-center max-w-3xl mx-auto" style={{ color: "#ffffff", opacity: 0.7 }}>
               En solo 3 horas, tu institución puede darles lo que pocas escuelas ofrecen: criterio, ética y ventaja real.
               <br /><br />
               Una inversión que los padres reconocen, la comunidad valora y que posiciona a tu escuela como referente de innovación educativa.
