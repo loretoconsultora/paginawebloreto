@@ -105,7 +105,7 @@ export default function VictoriaJovenPage() {
                 className="text-sm leading-relaxed mb-6"
                 style={{ color: HEAD, opacity: 0.7 }}
               >
-                Tus alumnos vivirán la experiencia de co-crear con IA desde cero, desarrollando un proyecto real para su comunidad y construyendo las habilidades que el mercado laboral y las universidades más competitivas ya están buscando en la próxima generación.
+                Tus alumnos vivirán la experiencia de <strong style={{ color: "#67C6C8" }}>co-crear con IA</strong> desde cero, desarrollando un <strong style={{ color: "#67C6C8" }}>proyecto real para su comunidad</strong> y construyendo las <strong style={{ color: "#67C6C8" }}>habilidades</strong> que el <strong style={{ color: "#67C6C8" }}>mercado laboral</strong> y las <strong style={{ color: "#67C6C8" }}>universidades</strong> más competitivas ya están buscando en la próxima generación.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
