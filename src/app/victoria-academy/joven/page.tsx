@@ -150,12 +150,9 @@ export default function VictoriaJovenPage() {
             <p className="text-xs font-bold uppercase tracking-widest mb-4 text-center" style={{ color: ACCENT }}>
               3 razones para actuar ahora
             </p>
-            <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white text-center" style={{ lineHeight: 1.15 }}>
+            <h2 className="font-extrabold text-3xl sm:text-4xl mb-10 tracking-tight text-white text-center" style={{ lineHeight: 1.15 }}>
               Tu institución, formando a los<br />profesionistas que moldearán el futuro
             </h2>
-            <p className="text-base sm:text-lg leading-relaxed mb-12 text-center max-w-3xl mx-auto" style={{ color: "#ffffff", opacity: 0.7 }}>
-              En solo 3 horas, tu institución puede darles lo que pocas escuelas ofrecen: criterio, ética y ventaja real. Una inversión que los padres reconocen, la comunidad valora y que posiciona a tu escuela como referente de innovación educativa.
-            </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
               {BARRERA.map((b) => (
                 <motion.div
@@ -169,8 +166,8 @@ export default function VictoriaJovenPage() {
               ))}
             </div>
             <div className="text-center">
-              <p className="text-sm sm:text-base font-bold text-white mb-6" style={{ opacity: 0.9 }}>
-                Tu institución puede ser de las primeras en dar este paso. ¿Agendamos una llamada?
+              <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-3xl mx-auto" style={{ color: "#ffffff", opacity: 0.7 }}>
+                En solo 3 horas, tu institución puede darles lo que pocas escuelas ofrecen: criterio, ética y ventaja real. Una inversión que los padres reconocen, la comunidad valora y que posiciona a tu escuela como referente de innovación educativa.
               </p>
               <button
                 onClick={() => setModalOpen(true)}
