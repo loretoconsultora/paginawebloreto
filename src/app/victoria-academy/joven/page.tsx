@@ -17,9 +17,9 @@ const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_JOVEN ?? "";
 
 const BARRERA = [
-  { num: "01", texto: "Antes enseñar IA en el aula requería un experto en tecnología contratado por el colegio. Hoy basta un solo entrenamiento con el método correcto." },
-  { num: "02", texto: "Antes la honestidad académica con IA se resolvía prohibiendo. Hoy se resuelve formando criterio en una sola sesión presencial." },
-  { num: "03", texto: "Antes esto era solo para colegios con presupuesto de innovación. Hoy cualquier institución puede dar a sus alumnos esta ventaja." },
+  { num: "01", texto: "Las universidades y empresas ya están seleccionando candidatos que saben usar IA con criterio. Tus alumnos compiten hoy por esos lugares." },
+  { num: "02", texto: "La ventana para ser de las primeras instituciones en ofrecer esta formación es ahora. Quien espera, cede el diferenciador a otra escuela." },
+  { num: "03", texto: "Los padres buscan evidencia de que su inversión educativa prepara a sus hijos para el mundo real. Este programa les da exactamente eso." },
 ];
 
 const PROBLEMAS = [
@@ -148,7 +148,7 @@ export default function VictoriaJovenPage() {
         <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ background: "#0a0a0a" }}>
           <div className="max-w-6xl mx-auto text-left">
             <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: ACCENT }}>
-              La barrera de entrada desapareció
+              3 razones para actuar ahora
             </p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-6 tracking-tight text-white" style={{ lineHeight: 1.15 }}>
               Tu institución, formando a los profesionistas que moldearán el futuro.
@@ -172,9 +172,18 @@ export default function VictoriaJovenPage() {
                 </motion.div>
               ))}
             </div>
-            <p className="text-sm sm:text-base font-bold text-white text-center" style={{ opacity: 0.9 }}>
-              Las instituciones que ya forman criterio en IA están preparando a su primera generación con ventaja real sobre el resto.
-            </p>
+            <div className="text-center">
+              <p className="text-sm sm:text-base font-bold text-white mb-6" style={{ opacity: 0.9 }}>
+                Tu institución puede ser de las primeras en dar este paso. ¿Agendamos una llamada?
+              </p>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm text-white transition-opacity hover:opacity-90"
+                style={{ background: GRADIENT }}
+              >
+                Solicitar información para mi institución →
+              </button>
+            </div>
           </div>
         </section>
 
