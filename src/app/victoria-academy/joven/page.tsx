@@ -17,18 +17,17 @@ const WEBHOOK = process.env.NEXT_PUBLIC_N8N_VICTORIA_JOVEN_WEBHOOK ?? "";
 const CALENDLY = process.env.NEXT_PUBLIC_CALENDLY_JOVEN ?? "";
 
 const BARRERA = [
-  { num: "01", texto: "Las universidades y empresas ya están seleccionando candidatos que saben usar IA con criterio. Tus alumnos compiten hoy por esos lugares." },
-  { num: "02", texto: "La ventana para ser de las primeras instituciones en ofrecer esta formación es ahora. Quien espera, cede el diferenciador a otra escuela." },
-  { num: "03", texto: "Los padres buscan evidencia de que su inversión educativa prepara a sus hijos para el mundo real. Este programa les da exactamente eso." },
+  { num: "01", pre: "Las ", bold: "universidades y empresas ya están seleccionando", post: " candidatos que saben usar IA con criterio. Tus alumnos compiten hoy por esos lugares." },
+  { num: "02", pre: "La ventana para ser ", bold: "de las primeras instituciones en ofrecer esta formación", post: " es ahora. Quien espera, cede el diferenciador a otra escuela." },
+  { num: "03", pre: "Los padres buscan ", bold: "evidencia de", post: " que su ", bold2: "inversión educativa para el mundo real", post2: ". Este programa les da exactamente eso." },
 ];
 
 const PROBLEMAS = [
-  { num: "01", titulo: "Activación y panorama de IA", texto: "Tus alumnos descubren el mapa de oportunidades académicas y de carrera que la IA abre para su generación — con criterio, no con miedo." },
-  { num: "02", titulo: "Honestidad académica antes que técnica", texto: "Aprenden cuándo y cómo es honesto usar IA en sus tareas, con una biblioteca de 10 prompts académicos listos para usar." },
-  { num: "03", titulo: "Proyecto real de portafolio", texto: "Cada alumno construye y documenta su propio proyecto en vivo — en formato compartible para admisiones universitarias y redes." },
-  { num: "04", titulo: "Pitch de 2 minutos frente al grupo", texto: "Presentan su proyecto con seguridad ante sus compañeros y la dirección del colegio. Primera experiencia de comunicación profesional." },
-  { num: "05", titulo: "Manifiesto Personal Joven impreso", texto: "Cada estudiante se lleva a casa su primera declaración de identidad digital — el touchpoint que los padres ven y que genera boca a boca." },
-  { num: "06", titulo: "Reporte institucional para la dirección", texto: "La dirección académica recibe evidencia formal: métricas, proyectos destacados y material listo para comunicación institucional." },
+  { num: "01", titulo: "Ecosistema y panorama de la IA", texto: <>Tus alumnos descubren el mapa de <strong>oportunidades académicas</strong> y de carrera que la IA abre para su generación — <strong>con criterio</strong>, no con miedo.</> },
+  { num: "02", titulo: "Valores académicos como eje rector", texto: <><strong>Aprenden cuándo y cómo</strong> es honesto usar IA en sus tareas, con una biblioteca de <strong>10 prompts maestros académicos</strong> listos para usar.</> },
+  { num: "03", titulo: "Proyecto real de portafolio", texto: <>Cada alumno <strong>construye y documenta su propio proyecto</strong> en vivo, con resultados reales el mismo día.</> },
+  { num: "04", titulo: "Pitch frente al grupo", texto: <><strong>Presentan su proyecto con seguridad</strong> ante sus compañeros y la dirección del colegio.</> },
+  { num: "05", titulo: "Manifiesto Personal", texto: <>Cada estudiante se lleva a casa su primera <strong>declaración de identidad digital</strong> — el touchpoint que los padres ven y que genera boca a boca.</> },
 ];
 
 const SENTIMIENTOS = [
@@ -161,7 +160,9 @@ export default function VictoriaJovenPage() {
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
                   <p className="font-extrabold text-3xl mb-4" style={{ color: ACCENT }}>{b.num}</p>
-                  <p className="text-sm leading-relaxed text-white" style={{ opacity: 0.85 }}>{b.texto}</p>
+                  <p className="text-sm leading-relaxed text-white" style={{ opacity: 0.85 }}>
+                    {b.pre}<strong>{b.bold}</strong>{b.post}{b.bold2 && <><strong>{b.bold2}</strong>{b.post2}</>}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -185,9 +186,8 @@ export default function VictoriaJovenPage() {
           <div className="max-w-3xl mx-auto text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Conoce tu próximo programa</p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-              Lo que tus alumnos van a aprender, crear y llevarse.
+              Lo que tus alumnos van a aprender.
             </h2>
-            <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>6 experiencias clave que transforman cómo tus alumnos entienden y usan la IA — con resultados reales el mismo día.</p>
           </div>
           <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
             {PROBLEMAS.map((p) => (
@@ -220,7 +220,7 @@ export default function VictoriaJovenPage() {
                 La forma en que tus alumnos aprenden<br /><span style={{ color: ACCENT }}>cambia aquí</span>
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>
-                Esto no es una conferencia más. Es donde tus alumnos por fin entienden cómo usar IA con criterio y honestidad académica, sin complicarse y sin saber programar. Vienen a construir en vivo su primer proyecto real con IA, frente a sus compañeros y la dirección de tu colegio.
+                Esto no es una conferencia más. Es donde tus alumnos por fin entienden cómo usar IA con criterio y honestidad académica, sin complicarse y sin saber programar.
               </p>
             </motion.div>
           </div>
@@ -289,7 +289,7 @@ export default function VictoriaJovenPage() {
               <span className="w-8 h-px" style={{ background: ACCENT }} />
             </p>
             <h2 className="font-extrabold text-2xl sm:text-4xl mb-3 tracking-tight text-white" style={{ lineHeight: 1.25 }}>
-              Este programa es para tu colegio si quieres formar criterio en IA, no solo permitirla o prohibirla.
+              Este programa es para tu colegio si quieres liderar la educación del futuro.
             </h2>
             <p className="text-sm text-white" style={{ opacity: 0.6 }}>Antes de avanzar, mira si VictorIA Joven encaja con lo que tu institución necesita.</p>
           </div>
@@ -409,7 +409,7 @@ export default function VictoriaJovenPage() {
                 Otros colegios ya están formando a su primera generación IA.
               </h2>
               <p className="text-base leading-relaxed mb-8 text-white" style={{ opacity: 0.8 }}>
-                Aprende a operar y crecer con IA. Ya puedes aprender a hacerlo con un sólo programa y pasar de la urgencia y reactividad a la verdadera proactividad. Co crea el futuro de tu institución con tu propio sistema y la más última tecnología.
+                Aprende a operar y crecer con IA. Co crea el futuro de tu institución con tu propio sistema y la más última tecnología.
               </p>
               <button
                 onClick={() => setModalOpen(true)}
