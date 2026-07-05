@@ -23,12 +23,12 @@ const BARRERA = [
 ];
 
 const PROBLEMAS = [
-  { num: "01", titulo: "Tus alumnos ya usan IA, pero sin criterio", texto: "La usan para tareas y atajos, sin entender cuándo es honesto usarla y cuándo no." },
-  { num: "02", titulo: "El colegio no tiene una postura clara", texto: "Mientras se debate prohibir o permitir, los alumnos siguen usándola por su cuenta." },
-  { num: "03", titulo: "Te preocupa la honestidad académica", texto: "Sin formación específica, es fácil que la IA se use para evadir el aprendizaje en lugar de potenciarlo." },
-  { num: "04", titulo: "Crees que se necesita un experto técnico", texto: "No. El programa está diseñado para adolescentes sin background técnico, con ejemplos de su propio contexto." },
-  { num: "05", titulo: "Buscas algo más que una plática motivacional", texto: "Una conferencia se olvida. Un proyecto documentado y un pitch en vivo se quedan." },
-  { num: "06", titulo: "Quieres evidencia real para mostrar a las familias", texto: "Otros colegios ya posicionan esto como innovación visible — con resultados que los padres pueden ver." },
+  { num: "01", titulo: "Activación y panorama de IA", texto: "Tus alumnos descubren el mapa de oportunidades académicas y de carrera que la IA abre para su generación — con criterio, no con miedo." },
+  { num: "02", titulo: "Honestidad académica antes que técnica", texto: "Aprenden cuándo y cómo es honesto usar IA en sus tareas, con una biblioteca de 10 prompts académicos listos para usar." },
+  { num: "03", titulo: "Proyecto real de portafolio", texto: "Cada alumno construye y documenta su propio proyecto en vivo — en formato compartible para admisiones universitarias y redes." },
+  { num: "04", titulo: "Pitch de 2 minutos frente al grupo", texto: "Presentan su proyecto con seguridad ante sus compañeros y la dirección del colegio. Primera experiencia de comunicación profesional." },
+  { num: "05", titulo: "Manifiesto Personal Joven impreso", texto: "Cada estudiante se lleva a casa su primera declaración de identidad digital — el touchpoint que los padres ven y que genera boca a boca." },
+  { num: "06", titulo: "Reporte institucional para la dirección", texto: "La dirección académica recibe evidencia formal: métricas, proyectos destacados y material listo para comunicación institucional." },
 ];
 
 const SENTIMIENTOS = [
@@ -190,11 +190,11 @@ export default function VictoriaJovenPage() {
         {/* Reencuadre del problema */}
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>El problema</p>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>Conoce tu próximo programa</p>
             <h2 className="font-extrabold text-3xl sm:text-4xl mb-4 tracking-tight" style={{ color: HEAD, lineHeight: 1.15 }}>
-              ¿Por qué tus alumnos usan IA sin que nadie les enseñe a usarla bien?
+              Lo que tus alumnos van a aprender, crear y llevarse.
             </h2>
-            <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>Si te reconoces en uno de estos puntos, este programa es para tu colegio.</p>
+            <p className="text-sm sm:text-base" style={{ color: HEAD, opacity: 0.7 }}>6 experiencias clave que transforman cómo tus alumnos entienden y usan la IA — con resultados reales el mismo día.</p>
           </div>
           <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
             {PROBLEMAS.map((p) => (
