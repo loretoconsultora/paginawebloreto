@@ -39,7 +39,7 @@ export default function CTAFinal() {
           El único riesgo real es no empezar.
         </h2>
         <p className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-          En 15 minutos sabrás exactamente dónde está tu marca y cuáles son los pasos para llevarla al siguiente nivel.
+          En 15 minutos sabrás exactamente dónde está tu negocio y cuáles son los pasos para llevarlo al siguiente nivel.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <GradientBorderButton href="https://brand-compass-pwa.vercel.app" target="_blank">
