@@ -77,26 +77,19 @@ function Hero() {
 
           {/* Columna izquierda */}
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="order-2 lg:order-1 text-center lg:text-left">
-            <p className="text-lg lg:text-xl font-playfair mb-2" style={{ color: "#3A3F4B" }}>
-              Dentro de ti hay un valor que el mundo necesita
+            <p className="text-base lg:text-lg mb-2 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.75 }}>
+              Dentro de ti hay un valor que el mundo necesita —<br className="hidden sm:block" />
+              este reto se trata de reconocerlo, reconectarlo y compartirlo.
             </p>
             <h1 className="font-playfair font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem,4.5vw,3.5rem)" }}>
-              <span className="block" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Este reto se trata de:
-              </span>
-              <span className="block" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                reconocerlo, conectarlo
-              </span>
-              <span className="block" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                y compartirlo
-              </span>
-              <span className="block font-dancing font-normal text-2xl lg:text-3xl mt-2" style={{ color: "#c0005a" }}>
-                hasta que se expanda en el negocio que mereces.
+              <span style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Conquista el mundo digital
               </span>
             </h1>
 
             <p className="text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.85 }}>
-              En <strong>6 sesiones</strong> en vivo construyes tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y sales con tu primer <strong>lanzamiento</strong> listo para escalar.
+              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong> — tu ecosistema digital completo.<br className="hidden sm:block" />
+              <span className="text-sm mt-2 block opacity-75">Dirigido a emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
@@ -116,7 +109,7 @@ function Hero() {
               {[
                 { n: "+500", l: "marcas construidas" },
                 { n: "+500", l: "alumnos formados" },
-                { n: "LATAM", l: "USA & España" },
+                { n: "+10", l: "países confían en nosotros" },
               ].map((s, i) => (
                 <div key={i} className="flex items-center">
                   <div className="text-center px-5 py-3">
@@ -134,8 +127,8 @@ function Hero() {
             <div className="text-center">
               <p className="font-dancing text-3xl mb-1" style={{ color: MAGENTA }}>Reto</p>
               <div className="font-playfair font-black uppercase leading-none" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                <span className="block" style={{ fontSize: "clamp(2rem,5vw,3rem)" }}>Boost Your</span>
-                <span className="block" style={{ fontSize: "clamp(3.5rem,9vw,5.5rem)" }}>Brand</span>
+                <span className="block" style={{ fontSize: "clamp(1.6rem,4vw,2.4rem)" }}>Boost & Bloom</span>
+                <span className="block" style={{ fontSize: "clamp(3rem,8vw,5rem)" }}>Your Brand</span>
               </div>
               <div className="mt-3 h-0.5 w-24 mx-auto rounded-full" style={{ background: G_MAIN }} />
             </div>
@@ -199,7 +192,7 @@ function Problems() {
           ))}
         </div>
 
-        <p className="font-dancing text-2xl lg:text-3xl mb-6" style={{ color: MAGENTA }}>
+        <p className="text-xl lg:text-2xl font-bold mb-6" style={{ color: MAGENTA }}>
           No es falta de talento. No es falta de experiencia. No es falta de valor.
         </p>
         <p className="text-2xl lg:text-3xl font-bold font-playfair" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -216,9 +209,9 @@ function Transformation() {
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_PINK }}>
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-14">
-          <p className="font-dancing text-3xl lg:text-4xl mb-4 text-white">Tu Marca Personal</p>
+          <p className="font-dancing text-3xl lg:text-4xl mb-4 text-white">Tu marca</p>
           <p className="font-playfair text-xl lg:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
-            no solo comunica lo que haces — define cuánto vales, cómo te perciben y cuánto están dispuestos a pagarte. Y cuando eso está alineado con tu propósito, transforma no solo tu negocio, sino tu vida.
+            no solo comunica lo que haces — define cuánto vales, cómo te perciben y cuánto están dispuestos a pagarte. Cuando tu marca está alineada con tu propósito, transforma no solo tu negocio, sino tu vida.
           </p>
         </div>
 
