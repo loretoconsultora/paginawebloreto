@@ -1,8 +1,9 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react"; // ArrowRight used in CTA final
-import { motion } from "framer-motion";
+import { ArrowRight, ChevronDown, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -116,19 +117,23 @@ const servicios = [
   },
 ];
 
-function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
+function ServiceCard({ s, index, active, onClick }: { s: typeof servicios[0]; index: number; active: boolean; onClick: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 80, rotate: s.rotate * 2.5 }}
-      whileInView={{ opacity: 1, y: 0, rotate: s.rotate }}
+      whileInView={{ opacity: 1, y: 0, rotate: active ? 0 : s.rotate }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ rotate: 0, y: -10, scale: 1.02, transition: { duration: 0.3 } }}
-      style={{ transformOrigin: "bottom center" }}
+      animate={{ rotate: active ? 0 : s.rotate, scale: active ? 1.02 : 1 }}
+      style={{ transformOrigin: "bottom center", cursor: "pointer" }}
+      onClick={onClick}
     >
       <div
-        className="rounded-3xl p-[3px] h-full transition-shadow duration-300"
-        style={{ background: s.borderGradient }}
+        className="rounded-3xl p-[3px] h-full transition-all duration-300"
+        style={{
+          background: s.borderGradient,
+          boxShadow: active ? `0 12px 40px ${s.cardBorderColor}55` : undefined,
+        }}
       >
         <div className="flex flex-col rounded-[22px] bg-white overflow-hidden h-full">
 
@@ -156,13 +161,12 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
               {s.resumen}
             </p>
 
-            <a
-              href={`#${s.id}`}
-              className="inline-flex items-center gap-1 text-xs font-bold px-3 sm:px-5 py-2 sm:py-2.5 rounded-full self-start hover:opacity-80 transition-opacity text-white"
+            <div
+              className="inline-flex items-center gap-1 text-xs font-bold px-3 sm:px-5 py-2 sm:py-2.5 rounded-full self-start transition-opacity text-white"
               style={{ background: s.borderGradient }}
             >
-              Ver más <ChevronDown size={11} />
-            </a>
+              {active ? <>Cerrar <X size={11} /></> : <>Ver más <ChevronDown size={11} /></>}
+            </div>
           </div>
         </div>
       </div>
@@ -170,64 +174,83 @@ function ServiceCard({ s, index }: { s: typeof servicios[0]; index: number }) {
   );
 }
 
-function ServiceDetail({ s, index }: { s: typeof servicios[0]; index: number }) {
+function ServiceDetail({ s }: { s: typeof servicios[0] }) {
   return (
-    <section
-      id={s.id}
-      className="py-20 scroll-mt-24"
-      style={{ background: s.detailBg }}
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      style={{ overflow: "hidden" }}
     >
-      <div className="max-w-6xl mx-auto px-6 sm:px-10">
-        <div className="flex flex-col items-center gap-14">
+      <div className="rounded-3xl mx-0 mt-6 mb-2 overflow-hidden" style={{ background: s.detailBg }}>
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 py-10">
+          <div className="flex flex-col sm:flex-row gap-8 items-start">
 
-          {/* Texto */}
-          <div className="w-full max-w-2xl min-w-0 mx-auto">
-            <div
-              className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 border"
-              style={{ color: "white", borderColor: "rgba(255,255,255,0.5)", background: "rgba(255,255,255,0.18)" }}
-            >
-              {s.badge}
-            </div>
-
-            <h2
-              className="font-playfair text-3xl sm:text-4xl font-bold mb-4"
-              style={{ color: "white" }}
-            >
-              {s.titulo}
-            </h2>
-
-            <p className="leading-relaxed mb-6" style={{ color: "white", opacity: 0.82 }}>
-              {s.descripcion}
-            </p>
-
-            <ul className="space-y-3 mb-8">
-              {s.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm" style={{ color: "white", opacity: 0.9 }}>
-                  <span style={{ color: "white", flexShrink: 0, fontSize: "1rem", lineHeight: 1.4 }}>★</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div style={{ background: s.btnGradient, padding: "2px", borderRadius: "999px", display: "inline-flex" }}>
-              <Link
-                href={CALENDARIO}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
-                style={{ background: "#ffffff", borderRadius: "999px", color: "#1a0a2e" }}
+            {/* Texto principal */}
+            <div className="flex-1 min-w-0">
+              <div
+                className="inline-flex items-center text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-4 border"
+                style={{ color: "white", borderColor: "rgba(255,255,255,0.4)", background: "rgba(255,255,255,0.15)" }}
               >
-                Recibir propuesta personalizada →
-              </Link>
+                {s.badge}
+              </div>
+              <h2 className="font-playfair text-2xl sm:text-3xl font-bold mb-3" style={{ color: "white" }}>
+                {s.titulo}
+              </h2>
+              <p className="leading-relaxed mb-6 text-sm sm:text-base" style={{ color: "white", opacity: 0.85 }}>
+                {s.descripcion}
+              </p>
+              <ul className="space-y-2.5 mb-8">
+                {s.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm" style={{ color: "white", opacity: 0.92 }}>
+                    <span style={{ flexShrink: 0, fontSize: "1rem", lineHeight: 1.4 }}>★</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ background: s.btnGradient, padding: "2px", borderRadius: "999px", display: "inline-flex" }}>
+                <Link
+                  href={CALENDARIO}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity"
+                  style={{ background: "#ffffff", borderRadius: "999px", color: "#1a0a2e" }}
+                >
+                  Recibir propuesta personalizada →
+                </Link>
+              </div>
             </div>
+
+            {/* Foto lateral */}
+            {s.foto && (
+              <div className="hidden sm:block flex-shrink-0 rounded-2xl overflow-hidden" style={{ width: 200, height: 200 }}>
+                <img src={s.foto} alt={s.titulo} className="w-full h-full object-cover" style={{ objectPosition: (s as any).fotoPosition ?? "center" }} />
+              </div>
+            )}
           </div>
         </div>
       </div>
-    </section>
+    </motion.div>
   );
 }
 
 export default function ServiciosPage() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  function toggle(id: string) {
+    if (activeId === id) {
+      setActiveId(null);
+    } else {
+      setActiveId(id);
+      // scroll suave al panel tras un frame
+      setTimeout(() => detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 80);
+    }
+  }
+
+  const activeServicio = servicios.find((s) => s.id === activeId) ?? null;
+
   return (
     <>
       <Navbar />
@@ -272,21 +295,31 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        {/* Cards con tilt */}
+        {/* Cards + panel expandible */}
         <section className="pb-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 items-start">
               {servicios.map((s, i) => (
-                <ServiceCard key={s.id} s={s} index={i} />
+                <ServiceCard
+                  key={s.id}
+                  s={s}
+                  index={i}
+                  active={activeId === s.id}
+                  onClick={() => toggle(s.id)}
+                />
               ))}
+            </div>
+
+            {/* Panel detalle inline */}
+            <div ref={detailRef}>
+              <AnimatePresence mode="wait">
+                {activeServicio && (
+                  <ServiceDetail key={activeServicio.id} s={activeServicio} />
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </section>
-
-        {/* Detalle de cada familia */}
-        {servicios.map((s, i) => (
-          <ServiceDetail key={s.id} s={s} index={i} />
-        ))}
 
         {/* CTA final */}
         <section className="py-20 text-center" style={{ background: "#3A3F4B" }}>
