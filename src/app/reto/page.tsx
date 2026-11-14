@@ -147,7 +147,7 @@ function Hero() {
                 ⚡ Próxima generación — solo 20 lugares
               </p>
               <p className="text-sm mb-6" style={{ color: "#3A3F4B", opacity: 0.65 }}>
-                Nueva generación: cada primer lunes del mes
+                Nueva Generación: Arrancamos 1° Lunes de cada mes
               </p>
               <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#3A3F4B", opacity: 0.45 }}>Cierre de inscripciones en</p>
               <div className="flex items-center justify-center gap-4">
