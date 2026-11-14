@@ -10,7 +10,6 @@ const GRADIENT_C = "linear-gradient(135deg, #c0005a, #E894FF, #ff6a92)";
 const GRADIENT_D = "linear-gradient(135deg, #1a0a2e, #3a0ca3, #c0005a)";
 const GRADIENT_E = "linear-gradient(135deg, #6a00c8, #c0005a, #E894FF)";
 
-// Ángulos para disposición en reloj (empezando en 12, sentido horario, 72° c/u)
 const INICIATIVAS = [
   {
     gradient: GRADIENT_C,
@@ -18,7 +17,6 @@ const INICIATIVAS = [
     title: "JoM",
     subtitle: "Jóvenes Mexicanos Desarrollando Talentos A.C.",
     body: "Talleres de IA donde los jóvenes desarrollan su propio stack tecnológico y portafolio de herramientas digitales que responden a las necesidades de su comunidad.",
-    angle: -90,
   },
   {
     gradient: GRADIENT_B,
@@ -26,7 +24,6 @@ const INICIATIVAS = [
     title: "Valle del Cauca",
     subtitle: null,
     body: "Conferencias y clases de inteligencia artificial, ventas y marca personal a jóvenes adolescentes de la región cafetera.",
-    angle: -18,
   },
   {
     gradient: GRADIENT_D,
@@ -34,7 +31,6 @@ const INICIATIVAS = [
     title: "Venezuela Tierra de Gracia",
     subtitle: null,
     body: "Consultoría en Lean Manufacturing y Desarrollo de Herramientas Tecnológicas para el equipo de Currículo Educativo.",
-    angle: 54,
   },
   {
     gradient: GRADIENT_A,
@@ -42,7 +38,6 @@ const INICIATIVAS = [
     title: "CONEDUQ",
     subtitle: "Consejo de Educación y Capacitación Q.A.C.",
     body: "Consultoría de Marca y Comunicación institucional + Diseño de Programas Académicos alrededor de la Inteligencia Artificial.",
-    angle: 126,
   },
   {
     gradient: GRADIENT_E,
@@ -50,19 +45,8 @@ const INICIATIVAS = [
     title: "El Puente de Esperanza IAP",
     subtitle: null,
     body: "Consultoría, Planeación y Liderazgo del Servicio Social de los equipos de Comunicación Institucional y Patrocinios.",
-    angle: 198,
   },
 ];
-
-const R_PCT = 34;
-
-function circPos(angle: number) {
-  const rad = (angle * Math.PI) / 180;
-  return {
-    left: `${50 + R_PCT * Math.cos(rad)}%`,
-    top: `${50 + R_PCT * Math.sin(rad)}%`,
-  };
-}
 
 const fotos = [
   { src: "/accion-social/foto-1.jpg", rotate: -5 },
@@ -70,28 +54,34 @@ const fotos = [
   { src: "/accion-social/foto-3.jpg", rotate: -3 },
 ];
 
-function Card({ item, style }: { item: typeof INICIATIVAS[0]; style?: React.CSSProperties }) {
+function Card({ item }: { item: typeof INICIATIVAS[0] }) {
   return (
-    <div className="rounded-3xl p-[3px] h-full" style={{ background: item.gradient, ...style }}>
-      <div className="rounded-[22px] bg-white p-4 h-full">
-        <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5" style={{
-          background: item.gradient,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}>
+    <div className="rounded-2xl p-[2px] w-full" style={{ background: item.gradient }}>
+      <div className="rounded-[14px] bg-white p-5">
+        <p
+          className="text-[10px] font-bold uppercase tracking-widest mb-0.5"
+          style={{
+            background: item.gradient,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           {item.label}
         </p>
-        <p className="font-bold text-sm mb-0.5" style={{
-          background: item.gradient,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}>
+        <p
+          className="font-bold text-sm mb-1"
+          style={{
+            background: item.gradient,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           {item.title}
         </p>
         {item.subtitle && (
-          <p className="text-[11px] text-grafito/50 mb-1 leading-tight">{item.subtitle}</p>
+          <p className="text-[11px] text-grafito/50 mb-1.5 leading-tight">{item.subtitle}</p>
         )}
         <p className="text-grafito/65 text-xs leading-relaxed">{item.body}</p>
       </div>
@@ -99,10 +89,22 @@ function Card({ item, style }: { item: typeof INICIATIVAS[0]; style?: React.CSSP
   );
 }
 
+function Dot({ gradient }: { gradient: string }) {
+  return (
+    <div
+      className="w-4 h-4 rounded-full flex-shrink-0 border-2 border-white"
+      style={{
+        background: gradient,
+        boxShadow: "0 0 0 3px rgba(192,0,90,0.18), 0 0 0 6px rgba(192,0,90,0.07)",
+      }}
+    />
+  );
+}
+
 export default function ImpactoSocial() {
   return (
     <section className="py-20 overflow-hidden bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
         {/* Badge */}
         <div className="flex justify-center mb-4">
@@ -131,7 +133,7 @@ export default function ImpactoSocial() {
         </h2>
 
         {/* Fotos inclinadas */}
-        <div className="flex justify-center items-end gap-2 sm:gap-4 mb-14 overflow-visible">
+        <div className="flex justify-center items-end gap-2 sm:gap-4 mb-16 overflow-visible">
           {fotos.map((f, i) => (
             <motion.div
               key={f.src}
@@ -158,95 +160,67 @@ export default function ImpactoSocial() {
           ))}
         </div>
 
-        {/* ── MOBILE: grid 2 columnas ── */}
-        <div className="lg:hidden grid grid-cols-2 gap-4 mb-10">
-          {INICIATIVAS.map((item, i) => (
-            <div key={item.title} className={i === 4 ? "col-span-2" : ""}>
-              <Card item={item} />
-            </div>
-          ))}
-        </div>
+        {/* ── TIMELINE ── */}
+        <div className="relative mb-14">
 
-        {/* ── DESKTOP: disposición circular tipo reloj ── */}
-        <div
-          className="hidden lg:block relative mx-auto mb-10"
-          style={{ width: "min(760px, 95vw)", height: "min(760px, 95vw)", overflow: "visible" }}
-        >
-          {/* SVG: líneas de conexión y anillo decorativo */}
-          <svg
-            viewBox="0 0 100 100"
-            className="absolute inset-0 w-full h-full"
-            style={{ zIndex: 0 }}
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <defs>
-              <linearGradient id="impLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#c0005a" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#E894FF" stopOpacity="0.15" />
-              </linearGradient>
-              <radialGradient id="impCenterGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="rgba(232,148,255,0.2)" />
-                <stop offset="100%" stopColor="transparent" />
-              </radialGradient>
-            </defs>
-            <circle cx="50" cy="50" r="34" fill="none" stroke="url(#impLineGrad)" strokeWidth="0.3" strokeDasharray="1.5 2" />
-            <circle cx="50" cy="50" r="45" fill="url(#impCenterGlow)" />
-            {INICIATIVAS.map((item) => {
-              const rad = (item.angle * Math.PI) / 180;
+          {/* Línea vertical — desktop: centro, mobile: izquierda */}
+          <div
+            className="absolute top-2 bottom-2 w-px"
+            style={{
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: GRADIENT_MAIN,
+              opacity: 0.35,
+            }}
+          />
+          {/* Mobile override: línea a la izquierda */}
+          <div
+            className="lg:hidden absolute top-2 bottom-2 w-px"
+            style={{ left: "10px", background: GRADIENT_MAIN, opacity: 0.35 }}
+          />
+
+          <div className="space-y-8 lg:space-y-10">
+            {INICIATIVAS.map((item, i) => {
+              const isLeft = i % 2 === 0;
               return (
-                <line
+                <motion.div
                   key={item.title}
-                  x1="50" y1="50"
-                  x2={50 + R_PCT * Math.cos(rad)}
-                  y2={50 + R_PCT * Math.sin(rad)}
-                  stroke="url(#impLineGrad)"
-                  strokeWidth="0.4"
-                />
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  {/* Mobile: dot a la izquierda, card a la derecha */}
+                  <div className="lg:hidden flex items-start gap-4" style={{ paddingLeft: "2px" }}>
+                    <div className="flex flex-col items-center flex-shrink-0" style={{ marginTop: "14px" }}>
+                      <Dot gradient={item.gradient} />
+                    </div>
+                    <div className="flex-1 pl-2">
+                      <Card item={item} />
+                    </div>
+                  </div>
+
+                  {/* Desktop: alternando izquierda / derecha */}
+                  <div className="hidden lg:grid items-start" style={{ gridTemplateColumns: "1fr 32px 1fr", gap: "0 1.5rem" }}>
+                    {/* Columna izquierda */}
+                    <div className="flex justify-end">
+                      {isLeft ? <div className="w-full max-w-sm"><Card item={item} /></div> : null}
+                    </div>
+
+                    {/* Dot centrado */}
+                    <div className="flex justify-center" style={{ paddingTop: "14px" }}>
+                      <Dot gradient={item.gradient} />
+                    </div>
+
+                    {/* Columna derecha */}
+                    <div>
+                      {!isLeft ? <div className="w-full max-w-sm"><Card item={item} /></div> : null}
+                    </div>
+                  </div>
+                </motion.div>
               );
             })}
-          </svg>
-
-          {/* Hub central */}
-          <div
-            className="absolute flex flex-col items-center justify-center text-center"
-            style={{
-              left: "50%", top: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "clamp(90px, 14%, 110px)",
-              height: "clamp(90px, 14%, 110px)",
-              borderRadius: "50%",
-              background: GRADIENT_MAIN,
-              boxShadow: "0 4px 28px rgba(192,0,90,0.35)",
-              zIndex: 2,
-            }}
-          >
-            <Heart size={16} className="text-white mb-1" fill="white" />
-            <span className="text-white font-bold text-[10px] leading-tight tracking-wide uppercase">Acción<br />Social</span>
           </div>
-
-          {/* Cards circulares */}
-          {INICIATIVAS.map((item, i) => {
-            const { left, top } = circPos(item.angle);
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, scale: 0.7 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-                className="absolute"
-                style={{
-                  left,
-                  top,
-                  transform: "translate(-50%, -50%)",
-                  width: "clamp(150px, 24%, 190px)",
-                  zIndex: 2,
-                }}
-              >
-                <Card item={item} />
-              </motion.div>
-            );
-          })}
         </div>
 
         {/* Convocatoria */}
