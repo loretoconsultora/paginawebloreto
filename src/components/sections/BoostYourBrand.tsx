@@ -146,7 +146,7 @@ export default function BoostYourBrand() {
               </p>
 
               <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-3 leading-tight">
-                Expande tu valor al mundo digital
+                Conquista el mundo digital
               </h3>
 
               <p className="font-dancing text-2xl text-white/85 mb-5">
@@ -229,7 +229,7 @@ export default function BoostYourBrand() {
                   className="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1"
                   style={{ background: GOLD_GRADIENT, color: "#1a0a2e" }}
                 >
-                  ⭐ Solo 10 lugares
+                  ⭐ Solo 8 lugares
                 </div>
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso VIP</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
