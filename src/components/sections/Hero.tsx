@@ -190,24 +190,6 @@ export default function Hero() {
           </AnimatePresence>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          style={{
-            fontFamily: "var(--font-dancing)",
-            fontSize: "clamp(1.4rem, 3.2vw, 2.8rem)",
-            lineHeight: 1.3,
-            background: "linear-gradient(135deg, #c0005a, #9b30c8)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            marginBottom: "2rem",
-          }}
-        >
-          <TypewriterText text={TAGLINE} />
-        </motion.div>
-
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}

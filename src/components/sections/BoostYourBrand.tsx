@@ -7,10 +7,16 @@ import { useEffect, useState } from "react";
 const INCLUDES = [
   "Estrategia de marca completa",
   "Manual de comunicación y posicionamiento",
-  "Oferta irresistible lista para vender",
   "Estrategia de contenidos para redes",
-  "Plan de lanzamiento digital activo",
-  "Al menos 1 servicio digital monetizable",
+  "Optimización de oferta para negocio digital",
+  "Estrategia de lanzamiento de negocio digital",
+];
+
+const INCLUDES_BLOOM = [
+  ...INCLUDES,
+  "Construcción de Landing Page",
+  "2 hrs de Consultoría de Inteligencia Artificial para negocios digitales",
+  "4 hrs Taller de construcción de herramientas internas con IA",
 ];
 
 const HREF = "https://boost-your-brand.vercel.app";
@@ -118,7 +124,7 @@ export default function BoostYourBrand() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
                 <Zap size={12} fill="currentColor" />
-                ⚡ Próxima generación — Solo 45 lugares
+                ⚡ Próxima generación — Solo 20 lugares
               </div>
 
               <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-3 leading-tight">
@@ -182,9 +188,9 @@ export default function BoostYourBrand() {
               >
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso general</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Boost Your Brand</p>
-                <p className="font-playfair text-3xl font-black mb-4">444 <span className="text-base font-normal text-white/60">USD</span></p>
+                <p className="font-playfair text-3xl font-black mb-4">333 <span className="text-base font-normal text-white/60">USD</span></p>
                 <ul className="space-y-2 mb-5">
-                  {INCLUDES.slice(0, 4).map((item) => (
+                  {INCLUDES.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-white/85">
                       <span className="mt-0.5 flex-shrink-0">✓</span>
                       {item}
@@ -209,8 +215,15 @@ export default function BoostYourBrand() {
                 </div>
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso VIP</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
-                <p className="font-playfair text-3xl font-black mb-4">1,110 <span className="text-base font-normal text-white/60">USD</span></p>
-                <p className="text-sm text-white/75 mb-5">Todo lo del plan Boost + mentoría 1:1, piezas publicitarias y CRM incluido.</p>
+                <p className="font-playfair text-3xl font-black mb-4">649 <span className="text-base font-normal text-white/60">USD</span></p>
+                <ul className="space-y-2 mb-5">
+                  {INCLUDES_BLOOM.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-white/85">
+                      <span className="mt-0.5 flex-shrink-0">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
                 <GradientBorderButton href={HREF_VIP} gradient={GOLD_GRADIENT}>
                   Activar acceso VIP →
                 </GradientBorderButton>

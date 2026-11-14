@@ -18,7 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <MarqueeBanner />
-        <Novedades />
+        {/* <Novedades /> */}
         <BoostYourBrand />
         <Servicios />
         <LogrosDestacados />
