@@ -12,8 +12,7 @@ const INCLUDES = [
   "Estrategia de lanzamiento de negocio digital",
 ];
 
-const INCLUDES_BLOOM = [
-  ...INCLUDES,
+const INCLUDES_BLOOM_EXTRA = [
   "Construcción de Landing Page",
   "2 hrs de Consultoría de Inteligencia Artificial para negocios digitales",
   "4 hrs Taller de construcción de herramientas internas con IA",
@@ -26,15 +25,30 @@ const CARD_GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)";
 const CARD_BG = "rgba(255,255,255,0.18)";
 
-// 15 de julio 2026, 18:00 hora México (CDT = UTC-5)
-const TARGET = new Date("2026-07-15T18:00:00-05:00").getTime();
+// Calcula el próximo primer lunes del mes a las 18:00 hora México (CST = UTC-6)
+function getNextFirstMonday(): number {
+  const now = new Date();
+  const findFirstMonday = (year: number, month: number) => {
+    const d = new Date(year, month, 1);
+    const offset = d.getDay() === 1 ? 0 : (8 - d.getDay()) % 7;
+    const day = 1 + offset;
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return new Date(`${year}-${pad(month + 1)}-${pad(day)}T18:00:00-06:00`).getTime();
+  };
+  const y = now.getFullYear();
+  const m = now.getMonth();
+  const target = findFirstMonday(y, m);
+  if (target > now.getTime()) return target;
+  const next = m === 11 ? { y: y + 1, m: 0 } : { y, m: m + 1 };
+  return findFirstMonday(next.y, next.m);
+}
 
 function useCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const calc = () => {
-      const diff = TARGET - Date.now();
+      const diff = getNextFirstMonday() - Date.now();
       if (diff <= 0) return setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       setTimeLeft({
         days: Math.floor(diff / 86400000),
@@ -127,19 +141,25 @@ export default function BoostYourBrand() {
                 ⚡ Próxima generación — Solo 20 lugares
               </div>
 
-              <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-3 leading-tight">
-                Boost Your Brand
+              <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-2 leading-tight">
+                El acelerador de tu marca
               </h3>
+              <h4 className="font-playfair text-xl sm:text-2xl font-semibold mb-3 leading-tight" style={{ color: "#E894FF" }}>
+                para crecer en negocios digitales
+              </h4>
 
               <p className="font-dancing text-2xl text-white/85 mb-5">
-                Inicio: miércoles 15 de julio
+                Nueva generación: cada primer lunes del mes
               </p>
 
               <p className="text-white/90 text-lg leading-relaxed mb-3 font-medium">
                 Dentro de ti hay un valor que el mundo necesita.
               </p>
+              <p className="text-white/75 leading-relaxed mb-3">
+                Ideal para emprendedoras, coaches, consultoras y creadoras de contenido que quieren monetizar su conocimiento y construir un negocio digital real.
+              </p>
               <p className="text-white/75 leading-relaxed mb-8">
-                En 6 sesiones en vivo construyes tu identidad, tu oferta digital y sales con tu primer lanzamiento listo para escalar.
+                Pasas de tener una idea vaga a tener una marca posicionada, una oferta digital irresistible y tu primer lanzamiento activo.
               </p>
 
               <Link
@@ -216,8 +236,9 @@ export default function BoostYourBrand() {
                 <p className="text-xs font-semibold tracking-widest uppercase text-white/60 mb-1">Acceso VIP</p>
                 <p className="font-playfair text-xl font-bold mb-0.5">Bloom Your Brand</p>
                 <p className="font-playfair text-3xl font-black mb-4">649 <span className="text-base font-normal text-white/60">USD</span></p>
+                <p className="text-sm text-white/70 mb-2 font-semibold">Todo lo de Boost Your Brand +</p>
                 <ul className="space-y-2 mb-5">
-                  {INCLUDES_BLOOM.map((item) => (
+                  {INCLUDES_BLOOM_EXTRA.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-white/85">
                       <span className="mt-0.5 flex-shrink-0">✓</span>
                       {item}

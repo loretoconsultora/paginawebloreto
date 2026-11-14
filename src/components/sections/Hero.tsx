@@ -29,18 +29,10 @@ function TypewriterText({ text }: { text: string }) {
 }
 
 const METRICS = [
-  { target: 6, suffix: "+", label: "Años de experiencia" },
+  { target: 6, suffix: "+", label: "Años" },
   { target: 500, suffix: "+", label: "Clientes" },
-  { target: 500, suffix: "+", label: "Alumnos" },
 ];
 
-const FLAGS = [
-  { emoji: "🇲🇽", name: "México" },
-  { emoji: "🇨🇴", name: "Colombia" },
-  { emoji: "🇦🇷", name: "Argentina" },
-  { emoji: "🇺🇸", name: "EE. UU." },
-  { emoji: "🇪🇸", name: "España" },
-];
 
 function useCounter(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
@@ -245,15 +237,10 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
-            <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3A3F4B" }}>
-              Presencia en
+          <div className="flex items-center justify-center mt-4">
+            <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3A3F4B" }}>
+              10 países confían en nosotros
             </span>
-            {FLAGS.map((f) => (
-              <span key={f.name} title={f.name} style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", lineHeight: 1 }}>
-                {f.emoji}
-              </span>
-            ))}
           </div>
         </motion.div>
       </div>
