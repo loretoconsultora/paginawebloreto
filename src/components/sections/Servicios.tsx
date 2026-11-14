@@ -169,7 +169,7 @@ export default function Servicios() {
                 backgroundClip: "text",
               }}
             >
-              Sé parte de la comunidad de empresas<br className="hidden sm:block" /> que confían en nosotros
+              Sé parte de la comunidad<br /> de empresas que confían en nosotros
             </motion.h2>
 
             <motion.p
