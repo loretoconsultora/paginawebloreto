@@ -12,8 +12,8 @@ const G_GOLD   = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)
 const G_BLUE   = "linear-gradient(135deg, #93c5fd, #a5b4fc, #c4b5f4)";
 const G_PINK   = "linear-gradient(135deg, #f9a8d4, #f472b6, #a78bfa)";
 const MAGENTA  = "#c0005a";
-const HREF_GENERAL = "https://links.victoranza.com/payment-link/6a2a54c703b17c94f5715b8f";
-const HREF_VIP     = "https://links.victoranza.com/payment-link/6a2a573c71a0aa761e4642d0";
+const HREF_GENERAL = "https://buy.stripe.com/6oU9AT17d0LL8VS1D32Nq06";
+const HREF_VIP     = "https://buy.stripe.com/6oU28r7vB1PPgok0yZ2Nq05";
 
 // ─── Countdown — mismo cálculo que home ──────────────────────────────────────
 function getNextFirstMonday(): number {

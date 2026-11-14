@@ -18,9 +18,9 @@ const INCLUDES_BLOOM_EXTRA = [
   "4 hrs Taller de construcción de herramientas internas con IA",
 ];
 
-const HREF = "https://boost-your-brand.vercel.app";
-const HREF_GENERAL = "https://links.victoranza.com/payment-link/6a2a54c703b17c94f5715b8f";
-const HREF_VIP = "https://links.victoranza.com/payment-link/6a2a573c71a0aa761e4642d0";
+const HREF = "/reto";
+const HREF_GENERAL = "https://buy.stripe.com/6oU9AT17d0LL8VS1D32Nq06";
+const HREF_VIP = "https://buy.stripe.com/6oU28r7vB1PPgok0yZ2Nq05";
 const CARD_GRADIENT = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b 0%, #f5c842 45%, #ffe066 100%)";
 const CARD_BG = "rgba(255,255,255,0.18)";
