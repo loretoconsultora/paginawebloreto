@@ -141,12 +141,13 @@ export default function BoostYourBrand() {
                 ⚡ Próxima generación — Solo 20 lugares
               </div>
 
-              <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-2 leading-tight">
-                El acelerador de tu marca
+              <p className="text-white/60 text-xs font-semibold tracking-widest uppercase mb-2">
+                El programa más solicitado por nuestros clientes
+              </p>
+
+              <h3 className="font-playfair text-3xl sm:text-5xl font-bold mb-3 leading-tight">
+                Expande tu valor al mundo digital
               </h3>
-              <h4 className="font-playfair text-xl sm:text-2xl font-semibold mb-3 leading-tight" style={{ color: "#E894FF" }}>
-                para crecer en negocios digitales
-              </h4>
 
               <p className="font-dancing text-2xl text-white/85 mb-5">
                 Nueva generación: cada primer lunes del mes
@@ -156,10 +157,10 @@ export default function BoostYourBrand() {
                 Dentro de ti hay un valor que el mundo necesita.
               </p>
               <p className="text-white/75 leading-relaxed mb-3">
-                Ideal para emprendedoras, coaches, consultoras y creadoras de contenido que quieren monetizar su conocimiento y construir un negocio digital real.
+                Ideal para el lanzamiento y evolución de tu negocio al mundo digital. Para emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.
               </p>
               <p className="text-white/75 leading-relaxed mb-8">
-                Pasas de tener una idea vaga a tener una marca posicionada, una oferta digital irresistible y tu primer lanzamiento activo.
+                Pasa de tener conocimientos, habilidades y experiencia a tener una marca posicionada, una oferta digital irresistible y tu primer lanzamiento activo.
               </p>
 
               <Link
