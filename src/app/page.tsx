@@ -21,7 +21,7 @@ export default function Home() {
         {/* <Novedades /> */}
         <BoostYourBrand />
         <Servicios />
-        <LogrosDestacados />
+        {/* <LogrosDestacados /> */}
         <NuestrasMarcas />
         <ImpactoSocial />
         <Blog />

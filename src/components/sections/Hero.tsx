@@ -31,6 +31,7 @@ function TypewriterText({ text }: { text: string }) {
 const METRICS = [
   { target: 6, suffix: "+", label: "Años" },
   { target: 500, suffix: "+", label: "Clientes" },
+  { target: 10, suffix: "+", label: "Países" },
 ];
 
 
@@ -237,11 +238,6 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex items-center justify-center mt-4">
-            <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3A3F4B" }}>
-              10 países confían en nosotros
-            </span>
-          </div>
         </motion.div>
       </div>
 
