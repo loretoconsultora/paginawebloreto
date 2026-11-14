@@ -163,9 +163,9 @@ export default function ImpactoSocial() {
         {/* ── TIMELINE ── */}
         <div className="relative mb-14">
 
-          {/* Línea vertical — desktop: centro, mobile: izquierda */}
+          {/* Línea vertical desktop: centro */}
           <div
-            className="absolute top-2 bottom-2 w-px"
+            className="hidden lg:block absolute top-2 bottom-2 w-px"
             style={{
               left: "50%",
               transform: "translateX(-50%)",
@@ -173,7 +173,7 @@ export default function ImpactoSocial() {
               opacity: 0.35,
             }}
           />
-          {/* Mobile override: línea a la izquierda */}
+          {/* Línea vertical mobile: izquierda */}
           <div
             className="lg:hidden absolute top-2 bottom-2 w-px"
             style={{ left: "10px", background: GRADIENT_MAIN, opacity: 0.35 }}
