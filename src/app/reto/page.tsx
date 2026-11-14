@@ -430,7 +430,10 @@ function Pricing() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="rounded-3xl p-8" style={{ background: "white", border: "1px solid rgba(192,0,90,0.15)", boxShadow: "0 8px 32px rgba(192,0,90,0.07)" }}>
             <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: MAGENTA }}>Programa completo</p>
-            <h3 className="text-2xl font-bold font-playfair mb-1" style={{ color: "#3A3F4B" }}>Boost Your Brand</h3>
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-2xl font-bold font-playfair" style={{ color: "#3A3F4B" }}>Boost Your Brand</h3>
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ background: "rgba(192,0,90,0.08)", color: MAGENTA, border: "1px solid rgba(192,0,90,0.2)" }}>4 semanas</span>
+            </div>
             <div className="flex items-baseline gap-2 mt-3 mb-1">
               <span className="text-5xl font-bold font-playfair" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>$333</span>
               <span className="text-lg opacity-50">USD</span>
@@ -473,7 +476,10 @@ function Pricing() {
             className="rounded-3xl p-8 relative" style={{ background: "white", border: "1px solid rgba(252,205,13,0.3)", boxShadow: "0 8px 32px rgba(252,205,13,0.12)" }}>
             <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold" style={{ background: G_GOLD, color: "#1a0a2e" }}>Solo 8 lugares</div>
             <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#b8860b" }}>Acceso VIP</p>
-            <h3 className="text-2xl font-bold font-playfair mb-1" style={{ color: "#3A3F4B" }}>Bloom Your Brand</h3>
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-2xl font-bold font-playfair" style={{ color: "#3A3F4B" }}>Bloom Your Brand</h3>
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ background: "rgba(184,134,11,0.1)", color: "#b8860b", border: "1px solid rgba(184,134,11,0.25)" }}>8 semanas</span>
+            </div>
             <div className="flex items-baseline gap-2 mt-3 mb-1">
               <span className="text-5xl font-bold font-playfair" style={{ background: G_GOLD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>$649</span>
               <span className="text-lg opacity-50">USD</span>
