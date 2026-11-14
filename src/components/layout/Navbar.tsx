@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Consultoría", href: "/consultoria", external: false },
   { label: "Eventos", href: "/eventos", external: false },
   { label: "VictorIA Academy", href: "/victoria-academy", external: false },
-  { label: "Blog", href: "/blog", external: false },
+  // { label: "Blog", href: "/blog", external: false },
   // { label: "Formaciones", href: "/formaciones", external: false }, // próximamente
   // { label: "Nosotros", href: "/nosotros", external: false }, // próximamente
   // { label: "Herramientas", href: "/herramientas", external: false }, // próximamente

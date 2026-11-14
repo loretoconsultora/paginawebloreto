@@ -24,7 +24,7 @@ export default function Home() {
         {/* <LogrosDestacados /> */}
         <NuestrasMarcas />
         <ImpactoSocial />
-        <Blog />
+        {/* <Blog /> */}
         <CTAFinal />
       </main>
       <Footer />

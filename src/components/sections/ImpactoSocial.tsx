@@ -6,6 +6,35 @@ import { motion } from "framer-motion";
 const GRADIENT_MAIN = "linear-gradient(135deg, #1a0a2e 0%, #c0005a 45%, #E894FF 100%)";
 const GRADIENT_A = "linear-gradient(135deg, #3a0ca3, #c0005a, #ff6a92)";
 const GRADIENT_B = "linear-gradient(135deg, #1a0a2e, #6a00c8, #E894FF)";
+const GRADIENT_C = "linear-gradient(135deg, #c0005a, #E894FF, #ff6a92)";
+const GRADIENT_D = "linear-gradient(135deg, #1a0a2e, #3a0ca3, #c0005a)";
+
+const INICIATIVAS = [
+  {
+    gradient: GRADIENT_A,
+    label: "México",
+    title: "CONEDUQ",
+    body: "Programas de Consultoría en el Consejo de Educación y Capacitación Q.A.C. (CONEDUQ): Consultoría de Marca y Comunicación para el equipo de comunicación institucional, y Diseño de Programas Académicos alrededor de la Inteligencia Artificial.",
+  },
+  {
+    gradient: GRADIENT_B,
+    label: "México",
+    title: "El Puente de Esperanza IAP",
+    body: "Coordinación del Servicio Social de los equipos de Comunicación Institucional y Patrocinios en El Puente de Esperanza IAP: Consultoría, Planeación y Liderazgo de los equipos.",
+  },
+  {
+    gradient: GRADIENT_C,
+    label: "Sep 2025 · Presente · México",
+    title: "Jóvenes Mexicanos Desarrollando Talentos A.C. (JoM)",
+    body: "Talleres de Inteligencia Artificial donde los jóvenes aprenden a desarrollar su propio stack tecnológico y portafolio de herramientas digitales que responden a las necesidades de su comunidad.",
+  },
+  {
+    gradient: GRADIENT_D,
+    label: "Venezuela",
+    title: "Venezuela Tierra de Gracia",
+    body: "Consultoría en Lean Manufacturing y Desarrollo de Herramientas Tecnológicas a la medida para el equipo de Currículo Educativo.",
+  },
+];
 
 const fotos = [
   { src: "/accion-social/foto-1.jpg", rotate: -5 },
@@ -78,49 +107,33 @@ export default function ImpactoSocial() {
           ))}
         </div>
 
-        {/* Dos iniciativas */}
+        {/* Cuatro iniciativas */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-          <div className="rounded-3xl p-[3px]" style={{ background: GRADIENT_A }}>
-            <div className="rounded-[22px] bg-white p-6 h-full">
-              <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{
-                background: GRADIENT_A,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}>
-                Sep 2025 · Presente · México
-              </p>
-              <p className="text-grafito/70 text-sm leading-relaxed">
-                Colaboramos activamente con{" "}
-                <a
-                  href="https://jom-ac.org/quienes-somos/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                  style={{ color: "#c0005a" }}
-                >
-                  Fundación JOM, A.C.
-                </a>
-                {" "}— formaciones para jóvenes preuniversitarios y universitarios: preparación al ingreso a la universidad y talleres de inteligencia artificial responsiva.
-              </p>
+          {INICIATIVAS.map((item) => (
+            <div key={item.title} className="rounded-3xl p-[3px]" style={{ background: item.gradient }}>
+              <div className="rounded-[22px] bg-white p-6 h-full">
+                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{
+                  background: item.gradient,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                  {item.label}
+                </p>
+                <p className="font-semibold text-sm mb-2" style={{
+                  background: item.gradient,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                  {item.title}
+                </p>
+                <p className="text-grafito/70 text-sm leading-relaxed">
+                  {item.body}
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div className="rounded-3xl p-[3px]" style={{ background: GRADIENT_B }}>
-            <div className="rounded-[22px] bg-white p-6 h-full">
-              <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{
-                background: GRADIENT_B,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}>
-                Oct 2025 · Valle del Cauca, Colombia
-              </p>
-              <p className="text-grafito/70 text-sm leading-relaxed">
-                Llevamos conferencias y clases de inteligencia artificial, ventas y marca personal a jóvenes adolescentes de la región cafetera, impulsando su desarrollo profesional desde temprana edad.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Convocatoria */}
