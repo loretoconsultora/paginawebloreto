@@ -10,6 +10,7 @@ const MAGENTA = "#c0005a";
 const navLinks = [
   { label: "Reto", href: "https://boost-your-brand.vercel.app", external: true },
   { label: "Servicios", href: "/servicios", external: false },
+  { label: "Consultoría", href: "/consultoria", external: false },
   { label: "VictorIA Academy", href: "/victoria-academy", external: false },
   // { label: "Laboratorio de IA", href: "/laboratorio-ia", external: false }, // próximamente
   { label: "Eventos", href: "/eventos", external: false },
