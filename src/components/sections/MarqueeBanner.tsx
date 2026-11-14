@@ -2,7 +2,6 @@ const ITEMS = [
   "Servicios de Marketing Digital",
   "Consultoría",
   "Formaciones",
-  "Programas Académicos",
   "Tecnología",
 ];
 
