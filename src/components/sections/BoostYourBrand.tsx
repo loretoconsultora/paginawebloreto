@@ -153,11 +153,8 @@ export default function BoostYourBrand() {
                 Nueva generación: cada primer lunes del mes
               </p>
 
-              <p className="text-white/90 text-lg leading-relaxed mb-3 font-medium">
-                Dentro de ti hay un valor que el mundo necesita.
-              </p>
-              <p className="text-white/75 leading-relaxed mb-3">
-                Ideal para el lanzamiento y evolución de tu negocio al mundo digital. Para emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.
+              <p className="text-white/80 leading-relaxed mb-3">
+                Te guiamos y acompañamos en el lanzamiento y evolución de tu negocio al mundo digital. Este es un programa para emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.
               </p>
               <p className="text-white/75 leading-relaxed mb-8">
                 Pasa de tener conocimientos, habilidades y experiencia a tener una marca posicionada, una oferta digital irresistible y tu primer lanzamiento activo.
