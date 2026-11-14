@@ -52,13 +52,15 @@ function useCountdown() {
   return t;
 }
 
-function CDUnit({ value, label }: { value: number; label: string }) {
+function CDUnit({ value, label, white }: { value: number; label: string; white?: boolean }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="font-playfair font-black text-3xl leading-none" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+      <span className="font-playfair font-black text-3xl leading-none"
+        style={white ? { color: "white" } : { background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
         {String(value).padStart(2, "0")}
       </span>
-      <span className="text-[10px] font-semibold tracking-widest uppercase mt-1" style={{ color: "#3A3F4B", opacity: 0.5 }}>{label}</span>
+      <span className="text-[10px] font-semibold tracking-widest uppercase mt-1"
+        style={{ color: white ? "rgba(255,255,255,0.65)" : "#3A3F4B", opacity: white ? 1 : 0.5 }}>{label}</span>
     </div>
   );
 }
@@ -68,27 +70,83 @@ function Hero() {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
     <section className="min-h-screen flex items-center pt-28 pb-20 px-5 lg:px-8 relative overflow-hidden bg-white">
-      {/* blobs decorativos */}
-      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full" style={{ background: "radial-gradient(circle, rgba(232,148,255,0.12) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
-      <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full" style={{ background: "radial-gradient(circle, rgba(192,0,90,0.08) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
+      {/* blobs decorativos lado derecho */}
+      <div className="absolute -top-32 right-0 w-[380px] h-[380px] rounded-full" style={{ background: "radial-gradient(circle, rgba(232,148,255,0.07) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
+
+      {/* aurora keyframe */}
+      <style>{`
+        @keyframes aurora {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes float-y {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-10px); }
+        }
+      `}</style>
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-0 lg:gap-8 items-stretch">
 
-          {/* Columna izquierda */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="order-2 lg:order-1 text-center lg:text-left">
+          {/* Columna izquierda — degradado con título del reto */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}
+            className="order-1 flex flex-col items-center justify-center gap-8 rounded-3xl px-10 py-14 text-center"
+            style={{
+              background: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF, #c0005a, #1a0a2e)",
+              backgroundSize: "300% 300%",
+              animation: "aurora 10s ease infinite",
+            }}
+          >
+            {/* Título */}
+            <div>
+              <p className="font-dancing text-3xl mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>Reto</p>
+              <div className="font-playfair font-black uppercase leading-none text-white">
+                <span className="block" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)" }}>Boost &amp; Bloom</span>
+                <span className="block" style={{ fontSize: "clamp(3rem,7vw,4.5rem)", display: "inline-block", animation: "float-y 4s ease-in-out infinite" }}>
+                  Your Brand
+                </span>
+              </div>
+              <div className="mt-4 h-0.5 w-24 mx-auto rounded-full" style={{ background: "rgba(255,255,255,0.4)" }} />
+            </div>
+
+            {/* Countdown card */}
+            <div className="w-full max-w-xs rounded-2xl px-6 py-6 text-center"
+              style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-1 text-white">
+                ⚡ Próxima generación — solo 20 lugares
+              </p>
+              <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Arrancamos 1° Lunes de cada mes
+              </p>
+              <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>Cierre de inscripciones en</p>
+              <div className="flex items-center justify-center gap-3">
+                <CDUnit value={days} label="días" white />
+                <span className="font-bold text-lg mb-3 text-white/40">:</span>
+                <CDUnit value={hours} label="horas" white />
+                <span className="font-bold text-lg mb-3 text-white/40">:</span>
+                <CDUnit value={minutes} label="min" white />
+                <span className="font-bold text-lg mb-3 text-white/40">:</span>
+                <CDUnit value={seconds} label="seg" white />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Columna derecha — texto + botones + stats */}
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="order-2 flex flex-col justify-center text-center lg:text-left px-0 lg:px-8 py-12 lg:py-0">
             <p className="text-base lg:text-lg mb-2 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.75 }}>
               Dentro de ti hay un valor que el mundo necesita —<br className="hidden sm:block" />
               este reto se trata de reconocerlo, reconectarlo y compartirlo.
             </p>
-            <h1 className="font-playfair font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem,4.5vw,3.5rem)" }}>
+            <h1 className="font-playfair font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
               <span style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 Conquista el mundo digital
               </span>
             </h1>
 
             <p className="text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.85 }}>
-              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong> — tu ecosistema digital completo.<br className="hidden sm:block" />
+              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong> — tu ecosistema digital completo.
               <span className="text-sm mt-2 block opacity-75">Dirigido a emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.</span>
             </p>
 
@@ -109,10 +167,10 @@ function Hero() {
               {[
                 { n: "+500", l: "marcas construidas" },
                 { n: "+500", l: "alumnos formados" },
-                { n: "+10", l: "países confían en nosotros" },
+                { n: "+10", l: "países confían" },
               ].map((s, i) => (
                 <div key={i} className="flex items-center">
-                  <div className="text-center px-5 py-3">
+                  <div className="text-center px-4 py-3">
                     <div className="font-bold text-2xl font-playfair" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.n}</div>
                     <div className="text-xs mt-0.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>{s.l}</div>
                   </div>
@@ -122,38 +180,6 @@ function Hero() {
             </div>
           </motion.div>
 
-          {/* Columna derecha — título + card countdown */}
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="order-1 lg:order-2 flex flex-col items-center gap-6">
-            <div className="text-center">
-              <p className="font-dancing text-3xl mb-1" style={{ color: MAGENTA }}>Reto</p>
-              <div className="font-playfair font-black uppercase leading-none" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                <span className="block" style={{ fontSize: "clamp(1.6rem,4vw,2.4rem)" }}>Boost & Bloom</span>
-                <span className="block" style={{ fontSize: "clamp(3rem,8vw,5rem)" }}>Your Brand</span>
-              </div>
-              <div className="mt-3 h-0.5 w-24 mx-auto rounded-full" style={{ background: G_MAIN }} />
-            </div>
-
-            {/* Countdown card */}
-            <div className="w-full max-w-sm rounded-3xl p-8 text-center"
-              style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(20px)", border: "1px solid rgba(192,0,90,0.15)", boxShadow: "0 24px 80px rgba(192,0,90,0.12)" }}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: MAGENTA }}>
-                ⚡ Próxima generación — solo 20 lugares
-              </p>
-              <p className="text-sm mb-6" style={{ color: "#3A3F4B", opacity: 0.65 }}>
-                Nueva Generación: Arrancamos 1° Lunes de cada mes
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#3A3F4B", opacity: 0.45 }}>Cierre de inscripciones en</p>
-              <div className="flex items-center justify-center gap-4">
-                <CDUnit value={days} label="días" />
-                <span className="font-bold text-xl mb-3" style={{ color: "rgba(192,0,90,0.3)" }}>:</span>
-                <CDUnit value={hours} label="horas" />
-                <span className="font-bold text-xl mb-3" style={{ color: "rgba(192,0,90,0.3)" }}>:</span>
-                <CDUnit value={minutes} label="min" />
-                <span className="font-bold text-xl mb-3" style={{ color: "rgba(192,0,90,0.3)" }}>:</span>
-                <CDUnit value={seconds} label="seg" />
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
