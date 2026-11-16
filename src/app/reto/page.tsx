@@ -252,7 +252,7 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
 function Hero({ onOpenModal }: { onOpenModal: () => void }) {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
-    <section className="min-h-screen flex items-center pt-28 pb-20 px-5 lg:px-8 relative overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center pt-28 pb-8 lg:pb-10 px-5 lg:px-8 relative overflow-hidden bg-white">
       {/* blobs decorativos lado derecho */}
       <div className="absolute -top-32 right-0 w-[380px] h-[380px] rounded-full" style={{ background: "radial-gradient(circle, rgba(232,148,255,0.07) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
@@ -378,7 +378,7 @@ const PROBLEMS = [
 
 function Problems() {
   return (
-    <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%)" }}>
+    <section className="pt-8 lg:pt-10 pb-16 lg:pb-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%)" }}>
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, rgba(232,148,255,0.08) 0%, transparent 70%)", filter: "blur(40px)", pointerEvents: "none" }} />
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -931,7 +931,7 @@ function Testimonials() {
   if (visible.length < 3) visible.push(...TESTIMONIALS.slice(0, 3 - visible.length));
 
   return (
-    <section className="py-16 lg:py-24 relative overflow-hidden bg-white">
+    <section className="pt-16 lg:pt-24 pb-8 lg:pb-10 relative overflow-hidden bg-white">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(196,181,244,0.18) 0%, rgba(147,197,253,0.1) 40%, transparent 70%)", pointerEvents: "none" }} />
       <div className="text-center mb-12 px-5">
         <p className="font-semibold text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
@@ -1028,7 +1028,7 @@ function FAQ() {
   );
 
   return (
-    <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden bg-white">
+    <section className="pt-8 lg:pt-10 pb-16 lg:pb-24 px-5 lg:px-8 relative overflow-hidden bg-white">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(196,181,244,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
