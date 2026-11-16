@@ -780,9 +780,6 @@ function Pricing() {
               <span className="text-lg opacity-50">USD</span>
             </div>
             <p className="text-sm italic mb-5 opacity-70">Para quienes quieren ir más lejos — con mayor acompañamiento, producción de anuncios y tecnología incluidos.</p>
-            <div className="rounded-2xl p-4 mb-5" style={{ background: "rgba(252,205,13,0.06)", border: "1px solid rgba(252,205,13,0.2)" }}>
-              <p className="text-sm font-playfair italic" style={{ color: "#3A3F4B" }}>"El momento en que tu marca deja de depender de ti para crecer — es el momento en que realmente escalas."</p>
-            </div>
             <p className="text-xs font-semibold mb-3 opacity-60">🔑 Todo lo del plan Boost Your Brand, más:</p>
             <div className="space-y-3 mb-6">
               {BLOOM_EXTRAS.map((item) => (
