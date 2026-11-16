@@ -592,7 +592,7 @@ function Results() {
 
 // ─── Sección 5: Precios ───────────────────────────────────────────────────────
 const TABLE_ROWS = [
-  { label: "6 sesiones grupales en vivo",     boost: true,  bloom: true  },
+  { label: "8 sesiones grupales en vivo",     boost: true,  bloom: true  },
   { label: "Acceso a Victoranza App",          boost: true,  bloom: true  },
   { label: "Grabaciones de todas las sesiones",boost: true,  bloom: true  },
   { label: "Herramientas de IA y plantillas",  boost: true,  bloom: true  },
@@ -607,7 +607,7 @@ const TABLE_ROWS = [
 ];
 
 const BOOST_INCLUDES = [
-  "6 sesiones grupales en vivo",
+  "8 sesiones grupales en vivo",
   "Acceso a comunidad en Victoranza",
   "Grabaciones de todas las sesiones",
   "Herramientas de IA y plantillas accionables",
@@ -687,7 +687,7 @@ function Pricing() {
               <span className="text-5xl font-bold font-playfair" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>$333</span>
               <span className="text-lg opacity-50">USD</span>
             </div>
-            <p className="text-xs opacity-50 mb-6">6 sesiones estratégicas · Lanzamiento internacional</p>
+            <p className="text-xs opacity-50 mb-6">8 sesiones estratégicas · Lanzamiento internacional</p>
             <div className="space-y-2 mb-6">
               {BOOST_INCLUDES.map((item) => (
                 <div key={item} className="flex items-center gap-3">
@@ -803,7 +803,7 @@ function Program({ onOpenModal }: { onOpenModal: () => void }) {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-10">
           <h2 className="font-playfair font-bold text-white mb-3" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)" }}>
-            6 sesiones para construir tu marca
+            8 sesiones para construir tu marca
           </h2>
           <p className="font-semibold text-2xl lg:text-3xl text-white">
             con dirección, claridad y conversión
@@ -823,7 +823,7 @@ function Program({ onOpenModal }: { onOpenModal: () => void }) {
             ))}
           </div>
           <div className="h-1 rounded-full" style={{ background: "rgba(255,255,255,0.3)" }}>
-            <div className="h-1 rounded-full transition-all duration-500 bg-white" style={{ width: `${((open + 1) / 6) * 100}%` }} />
+            <div className="h-1 rounded-full transition-all duration-500 bg-white" style={{ width: `${((open + 1) / SESSIONS.length) * 100}%` }} />
           </div>
         </div>
 
@@ -1031,9 +1031,9 @@ const FAQS = [
   { q: "¿En qué plataforma se desarrolla el reto?", a: "Victoranza App es nuestra plataforma digital propia de Loreto Consultora. Allí encontrarás todos los materiales pregrabados, sesiones grabadas del reto, materiales de apoyo, comunidad y más. Al inscribirte recibirás por correo tu acceso con usuario y contraseña." },
   { q: "¿Dónde se realiza el pago?", a: "Al dar clic en los botones de esta página serás redirigido a una página de pago en línea. El pago es procesado por la pasarela de Stripe, es totalmente seguro y podrás pagar con la tarjeta de tu preferencia." },
   { q: "¿Qué pasa si no puedo asistir a una sesión en vivo?", a: "Todas las sesiones se graban y quedan disponibles en la plataforma para que avances a tu ritmo. Para situaciones especiales, acércate con tu customer happiness y atendemos tu caso de manera personalizada." },
-  { q: "¿Cuánto tiempo necesito dedicarle por semana?", a: "Las sesiones en vivo se realizan una vez por semana. Además, recomendamos entre 2 y 3 horas semanales para implementar los ejercicios y construir tus entregables. El plan Bloom Your Brand extiende el acompañamiento a 8 semanas para que puedas profundizar e implementar a un ritmo más intensivo." },
+  { q: "¿Cuánto tiempo necesito dedicarle por semana?", a: "En el plan Boost Your Brand (4 semanas) las sesiones en vivo se realizan dos veces por semana. En el plan Bloom Your Brand (8 semanas) se realizan una vez por semana, con mayor espacio para implementar entre sesiones. Además de las sesiones, recomendamos entre 2 y 3 horas adicionales semanales para ejecutar los ejercicios y construir tus entregables." },
   { q: "¿Hay reembolsos?", a: "Al ser un programa digital progresivo y práctico, no ofrecemos reembolsos. Sin embargo, garantizamos el 100% de satisfacción — si en algún momento sientes que algo no está funcionando para ti, acércate con nuestro equipo y lo resolvemos juntos." },
-  { q: "¿Cuándo recupero mi inversión?", a: "Sales del programa con al menos un servicio digital estructurado, lanzado y un sistema de ventas activo. El tiempo de recuperación depende de tu rubro y de la velocidad con que ejecutes, pero el objetivo del reto es que salgas listo para monetizar desde el primer día." },
+  { q: "¿Cuándo recupero mi inversión?", a: "Sales del programa con al menos un servicio digital estructurado, lanzado y un sistema de ventas activo. El tiempo de recuperación está sujeto a tu modelo de negocio y nicho — por eso incluimos en las primeras sesiones una optimización del modelo diseñada para maximizar tu inversión y reducir el ciclo de recuperación." },
   { q: "¿Cuántos lugares hay disponibles?", a: "Solo 20 lugares en Boost y 8 en Bloom — los cupos son limitados para garantizar atención personalizada y una experiencia de comunidad de alta calidad." },
   { q: "¿Qué pasa después del reto?", a: "Lo más importante es que continúes aplicando lo que construiste. Si quieres ir más lejos, puedes complementar con otros de nuestros programas y servicios. Acércate a nuestro equipo para encontrar el adecuado para ti y tus objetivos." },
 ];
