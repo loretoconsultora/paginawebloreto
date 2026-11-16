@@ -411,10 +411,10 @@ function Problems() {
 
 // ─── Sección 3: Transformación ───────────────────────────────────────────────
 const STAIRCASE_STEPS = [
-  { label: "Reconoce",  widthPct: 52, num: "01" },
-  { label: "Conecta",   widthPct: 66, num: "02" },
-  { label: "Comparte",  widthPct: 82, num: "03" },
-  { label: "Expande",   widthPct: 100, num: "04" },
+  { label: "Reconoce",  widthPct: 100, num: "01" },
+  { label: "Conecta",   widthPct: 82,  num: "02" },
+  { label: "Comparte",  widthPct: 66,  num: "03" },
+  { label: "Expande",   widthPct: 52,  num: "04" },
 ];
 
 function Transformation() {
