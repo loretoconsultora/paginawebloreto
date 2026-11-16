@@ -669,12 +669,12 @@ function Pricing() {
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="font-playfair font-bold mb-3" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "#3A3F4B" }}>
-            La inversión que transformará
+            className="font-playfair font-bold" style={{ fontSize: "clamp(1.5rem,3.5vw,2.4rem)", color: "#3A3F4B" }}>
+            La inversión que transformará{" "}
+            <span style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              el rumbo de tu negocio.
+            </span>
           </motion.h2>
-          <h2 className="font-playfair font-bold" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            el rumbo de tu negocio.
-          </h2>
         </div>
 
         {/* Tabla comparativa */}
