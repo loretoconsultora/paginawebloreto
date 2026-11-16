@@ -202,14 +202,14 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
                 <input type="checkbox" name="confirmar" checked={form.confirmar} onChange={handleChange}
                   className="mt-0.5 flex-shrink-0 w-4 h-4 rounded accent-pink-600" required />
                 <span className="text-sm leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.8 }}>
-                  Confirmo que me apunto al próximo reto que inicia el <strong style={{ color: MAGENTA }}>{nextDate}</strong>
+                  Confirmo que me apunto al próximo Reto que inicia el <strong style={{ color: MAGENTA }}>{nextDate}</strong>
                 </span>
               </label>
 
               <button type="submit" disabled={loading || !form.confirmar}
                 className="mt-2 w-full py-4 rounded-full font-bold text-sm text-white hover:opacity-90 transition-all disabled:opacity-50"
                 style={{ background: G_MAIN, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}>
-                {loading ? "Enviando…" : "Apuntarme al reto →"}
+                {loading ? "Enviando…" : "Apuntarme al Reto →"}
               </button>
 
               <p className="text-center text-xs opacity-40 mt-1">Tus datos son confidenciales y no se comparten.</p>
@@ -319,7 +319,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="order-2 flex flex-col justify-center text-center lg:text-left px-0 lg:px-8 py-12 lg:py-0">
             <p className="text-base lg:text-lg mb-2 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.75 }}>
               Dentro de ti hay un valor que el mundo necesita —<br className="hidden sm:block" />
-              este reto se trata de reconocerlo, reconectarlo y compartirlo.
+              este Reto se trata de reconocerlo, reconectarlo y compartirlo.
             </p>
             <h1 className="font-playfair font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
               <span style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -336,7 +336,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
               <button onClick={onOpenModal}
                 className="inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-full text-white text-sm hover:opacity-90 transition-all whitespace-nowrap"
                 style={{ background: G_MAIN, boxShadow: "0 8px 28px rgba(192,0,90,0.3)" }}>
-                Quiero mi lugar en el reto →
+                Quiero mi lugar en el Reto →
               </button>
               <a href="#programa" className="inline-flex items-center justify-center font-semibold px-6 py-3.5 rounded-full text-sm border hover:opacity-80 transition-all whitespace-nowrap"
                 style={{ color: MAGENTA, borderColor: "rgba(192,0,90,0.3)" }}>
@@ -556,7 +556,7 @@ function Results() {
         <div className="text-center mb-14">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="font-playfair font-bold mb-3" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "#3A3F4B" }}>
-            Al terminar este reto no solo tienes activos
+            Al terminar este Reto no solo tienes activos
           </motion.h2>
           <p className="font-semibold text-2xl lg:text-3xl" style={{ color: MAGENTA }}>
             Te reconocerás como alguien diferente.
@@ -745,7 +745,7 @@ function Pricing() {
             </div>
             <div className="flex items-center gap-2 p-3 rounded-xl mb-6" style={{ background: "rgba(252,205,13,0.1)", border: "1px solid rgba(252,205,13,0.3)" }}>
               <span>⭐</span>
-              <p className="text-xs font-semibold" style={{ color: "#b8860b" }}>Acceso por todo un año — desde el inicio de tu reto</p>
+              <p className="text-xs font-semibold" style={{ color: "#b8860b" }}>Acceso por todo un año — desde el inicio de tu Reto</p>
             </div>
             {/* Countdown en card */}
             <div className="rounded-2xl p-4 mb-6 text-center" style={{ background: "rgba(192,0,90,0.04)", border: "1px solid rgba(192,0,90,0.1)" }}>
@@ -794,7 +794,7 @@ function Pricing() {
             </div>
             <div className="flex items-center gap-2 p-3 rounded-xl mb-6" style={{ background: "rgba(252,205,13,0.1)", border: "1px solid rgba(252,205,13,0.3)" }}>
               <span>⭐</span>
-              <p className="text-xs font-semibold" style={{ color: "#b8860b" }}>Acceso por todo un año — desde el inicio de tu reto</p>
+              <p className="text-xs font-semibold" style={{ color: "#b8860b" }}>Acceso por todo un año — desde el inicio de tu Reto</p>
             </div>
             <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
               className="block w-full text-center font-bold py-4 rounded-full text-sm hover:opacity-90 transition-all"
@@ -814,7 +814,7 @@ const SESSIONS = [
   {
     num: "01", title: "El Ser que ya eres", date: "Sesión 1",
     intro: "Hoy descubres quién eres en el mercado — y nunca más vuelves a dudar de cómo presentarte.",
-    items: ["Tu lucha, propósito y misión de marca", "Hilo conductor e historia de marca", "Arquetipo, tono y storytelling", "Hoja de ruta completa del reto"],
+    items: ["Tu lucha, propósito y misión de marca", "Hilo conductor e historia de marca", "Arquetipo, tono y storytelling", "Hoja de ruta completa del Reto"],
   },
   {
     num: "02", title: "A Quién le Cambias la Vida", date: "Sesión 2",
@@ -956,7 +956,7 @@ const TESTIMONIALS = [
   },
   {
     stars: 5,
-    quote: "Llevaba más de 20 años posicionada de manera tradicional en la industria fitness. El reto me dio lo que nunca había encontrado: una oferta digital que reduce barreras de entrada, atrae nuevos clientes y expande mi experiencia más allá del gym. Hoy mi contenido en redes filtra, conecta y atrae clientes todos los días.",
+    quote: "Llevaba más de 20 años posicionada de manera tradicional en la industria fitness. El Reto me dio lo que nunca había encontrado: una oferta digital que reduce barreras de entrada, atrae nuevos clientes y expande mi experiencia más allá del gym. Hoy mi contenido en redes filtra, conecta y atrae clientes todos los días.",
     name: "B&M Fit",
     role: "Fitness · 🇲🇽 México",
     type: "video" as const,
@@ -1069,20 +1069,20 @@ function Testimonials() {
 
 // ─── Sección 8: FAQ ───────────────────────────────────────────────────────────
 const FAQS = [
-  { q: "¿Para quién es este reto?", a: "Para profesionales, emprendedores, consultores, vendedores, dueños de negocio, creadores de contenido y líderes de equipos que ya tienen experiencia y un servicio de valor, pero no han podido estructurar, comunicar ni monetizar su marca personal en digital. Si sabes que tienes potencial pero no sabes cómo traducirlo en ingresos reales, este reto es para ti." },
+  { q: "¿Para quién es este Reto?", a: "Para profesionales, emprendedores, consultores, vendedores, dueños de negocio, creadores de contenido y líderes de equipos que ya tienen experiencia y un servicio de valor, pero no han podido estructurar, comunicar ni monetizar su marca personal en digital. Si sabes que tienes potencial pero no sabes cómo traducirlo en ingresos reales, este Reto es para ti." },
   { q: "¿Necesito experiencia previa en marketing digital?", a: "No es necesario. Los contenidos están diseñados para llevarte desde un punto de partida inicial hasta tu primer lanzamiento. Sin embargo, es indispensable contar con perfiles empresariales en redes sociales y un portafolio comercial básico. ¿Aún no los tienes? Al inscribirte tendrás acceso a materiales pregrabados con el paso a paso para configurarlo todo antes de comenzar." },
-  { q: "¿Qué equipo de tecnología necesito?", a: "El reto puede seguirse desde el celular, aunque recomendamos trabajar desde computadora o iPad para aprovechar mejor los ejercicios y herramientas. Lo importante es tener una conexión estable a internet y acceso a Victoranza App." },
+  { q: "¿Qué equipo de tecnología necesito?", a: "El Reto puede seguirse desde el celular, aunque recomendamos trabajar desde computadora o iPad para aprovechar mejor los ejercicios y herramientas. Lo importante es tener una conexión estable a internet y acceso a Victoranza App." },
   { q: "¿Qué software adicional necesito?", a: "Recomendamos tener acceso a ChatGPT, Gemini o Claude — con la versión gratuita es suficiente para comenzar, aunque recomendamos la versión de pago para no tener limitantes al ejecutar los ejercicios." },
   { q: "¿Qué tanto se trabaja con inteligencia artificial?", a: "Mucho y con intención. Te enseñamos a co-crear con IA: definir tu identidad de marca, tus pilares de comunicación, tu estrategia de posicionamiento y conversión usando modelos propios. A partir de ahí, escalarás con sistemas de IA que harán el trabajo más eficiente y replicable." },
-  { q: "¿Qué pasa si aún no tengo un producto o servicio que vender?", a: "Este reto te dará la claridad para arrancar desde cero. Tendrás acceso a recursos adicionales diseñados específicamente para ayudarte a idear y estructurar tu primer producto o servicio digital." },
-  { q: "¿En qué plataforma se desarrolla el reto?", a: "Victoranza App es nuestra plataforma digital propia de Loreto Consultora. Allí encontrarás todos los materiales pregrabados, sesiones grabadas del reto, materiales de apoyo, comunidad y más. Al inscribirte recibirás por correo tu acceso con usuario y contraseña." },
+  { q: "¿Qué pasa si aún no tengo un producto o servicio que vender?", a: "Este Reto te dará la claridad para arrancar desde cero. Tendrás acceso a recursos adicionales diseñados específicamente para ayudarte a idear y estructurar tu primer producto o servicio digital." },
+  { q: "¿En qué plataforma se desarrolla el Reto?", a: "Victoranza App es nuestra plataforma digital propia de Loreto Consultora. Allí encontrarás todos los materiales pregrabados, sesiones grabadas del Reto, materiales de apoyo, comunidad y más. Al inscribirte recibirás por correo tu acceso con usuario y contraseña." },
   { q: "¿Dónde se realiza el pago?", a: "Al dar clic en los botones de esta página serás redirigido a una página de pago en línea. El pago es procesado por la pasarela de Stripe, es totalmente seguro y podrás pagar con la tarjeta de tu preferencia." },
   { q: "¿Qué pasa si no puedo asistir a una sesión en vivo?", a: "Todas las sesiones se graban y quedan disponibles en la plataforma para que avances a tu ritmo. Para situaciones especiales, acércate con tu customer happiness y atendemos tu caso de manera personalizada." },
   { q: "¿Cuánto tiempo necesito dedicarle por semana?", a: "En el plan Boost Your Brand (4 semanas) las sesiones en vivo se realizan dos veces por semana. En el plan Bloom Your Brand (8 semanas) se realizan una vez por semana, con mayor espacio para implementar entre sesiones. Además de las sesiones, recomendamos entre 2 y 3 horas adicionales semanales para ejecutar los ejercicios y construir tus entregables." },
   { q: "¿Hay reembolsos?", a: "Al ser un programa digital progresivo y práctico, no ofrecemos reembolsos. Sin embargo, garantizamos el 100% de satisfacción — si en algún momento sientes que algo no está funcionando para ti, acércate con nuestro equipo y lo resolvemos juntos." },
   { q: "¿Cuándo recupero mi inversión?", a: "Sales del programa con al menos un servicio digital estructurado, lanzado y un sistema de ventas activo. El tiempo de recuperación está sujeto a tu modelo de negocio y nicho — por eso incluimos en las primeras sesiones una optimización del modelo diseñada para maximizar tu inversión y reducir el ciclo de recuperación." },
   { q: "¿Cuántos lugares hay disponibles?", a: "Solo 20 lugares en Boost y 8 en Bloom — los cupos son limitados para garantizar atención personalizada y una experiencia de comunidad de alta calidad." },
-  { q: "¿Qué pasa después del reto?", a: "Lo más importante es que continúes aplicando lo que construiste. Si quieres ir más lejos, puedes complementar con otros de nuestros programas y servicios. Acércate a nuestro equipo para encontrar el adecuado para ti y tus objetivos." },
+  { q: "¿Qué pasa después del Reto?", a: "Lo más importante es que continúes aplicando lo que construiste. Si quieres ir más lejos, puedes complementar con otros de nuestros programas y servicios. Acércate a nuestro equipo para encontrar el adecuado para ti y tus objetivos." },
 ];
 
 function FAQ() {
@@ -1163,7 +1163,7 @@ function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
               <button onClick={onOpenModal}
                 className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center whitespace-nowrap"
                 style={{ background: "white", color: MAGENTA, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}>
-                Quiero mi lugar en el reto →
+                Quiero mi lugar en el Reto →
               </button>
               <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
                 className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center"
