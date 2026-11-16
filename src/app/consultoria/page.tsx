@@ -60,7 +60,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
         {/* Pre-título */}
         {scene.pre && (scene.preCursive ? (
           <p
-            className="font-dancing text-white mb-1 whitespace-pre-line"
+            className="font-semibold text-white mb-1 whitespace-pre-line"
             style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", lineHeight: 1.2 }}
           >
             {scene.pre}
@@ -83,7 +83,7 @@ function SceneText({ scene, index }: { scene: typeof SCENES[0]; index: number })
           <>
             {/* "Infinitas" — cursiva, mismo tamaño que "Un universo de" */}
             <h2
-              className="font-dancing text-white leading-none"
+              className="font-semibold text-white leading-none"
               style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
             >
               {scene.bold}
@@ -391,7 +391,7 @@ function FormularioConsultoria() {
           <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-white leading-snug mb-3">
             ¿No sabes cuál es la indicada para ti?
           </h3>
-          <p className="font-dancing" style={{ color: "#ffffff", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
+          <p className="font-semibold" style={{ color: "#ffffff", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
             Diseña tu programa a tu medida.
           </p>
         </div>

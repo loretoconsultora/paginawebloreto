@@ -149,7 +149,7 @@ export default function BoostYourBrand() {
                 Conquista el mundo digital
               </h3>
 
-              <p className="font-dancing text-2xl text-white/85 mb-5">
+              <p className="font-semibold text-2xl text-white/85 mb-5">
                 Nueva generación: cada primer lunes del mes
               </p>
 

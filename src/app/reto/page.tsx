@@ -65,8 +65,124 @@ function CDUnit({ value, label, white }: { value: number; label: string; white?:
   );
 }
 
+// ─── Helper: formato de fecha en español ─────────────────────────────────────
+function formatDate(d: Date): string {
+  const months = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  return `${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
+}
+
+// ─── Modal de registro ────────────────────────────────────────────────────────
+function RegistroModal({ onClose }: { onClose: () => void }) {
+  const [form, setForm] = useState({ nombre: "", telefono: "", correo: "", negocio: "", confirmar: false });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const nextDate = formatDate(new Date(getNextFirstMonday()));
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value, type, checked } = e.target;
+    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!form.confirmar) return;
+    setLoading(true);
+    setTimeout(() => { setLoading(false); setSent(true); }, 600);
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center px-4"
+      style={{ background: "rgba(26,10,46,0.75)", backdropFilter: "blur(6px)" }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl"
+        style={{ background: "white", maxHeight: "90vh", overflowY: "auto" }}>
+
+        {/* Header */}
+        <div className="px-8 pt-8 pb-6 text-center" style={{ background: G_MAIN }}>
+          <button onClick={onClose} className="absolute top-4 right-5 text-white/70 hover:text-white text-2xl leading-none">×</button>
+          <p className="font-semibold text-sm uppercase tracking-widest text-white/75 mb-1">Reto Boost &amp; Bloom</p>
+          <h2 className="font-playfair font-bold text-2xl text-white">Reserva tu lugar</h2>
+          <p className="text-white/70 text-sm mt-1">Próxima generación · {nextDate}</p>
+        </div>
+
+        {/* Body */}
+        <div className="px-8 py-7">
+          {!sent ? (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {[
+                { name: "nombre",   label: "Nombre completo",    type: "text",  placeholder: "Tu nombre" },
+                { name: "telefono", label: "Teléfono / WhatsApp", type: "tel",   placeholder: "+52 442 000 0000" },
+                { name: "correo",   label: "Correo electrónico",  type: "email", placeholder: "hola@tu-negocio.com" },
+                { name: "negocio",  label: "Nombre de tu negocio / marca", type: "text", placeholder: "Mi negocio" },
+              ].map(({ name, label, type, placeholder }) => (
+                <div key={name}>
+                  <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>{label}</label>
+                  <input
+                    required name={name} type={type} placeholder={placeholder}
+                    value={(form as any)[name]} onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                    style={{ border: "1.5px solid rgba(192,0,90,0.2)", color: "#3A3F4B", background: "#fafafa" }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#c0005a")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(192,0,90,0.2)")}
+                  />
+                </div>
+              ))}
+
+              {/* Checkbox */}
+              <label className="flex items-start gap-3 cursor-pointer mt-1">
+                <input
+                  type="checkbox" name="confirmar" checked={form.confirmar} onChange={handleChange}
+                  className="mt-0.5 flex-shrink-0 w-4 h-4 rounded accent-pink-600"
+                  required
+                />
+                <span className="text-sm leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.8 }}>
+                  Confirmo que me apunto al próximo reto que inicia el <strong style={{ color: MAGENTA }}>{nextDate}</strong>
+                </span>
+              </label>
+
+              <button
+                type="submit" disabled={loading || !form.confirmar}
+                className="mt-2 w-full py-4 rounded-full font-bold text-sm text-white hover:opacity-90 transition-all disabled:opacity-50"
+                style={{ background: G_MAIN, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
+              >
+                {loading ? "Enviando…" : "Apuntarme al reto →"}
+              </button>
+
+              <p className="text-center text-xs opacity-40 mt-1">Tus datos son confidenciales y no se comparten.</p>
+            </form>
+          ) : (
+            <div className="text-center py-4">
+              <div className="text-4xl mb-4">🎉</div>
+              <h3 className="font-playfair font-bold text-xl mb-2" style={{ color: "#3A3F4B" }}>¡Estás apuntado!</h3>
+              <p className="text-sm mb-1" style={{ color: "#3A3F4B", opacity: 0.7 }}>Revisa tu correo — te enviamos una confirmación.</p>
+              <p className="text-sm mb-7 font-semibold" style={{ color: MAGENTA }}>
+                Confirma tu lugar completando el pago:
+              </p>
+              <div className="flex flex-col gap-3">
+                <a href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
+                  className="block w-full py-4 rounded-full font-bold text-sm text-white hover:opacity-90 transition-all"
+                  style={{ background: G_MAIN, boxShadow: "0 8px 24px rgba(192,0,90,0.25)" }}>
+                  Boost Your Brand — $333 USD →
+                </a>
+                <a href={HREF_VIP} target="_blank" rel="noopener noreferrer"
+                  className="block w-full py-4 rounded-full font-bold text-sm hover:opacity-90 transition-all"
+                  style={{ background: G_GOLD, color: "#1a0a2e" }}>
+                  Bloom Your Brand — $649 USD ✦
+                </a>
+              </div>
+              <p className="text-xs opacity-40 mt-5">Si tienes dudas escríbenos por WhatsApp al 442 749 7345</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Sección 1: Hero ──────────────────────────────────────────────────────────
-function Hero() {
+function Hero({ onOpenModal }: { onOpenModal: () => void }) {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
     <section className="min-h-screen flex items-center pt-28 pb-20 px-5 lg:px-8 relative overflow-hidden bg-white">
@@ -101,7 +217,7 @@ function Hero() {
           >
             {/* Título */}
             <div>
-              <p className="font-dancing text-3xl mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>Reto</p>
+              <p className="font-semibold text-3xl mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>Reto</p>
               <div className="font-playfair font-black uppercase leading-none text-white">
                 <span className="block" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)" }}>Boost &amp; Bloom</span>
                 <span className="block" style={{ fontSize: "clamp(3rem,7vw,4.5rem)", display: "inline-block", animation: "float-y 4s ease-in-out infinite" }}>
@@ -120,7 +236,6 @@ function Hero() {
               <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
                 Arrancamos 1° Lunes de cada mes
               </p>
-              <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>Cierre de inscripciones en</p>
               <div className="flex items-center justify-center gap-3">
                 <CDUnit value={days} label="días" white />
                 <span className="font-bold text-lg mb-3 text-white/40">:</span>
@@ -146,17 +261,17 @@ function Hero() {
             </h1>
 
             <p className="text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.85 }}>
-              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong> — tu ecosistema digital completo.
+              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong>: <strong style={{ color: MAGENTA }}>Tu Ecosistema Digital COMPLETO.</strong>
               <span className="text-sm mt-2 block opacity-75">Dirigido a emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
-              <Link href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center justify-center font-bold px-8 py-4 rounded-full text-white text-sm hover:opacity-90 transition-all"
+              <button onClick={onOpenModal}
+                className="inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-full text-white text-sm hover:opacity-90 transition-all whitespace-nowrap"
                 style={{ background: G_MAIN, boxShadow: "0 8px 28px rgba(192,0,90,0.3)" }}>
                 Quiero mi lugar en el reto →
-              </Link>
-              <a href="#programa" className="inline-flex items-center justify-center font-semibold px-8 py-4 rounded-full text-sm border hover:opacity-80 transition-all"
+              </button>
+              <a href="#programa" className="inline-flex items-center justify-center font-semibold px-6 py-3.5 rounded-full text-sm border hover:opacity-80 transition-all whitespace-nowrap"
                 style={{ color: MAGENTA, borderColor: "rgba(192,0,90,0.3)" }}>
                 Ver cómo funciona ↓
               </a>
@@ -167,7 +282,7 @@ function Hero() {
               {[
                 { n: "+500", l: "marcas construidas" },
                 { n: "+500", l: "alumnos formados" },
-                { n: "+10", l: "países confían" },
+                { n: "+10", l: "países confían en nosotros" },
               ].map((s, i) => (
                 <div key={i} className="flex items-center">
                   <div className="text-center px-4 py-3">
@@ -235,7 +350,7 @@ function Transformation() {
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_PINK }}>
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-14">
-          <p className="font-dancing text-3xl lg:text-4xl mb-4 text-white">Tu marca</p>
+          <p className="font-semibold text-3xl lg:text-4xl mb-4 text-white">Tu marca</p>
           <p className="font-playfair text-xl lg:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
             no solo comunica lo que haces — define cuánto vales, cómo te perciben y cuánto están dispuestos a pagarte. Cuando tu marca está alineada con tu propósito, transforma no solo tu negocio, sino tu vida.
           </p>
@@ -269,7 +384,7 @@ function Transformation() {
               ))}
               <p className="text-white/70 font-normal text-sm tracking-widest uppercase mt-2">tu valor único</p>
             </div>
-            <p className="font-dancing text-2xl lg:text-3xl italic text-white/85">
+            <p className="font-semibold text-2xl lg:text-3xl text-white/85">
               un viaje para elevar tu ser a su versión<br />más auténtica y en expansión
             </p>
           </div>
@@ -309,7 +424,7 @@ function Results() {
             className="font-playfair font-bold mb-3" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "#3A3F4B" }}>
             Al terminar este reto no solo tienes activos
           </motion.h2>
-          <p className="font-dancing text-2xl lg:text-3xl" style={{ color: MAGENTA }}>
+          <p className="font-semibold text-2xl lg:text-3xl" style={{ color: MAGENTA }}>
             Te reconocerás como alguien diferente.
           </p>
         </div>
@@ -345,7 +460,7 @@ function Results() {
         </div>
 
         <div className="max-w-3xl mx-auto rounded-3xl p-8 text-center" style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(16px)", border: "1px solid rgba(192,0,90,0.1)" }}>
-          <p className="font-dancing text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
+          <p className="font-semibold text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
             "No es un curso donde acumulas conocimiento.
           </p>
           <p className="font-playfair font-bold text-lg lg:text-xl" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -404,7 +519,7 @@ function Pricing() {
           <h2 className="font-playfair font-bold mb-4" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             lanzado y vendiendo este próximo mes?
           </h2>
-          <p className="font-dancing text-2xl lg:text-3xl" style={{ color: MAGENTA }}>
+          <p className="font-semibold text-2xl lg:text-3xl" style={{ color: MAGENTA }}>
             Invierte en el reto que cambia el rumbo de tu negocio.
           </p>
         </div>
@@ -472,7 +587,6 @@ function Pricing() {
             </div>
             {/* Countdown en card */}
             <div className="rounded-2xl p-4 mb-6 text-center" style={{ background: "rgba(192,0,90,0.04)", border: "1px solid rgba(192,0,90,0.1)" }}>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#3A3F4B", opacity: 0.45 }}>Cierre de inscripciones en</p>
               <div className="flex items-center justify-center gap-3">
                 <CDUnit value={days} label="días" />
                 <span style={{ color: "rgba(192,0,90,0.3)", fontWeight: 700 }}>:</span>
@@ -570,7 +684,7 @@ const SESSIONS = [
   },
 ];
 
-function Program() {
+function Program({ onOpenModal }: { onOpenModal: () => void }) {
   const [open, setOpen] = useState<number>(0);
   return (
     <section id="programa" className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_BLUE }}>
@@ -579,7 +693,7 @@ function Program() {
           <h2 className="font-playfair font-bold text-white mb-3" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)" }}>
             6 sesiones para construir tu marca
           </h2>
-          <p className="font-dancing text-2xl lg:text-3xl text-white">
+          <p className="font-semibold text-2xl lg:text-3xl text-white">
             con dirección, claridad y conversión
           </p>
         </div>
@@ -636,11 +750,11 @@ function Program() {
 
         <div className="text-center">
           <p className="text-white font-semibold mb-5">¿Listo para comenzar el viaje?</p>
-          <Link href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
+          <button onClick={onOpenModal}
             className="inline-flex items-center font-bold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-all"
             style={{ background: "white", color: MAGENTA, boxShadow: "0 8px 24px rgba(0,0,0,0.12)" }}>
             Quiero mi lugar →
-          </Link>
+          </button>
         </div>
       </div>
     </section>
@@ -736,7 +850,7 @@ function Testimonials() {
     <section className="py-16 lg:py-24 relative overflow-hidden bg-white">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(196,181,244,0.18) 0%, rgba(147,197,253,0.1) 40%, transparent 70%)", pointerEvents: "none" }} />
       <div className="text-center mb-12 px-5">
-        <p className="font-dancing text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
+        <p className="font-semibold text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
           marcas alrededor del mundo ya han tomado la decisión
         </p>
         <h2 className="font-playfair font-bold" style={{ fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "#3A3F4B" }}>
@@ -847,14 +961,14 @@ function FAQ() {
 }
 
 // ─── Sección 9: CTA Final ─────────────────────────────────────────────────────
-function FinalCTA() {
+function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_MAIN }}>
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-14">
-          <p className="font-dancing text-3xl lg:text-4xl text-white mb-3">En el Mundo Digital</p>
+          <p className="font-semibold text-3xl lg:text-4xl text-white mb-3">En el Mundo Digital</p>
           <p className="font-playfair font-bold text-white" style={{ fontSize: "clamp(1.4rem,2.8vw,2.2rem)", lineHeight: 1.3 }}>
             Gana quien mejor descubre, conecta, comparte y expande su valor
           </p>
@@ -871,7 +985,7 @@ function FinalCTA() {
           </div>
 
           <div className="flex flex-col items-center text-center gap-8">
-            <p className="font-dancing text-3xl text-white">¿Lo activamos hoy?</p>
+            <p className="font-semibold text-3xl text-white">¿Lo activamos hoy?</p>
 
             <div className="p-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.3)" }}>
               <p className="text-xs font-semibold uppercase tracking-widest text-white/85 mb-4">inicio próxima generación</p>
@@ -887,11 +1001,11 @@ function FinalCTA() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-              <Link href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
-                className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center"
+              <button onClick={onOpenModal}
+                className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center whitespace-nowrap"
                 style={{ background: "white", color: MAGENTA, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}>
                 Quiero mi lugar en el reto →
-              </Link>
+              </button>
               <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
                 className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center"
                 style={{ background: G_GOLD, color: "#1a0a2e" }}>
@@ -911,21 +1025,29 @@ function FinalCTA() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function RetoPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setModalOpen(true), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <>
       <Navbar />
       <main>
-        <Hero />
+        <Hero onOpenModal={() => setModalOpen(true)} />
         <Problems />
         <Transformation />
         <Results />
         <Pricing />
-        <Program />
+        <Program onOpenModal={() => setModalOpen(true)} />
         <Testimonials />
         <FAQ />
-        <FinalCTA />
+        <FinalCTA onOpenModal={() => setModalOpen(true)} />
       </main>
       <Footer />
+      {modalOpen && <RegistroModal onClose={() => setModalOpen(false)} />}
     </>
   );
 }

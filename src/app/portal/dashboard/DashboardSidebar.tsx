@@ -71,7 +71,7 @@ export default function DashboardSidebar({ email }: { email: string }) {
         <div className="flex justify-center mb-3">
           <img src="/logo.svg" alt="Loreto Consultora" style={{ height: "40px", width: "auto" }} />
         </div>
-        <p className="font-dancing text-2xl text-center mb-1" style={{ color: "#c0005a" }}>
+        <p className="font-semibold text-2xl text-center mb-1" style={{ color: "#c0005a" }}>
           Portal del Cliente
         </p>
         <p className="text-xs text-grafito/40 text-center mb-8 truncate">{email}</p>

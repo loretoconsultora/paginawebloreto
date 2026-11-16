@@ -148,7 +148,7 @@ export default function LogrosDestacados() {
 
         {/* Celebración */}
         <p
-          className="text-center font-dancing text-white"
+          className="text-center font-semibold text-white"
           style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}
         >
           Muchas felicidades ¡celebramos sus resultados!

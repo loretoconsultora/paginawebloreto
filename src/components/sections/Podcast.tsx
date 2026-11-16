@@ -16,7 +16,7 @@ export default function Podcast() {
               <h2 className="font-playfair text-4xl font-bold text-grafito mb-4">
                 Lo que nos decimos últimamente
               </h2>
-              <p className="font-dancing text-xl text-coral mb-6">
+              <p className="font-semibold text-xl text-coral mb-6">
                 El podcast de Loreto Consultora
               </p>
               <p className="text-grafito/60 leading-relaxed mb-8">

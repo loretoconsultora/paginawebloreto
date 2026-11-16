@@ -43,7 +43,7 @@ export default function PortalLoginPage() {
           <ArrowLeft size={14} /> Inicio
         </Link>
 
-        <p className="font-dancing text-3xl text-white mb-10">Portal del Cliente</p>
+        <p className="font-semibold text-3xl text-white mb-10">Portal del Cliente</p>
 
         <div className="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl">
           <h1 className="font-playfair text-2xl font-bold text-grafito text-center mb-1">
