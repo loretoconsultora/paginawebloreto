@@ -550,7 +550,7 @@ const IDENTIDADES = [
 
 function Results({ onOpenModal }: { onOpenModal: () => void }) {
   return (
-    <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden bg-white">
+    <section className="pt-16 lg:pt-24 pb-8 lg:pb-10 px-5 lg:px-8 relative overflow-hidden bg-white">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(196,181,244,0.18) 0%, rgba(147,197,253,0.1) 40%, transparent 70%)", pointerEvents: "none" }} />
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-14">
@@ -665,7 +665,7 @@ const BLOOM_EXTRAS = [
 function Pricing() {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
-    <section id="precio" className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%)" }}>
+    <section id="precio" className="pt-8 lg:pt-10 pb-16 lg:pb-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%)" }}>
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
