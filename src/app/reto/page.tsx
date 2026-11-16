@@ -1045,57 +1045,129 @@ function FAQ() {
 }
 
 // ─── Sección 9: CTA Final ─────────────────────────────────────────────────────
-function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
-  const { days, hours, minutes, seconds } = useCountdown();
+function FinalCTA({ onOpenModal: _onOpenModal }: { onOpenModal: () => void }) {
+  const nextDate = formatDate(new Date(getNextFirstMonday()));
+  const [form, setForm] = useState({ nombre: "", lada: "+52", telefono: "", correo: "", negocio: "", confirmar: false });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const target = e.target as HTMLInputElement;
+    const { name, value, type } = target;
+    setForm((f) => ({ ...f, [name]: type === "checkbox" ? target.checked : value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!form.confirmar) return;
+    setLoading(true);
+    setTimeout(() => { setLoading(false); setSent(true); }, 600);
+  }
+
+  const inputStyle = { border: "1.5px solid rgba(255,255,255,0.35)", color: "white", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)" };
+  const focusHandler = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.75)");
+  const blurHandler  = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)");
+
   return (
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_MAIN }}>
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
       <div className="max-w-5xl mx-auto relative z-10">
-        <div className="text-center mb-14">
-          <p className="font-semibold text-3xl lg:text-4xl text-white mb-3">En el Mundo Digital</p>
-          <p className="font-playfair font-bold text-white" style={{ fontSize: "clamp(1.4rem,2.8vw,2.2rem)", lineHeight: 1.3 }}>
-            Gana quien mejor descubre, conecta, comparte y expande su valor
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="text-center lg:text-left">
-            <p className="font-playfair text-white mb-6 leading-relaxed" style={{ fontSize: "clamp(1.1rem,2vw,1.5rem)", fontWeight: 300, lineHeight: 1.8 }}>
-              Cada mes que pasa, no solo pierdes ingresos, pierdes tiempo viviendo una versión menor de lo que ya eres.
+          {/* Columna izquierda */}
+          <div className="text-center lg:text-left lg:pt-4">
+            <p className="font-semibold text-2xl lg:text-3xl text-white mb-6 leading-snug">
+              En el mundo Digital cada mes que pasa, no solo pierdes ingresos, pierdes tiempo viviendo una versión menor de lo que ya eres.
             </p>
-            <p className="font-playfair italic text-white/85" style={{ fontSize: "1rem", lineHeight: 1.9, borderLeft: "2px solid rgba(255,255,255,0.3)", paddingLeft: "1.25rem" }}>
-              "Tu propósito lleva tiempo vivo en ti. El mundo no necesita otra persona haciendo lo mismo — necesita a alguien que haga lo que tú haces, como solo tú puedes hacerlo."
-            </p>
+            <blockquote style={{ borderLeft: "2px solid rgba(255,255,255,0.4)", paddingLeft: "1.25rem" }}>
+              <p className="font-playfair italic text-white/85 mb-3" style={{ fontSize: "1rem", lineHeight: 1.8 }}>
+                "Tu propósito lleva tiempo vivo en ti. El mundo no necesita otra persona haciendo lo mismo — necesita a alguien que haga lo que tú haces, como solo tú puedes hacerlo."
+              </p>
+              <footer className="text-white/60 text-sm font-semibold">— Any Villegas · Fundadora y Directora General</footer>
+            </blockquote>
           </div>
 
-          <div className="flex flex-col items-center text-center gap-8">
-            <p className="font-semibold text-3xl text-white">¿Lo activamos hoy?</p>
-
-            <div className="p-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.3)" }}>
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/85 mb-4">inicio próxima generación</p>
-              <div className="flex gap-4 justify-center">
-                <CDUnit value={days} label="días" />
-                <span className="font-bold text-xl mb-3 text-white/40">:</span>
-                <CDUnit value={hours} label="horas" />
-                <span className="font-bold text-xl mb-3 text-white/40">:</span>
-                <CDUnit value={minutes} label="min" />
-                <span className="font-bold text-xl mb-3 text-white/40">:</span>
-                <CDUnit value={seconds} label="seg" />
+          {/* Columna derecha: form inline */}
+          <div className="rounded-3xl p-7" style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+            {!sent ? (
+              <>
+                <h3 className="font-playfair font-bold text-xl text-white text-center mb-1">Reserva tu lugar</h3>
+                <p className="text-white/60 text-xs text-center mb-6">Próxima generación · {nextDate}</p>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5 text-white/65">Nombre completo</label>
+                    <input required name="nombre" type="text" placeholder="Tu nombre"
+                      value={form.nombre} onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all placeholder:text-white/40"
+                      style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5 text-white/65">Teléfono / WhatsApp</label>
+                    <div className="flex gap-2">
+                      <select name="lada" value={form.lada} onChange={handleChange}
+                        className="px-3 py-3 rounded-xl text-sm outline-none transition-all flex-shrink-0"
+                        style={{ ...inputStyle, width: "110px" }}
+                        onFocus={focusHandler} onBlur={blurHandler}>
+                        {LADAS.map((l) => (
+                          <option key={`${l.flag}${l.code}`} value={l.code} style={{ background: "#1a0a2e" }}>
+                            {l.flag} {l.code}
+                          </option>
+                        ))}
+                      </select>
+                      <input required name="telefono" type="tel" placeholder="442 749 7345"
+                        value={form.telefono} onChange={handleChange}
+                        className="flex-1 px-4 py-3 rounded-xl text-sm outline-none transition-all placeholder:text-white/40"
+                        style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5 text-white/65">Correo electrónico</label>
+                    <input required name="correo" type="email" placeholder="hola@tu-negocio.com"
+                      value={form.correo} onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all placeholder:text-white/40"
+                      style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5 text-white/65">Nombre de tu negocio / marca</label>
+                    <input required name="negocio" type="text" placeholder="Mi negocio"
+                      value={form.negocio} onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all placeholder:text-white/40"
+                      style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+                  </div>
+                  <label className="flex items-start gap-3 cursor-pointer mt-1">
+                    <input type="checkbox" name="confirmar" checked={form.confirmar} onChange={handleChange}
+                      className="mt-0.5 flex-shrink-0 w-4 h-4 rounded accent-pink-600" required />
+                    <span className="text-sm leading-relaxed text-white/80">
+                      Confirmo que me apunto al próximo Reto que inicia el <strong className="text-white">{nextDate}</strong>
+                    </span>
+                  </label>
+                  <button type="submit" disabled={loading || !form.confirmar}
+                    className="mt-2 w-full py-4 rounded-full font-bold text-sm hover:opacity-90 transition-all disabled:opacity-50"
+                    style={{ background: "white", color: MAGENTA, boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}>
+                    {loading ? "Enviando…" : "Apuntarme al Reto →"}
+                  </button>
+                  <p className="text-center text-xs text-white/35 mt-1">Tus datos son confidenciales y no se comparten.</p>
+                </form>
+              </>
+            ) : (
+              <div className="text-center py-4">
+                <div className="text-4xl mb-4">🎉</div>
+                <h3 className="font-playfair font-bold text-xl mb-3 text-white">¡Estás apuntado!</h3>
+                <p className="text-sm mb-7 font-semibold text-white/80">Confirma tu lugar completando el pago:</p>
+                <div className="flex flex-col gap-3 mb-6">
+                  <a href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
+                    className="block w-full py-4 rounded-full font-bold text-sm text-white hover:opacity-90 transition-all"
+                    style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.4)" }}>
+                    Boost Your Brand — $333 USD →
+                  </a>
+                  <a href={HREF_VIP} target="_blank" rel="noopener noreferrer"
+                    className="block w-full py-4 rounded-full font-bold text-sm hover:opacity-90 transition-all"
+                    style={{ background: G_GOLD, color: "#1a0a2e" }}>
+                    Bloom Your Brand — $649 USD ✦
+                  </a>
+                </div>
               </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-              <button onClick={onOpenModal}
-                className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center whitespace-nowrap"
-                style={{ background: "white", color: MAGENTA, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}>
-                Quiero mi lugar en el Reto →
-              </button>
-              <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
-                className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center"
-                style={{ background: G_GOLD, color: "#1a0a2e" }}>
-                Quiero activar mi acceso Bloom Your Brand →
-              </Link>
-            </div>
+            )}
           </div>
         </div>
       </div>
