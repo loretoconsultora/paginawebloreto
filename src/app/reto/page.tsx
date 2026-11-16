@@ -328,7 +328,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
             </h1>
 
             <p className="text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.85 }}>
-              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong>: <strong style={{ color: MAGENTA }}>Tu Ecosistema Digital COMPLETO.</strong>
+              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong>: <span style={{ color: MAGENTA, fontWeight: 900, fontSize: "1.07em" }}>Tu Ecosistema Digital COMPLETO.</span>
               <span className="text-sm mt-2 block opacity-75">Dirigido a emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.</span>
             </p>
 
@@ -402,7 +402,7 @@ function Problems() {
           No es falta de talento. No es falta de experiencia. No es falta de valor.
         </p>
         <p className="text-2xl lg:text-3xl font-bold font-playfair" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-          Es falta de dirección, estructura y un plan real para digitalizar tu negocio.
+          Es falta de dirección, estructura y un plan real para Digitalizar tu negocio.
         </p>
       </div>
     </section>
@@ -418,6 +418,45 @@ const STAIRCASE_STEPS = [
 ];
 
 function Transformation() {
+  const [visibleCount, setVisibleCount] = useState(0);
+  const [showArrow, setShowArrow] = useState(false);
+  const loopStarted = useRef(false);
+  const inViewRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const wait = (ms: number) => new Promise<void>((res) => setTimeout(res, ms));
+    const loop = async () => {
+      while (!cancelled) {
+        setVisibleCount(0);
+        setShowArrow(false);
+        await wait(500);
+        for (let i = 1; i <= 4 && !cancelled; i++) {
+          setVisibleCount(i);
+          await wait(560);
+        }
+        if (cancelled) break;
+        setShowArrow(true);
+        await wait(2800);
+      }
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !loopStarted.current) {
+          loopStarted.current = true;
+          loop();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    if (inViewRef.current) observer.observe(inViewRef.current);
+    return () => { cancelled = true; observer.disconnect(); };
+  }, []);
+
+  // Expande (100%) en top → Reconoce (52%) en bottom
+  const stepsReversed = [...STAIRCASE_STEPS].reverse();
+
   return (
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_PINK }}>
       <div className="max-w-5xl mx-auto relative z-10">
@@ -426,7 +465,7 @@ function Transformation() {
         <div className="text-center mb-14">
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="font-playfair font-bold text-3xl lg:text-4xl text-white leading-snug">
-            Con nuestro reto, lograrás<br className="hidden sm:block" /> una transformación completa.
+            Con nuestro Reto, lograrás<br className="hidden sm:block" /> una transformación completa.
           </motion.p>
         </div>
 
@@ -447,48 +486,42 @@ function Transformation() {
             ))}
           </div>
 
-          {/* Derecha: Escalerita animada */}
-          <div className="flex items-stretch gap-5">
+          {/* Derecha: Escalerita en bucle */}
+          <div ref={inViewRef} className="flex items-stretch gap-5">
 
-            {/* Flecha vertical + etiqueta */}
+            {/* Línea vertical + etiqueta */}
             <div className="flex flex-col items-center gap-3 flex-shrink-0 py-2">
-              <motion.div
-                initial={{ scaleY: 0, opacity: 0 }}
-                whileInView={{ scaleY: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                style={{ width: 2, flex: 1, background: "rgba(255,255,255,0.55)", borderRadius: 2, transformOrigin: "bottom" }}
-              />
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-                style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", color: "rgba(255,255,255,0.85)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}
-              >
+              <div style={{ width: 2, flex: 1, background: "rgba(255,255,255,0.55)", borderRadius: 2, opacity: visibleCount > 0 ? 1 : 0, transition: "opacity 0.5s" }} />
+              <span style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", color: "rgba(255,255,255,0.85)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", opacity: showArrow ? 1 : 0, transition: "opacity 0.6s" }}>
                 ↑ Tu Valor Único
-              </motion.div>
+              </span>
             </div>
 
-            {/* Peldaños */}
-            <div className="flex-1 flex flex-col justify-end gap-3">
-              {STAIRCASE_STEPS.map((step, i) => (
-                <div key={step.label} style={{ width: `${step.widthPct}%` }}>
-                  <motion.div
-                    initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
-                    whileInView={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.75, delay: i * 0.18 + 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="h-14 rounded-xl flex items-center gap-3 px-5"
-                    style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.4)" }}
-                  >
-                    <span className="text-xs font-bold opacity-60 text-white flex-shrink-0">{step.num}</span>
-                    <span className="font-playfair font-black text-white whitespace-nowrap" style={{ fontSize: "clamp(1rem,2vw,1.25rem)" }}>
-                      {step.label}
-                    </span>
-                  </motion.div>
-                </div>
-              ))}
+            {/* Peldaños: Expande (top) → Reconoce (bottom) */}
+            <div className="flex-1 flex flex-col gap-3">
+              {stepsReversed.map((step, i) => {
+                // i=0 Expande: visible cuando count>=4; i=3 Reconoce: visible cuando count>=1
+                const isVisible = visibleCount >= (4 - i);
+                return (
+                  <div key={step.label} style={{ width: `${step.widthPct}%` }}>
+                    <div
+                      className="h-14 rounded-xl flex items-center gap-3 px-5"
+                      style={{
+                        background: "rgba(255,255,255,0.22)",
+                        backdropFilter: "blur(10px)",
+                        border: "1px solid rgba(255,255,255,0.4)",
+                        clipPath: isVisible ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
+                        transition: "clip-path 0.65s cubic-bezier(0.22, 1, 0.36, 1)",
+                      }}
+                    >
+                      <span className="text-xs font-bold opacity-60 text-white flex-shrink-0">{step.num}</span>
+                      <span className="font-playfair font-black text-white whitespace-nowrap" style={{ fontSize: "clamp(1rem,2vw,1.25rem)" }}>
+                        {step.label}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -501,18 +534,17 @@ function Transformation() {
 const ENTREGABLES = [
   "Estrategia de marca completa",
   "Manual de comunicación y posicionamiento",
-  "Oferta irresistible lista para vender digitalmente",
   "Estrategia de contenidos de redes sociales",
-  "Plan de atracción, atención y cierre de clientes",
+  "Oferta irresistible lista para vender digitalmente",
   "Plan de lanzamiento digital activo",
   "Al menos 1 servicio digital listo para monetizar",
 ];
 
 const IDENTIDADES = [
-  "Alguien que sabe cómo diseñar, crear y escalar negocios digitales",
+  "Alguien que sabe cómo diseñar, crear negocios digitales",
   "El referente que el mercado empieza a buscar, no el que persigue clientes cada mes",
   "Una persona que construye su negocio con intención y propósito, no con urgencia ni improvisación",
-  "Alguien con una marca que tiene causa, comunidad propia y capacidad real de escalar",
+  "Alguien con una marca con propósito, con la cual las personas se pueden identificar para crear una comunidad",
   "La versión de ti que siempre supiste que existía — ahora con el sistema para demostrarlo",
 ];
 
@@ -549,10 +581,9 @@ function Results() {
               <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#b8860b" }}>✦ En la versión Bloom Your Brand, además:</p>
               <div className="space-y-2">
                 {[
-                  "30 min VIP antes de cada sesión (grupo selecto de máx. 8 personas)",
-                  "2 sesiones 1:1 post-reto con mentores",
-                  "5 piezas publicitarias producidas (tú grabas, nosotros editamos)",
-                  "30 días de Victoranza App con onboarding CRM y automatizaciones",
+                  "Construcción de Landing Page",
+                  "2 hrs de Consultoría de Inteligencia Artificial para negocios digitales",
+                  "4 hrs Taller de construcción de herramientas internas con IA",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
                     <span className="font-bold flex-shrink-0 mt-0.5" style={{ color: "#f5c842" }}>★</span>
@@ -600,10 +631,9 @@ const TABLE_ROWS = [
   { label: "Clases pregrabadas exclusivas",    boost: true,  bloom: true  },
   { label: "Plan de lanzamiento digital",      boost: true,  bloom: true  },
   { label: "⭐ Acceso por todo un año",        boost: true,  bloom: true  },
-  { label: "30 min VIP antes de cada sesión",  boost: false, bloom: true  },
-  { label: "2 sesiones 1:1 post-reto",         boost: false, bloom: true  },
-  { label: "5 piezas publicitarias producidas",boost: false, bloom: true  },
-  { label: "30 días Victoranza + onboarding CRM", boost: false, bloom: true },
+  { label: "Construcción de Landing Page",                    boost: false, bloom: true  },
+  { label: "2 hrs Consultoría de IA para negocios digitales", boost: false, bloom: true  },
+  { label: "4 hrs Taller de herramientas internas con IA",    boost: false, bloom: true  },
 ];
 
 const BOOST_INCLUDES = [
@@ -618,10 +648,9 @@ const BOOST_INCLUDES = [
 ];
 
 const BLOOM_EXTRAS = [
-  "30 min VIP antes de cada sesión (grupo selecto de máx. 8 personas)",
-  "2 sesiones 1:1 post-reto con mentores (30 días después)",
-  "5 piezas publicitarias: 2 gráficos + 3 videos editados por nosotros (tú grabas)",
-  "30 días de Victoranza App con onboarding de CRM y automatizaciones",
+  "Construcción de Landing Page",
+  "2 hrs de Consultoría de Inteligencia Artificial para negocios digitales",
+  "4 hrs Taller de construcción de herramientas internas con IA",
 ];
 
 function Pricing() {
@@ -652,7 +681,7 @@ function Pricing() {
                 </th>
                 <th className="p-4 text-center rounded-tr-2xl" style={{ background: "rgba(252,205,13,0.1)", border: "1px solid rgba(252,205,13,0.3)" }}>
                   <p className="font-bold text-sm" style={{ color: "#b8860b" }}>BLOOM</p>
-                  <p className="font-bold text-xs opacity-60">YOUR BRAND VIP</p>
+                  <p className="font-bold text-xs opacity-60">YOUR BRAND</p>
                   <p className="font-bold text-xl font-playfair mt-1" style={{ background: G_GOLD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>$649 USD</p>
                 </th>
               </tr>
@@ -671,6 +700,24 @@ function Pricing() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Botones debajo de la tabla */}
+        <div className="grid lg:grid-cols-2 gap-4 mb-10 px-4">
+          <div className="lg:pl-[25%]">
+            <Link href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
+              className="block w-full text-center font-bold py-3.5 rounded-full text-white text-sm hover:opacity-90 transition-all"
+              style={{ background: G_MAIN, boxShadow: "0 6px 20px rgba(192,0,90,0.2)" }}>
+              Quiero activar mi acceso Boost Your Brand →
+            </Link>
+          </div>
+          <div>
+            <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
+              className="block w-full text-center font-bold py-3.5 rounded-full text-sm hover:opacity-90 transition-all"
+              style={{ background: G_GOLD, color: "#1a0a2e", boxShadow: "0 6px 20px rgba(252,205,13,0.2)" }}>
+              Quiero activar mi acceso Bloom Your Brand →
+            </Link>
+          </div>
         </div>
 
         {/* Cards de precio */}
@@ -723,7 +770,7 @@ function Pricing() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="rounded-3xl p-8 relative" style={{ background: "white", border: "1px solid rgba(252,205,13,0.3)", boxShadow: "0 8px 32px rgba(252,205,13,0.12)" }}>
             <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold" style={{ background: G_GOLD, color: "#1a0a2e" }}>Solo 8 lugares</div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#b8860b" }}>Acceso VIP</p>
+            <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#b8860b" }}>Programa Premium</p>
             <div className="flex items-center gap-2 mb-1">
               <h3 className="text-2xl font-bold font-playfair" style={{ color: "#3A3F4B" }}>Bloom Your Brand</h3>
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ background: "rgba(184,134,11,0.1)", color: "#b8860b", border: "1px solid rgba(184,134,11,0.25)" }}>8 semanas</span>
@@ -752,7 +799,7 @@ function Pricing() {
             <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
               className="block w-full text-center font-bold py-4 rounded-full text-sm hover:opacity-90 transition-all"
               style={{ background: G_GOLD, color: "#1a0a2e", boxShadow: "0 8px 24px rgba(252,205,13,0.25)" }}>
-              Quiero el acceso VIP — solo 8 lugares →
+              Quiero activar mi acceso Bloom Your Brand →
             </Link>
           </motion.div>
         </div>
@@ -1121,7 +1168,7 @@ function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
               <Link href={HREF_VIP} target="_blank" rel="noopener noreferrer"
                 className="font-bold px-6 py-4 rounded-full text-sm hover:opacity-90 transition-all text-center"
                 style={{ background: G_GOLD, color: "#1a0a2e" }}>
-                Acceso VIP — solo 8 lugares →
+                Quiero activar mi acceso Bloom Your Brand →
               </Link>
             </div>
           </div>
@@ -1153,7 +1200,6 @@ export default function RetoPage() {
         <Transformation />
         <Results />
         <Pricing />
-        <Program onOpenModal={() => setModalOpen(true)} />
         <Testimonials />
         <FAQ />
         <FinalCTA onOpenModal={() => setModalOpen(true)} />
