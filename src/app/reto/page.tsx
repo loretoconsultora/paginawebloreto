@@ -506,11 +506,10 @@ const ENTREGABLES = [
   "Plan de atracción, atención y cierre de clientes",
   "Plan de lanzamiento digital activo",
   "Al menos 1 servicio digital listo para monetizar",
-  "Estrategia de evaluación y mejora continua",
 ];
 
 const IDENTIDADES = [
-  "Alguien que sabe exactamente qué vale, cómo comunicarlo y cómo cobrarlo",
+  "Alguien que sabe cómo diseñar, crear y escalar negocios digitales",
   "El referente que el mercado empieza a buscar, no el que persigue clientes cada mes",
   "Una persona que construye su negocio con intención y propósito, no con urgencia ni improvisación",
   "Alguien con una marca que tiene causa, comunidad propia y capacidad real de escalar",
@@ -545,6 +544,23 @@ function Results() {
                 </div>
               ))}
             </div>
+            {/* Bloom extras */}
+            <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(192,0,90,0.12)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#b8860b" }}>✦ En la versión Bloom Your Brand, además:</p>
+              <div className="space-y-2">
+                {[
+                  "30 min VIP antes de cada sesión (grupo selecto de máx. 8 personas)",
+                  "2 sesiones 1:1 post-reto con mentores",
+                  "5 piezas publicitarias producidas (tú grabas, nosotros editamos)",
+                  "30 días de Victoranza App con onboarding CRM y automatizaciones",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <span className="font-bold flex-shrink-0 mt-0.5" style={{ color: "#f5c842" }}>★</span>
+                    <p className="text-xs leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.75 }}>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Versión de ti */}
@@ -559,16 +575,15 @@ function Results() {
                 </div>
               ))}
             </div>
+            {/* Bloom identity */}
+            <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(232,148,255,0.2)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#b8860b" }}>✦ En la versión Bloom Your Brand:</p>
+              <div className="flex items-start gap-2">
+                <span className="font-bold flex-shrink-0 mt-0.5" style={{ color: "#f5c842" }}>★</span>
+                <p className="text-sm leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.9 }}>Alguien que sabe desarrollar plataformas para negocios digitales con inteligencia artificial</p>
+              </div>
+            </div>
           </motion.div>
-        </div>
-
-        <div className="max-w-3xl mx-auto rounded-3xl p-8 text-center" style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(16px)", border: "1px solid rgba(192,0,90,0.1)" }}>
-          <p className="font-semibold text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
-            "No es un curso donde acumulas conocimiento.
-          </p>
-          <p className="font-playfair font-bold text-lg lg:text-xl" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Es un reto donde construyes, lanzas y te transformas."
-          </p>
         </div>
       </div>
     </section>
@@ -617,14 +632,11 @@ function Pricing() {
         <div className="text-center mb-12">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="font-playfair font-bold mb-3" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "#3A3F4B" }}>
-            ¿Cuánto vale tener tu primer servicio digital
+            La inversión que transformará
           </motion.h2>
-          <h2 className="font-playfair font-bold mb-4" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            lanzado y vendiendo este próximo mes?
+          <h2 className="font-playfair font-bold" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            el rumbo de tu negocio.
           </h2>
-          <p className="font-semibold text-2xl lg:text-3xl" style={{ color: MAGENTA }}>
-            Invierte en el reto que cambia el rumbo de tu negocio.
-          </p>
         </div>
 
         {/* Tabla comparativa */}
@@ -745,9 +757,6 @@ function Pricing() {
           </motion.div>
         </div>
 
-        <p className="text-center font-playfair text-xl lg:text-2xl italic" style={{ color: MAGENTA }}>
-          "Con tu primer cliente digital, el programa se paga solo."
-        </p>
       </div>
     </section>
   );
@@ -954,7 +963,7 @@ function Testimonials() {
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(196,181,244,0.18) 0%, rgba(147,197,253,0.1) 40%, transparent 70%)", pointerEvents: "none" }} />
       <div className="text-center mb-12 px-5">
         <p className="font-semibold text-2xl lg:text-3xl mb-2" style={{ color: MAGENTA }}>
-          marcas alrededor del mundo ya han tomado la decisión
+          Marcas alrededor del mundo ya han tomado la decisión
         </p>
         <h2 className="font-playfair font-bold" style={{ fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "#3A3F4B" }}>
           y hoy viven activamente su posicionamiento e ingresos digitales
@@ -1022,9 +1031,9 @@ const FAQS = [
   { q: "¿En qué plataforma se desarrolla el reto?", a: "Victoranza App es nuestra plataforma digital propia de Loreto Consultora. Allí encontrarás todos los materiales pregrabados, sesiones grabadas del reto, materiales de apoyo, comunidad y más. Al inscribirte recibirás por correo tu acceso con usuario y contraseña." },
   { q: "¿Dónde se realiza el pago?", a: "Al dar clic en los botones de esta página serás redirigido a una página de pago en línea. El pago es procesado por la pasarela de Stripe, es totalmente seguro y podrás pagar con la tarjeta de tu preferencia." },
   { q: "¿Qué pasa si no puedo asistir a una sesión en vivo?", a: "Todas las sesiones se graban y quedan disponibles en la plataforma para que avances a tu ritmo. Para situaciones especiales, acércate con tu customer happiness y atendemos tu caso de manera personalizada." },
-  { q: "¿Cuánto tiempo necesito dedicarle por semana?", a: "Las sesiones son dos veces por semana. Además de las sesiones en vivo, recomendamos entre 2 y 3 horas semanales para implementar los ejercicios y construir tus entregables." },
+  { q: "¿Cuánto tiempo necesito dedicarle por semana?", a: "Las sesiones en vivo se realizan una vez por semana. Además, recomendamos entre 2 y 3 horas semanales para implementar los ejercicios y construir tus entregables. El plan Bloom Your Brand extiende el acompañamiento a 8 semanas para que puedas profundizar e implementar a un ritmo más intensivo." },
   { q: "¿Hay reembolsos?", a: "Al ser un programa digital progresivo y práctico, no ofrecemos reembolsos. Sin embargo, garantizamos el 100% de satisfacción — si en algún momento sientes que algo no está funcionando para ti, acércate con nuestro equipo y lo resolvemos juntos." },
-  { q: "¿Cuándo recupero mi inversión?", a: "En la mayoría de los casos, con una o dos ventas de tu servicio digital el reto se paga solo. Sales del programa con al menos un servicio lanzado y un sistema de ventas activo — diseñado exactamente para eso." },
+  { q: "¿Cuándo recupero mi inversión?", a: "Sales del programa con al menos un servicio digital estructurado, lanzado y un sistema de ventas activo. El tiempo de recuperación depende de tu rubro y de la velocidad con que ejecutes, pero el objetivo del reto es que salgas listo para monetizar desde el primer día." },
   { q: "¿Cuántos lugares hay disponibles?", a: "Solo 20 lugares en Boost y 8 en Bloom — los cupos son limitados para garantizar atención personalizada y una experiencia de comunidad de alta calidad." },
   { q: "¿Qué pasa después del reto?", a: "Lo más importante es que continúes aplicando lo que construiste. Si quieres ir más lejos, puedes complementar con otros de nuestros programas y servicios. Acércate a nuestro equipo para encontrar el adecuado para ti y tus objetivos." },
 ];
