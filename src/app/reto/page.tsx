@@ -370,12 +370,10 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
 
 // ─── Sección 2: Problemas ─────────────────────────────────────────────────────
 const PROBLEMS = [
-  "\"Sé que tengo algo valioso que compartir, pero no sé cómo convertirlo en un negocio real\"",
-  "\"He acumulado años de experiencia y aprendizajes, pero sigo sin saber cómo comunicar lo que valgo\"",
+  "\"Sé que tengo algo valioso que compartir, pero no sé cómo convertirlo en un negocio digital\"",
   "\"Publico y creo contenido constantemente, pero mi comunidad no crece y tampoco genera ingresos consistentes\"",
+  "\"He acumulado años de experiencia y aprendizajes, pero sigo sin poder comunicarlo\"",
   "\"Quiero construir algo con propósito, no solo vender — algo que trascienda y deje huella\"",
-  "\"Tengo experiencia, conocimiento y ganas, pero parece que algo me falta para ser un negocio que crece y deja huella\"",
-  "\"Ya intenté diferentes estrategias digitales y ninguna logró lo que realmente quiero construir\"",
 ];
 
 function Problems() {
@@ -390,7 +388,7 @@ function Problems() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12 max-w-3xl mx-auto">
           {PROBLEMS.map((p, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+            <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.09 }}
               className="flex items-start gap-4 text-left">
               <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: G_MAIN }}>
                 <span className="text-white font-bold text-sm">✕</span>
@@ -404,7 +402,7 @@ function Problems() {
           No es falta de talento. No es falta de experiencia. No es falta de valor.
         </p>
         <p className="text-2xl lg:text-3xl font-bold font-playfair" style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-          Es falta de dirección, estructura y un plan real.
+          Es falta de dirección, estructura y un plan real para digitalizar tu negocio.
         </p>
       </div>
     </section>
@@ -412,20 +410,30 @@ function Problems() {
 }
 
 // ─── Sección 3: Transformación ───────────────────────────────────────────────
+const STAIRCASE_STEPS = [
+  { label: "Reconoce",  widthPct: 52, num: "01" },
+  { label: "Conecta",   widthPct: 66, num: "02" },
+  { label: "Comparte",  widthPct: 82, num: "03" },
+  { label: "Expande",   widthPct: 100, num: "04" },
+];
+
 function Transformation() {
   return (
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: G_PINK }}>
       <div className="max-w-5xl mx-auto relative z-10">
+
+        {/* Header */}
         <div className="text-center mb-14">
-          <p className="font-semibold text-3xl lg:text-4xl mb-4 text-white">Tu marca</p>
-          <p className="font-playfair text-xl lg:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
-            no solo comunica lo que haces — define cuánto vales, cómo te perciben y cuánto están dispuestos a pagarte. Cuando tu marca está alineada con tu propósito, transforma no solo tu negocio, sino tu vida.
-          </p>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="font-playfair font-bold text-3xl lg:text-4xl text-white leading-snug">
+            Con nuestro reto, lograrás<br className="hidden sm:block" /> una transformación completa.
+          </motion.p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* Izquierda: "Mientras otros..." */}
           <div className="space-y-5">
-            <p className="text-white/90 text-base lg:text-lg">con nuestro reto <span className="font-bold uppercase" style={{ background: G_GOLD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Boost Your Brand</span>...</p>
             {[
               "Mientras otros improvisan contenido, tú construyes un posicionamiento que refleja quién realmente eres",
               "Mientras otros publican por presencia, tú comunicas con intención — y eso se siente, se recuerda y se valora",
@@ -439,21 +447,49 @@ function Transformation() {
             ))}
           </div>
 
-          <div className="text-center">
-            <div className="space-y-1 text-white font-playfair font-black mb-8">
-              {[
-                { text: "reconoce",  size: "clamp(1.4rem,2.5vw,2rem)" },
-                { text: "conecta",   size: "clamp(1.8rem,3.5vw,2.75rem)" },
-                { text: "comparte",  size: "clamp(2.2rem,4.5vw,3.5rem)" },
-                { text: "expande",   size: "clamp(2.6rem,5.5vw,4.25rem)" },
-              ].map((l) => (
-                <p key={l.text} style={{ fontSize: l.size }}>{l.text}</p>
-              ))}
-              <p className="text-white/70 font-normal text-sm tracking-widest uppercase mt-2">tu valor único</p>
+          {/* Derecha: Escalerita animada */}
+          <div className="flex items-stretch gap-5">
+
+            {/* Flecha vertical + etiqueta */}
+            <div className="flex flex-col items-center gap-3 flex-shrink-0 py-2">
+              <motion.div
+                initial={{ scaleY: 0, opacity: 0 }}
+                whileInView={{ scaleY: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                style={{ width: 2, flex: 1, background: "rgba(255,255,255,0.55)", borderRadius: 2, transformOrigin: "bottom" }}
+              />
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 1.1 }}
+                style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", color: "rgba(255,255,255,0.85)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}
+              >
+                ↑ Tu Valor Único
+              </motion.div>
             </div>
-            <p className="font-semibold text-2xl lg:text-3xl text-white/85">
-              un viaje para elevar tu ser a su versión<br />más auténtica y en expansión
-            </p>
+
+            {/* Peldaños */}
+            <div className="flex-1 flex flex-col justify-end gap-3">
+              {STAIRCASE_STEPS.map((step, i) => (
+                <div key={step.label} style={{ width: `${step.widthPct}%` }}>
+                  <motion.div
+                    initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
+                    whileInView={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.75, delay: i * 0.18 + 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-14 rounded-xl flex items-center gap-3 px-5"
+                    style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.4)" }}
+                  >
+                    <span className="text-xs font-bold opacity-60 text-white flex-shrink-0">{step.num}</span>
+                    <span className="font-playfair font-black text-white whitespace-nowrap" style={{ fontSize: "clamp(1rem,2vw,1.25rem)" }}>
+                      {step.label}
+                    </span>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
