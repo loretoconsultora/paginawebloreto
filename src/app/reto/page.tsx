@@ -71,16 +71,49 @@ function formatDate(d: Date): string {
   return `${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
 }
 
+// ─── Países con lada ─────────────────────────────────────────────────────────
+const LADAS = [
+  { flag: "🇲🇽", code: "+52",  name: "México" },
+  { flag: "🇺🇸", code: "+1",   name: "EE. UU." },
+  { flag: "🇪🇸", code: "+34",  name: "España" },
+  { flag: "🇨🇴", code: "+57",  name: "Colombia" },
+  { flag: "🇦🇷", code: "+54",  name: "Argentina" },
+  { flag: "🇻🇪", code: "+58",  name: "Venezuela" },
+  { flag: "🇨🇱", code: "+56",  name: "Chile" },
+  { flag: "🇵🇪", code: "+51",  name: "Perú" },
+  { flag: "🇪🇨", code: "+593", name: "Ecuador" },
+  { flag: "🇬🇹", code: "+502", name: "Guatemala" },
+  { flag: "🇧🇷", code: "+55",  name: "Brasil" },
+  { flag: "🇵🇦", code: "+507", name: "Panamá" },
+  { flag: "🇩🇴", code: "+1",   name: "Rep. Dom." },
+  { flag: "🇨🇷", code: "+506", name: "Costa Rica" },
+  { flag: "🇺🇾", code: "+598", name: "Uruguay" },
+  { flag: "🇵🇾", code: "+595", name: "Paraguay" },
+  { flag: "🇧🇴", code: "+591", name: "Bolivia" },
+  { flag: "🇭🇳", code: "+504", name: "Honduras" },
+  { flag: "🇸🇻", code: "+503", name: "El Salvador" },
+  { flag: "🇳🇮", code: "+505", name: "Nicaragua" },
+  { flag: "🇵🇹", code: "+351", name: "Portugal" },
+  { flag: "🇫🇷", code: "+33",  name: "Francia" },
+  { flag: "🇩🇪", code: "+49",  name: "Alemania" },
+  { flag: "🇮🇹", code: "+39",  name: "Italia" },
+  { flag: "🇬🇧", code: "+44",  name: "Reino Unido" },
+  { flag: "🇨🇦", code: "+1",   name: "Canadá" },
+];
+
+const WA_DUDAS = `https://wa.me/524427497345?text=${encodeURIComponent("Hola Loreto Consultora, me interesa el Reto Boost y/o Bloom Your Brand, pero todavía tengo algunas consultas que me gustaría hacer antes de realizar mi pago.")}`;
+
 // ─── Modal de registro ────────────────────────────────────────────────────────
 function RegistroModal({ onClose }: { onClose: () => void }) {
-  const [form, setForm] = useState({ nombre: "", telefono: "", correo: "", negocio: "", confirmar: false });
+  const [form, setForm] = useState({ nombre: "", lada: "+52", telefono: "", correo: "", negocio: "", confirmar: false });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const nextDate = formatDate(new Date(getNextFirstMonday()));
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value, type, checked } = e.target;
-    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const target = e.target as HTMLInputElement;
+    const { name, value, type } = target;
+    setForm((f) => ({ ...f, [name]: type === "checkbox" ? target.checked : value }));
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -90,6 +123,10 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
     setTimeout(() => { setLoading(false); setSent(true); }, 600);
   }
 
+  const inputStyle = { border: "1.5px solid rgba(192,0,90,0.2)", color: "#3A3F4B", background: "#fafafa" };
+  const focusHandler = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => (e.currentTarget.style.borderColor = "#c0005a");
+  const blurHandler  = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => (e.currentTarget.style.borderColor = "rgba(192,0,90,0.2)");
+
   return (
     <div
       className="fixed inset-0 z-[200] flex items-center justify-center px-4"
@@ -97,12 +134,12 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl"
-        style={{ background: "white", maxHeight: "90vh", overflowY: "auto" }}>
+        style={{ background: "white", maxHeight: "92vh", overflowY: "auto" }}>
 
         {/* Header */}
         <div className="px-8 pt-8 pb-6 text-center" style={{ background: G_MAIN }}>
           <button onClick={onClose} className="absolute top-4 right-5 text-white/70 hover:text-white text-2xl leading-none">×</button>
-          <p className="font-semibold text-sm uppercase tracking-widest text-white/75 mb-1">Reto Boost &amp; Bloom</p>
+          <p className="font-semibold text-xs uppercase tracking-widest text-white/75 mb-1">Reto Boost &amp; Bloom Your Brand</p>
           <h2 className="font-playfair font-bold text-2xl text-white">Reserva tu lugar</h2>
           <p className="text-white/70 text-sm mt-1">Próxima generación · {nextDate}</p>
         </div>
@@ -111,42 +148,67 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
         <div className="px-8 py-7">
           {!sent ? (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {[
-                { name: "nombre",   label: "Nombre completo",    type: "text",  placeholder: "Tu nombre" },
-                { name: "telefono", label: "Teléfono / WhatsApp", type: "tel",   placeholder: "+52 442 000 0000" },
-                { name: "correo",   label: "Correo electrónico",  type: "email", placeholder: "hola@tu-negocio.com" },
-                { name: "negocio",  label: "Nombre de tu negocio / marca", type: "text", placeholder: "Mi negocio" },
-              ].map(({ name, label, type, placeholder }) => (
-                <div key={name}>
-                  <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>{label}</label>
-                  <input
-                    required name={name} type={type} placeholder={placeholder}
-                    value={(form as any)[name]} onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
-                    style={{ border: "1.5px solid rgba(192,0,90,0.2)", color: "#3A3F4B", background: "#fafafa" }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#c0005a")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(192,0,90,0.2)")}
-                  />
+
+              {/* Nombre */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>Nombre completo</label>
+                <input required name="nombre" type="text" placeholder="Tu nombre"
+                  value={form.nombre} onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+              </div>
+
+              {/* Teléfono con lada */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>Teléfono / WhatsApp</label>
+                <div className="flex gap-2">
+                  <select name="lada" value={form.lada} onChange={handleChange}
+                    className="px-3 py-3 rounded-xl text-sm outline-none transition-all flex-shrink-0"
+                    style={{ ...inputStyle, width: "110px" }}
+                    onFocus={focusHandler} onBlur={blurHandler}>
+                    {LADAS.map((l) => (
+                      <option key={`${l.flag}${l.code}`} value={l.code}>
+                        {l.flag} {l.code}
+                      </option>
+                    ))}
+                  </select>
+                  <input required name="telefono" type="tel" placeholder="442 749 7345"
+                    value={form.telefono} onChange={handleChange}
+                    className="flex-1 px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                    style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
                 </div>
-              ))}
+              </div>
+
+              {/* Correo */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>Correo electrónico</label>
+                <input required name="correo" type="email" placeholder="hola@tu-negocio.com"
+                  value={form.correo} onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+              </div>
+
+              {/* Negocio */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#3A3F4B", opacity: 0.65 }}>Nombre de tu negocio / marca</label>
+                <input required name="negocio" type="text" placeholder="Mi negocio"
+                  value={form.negocio} onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={inputStyle} onFocus={focusHandler} onBlur={blurHandler} />
+              </div>
 
               {/* Checkbox */}
               <label className="flex items-start gap-3 cursor-pointer mt-1">
-                <input
-                  type="checkbox" name="confirmar" checked={form.confirmar} onChange={handleChange}
-                  className="mt-0.5 flex-shrink-0 w-4 h-4 rounded accent-pink-600"
-                  required
-                />
+                <input type="checkbox" name="confirmar" checked={form.confirmar} onChange={handleChange}
+                  className="mt-0.5 flex-shrink-0 w-4 h-4 rounded accent-pink-600" required />
                 <span className="text-sm leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.8 }}>
                   Confirmo que me apunto al próximo reto que inicia el <strong style={{ color: MAGENTA }}>{nextDate}</strong>
                 </span>
               </label>
 
-              <button
-                type="submit" disabled={loading || !form.confirmar}
+              <button type="submit" disabled={loading || !form.confirmar}
                 className="mt-2 w-full py-4 rounded-full font-bold text-sm text-white hover:opacity-90 transition-all disabled:opacity-50"
-                style={{ background: G_MAIN, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}
-              >
+                style={{ background: G_MAIN, boxShadow: "0 8px 24px rgba(192,0,90,0.3)" }}>
                 {loading ? "Enviando…" : "Apuntarme al reto →"}
               </button>
 
@@ -155,12 +217,11 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
           ) : (
             <div className="text-center py-4">
               <div className="text-4xl mb-4">🎉</div>
-              <h3 className="font-playfair font-bold text-xl mb-2" style={{ color: "#3A3F4B" }}>¡Estás apuntado!</h3>
-              <p className="text-sm mb-1" style={{ color: "#3A3F4B", opacity: 0.7 }}>Revisa tu correo — te enviamos una confirmación.</p>
+              <h3 className="font-playfair font-bold text-xl mb-3" style={{ color: "#3A3F4B" }}>¡Estás apuntado!</h3>
               <p className="text-sm mb-7 font-semibold" style={{ color: MAGENTA }}>
                 Confirma tu lugar completando el pago:
               </p>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 mb-6">
                 <a href={HREF_GENERAL} target="_blank" rel="noopener noreferrer"
                   className="block w-full py-4 rounded-full font-bold text-sm text-white hover:opacity-90 transition-all"
                   style={{ background: G_MAIN, boxShadow: "0 8px 24px rgba(192,0,90,0.25)" }}>
@@ -172,7 +233,13 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
                   Bloom Your Brand — $649 USD ✦
                 </a>
               </div>
-              <p className="text-xs opacity-40 mt-5">Si tienes dudas escríbenos por WhatsApp al 442 749 7345</p>
+              {/* Botón WA dudas */}
+              <a href={WA_DUDAS} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-full transition-opacity hover:opacity-80"
+                style={{ background: "rgba(37,211,102,0.1)", color: "#1a7a3c", border: "1px solid rgba(37,211,102,0.3)" }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                ¿Tienes dudas? Escríbenos por WhatsApp
+              </a>
             </div>
           )}
         </div>
