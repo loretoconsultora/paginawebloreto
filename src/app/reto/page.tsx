@@ -328,7 +328,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
             </h1>
 
             <p className="text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.85 }}>
-              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong>: <span style={{ color: MAGENTA, fontWeight: 900, fontSize: "1.07em" }}>Tu Ecosistema Digital COMPLETO.</span>
+              En <strong>4 u 8 semanas</strong> construirás tu <strong>identidad</strong>, tu <strong>oferta digital</strong> y tu <strong>estrategia de lanzamiento</strong>:<br /><span style={{ color: MAGENTA, fontWeight: 900, fontSize: "1.07em" }}>Tu Ecosistema Digital COMPLETO.</span>
               <span className="text-sm mt-2 block opacity-75">Dirigido a emprendedores, coaches, consultores y creadores de contenido que quieren escalar su facturación a través de negocios digitales.</span>
             </p>
 
