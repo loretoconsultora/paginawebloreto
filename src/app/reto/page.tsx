@@ -548,7 +548,7 @@ const IDENTIDADES = [
   "La versión de ti que siempre supiste que existía — ahora con el sistema para demostrarlo",
 ];
 
-function Results() {
+function Results({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <section className="py-16 lg:py-24 px-5 lg:px-8 relative overflow-hidden bg-white">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(196,181,244,0.18) 0%, rgba(147,197,253,0.1) 40%, transparent 70%)", pointerEvents: "none" }} />
@@ -615,6 +615,15 @@ function Results() {
               </div>
             </div>
           </motion.div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-14">
+          <button onClick={onOpenModal}
+            className="inline-flex items-center font-bold px-10 py-4 rounded-full text-white text-sm hover:opacity-90 transition-all"
+            style={{ background: G_MAIN, boxShadow: "0 8px 28px rgba(192,0,90,0.28)" }}>
+            Quiero mi lugar en el Reto →
+          </button>
         </div>
       </div>
     </section>
@@ -1195,7 +1204,7 @@ export default function RetoPage() {
         <Hero onOpenModal={() => setModalOpen(true)} />
         <Problems />
         <Transformation />
-        <Results />
+        <Results onOpenModal={() => setModalOpen(true)} />
         <Pricing />
         <Testimonials />
         <FAQ />
