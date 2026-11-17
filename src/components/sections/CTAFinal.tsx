@@ -35,7 +35,7 @@ export default function CTAFinal() {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-        <h2 className="font-playfair text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="font-playfair text-3xl sm:text-5xl font-bold text-white mb-6 leading-tight">
           El único riesgo real es no empezar.
         </h2>
         <p className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto">

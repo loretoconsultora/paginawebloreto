@@ -257,7 +257,7 @@ export default function ServiciosPage() {
       <main>
 
         {/* Hero */}
-        <section className="pt-32 pb-20 text-center bg-white">
+        <section className="pt-20 sm:pt-32 pb-20 text-center bg-white">
           <div className="max-w-3xl mx-auto px-6">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -296,7 +296,7 @@ export default function ServiciosPage() {
         </section>
 
         {/* Cards + panel expandible */}
-        <section className="pb-24 bg-white">
+        <section className="pb-24 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 items-start">
               {servicios.map((s, i) => (

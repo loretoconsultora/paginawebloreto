@@ -50,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${dancing.variable} ${playfair.variable} ${montserrat.variable}`}>
-      <body className="font-montserrat antialiased bg-indigo-pale text-grafito">
+      <body className="font-montserrat antialiased bg-indigo-pale text-grafito overflow-x-hidden">
         {children}
       </body>
     </html>

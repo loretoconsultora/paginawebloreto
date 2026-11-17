@@ -55,7 +55,7 @@ function useCountdown() {
 function CDUnit({ value, label, white }: { value: number; label: string; white?: boolean }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="font-playfair font-black text-3xl leading-none"
+      <span className="font-playfair font-black text-2xl sm:text-3xl leading-none"
         style={white ? { color: "white" } : { background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
         {String(value).padStart(2, "0")}
       </span>
@@ -252,7 +252,7 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
 function Hero({ onOpenModal }: { onOpenModal: () => void }) {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
-    <section className="min-h-screen flex items-center pt-28 pb-8 lg:pb-10 px-5 lg:px-8 relative overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center pt-20 sm:pt-28 pb-8 lg:pb-10 px-5 lg:px-8 relative overflow-hidden bg-white">
       {/* blobs decorativos lado derecho */}
       <div className="absolute -top-32 right-0 w-[380px] h-[380px] rounded-full" style={{ background: "radial-gradient(circle, rgba(232,148,255,0.07) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
@@ -275,7 +275,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
           {/* Columna izquierda — degradado con título del reto */}
           <motion.div
             initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}
-            className="order-1 flex flex-col items-center justify-center gap-8 rounded-3xl px-10 py-14 text-center"
+            className="order-1 flex flex-col items-center justify-center gap-6 sm:gap-8 rounded-3xl px-5 py-10 sm:px-10 sm:py-14 text-center"
             style={{
               background: "linear-gradient(135deg, #1a0a2e, #c0005a, #E894FF, #c0005a, #1a0a2e)",
               backgroundSize: "300% 300%",
@@ -286,8 +286,8 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
             <div>
               <p className="font-semibold text-3xl mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>Reto</p>
               <div className="font-playfair font-black uppercase leading-none text-white">
-                <span className="block" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)" }}>Boost &amp; Bloom</span>
-                <span className="block" style={{ fontSize: "clamp(3rem,7vw,4.5rem)", display: "inline-block", animation: "float-y 4s ease-in-out infinite" }}>
+                <span className="block" style={{ fontSize: "clamp(1.2rem,3.5vw,2.2rem)" }}>Boost &amp; Bloom</span>
+                <span className="block" style={{ fontSize: "clamp(2rem,7vw,4.5rem)", display: "inline-block", animation: "float-y 4s ease-in-out infinite" }}>
                   Your Brand
                 </span>
               </div>
@@ -303,13 +303,13 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
               <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
                 Arrancamos 1° Lunes de cada mes
               </p>
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-2 sm:gap-3">
                 <CDUnit value={days} label="días" white />
-                <span className="font-bold text-lg mb-3 text-white/40">:</span>
+                <span className="font-bold text-base mb-3 text-white/40">:</span>
                 <CDUnit value={hours} label="horas" white />
-                <span className="font-bold text-lg mb-3 text-white/40">:</span>
+                <span className="font-bold text-base mb-3 text-white/40">:</span>
                 <CDUnit value={minutes} label="min" white />
-                <span className="font-bold text-lg mb-3 text-white/40">:</span>
+                <span className="font-bold text-base mb-3 text-white/40">:</span>
                 <CDUnit value={seconds} label="seg" white />
               </div>
             </div>
@@ -321,7 +321,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
               Dentro de ti hay un valor que el mundo necesita —<br className="hidden sm:block" />
               este Reto se trata de reconocerlo, reconectarlo y compartirlo.
             </p>
-            <h1 className="font-playfair font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
+            <h1 className="font-playfair font-black leading-tight mb-4" style={{ fontSize: "clamp(1.6rem,4.5vw,3.2rem)" }}>
               <span style={{ background: G_MAIN, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 Conquista el mundo digital
               </span>
@@ -505,7 +505,7 @@ function Transformation() {
                 return (
                   <div key={step.label} style={{ width: `${step.widthPct}%` }}>
                     <div
-                      className="h-14 rounded-xl flex items-center gap-3 px-5"
+                      className="h-14 rounded-xl flex items-center gap-3 px-5 overflow-hidden"
                       style={{
                         background: "rgba(255,255,255,0.22)",
                         backdropFilter: "blur(10px)",
@@ -515,7 +515,7 @@ function Transformation() {
                       }}
                     >
                       <span className="text-xs font-bold opacity-60 text-white flex-shrink-0">{step.num}</span>
-                      <span className="font-playfair font-black text-white whitespace-nowrap" style={{ fontSize: "clamp(1rem,2vw,1.25rem)" }}>
+                      <span className="font-playfair font-black text-white truncate" style={{ fontSize: "clamp(0.9rem,2.5vw,1.25rem)" }}>
                         {step.label}
                       </span>
                     </div>
@@ -665,7 +665,7 @@ const BLOOM_EXTRAS = [
 function Pricing() {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
-    <section id="precio" className="pt-8 lg:pt-10 pb-16 lg:pb-24 px-5 lg:px-8 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%)" }}>
+    <section id="precio" className="pt-8 lg:pt-10 pb-16 lg:pb-24 px-5 lg:px-8 relative" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f3ff 100%)" }}>
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

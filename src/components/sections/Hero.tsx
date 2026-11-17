@@ -130,7 +130,7 @@ export default function Hero() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-28 pb-10 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-20 sm:pt-28 pb-10 flex flex-col items-center text-center">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
