@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
@@ -37,6 +38,7 @@ export interface EventoConfig {
   horarioLocal: string;
   horarioCDMX: string;
   masterclass: string;
+  portadaSrc?: string;    // ruta de imagen, ej. "/eventos/portada-chile.jpg"
   // Paleta del país (con estilo Loreto como base)
   gradiente: string;
   accentHex: string;
@@ -77,6 +79,73 @@ const LO_QUE_TE_LLEVAS = [
   "Herramientas digitales concretas para aplicar desde el día siguiente",
   "Visibilidad: el mercado de tu país te conocerá a ti y a tu marca",
 ];
+
+// ─── Formulario compacto inline en hero ──────────────────────────────────────
+function HeroForm({ config, onOpenModal }: { config: EventoConfig; onOpenModal: () => void }) {
+  const [form, setForm] = useState({ nombre: "", lada: config.ladaDefault, telefono: "", correo: "" });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => { setLoading(false); setSent(true); }, 600);
+  }
+
+  const iStyle = {
+    border: "1px solid rgba(255,255,255,0.3)",
+    color: "white",
+    background: "rgba(255,255,255,0.1)",
+    borderRadius: "0.75rem",
+    padding: "0.65rem 0.9rem",
+    fontSize: "0.8125rem",
+    outline: "none",
+    width: "100%",
+  } as React.CSSProperties;
+
+  if (sent) {
+    return (
+      <div className="text-center py-4">
+        <div className="text-3xl mb-2">🎉</div>
+        <p className="font-playfair font-bold text-white text-lg mb-1">¡Estás registrado!</p>
+        <p className="text-white/70 text-sm">Te avisamos los detalles por WhatsApp. ¡Nos vemos en {config.ciudad}!</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <input required name="nombre" type="text" placeholder="Nombre completo" value={form.nombre}
+        onChange={handleChange} style={iStyle} />
+      <div className="flex gap-2">
+        <select name="lada" value={form.lada} onChange={handleChange}
+          style={{ ...iStyle, width: "90px", flexShrink: 0 }}>
+          {LADAS.map((l) => (
+            <option key={`${l.flag}${l.code}${l.name}`} value={l.code}
+              style={{ background: "#1a0a2e", color: "white" }}>
+              {l.flag} {l.code}
+            </option>
+          ))}
+        </select>
+        <input required name="telefono" type="tel" placeholder="WhatsApp" value={form.telefono}
+          onChange={handleChange} style={{ ...iStyle, flex: 1 }} />
+      </div>
+      <input required name="correo" type="email" placeholder="Correo electrónico" value={form.correo}
+        onChange={handleChange} style={iStyle} />
+      <button type="submit" disabled={loading}
+        className="w-full py-3.5 rounded-full font-bold text-sm transition-all hover:opacity-90 disabled:opacity-50 mt-1"
+        style={{ background: "white", color: config.accentHex, boxShadow: "0 6px 20px rgba(0,0,0,0.2)" }}>
+        {loading ? "Enviando…" : `Quiero mi lugar en ${config.pais} →`}
+      </button>
+      <p className="text-center text-xs text-white/40">Tus datos son confidenciales.</p>
+    </form>
+  );
+}
 
 // ─── Modal de registro ────────────────────────────────────────────────────────
 function RegistroModal({ config, onClose }: { config: EventoConfig; onClose: () => void }) {
@@ -237,93 +306,91 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
       <main className="overflow-x-hidden bg-white">
 
         {/* ── HERO ───────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-28 sm:pt-32 pb-16 px-5 lg:px-8">
-          {/* Blobs */}
-          <div className="absolute -top-20 -left-16 w-80 h-80 rounded-full pointer-events-none"
-            style={{ background: config.accentHex, opacity: 0.1, filter: "blur(90px)" }} />
-          <div className="absolute top-10 -right-20 w-96 h-96 rounded-full pointer-events-none"
-            style={{ background: config.accentHex, opacity: 0.08, filter: "blur(100px)" }} />
-
-          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div>
-              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-xs font-medium"
-                style={{ border: "1px solid rgba(58,63,75,0.18)", color: HEAD }}>
-                <span className="text-base">{config.bandera}</span>
-                Networking &amp; Masterclass Digital · {config.pais}
-              </motion.div>
-
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-playfair font-black mb-5"
-                style={{ fontSize: "clamp(1.9rem, 4.5vw, 3rem)", lineHeight: 1.1, color: HEAD }}>
-                {config.titulo}
-              </motion.h1>
-
-              <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-base sm:text-lg leading-relaxed mb-5"
-                style={{ color: HEAD, opacity: 0.8 }}>
-                {config.subtitulo}
-              </motion.p>
-
-              {/* Masterclass destacada */}
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
-                className="rounded-2xl px-5 py-4 mb-6"
-                style={{ background: config.gradienteCard, border: `1.5px solid ${config.accentHex}25` }}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: config.accentHex }}>
-                  Masterclass del día
-                </p>
-                <p className="text-sm font-semibold leading-snug" style={{ color: HEAD }}>
-                  "{config.masterclass}"
-                </p>
-              </motion.div>
-
-              {/* Chips de fecha/hora/ciudad */}
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-wrap gap-3 mb-8">
-                {[
-                  { icon: "📅", text: config.fechaTexto },
-                  { icon: "🕖", text: `${config.horarioLocal} · ${config.horarioCDMX}` },
-                  { icon: "📍", text: config.ciudad },
-                ].map((chip) => (
-                  <div key={chip.text} className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
-                    style={{ border: "1px solid rgba(58,63,75,0.15)", color: HEAD, background: "#f8f9fa" }}>
-                    <span>{chip.icon}</span>
-                    <span>{chip.text}</span>
-                  </div>
-                ))}
-              </motion.div>
-
-              <motion.button onClick={() => setModalOpen(true)}
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
-                className="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full text-sm hover:opacity-90 transition-opacity"
-                style={{ background: config.gradiente, boxShadow: `0 12px 32px ${config.accentHex}40` }}>
-                Reservar mi lugar en {config.pais} →
-              </motion.button>
-            </div>
-
-            {/* Columna derecha: tarjeta visual */}
-            <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-[3/4]"
-              style={{ background: config.gradiente }}>
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
-                <span className="text-6xl sm:text-7xl">{config.bandera}</span>
-                <p className="font-playfair font-black text-white text-2xl sm:text-3xl leading-tight">
-                  Networking &amp;<br />Masterclass Digital
-                </p>
-                <p className="text-white/80 font-semibold text-sm">{config.fechaTexto}</p>
-                <p className="text-white/70 text-sm">📍 {config.ciudad}</p>
-                <div className="mt-2 px-6 py-3 rounded-full bg-white/20 border border-white/30">
-                  <p className="text-white text-xs font-semibold uppercase tracking-wider">Cupo limitado</p>
-                </div>
-              </div>
-            </motion.div>
+        <section className="relative overflow-hidden pt-20 pb-0 px-5 lg:px-8"
+          style={{ background: config.gradiente }}>
+          {/* Blobs decorativos */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full"
+              style={{ background: "rgba(255,255,255,0.08)", filter: "blur(80px)" }} />
+            <div className="absolute bottom-0 -left-20 w-80 h-80 rounded-full"
+              style={{ background: "rgba(0,0,0,0.15)", filter: "blur(70px)" }} />
           </div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-10 text-center">
-            <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: HEAD, opacity: 0.4 }} />
-          </motion.div>
+          <div className="relative z-10 max-w-6xl mx-auto pt-6 lg:pt-10">
+
+            {/* Fila superior: badge + chips */}
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+              className="flex flex-wrap items-center gap-3 mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
+                <span className="text-lg">{config.bandera}</span>
+                <span className="text-xs font-semibold uppercase tracking-widest text-white/90">
+                  Networking &amp; Masterclass Digital · {config.pais}
+                </span>
+              </div>
+              {[
+                { icon: "📅", text: config.fechaTexto },
+                { icon: "📍", text: config.ciudad },
+                { icon: "🕖", text: config.horarioLocal },
+              ].map((chip) => (
+                <div key={chip.text}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-white/80"
+                  style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>
+                  <span>{chip.icon}</span>
+                  <span>{chip.text}</span>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Título principal: la masterclass */}
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-playfair font-black text-white mb-4 max-w-3xl"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1 }}>
+              {config.masterclass}
+            </motion.h1>
+
+            <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.18 }}
+              className="text-white/75 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl">
+              {config.subtitulo}
+            </motion.p>
+
+            {/* Dos columnas: imagen izquierda + formulario derecha */}
+            <div className="grid lg:grid-cols-[1fr_420px] gap-8 lg:gap-10 items-end">
+
+              {/* Imagen de portada */}
+              <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
+                className="relative rounded-t-3xl overflow-hidden self-end"
+                style={{ aspectRatio: "16/10", minHeight: "260px" }}>
+                {config.portadaSrc ? (
+                  <Image src={config.portadaSrc} alt={`Evento ${config.pais}`} fill className="object-cover" />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-3"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "2px dashed rgba(255,255,255,0.3)", borderBottom: "none", borderRadius: "1.5rem 1.5rem 0 0" }}>
+                    <span className="text-5xl">{config.bandera}</span>
+                    <p className="text-white/50 text-xs font-medium uppercase tracking-wider">Imagen próximamente</p>
+                  </div>
+                )}
+              </motion.div>
+
+              {/* Formulario de registro inline */}
+              <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+                className="rounded-t-3xl p-6 sm:p-7"
+                style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.25)", borderBottom: "none" }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-white/60 mb-1">Cupo limitado</p>
+                <h2 className="font-playfair font-bold text-xl text-white mb-4">Reserva tu lugar ahora</h2>
+                <HeroForm config={config} onOpenModal={() => setModalOpen(true)} />
+              </motion.div>
+            </div>
+          </div>
         </section>
+
+        {/* Separador */}
+        <div className="h-8 sm:h-12" style={{ background: config.gradiente }} />
+
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1 }}
+          className="text-center py-4 bg-white">
+          <ChevronDown size={20} className="mx-auto animate-bounce" style={{ color: "#3A3F4B", opacity: 0.3 }} />
+        </motion.div>
 
         {/* ── PROBLEMAS ──────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden py-20 px-5 lg:px-8" style={{ background: "#fafbfc" }}>
