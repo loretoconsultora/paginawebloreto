@@ -39,6 +39,7 @@ export interface EventoConfig {
   horarioCDMX: string;
   masterclass: string;
   portadaSrc?: string;    // ruta de imagen, ej. "/eventos/portada-chile.jpg"
+  videoBgSrc?: string;    // ruta de video de fondo, ej. "/eventos/video-redes.mp4"
   // Paleta del país (con estilo Loreto como base)
   gradiente: string;
   accentHex: string;
@@ -308,13 +309,31 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
         {/* ── HERO ───────────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden pt-20 pb-0 px-5 lg:px-8"
           style={{ background: config.gradiente }}>
-          {/* Blobs decorativos */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full"
-              style={{ background: "rgba(255,255,255,0.08)", filter: "blur(80px)" }} />
-            <div className="absolute bottom-0 -left-20 w-80 h-80 rounded-full"
-              style={{ background: "rgba(0,0,0,0.15)", filter: "blur(70px)" }} />
-          </div>
+
+          {/* Video de fondo (si existe) */}
+          {config.videoBgSrc && (
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <video
+                src={config.videoBgSrc}
+                autoPlay muted loop playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ opacity: 0.18 }}
+              />
+              {/* Overlay degradado del país para integrar el video */}
+              <div className="absolute inset-0"
+                style={{ background: config.gradiente, opacity: 0.82 }} />
+            </div>
+          )}
+
+          {/* Blobs decorativos (cuando no hay video) */}
+          {!config.videoBgSrc && (
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full"
+                style={{ background: "rgba(255,255,255,0.08)", filter: "blur(80px)" }} />
+              <div className="absolute bottom-0 -left-20 w-80 h-80 rounded-full"
+                style={{ background: "rgba(0,0,0,0.15)", filter: "blur(70px)" }} />
+            </div>
+          )}
 
           <div className="relative z-10 max-w-6xl mx-auto pt-6 lg:pt-10">
 
