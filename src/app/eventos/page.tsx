@@ -10,32 +10,32 @@ const MAGENTA = "#c0005a";
 
 const EVENTOS = [
   {
-    pais: "Chile",
-    bandera: "🇨🇱",
-    ciudad: "Santiago de Chile",
-    slug: "chile",
-    fecha: "Próximamente",
-  },
-  {
     pais: "Costa Rica",
     bandera: "🇨🇷",
     ciudad: "San José",
     slug: "costa-rica",
-    fecha: "Próximamente",
+    fecha: "Jueves 26 de noviembre",
   },
   {
     pais: "Colombia",
     bandera: "🇨🇴",
     ciudad: "Bogotá",
     slug: "colombia",
-    fecha: "Próximamente",
+    fecha: "Jueves 3 de diciembre",
+  },
+  {
+    pais: "Chile",
+    bandera: "🇨🇱",
+    ciudad: "Santiago de Chile",
+    slug: "chile",
+    fecha: "Jueves 10 de diciembre",
   },
   {
     pais: "Panamá",
     bandera: "🇵🇦",
     ciudad: "Ciudad de Panamá",
     slug: "panama",
-    fecha: "Próximamente",
+    fecha: "Jueves 17 de diciembre",
   },
 ];
 

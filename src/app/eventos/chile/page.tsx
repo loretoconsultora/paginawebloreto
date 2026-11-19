@@ -1,18 +1,25 @@
 import EventoNetworking, { EventoConfig } from "@/components/EventoNetworking";
 
+// Chile: rojo vivo + azul andino, referencia a la bandera chilena
 const config: EventoConfig = {
   pais: "Chile",
   bandera: "🇨🇱",
   ciudad: "Santiago de Chile",
   ladaDefault: "+56",
   titulo: "Networking & Masterclass Digital · Chile",
-  subtitulo: "Un evento presencial exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Chile. Conecta, aprende y escala tu negocio en 2027.",
-  fechaTexto: "Próximamente — fecha por confirmar",
+  masterclass: "Ads que sí convierten: el método para dejar de quemar presupuesto en 2027 (y cómo invertir tus primeros pesos sin perderlos)",
+  subtitulo: "Un evento presencial exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Chile. Conecta, aprende y escala tu negocio.",
+  fechaTexto: "Jueves 10 de diciembre",
+  horarioLocal: "7:00 pm hora local",
+  horarioCDMX: "4:00 pm CDMX",
+  gradiente: "linear-gradient(135deg, #1a0808 0%, #c0001a 50%, #e84055 100%)",
+  accentHex: "#c0001a",
+  gradienteCard: "linear-gradient(135deg, #fff5f5 0%, #fff0f2 100%)",
 };
 
 export const metadata = {
   title: "Networking & Masterclass Digital · Chile · Loreto Consultora",
-  description: "Evento presencial exclusivo para mexicanos emprendedores y marcas personales en Chile. Networking de alto nivel + Masterclass Digital para escalar tu negocio en 2027.",
+  description: "Jueves 10 de diciembre en Santiago. Evento presencial para mexicanos emprendedores en Chile. Networking + Masterclass: Ads que sí convierten y cómo invertir tus primeros pesos.",
 };
 
 export default function EventoChilePage() {
