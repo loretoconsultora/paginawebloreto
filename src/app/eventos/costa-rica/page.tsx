@@ -12,6 +12,7 @@ const config: EventoConfig = {
   fechaTexto: "Jueves 26 de noviembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "7:00 pm CDMX",
+  videoBgSrc: "/eventos/video-redes.mp4",
   gradiente: "linear-gradient(135deg, #0a2240 0%, #005fa3 50%, #00b4a0 100%)",
   accentHex: "#005fa3",
   gradienteCard: "linear-gradient(135deg, #f0f7ff 0%, #e6faf8 100%)",
