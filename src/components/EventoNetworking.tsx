@@ -317,11 +317,11 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                 src={config.videoBgSrc}
                 autoPlay muted loop playsInline
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ opacity: 0.18 }}
+                style={{ opacity: 0.45 }}
               />
               {/* Overlay degradado del país para integrar el video */}
               <div className="absolute inset-0"
-                style={{ background: config.gradiente, opacity: 0.82 }} />
+                style={{ background: config.gradiente, opacity: 0.62 }} />
             </div>
           )}
 
