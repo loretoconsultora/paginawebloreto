@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 import { Resend } from "resend";
-import { emailConfirmacionReto } from "@/lib/email-confirmacion-reto";
+import { emailConfirmacionReto, subjectConfirmacionReto } from "@/lib/email-confirmacion-reto";
 
 const notion = new Client({ auth: process.env.NOTION_SECRET });
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "Loreto Consultora <hello@loretoconsultora.com>",
       to: correo,
-      subject: "🌸 ¡Estás dentro del Reto Boost & Bloom!",
+      subject: subjectConfirmacionReto(Boolean(confirmaProximo)),
       html: emailConfirmacionReto({
         nombre,
         negocio: negocio ?? "",
