@@ -411,10 +411,10 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
 
               {/* Imagen de portada */}
               <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
-                className="relative rounded-t-3xl overflow-hidden self-end"
-                style={{ aspectRatio: "16/10", minHeight: "260px" }}>
+                className="relative rounded-t-3xl overflow-hidden self-end flex items-end justify-center"
+                style={{ minHeight: "320px" }}>
                 {config.portadaSrc ? (
-                  <Image src={config.portadaSrc} alt={`Evento ${config.pais}`} fill className="object-cover" />
+                  <Image src={config.portadaSrc} alt={`Evento ${config.pais}`} fill className="object-contain object-bottom" />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center gap-3"
                     style={{ background: "rgba(255,255,255,0.1)", border: "2px dashed rgba(255,255,255,0.3)", borderBottom: "none", borderRadius: "1.5rem 1.5rem 0 0" }}>
