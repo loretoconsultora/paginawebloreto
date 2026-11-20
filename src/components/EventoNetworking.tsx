@@ -153,8 +153,26 @@ function HeroForm({ config }: { config: EventoConfig }) {
     width: "100%",
   } as React.CSSProperties;
 
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await fetch("/api/registro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, pais: config.pais }),
+      });
+      if (!res.ok) throw new Error("error");
+      setSent(true);
+    } catch {
+      alert("Hubo un problema al registrarte. Intenta de nuevo o escríbenos por WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
-    <form onSubmit={(e) => { e.preventDefault(); setLoading(true); setTimeout(() => { setLoading(false); setSent(true); }, 600); }}
+    <form onSubmit={handleSubmit}
       className="flex flex-col gap-3">
       <input required name="nombre" type="text" placeholder="Nombre completo" value={form.nombre}
         onChange={(e) => setForm(f => ({ ...f, nombre: e.target.value }))} style={iStyle} />
@@ -210,7 +228,15 @@ function RegistroModal({ config, onClose }: { config: EventoConfig; onClose: () 
         </div>
         <div className="px-8 py-7">
           {!sent ? (
-            <form onSubmit={(e) => { e.preventDefault(); setLoading(true); setTimeout(() => { setLoading(false); setSent(true); }, 600); }}
+            <form onSubmit={async (e) => {
+                e.preventDefault(); setLoading(true);
+                try {
+                  const res = await fetch("/api/registro", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, pais: config.pais }) });
+                  if (!res.ok) throw new Error();
+                  setSent(true);
+                } catch { alert("Hubo un problema. Intenta de nuevo o contáctanos por WhatsApp."); }
+                finally { setLoading(false); }
+              }}
               className="flex flex-col gap-4">
               {[
                 { label: "Nombre completo", name: "nombre", type: "text", placeholder: "Tu nombre" },
