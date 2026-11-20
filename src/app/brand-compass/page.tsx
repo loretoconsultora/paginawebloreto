@@ -499,22 +499,25 @@ export default function BrandCompassPage() {
 
     const cat = getCategoria(puntaje);
 
-    // Guardar en Notion + enviar email (fire and forget, no bloqueamos UI)
     if (userData) {
-      fetch("/api/registro-brand-compass", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre: userData.nombre,
-          correo: userData.correo,
-          negocio: userData.negocio,
-          telefono: userData.telefono || undefined,
-          respuestas,
-          puntaje,
-          categoria: cat.nombre,
-          descripcionCategoria: cat.descripcion,
-        }),
-      }).catch(console.error);
+      try {
+        await fetch("/api/registro-brand-compass", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nombre: userData.nombre,
+            correo: userData.correo,
+            negocio: userData.negocio,
+            telefono: userData.telefono || undefined,
+            respuestas,
+            puntaje,
+            categoria: cat.nombre,
+            descripcionCategoria: cat.descripcion,
+          }),
+        });
+      } catch (err) {
+        console.error("[brand-compass] registro fallido:", err);
+      }
     }
 
     setStep("resultados");
