@@ -116,11 +116,29 @@ function RegistroModal({ onClose }: { onClose: () => void }) {
     setForm((f) => ({ ...f, [name]: type === "checkbox" ? target.checked : value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.confirmar) return;
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSent(true); }, 600);
+    try {
+      const res = await fetch("/api/registro-reto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: form.nombre,
+          correo: form.correo,
+          telefono: form.lada && form.telefono ? `${form.lada} ${form.telefono}` : form.telefono,
+          negocio: form.negocio,
+          confirmaProximo: form.confirmar,
+        }),
+      });
+      if (!res.ok) throw new Error("Error al registrar");
+      setSent(true);
+    } catch {
+      alert("Ocurrió un error. Por favor intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const inputStyle = { border: "1.5px solid rgba(192,0,90,0.2)", color: "#3A3F4B", background: "#fafafa" };
@@ -1057,11 +1075,29 @@ function FinalCTA({ onOpenModal: _onOpenModal }: { onOpenModal: () => void }) {
     setForm((f) => ({ ...f, [name]: type === "checkbox" ? target.checked : value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.confirmar) return;
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSent(true); }, 600);
+    try {
+      const res = await fetch("/api/registro-reto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: form.nombre,
+          correo: form.correo,
+          telefono: form.lada && form.telefono ? `${form.lada} ${form.telefono}` : form.telefono,
+          negocio: form.negocio,
+          confirmaProximo: form.confirmar,
+        }),
+      });
+      if (!res.ok) throw new Error("Error al registrar");
+      setSent(true);
+    } catch {
+      alert("Ocurrió un error. Por favor intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const inputStyle = { border: "1.5px solid rgba(255,255,255,0.35)", color: "white", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)" };
