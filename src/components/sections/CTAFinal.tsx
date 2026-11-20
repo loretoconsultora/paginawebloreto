@@ -42,7 +42,7 @@ export default function CTAFinal() {
           En 15 minutos sabrás exactamente dónde está tu negocio y cuáles son los pasos para llevarlo al siguiente nivel.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <GradientBorderButton href="https://brand-compass-pwa.vercel.app" target="_blank">
+          <GradientBorderButton href="/brand-compass">
             Inicia ahora tu diagnóstico
           </GradientBorderButton>
           <GradientBorderButton href="/servicios">

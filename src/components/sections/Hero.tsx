@@ -190,7 +190,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="flex flex-col sm:flex-row gap-3 items-center justify-center w-full"
         >
-          <Link href="https://brand-compass-pwa.vercel.app" target="_blank" rel="noopener noreferrer" style={{
+          <Link href="/brand-compass" style={{
             background: "linear-gradient(135deg, #FF6A92, #E894FF)",
             color: "#fff", fontWeight: 700,
             padding: "14px 28px", borderRadius: "999px",
