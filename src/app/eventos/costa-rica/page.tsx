@@ -7,7 +7,7 @@ const config: EventoConfig = {
   ciudad: "San José",
   ladaDefault: "+506",
   titulo: "Networking & Masterclass Digital · Costa Rica",
-  masterclass: "Tu negocio en piloto automático: IA y WhatsApp para atender, cotizar y dar seguimiento",
+  masterclass: "Tu negocio en piloto automático: IA en tu Marketing, Ventas y Operaciones",
   subtitulo: "Un evento en línea exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Costa Rica. Conecta, aprende y escala tu negocio.",
   fechaTexto: "Jueves 26 de noviembre",
   horarioLocal: "7:00 pm hora local",
