@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/recordatorio?pais=Costa+Rica&tipo=1h", "schedule": "0 0 27 11 *" },
+    { "path": "/api/recordatorio?pais=Colombia&tipo=1h",   "schedule": "0 23 2 12 *" }
+  ]
+}
