@@ -8,7 +8,7 @@ const config: EventoConfig = {
   ladaDefault: "+57",
   titulo: "Networking & Masterclass Digital · Colombia",
   masterclass: "Ads que sí convierten: el método para dejar de quemar presupuesto en 2027",
-  subtitulo: "Un evento presencial exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Colombia. Conecta, aprende y escala tu negocio.",
+  subtitulo: "Un evento en línea exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Colombia. Conecta, aprende y escala tu negocio.",
   fechaTexto: "Jueves 3 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "6:00 pm CDMX",

@@ -8,7 +8,7 @@ const config: EventoConfig = {
   ladaDefault: "+507",
   titulo: "Networking & Masterclass Digital · Panamá",
   masterclass: "Tu negocio en piloto automático: IA y WhatsApp para atender, cotizar y dar seguimiento",
-  subtitulo: "Un evento presencial exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Panamá. Conecta, aprende y escala tu negocio.",
+  subtitulo: "Un evento en línea exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Panamá. Conecta, aprende y escala tu negocio.",
   fechaTexto: "Jueves 17 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "6:00 pm CDMX",

@@ -8,7 +8,7 @@ const config: EventoConfig = {
   ladaDefault: "+56",
   titulo: "Networking & Masterclass Digital · Chile",
   masterclass: "Ads que sí convierten: el método para dejar de quemar presupuesto en 2027 (y cómo invertir tus primeros pesos sin perderlos)",
-  subtitulo: "Un evento presencial exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Chile. Conecta, aprende y escala tu negocio.",
+  subtitulo: "Un evento en línea exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Chile. Conecta, aprende y escala tu negocio.",
   fechaTexto: "Jueves 10 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "4:00 pm CDMX",
