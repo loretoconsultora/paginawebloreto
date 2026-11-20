@@ -12,6 +12,7 @@ const config: EventoConfig = {
   fechaTexto: "Miércoles 2 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "6:00 pm CDMX",
+  portadaSrc: "/eventos/portada-colombia.webp",
   gradiente: "linear-gradient(135deg, #1a1200 0%, #c48000 50%, #f5c842 100%)",
   accentHex: "#c48000",
   gradienteCard: "linear-gradient(135deg, #fffdf0 0%, #fff9e0 100%)",

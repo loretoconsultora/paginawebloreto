@@ -12,6 +12,7 @@ const config: EventoConfig = {
   fechaTexto: "Jueves 3 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "4:00 pm CDMX",
+  portadaSrc: "/eventos/portada-chile.webp",
   gradiente: "linear-gradient(135deg, #1a0808 0%, #c0001a 50%, #e84055 100%)",
   accentHex: "#c0001a",
   gradienteCard: "linear-gradient(135deg, #fff5f5 0%, #fff0f2 100%)",
