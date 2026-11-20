@@ -370,59 +370,59 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
 
           <div className="relative z-10 max-w-6xl mx-auto px-5 lg:px-8 pt-8 lg:pt-12">
 
-            {/* Dos columnas: texto izquierda | imagen derecha */}
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-10">
+            {/* Columna centrada: badge, título, subtítulo, chips, imagen */}
+            <div className="flex flex-col items-center text-center gap-6 mb-10">
 
-              {/* IZQUIERDA: badge, título, subtítulo, chips */}
-              <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
-                className="flex flex-col gap-5">
-
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full self-start"
+              {/* Badge */}
+              <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
                   style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
                   <span className="text-lg">{config.bandera}</span>
                   <span className="text-xs font-semibold uppercase tracking-widest text-white/90">
                     Networking &amp; Masterclass Digital
                   </span>
                 </div>
-
-                {/* H1 */}
-                <h1 className="font-playfair font-black text-white leading-tight">
-                  <span style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", display: "block" }}>{titleBig}</span>
-                  {titleSmall && (
-                    <span style={{ fontSize: "clamp(1.2rem, 2.8vw, 1.9rem)", opacity: 0.88, display: "block", marginTop: "0.3rem" }}>
-                      {titleSmall}
-                    </span>
-                  )}
-                </h1>
-
-                {/* Subtítulo */}
-                <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-lg">
-                  {config.subtitulo}
-                </p>
-
-                {/* Chips: fecha + hora */}
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { icon: "📅", text: config.fechaTexto },
-                    { icon: "🕖", text: config.horarioLocal },
-                    { icon: "🖥️", text: "En línea · Google Meet" },
-                  ].map((chip) => (
-                    <div key={chip.text}
-                      className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-white/85"
-                      style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)" }}>
-                      <span>{chip.icon}</span>
-                      <span>{chip.text}</span>
-                    </div>
-                  ))}
-                </div>
               </motion.div>
 
-              {/* DERECHA: imagen con bisel y sombra */}
-              <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-                className="relative mx-auto lg:mx-0 w-full max-w-sm lg:max-w-none">
+              {/* H1 */}
+              <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-playfair font-black text-white leading-tight max-w-2xl">
+                <span style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", display: "block" }}>{titleBig}</span>
+                {titleSmall && (
+                  <span style={{ fontSize: "clamp(1.2rem, 2.8vw, 1.9rem)", opacity: 0.88, display: "block", marginTop: "0.3rem" }}>
+                    {titleSmall}
+                  </span>
+                )}
+              </motion.h1>
+
+              {/* Subtítulo */}
+              <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
+                className="text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
+                {config.subtitulo}
+              </motion.p>
+
+              {/* Chips: fecha + hora */}
+              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex flex-wrap justify-center gap-2">
+                {[
+                  { icon: "📅", text: config.fechaTexto },
+                  { icon: "🕖", text: config.horarioLocal },
+                  { icon: "🖥️", text: "En línea · Google Meet" },
+                ].map((chip) => (
+                  <div key={chip.text}
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-white/85"
+                    style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)" }}>
+                    <span>{chip.icon}</span>
+                    <span>{chip.text}</span>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* Imagen centrada con bisel y sombra */}
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
+                className="w-full max-w-sm">
                 {config.portadaSrc ? (
-                  <div className="relative rounded-3xl overflow-hidden"
+                  <div className="relative rounded-3xl overflow-hidden mx-auto"
                     style={{
                       aspectRatio: "1 / 1",
                       boxShadow: "0 28px 60px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,255,255,0.18)",
@@ -436,7 +436,7 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                     />
                   </div>
                 ) : (
-                  <div className="rounded-3xl flex items-center justify-center"
+                  <div className="rounded-3xl flex items-center justify-center mx-auto"
                     style={{ aspectRatio: "1 / 1", background: "rgba(255,255,255,0.08)", border: "2px dashed rgba(255,255,255,0.25)" }}>
                     <span className="text-6xl">{config.bandera}</span>
                   </div>
@@ -475,10 +475,10 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
             <div className="max-w-5xl mx-auto relative z-10">
               <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 className="text-center mb-12">
-                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>¿Por qué ahora?</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#38bdf8" }}>¿Por qué ahora?</p>
                 <h2 className="font-playfair font-black text-white max-w-2xl mx-auto"
-                  style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)", lineHeight: 1.2 }}>
-                  {config.porQueAhoraTitle ?? "El juego cambió. Los que se mueven ahora van a liderar 2027."}
+                  style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)", lineHeight: 1.2, whiteSpace: "pre-line" }}>
+                  {config.porQueAhoraTitle ?? "El juego cambió.\nLos que se muevan ahora van a liderar este 2027."}
                 </h2>
               </motion.div>
               <div className="grid sm:grid-cols-3 gap-5">
@@ -493,11 +493,11 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                     </div>
                     <div className="px-5 py-1 flex items-center gap-2">
                       <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
-                      <span className="text-base" style={{ color: config.accentHex }}>↓</span>
+                      <span className="text-base" style={{ color: "#38bdf8" }}>↓</span>
                       <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
                     </div>
                     <div className="px-5 py-4" style={{ background: `${config.accentHex}18` }}>
-                      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: config.accentHex }}>Hoy</span>
+                      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#38bdf8" }}>Hoy</span>
                       <p className="text-sm leading-relaxed mt-2 text-white">{card.hoy}</p>
                     </div>
                   </motion.div>
@@ -513,10 +513,8 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
             style={{ background: config.accentHex, opacity: 0.07, filter: "blur(90px)" }} />
           <div className="max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>¿Te suena familiar?</p>
-              <h2 className="font-playfair font-black text-3xl sm:text-4xl mb-4" style={{ color: HEAD, lineHeight: 1.15 }}>
-                El contexto que nadie dice sobre emprender desde{" "}
-                <span style={{ color: config.accentHex }}>{config.pais}</span>
+              <h2 className="font-playfair font-black text-3xl sm:text-4xl" style={{ color: HEAD, lineHeight: 1.15 }}>
+                ¿Te suena familiar?
               </h2>
             </motion.div>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -538,7 +536,6 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
         <section className="py-20 px-5 lg:px-8 bg-white">
           <div className="max-w-4xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>Resultados concretos</p>
               <h2 className="font-playfair font-black text-3xl sm:text-4xl" style={{ color: HEAD }}>
                 Lo que te llevas del evento
               </h2>
@@ -563,14 +560,9 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
           <div className="max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="text-center mb-10">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>Para quién es</p>
               <h2 className="font-playfair font-black text-3xl sm:text-4xl" style={{ color: HEAD }}>
-                Este evento es para ti si quieres<br className="hidden sm:block" />
-                <span style={{ color: config.accentHex }}> crecer con criterio</span>, no solo con más herramientas.
+                Es para ti si quieres crecer con criterio,<br className="hidden sm:block" /> no solo con más herramientas y operación.
               </h2>
-              <p className="text-sm mt-4" style={{ color: HEAD, opacity: 0.6 }}>
-                Antes de registrarte, revisa si este evento encaja con lo que necesitas ahora.
-              </p>
             </motion.div>
             <div className="grid lg:grid-cols-2 gap-8">
               <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -620,54 +612,20 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
           </div>
         </section>
 
-        {/* ── TESTIMONIOS ────────────────────────────────────────────────── */}
-        <section className="py-20 px-5 lg:px-8 bg-white">
-          <div className="max-w-5xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-center mb-4">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>Prueba social</p>
-              <h2 className="font-playfair font-black text-3xl sm:text-4xl" style={{ color: HEAD }}>
-                Lo que dicen quienes han asistido a{" "}
-                <span style={{ color: config.accentHex }}>talleres previos.</span>
-              </h2>
-            </motion.div>
-            <div className="flex items-center justify-center gap-1 mb-10">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill={config.accentHex}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              ))}
-              <span className="ml-2 text-xs font-bold uppercase tracking-widest" style={{ color: HEAD, opacity: 0.5 }}>Valoración promedio de asistentes</span>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {TESTIMONIOS.map((t, i) => (
-                <motion.div key={t.init} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                  className="rounded-2xl p-5"
-                  style={{ background: "#f4f6f8", border: "1px solid rgba(0,0,0,0.06)" }}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-                      style={{ background: config.gradiente }}>{t.init}</div>
-                    <div className="flex-1" />
-                    <span className="text-xs" style={{ color: HEAD, opacity: 0.4 }}>{t.hora}</span>
-                  </div>
-                  <p className="text-sm leading-relaxed" style={{ color: HEAD, opacity: 0.8 }}>{t.texto}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── SOBRE ANY VILLEGAS ──────────────────────────────────────────── */}
         <section className="py-20 px-5 lg:px-8" style={{ background: "#fafbfc" }}>
-          <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-            <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden max-w-sm mx-auto lg:mx-0"
-                style={{ background: config.gradiente }}>
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-white/30 text-6xl">👤</span>
-                </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <div className="aspect-square rounded-3xl overflow-hidden max-w-xs mx-auto mb-8"
+                style={{ boxShadow: "0 16px 48px rgba(0,0,0,0.12)" }}>
+                <Image
+                  src="/foto-any.webp"
+                  alt="Any Villegas — Loreto Consultora"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>Tu anfitriona</p>
               <h2 className="font-playfair font-black text-3xl sm:text-4xl mb-3" style={{ color: HEAD }}>Any Villegas</h2>
               <p className="text-sm font-semibold mb-5" style={{ color: config.accentHex }}>

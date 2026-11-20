@@ -16,7 +16,7 @@ const config: EventoConfig = {
   accentHex: "#005fa3",
   gradienteCard: "linear-gradient(135deg, #f0f7ff 0%, #e6faf8 100%)",
 
-  porQueAhoraTitle: "El juego cambió. Los que se mueven ahora van a liderar 2027.",
+  porQueAhoraTitle: "El juego cambió.\nLos que se muevan ahora van a liderar este 2027.",
   porQueAhora: [
     {
       antes: "La IA era para corporativos con presupuesto.",
