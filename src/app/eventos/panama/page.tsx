@@ -16,6 +16,7 @@ const config: EventoConfig = {
   accentHex: "#1a3a7c",
   gradienteCard: "linear-gradient(135deg, #f0f2ff 0%, #fff0f2 100%)",
 
+  porQueAhoraAccent: "#818cf8",
   porQueAhoraTitle: "Panamá es uno de los mercados más competitivos de Latam. La publicidad digital ya no es opcional.",
   porQueAhora: [
     {

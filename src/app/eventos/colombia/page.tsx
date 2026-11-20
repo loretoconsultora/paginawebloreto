@@ -16,6 +16,7 @@ const config: EventoConfig = {
   accentHex: "#c48000",
   gradienteCard: "linear-gradient(135deg, #fffdf0 0%, #fff9e0 100%)",
 
+  porQueAhoraAccent: "#f5c842",
   porQueAhoraTitle: "Colombia tiene uno de los mercados digitales de más rápido crecimiento en Latam. ¿Tu negocio está listo?",
   porQueAhora: [
     {

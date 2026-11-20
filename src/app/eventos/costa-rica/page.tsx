@@ -16,6 +16,7 @@ const config: EventoConfig = {
   accentHex: "#005fa3",
   gradienteCard: "linear-gradient(135deg, #f0f7ff 0%, #e6faf8 100%)",
 
+  porQueAhoraAccent: "#38bdf8",
   porQueAhoraTitle: "El juego cambió.\nLos que se muevan ahora van a liderar este 2027.",
   porQueAhora: [
     {

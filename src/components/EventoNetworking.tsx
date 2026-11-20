@@ -51,6 +51,7 @@ export interface EventoConfig {
   gradiente: string;
   accentHex: string;
   gradienteCard: string;
+  porQueAhoraAccent?: string;
   // Contenido por país
   loQueTeLlevas?: string[];
   problemas?: { num: string; titulo: string; texto: string }[];
@@ -475,7 +476,7 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
             <div className="max-w-5xl mx-auto relative z-10">
               <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 className="text-center mb-12">
-                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#38bdf8" }}>¿Por qué ahora?</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.porQueAhoraAccent ?? "#38bdf8" }}>¿Por qué ahora?</p>
                 <h2 className="font-playfair font-black text-white max-w-2xl mx-auto"
                   style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)", lineHeight: 1.2, whiteSpace: "pre-line" }}>
                   {config.porQueAhoraTitle ?? "El juego cambió.\nLos que se muevan ahora van a liderar este 2027."}
@@ -493,11 +494,11 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                     </div>
                     <div className="px-5 py-1 flex items-center gap-2">
                       <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
-                      <span className="text-base" style={{ color: "#38bdf8" }}>↓</span>
+                      <span className="text-base" style={{ color: config.porQueAhoraAccent ?? "#38bdf8" }}>↓</span>
                       <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
                     </div>
                     <div className="px-5 py-4" style={{ background: `${config.accentHex}18` }}>
-                      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#38bdf8" }}>Hoy</span>
+                      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: config.porQueAhoraAccent ?? "#38bdf8" }}>Hoy</span>
                       <p className="text-sm leading-relaxed mt-2 text-white">{card.hoy}</p>
                     </div>
                   </motion.div>

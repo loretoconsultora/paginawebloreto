@@ -16,6 +16,7 @@ const config: EventoConfig = {
   accentHex: "#c0001a",
   gradienteCard: "linear-gradient(135deg, #fff5f5 0%, #fff0f2 100%)",
 
+  porQueAhoraAccent: "#e84055",
   porQueAhoraTitle: "La publicidad digital cambió. Los que siguen con el método de 2022 están quemando dinero.",
   porQueAhora: [
     {
