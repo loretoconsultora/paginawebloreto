@@ -9,7 +9,7 @@ const config: EventoConfig = {
   titulo: "Networking & Masterclass Digital · Panamá",
   masterclass: "Publicidad Digital que sí convierte: El método para escalar tu negocio este 2027",
   subtitulo: "Un evento en línea exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Panamá. Conecta, aprende y escala tu negocio.",
-  fechaTexto: "Jueves 17 de diciembre",
+  fechaTexto: "Jueves 3 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "6:00 pm CDMX",
   videoBgSrc: "/eventos/video-redes.mp4",
