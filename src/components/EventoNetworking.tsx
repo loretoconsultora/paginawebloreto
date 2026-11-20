@@ -107,7 +107,7 @@ const TESTIMONIOS = [
 // ─── Confirmación de registro ─────────────────────────────────────────────────
 function RegistradoView({ config }: { config: EventoConfig }) {
   return (
-    <div className="text-center py-6">
+    <div className="text-center py-8 px-4 rounded-2xl" style={{ background: "white" }}>
       <div className="text-4xl mb-3">🎉</div>
       <h3 className="font-playfair font-bold text-xl mb-2" style={{ color: "#1a0a2e" }}>¡Estás registrado!</h3>
       <p className="text-sm mb-4 leading-relaxed" style={{ color: "#3A3F4B", opacity: 0.85 }}>
