@@ -12,6 +12,13 @@ const BANDERA: Record<string, string> = {
   "Panamá":     "🇵🇦",
 };
 
+const MEET_LINK: Record<string, string> = {
+  "Costa Rica": "https://meet.google.com/urs-bqnz-syp",
+  "Colombia":   "https://meet.google.com/wup-pizh-xta",
+  "Chile":      "https://meet.google.com/qaa-tizw-ctu",
+  "Panamá":     "https://meet.google.com/agg-fmpb-sxg",
+};
+
 const GRADIENTE: Record<string, string> = {
   "Costa Rica": "linear-gradient(135deg, #0a2240 0%, #005fa3 50%, #00b4a0 100%)",
   "Colombia":   "linear-gradient(135deg, #1a1200 0%, #c48000 50%, #f5c842 100%)",
@@ -30,6 +37,7 @@ export function emailConfirmacion({ nombre, pais, fechaEvento, masterclass }: Pa
   const bandera = BANDERA[pais] ?? "🌎";
   const gradiente = GRADIENTE[pais] ?? "linear-gradient(135deg,#1a0a2e,#3a1a6e)";
   const accent = ACCENT[pais] ?? "#3a1a6e";
+  const meetLink = MEET_LINK[pais] ?? "";
   const primerNombre = nombre.split(" ")[0];
 
   return `<!DOCTYPE html>
@@ -81,9 +89,11 @@ export function emailConfirmacion({ nombre, pais, fechaEvento, masterclass }: Pa
                     </p>
                     <p style="margin:0 0 16px;font-size:14px;color:#1a1f24;line-height:1.5;">${masterclass}</p>
                     <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:${accent};">
-                      🖥️ Plataforma
+                      🖥️ Enlace de acceso
                     </p>
-                    <p style="margin:0;font-size:14px;color:#1a1f24;">Google Meet · Evento en línea</p>
+                    <a href="${meetLink}" target="_blank"
+                      style="display:inline-block;margin-top:4px;font-size:14px;font-weight:700;color:${accent};word-break:break-all;">${meetLink}</a>
+                    <p style="margin:6px 0 0;font-size:12px;color:#3A3F4B;opacity:0.6;">Google Meet · Evento en línea</p>
                   </td>
                 </tr>
               </table>
