@@ -106,7 +106,7 @@ export function emailConfirmacion({ nombre, pais, fechaEvento, masterclass }: Pa
                     <span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:${gradiente};color:white;font-size:11px;font-weight:700;text-align:center;line-height:22px;">1</span>
                   </td>
                   <td style="padding:6px 0 6px 8px;font-size:14px;color:#3A3F4B;line-height:1.5;">
-                    Revisa tu correo antes del evento — te enviaremos el <strong>enlace de Google Meet</strong> con 24 horas de anticipación. Revisa también tu carpeta de spam.
+                    Da clic en el enlace de arriba para <strong>agendar el evento en tu calendario</strong>. También te enviaremos un recordatorio por correo un par de horas antes — así no se te pasa.
                   </td>
                 </tr>
                 <tr>
@@ -123,6 +123,14 @@ export function emailConfirmacion({ nombre, pais, fechaEvento, masterclass }: Pa
                   </td>
                   <td style="padding:6px 0 6px 8px;font-size:14px;color:#3A3F4B;line-height:1.5;">
                     Trae tu mayor reto de negocio en mente — lo usaremos de materia prima durante la masterclass.
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:6px 0;vertical-align:top;width:28px;">
+                    <span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:${gradiente};color:white;font-size:11px;font-weight:700;text-align:center;line-height:22px;">4</span>
+                  </td>
+                  <td style="padding:6px 0 6px 8px;font-size:14px;color:#3A3F4B;line-height:1.5;">
+                    ¿Conoces a alguien que debería estar aquí? <strong>Invítalo</strong> — el evento es gratuito y solo necesita registrarse para asegurar su lugar.
                   </td>
                 </tr>
               </table>
