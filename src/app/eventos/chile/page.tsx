@@ -9,7 +9,7 @@ const config: EventoConfig = {
   titulo: "Networking & Masterclass Digital · Chile",
   masterclass: "Publicidad Digital que sí convierte: El método para escalar tu negocio este 2027",
   subtitulo: "Un evento en línea exclusivo para mexicanos emprendedores, empresarios y marcas personales que están construyendo desde Chile. Conecta, aprende y escala tu negocio.",
-  fechaTexto: "Jueves 10 de diciembre",
+  fechaTexto: "Jueves 3 de diciembre",
   horarioLocal: "7:00 pm hora local",
   horarioCDMX: "4:00 pm CDMX",
   gradiente: "linear-gradient(135deg, #1a0808 0%, #c0001a 50%, #e84055 100%)",
