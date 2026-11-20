@@ -370,11 +370,14 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
 
           <div className="relative z-10 max-w-6xl mx-auto px-5 lg:px-8 pt-8 lg:pt-12">
 
-            {/* Columna centrada: badge, título, subtítulo, chips, imagen */}
-            <div className="flex flex-col items-center text-center gap-6 mb-10">
+            {/* Móvil: columna centrada · Desktop: dos columnas */}
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-10">
 
-              {/* Badge */}
-              <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              {/* IZQUIERDA (desktop) / centrado (móvil): badge, título, subtítulo, chips */}
+              <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
+                className="flex flex-col items-center text-center lg:items-start lg:text-left gap-5">
+
+                {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
                   style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
                   <span className="text-lg">{config.bandera}</span>
@@ -382,47 +385,44 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                     Networking &amp; Masterclass Digital
                   </span>
                 </div>
+
+                {/* H1 */}
+                <h1 className="font-playfair font-black text-white leading-tight">
+                  <span style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", display: "block" }}>{titleBig}</span>
+                  {titleSmall && (
+                    <span style={{ fontSize: "clamp(1.2rem, 2.8vw, 1.9rem)", opacity: 0.88, display: "block", marginTop: "0.3rem" }}>
+                      {titleSmall}
+                    </span>
+                  )}
+                </h1>
+
+                {/* Subtítulo */}
+                <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-lg">
+                  {config.subtitulo}
+                </p>
+
+                {/* Chips: fecha + hora */}
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+                  {[
+                    { icon: "📅", text: config.fechaTexto },
+                    { icon: "🕖", text: config.horarioLocal },
+                    { icon: "🖥️", text: "En línea · Google Meet" },
+                  ].map((chip) => (
+                    <div key={chip.text}
+                      className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-white/85"
+                      style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)" }}>
+                      <span>{chip.icon}</span>
+                      <span>{chip.text}</span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
 
-              {/* H1 */}
-              <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-playfair font-black text-white leading-tight max-w-2xl">
-                <span style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", display: "block" }}>{titleBig}</span>
-                {titleSmall && (
-                  <span style={{ fontSize: "clamp(1.2rem, 2.8vw, 1.9rem)", opacity: 0.88, display: "block", marginTop: "0.3rem" }}>
-                    {titleSmall}
-                  </span>
-                )}
-              </motion.h1>
-
-              {/* Subtítulo */}
-              <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
-                {config.subtitulo}
-              </motion.p>
-
-              {/* Chips: fecha + hora */}
-              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-wrap justify-center gap-2">
-                {[
-                  { icon: "📅", text: config.fechaTexto },
-                  { icon: "🕖", text: config.horarioLocal },
-                  { icon: "🖥️", text: "En línea · Google Meet" },
-                ].map((chip) => (
-                  <div key={chip.text}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-white/85"
-                    style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)" }}>
-                    <span>{chip.icon}</span>
-                    <span>{chip.text}</span>
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* Imagen centrada con bisel y sombra */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
-                className="w-full max-w-sm">
+              {/* DERECHA: imagen con bisel y sombra */}
+              <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+                className="relative mx-auto lg:mx-0 w-full max-w-sm lg:max-w-none">
                 {config.portadaSrc ? (
-                  <div className="relative rounded-3xl overflow-hidden mx-auto"
+                  <div className="relative rounded-3xl overflow-hidden"
                     style={{
                       aspectRatio: "1 / 1",
                       boxShadow: "0 28px 60px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,255,255,0.18)",
@@ -436,7 +436,7 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                     />
                   </div>
                 ) : (
-                  <div className="rounded-3xl flex items-center justify-center mx-auto"
+                  <div className="rounded-3xl flex items-center justify-center"
                     style={{ aspectRatio: "1 / 1", background: "rgba(255,255,255,0.08)", border: "2px dashed rgba(255,255,255,0.25)" }}>
                     <span className="text-6xl">{config.bandera}</span>
                   </div>
@@ -623,7 +623,7 @@ export default function EventoNetworking({ config }: { config: EventoConfig }) {
                   alt="Any Villegas — Loreto Consultora"
                   width={400}
                   height={400}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: config.accentHex }}>Tu anfitriona</p>
